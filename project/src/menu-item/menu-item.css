@@ -1,0 +1,21 @@
+.menu-item {
+    width: 670px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    border: 0;
+    background: none;
+    color: gray;
+    font-size: 17px;
+}
+
+.item:hover {
+    font-weight: bold;
+    color: black;
+}
+
+.item-label {
+    
+}
