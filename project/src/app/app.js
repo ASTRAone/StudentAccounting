@@ -5,6 +5,7 @@ import MenuItem from '../menu-item';
 import Search from '../search';
 import Filter from '../filter';
 import Tools from '../tools';
+import StudentsList from '../students-list';
 
 import './app.css';
 
@@ -19,6 +20,8 @@ export default class App extends Component {
             <div className="app-menu">
                 <MenuItem />
             </div>
+                    <MenuItem />
+                </div>
 
             <div className="app-search">
                 <Search />
