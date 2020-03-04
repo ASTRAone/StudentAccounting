@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import AppHeader from '../app-header';
 import MenuItem from '../menu-item';
 import Search from '../search';
+import Filter from '../filter';
+import Tools from '../tools';
 
 import './app.css';
 
@@ -20,6 +22,11 @@ export default class App extends Component {
 
             <div className="app-search">
                 <Search />
+            </div>
+
+            <div className="app-filter">
+                <Filter />
+                <Tools />
             </div>
             </div>
         );
