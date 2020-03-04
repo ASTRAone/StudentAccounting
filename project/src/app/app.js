@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AppHeader from '../app-header';
 import MenuItem from '../menu-item';
 import Search from '../search';
+import StudentsList from '../students-list';
 
 import './app.css';
 
@@ -14,14 +15,16 @@ export default class App extends Component {
             <div className="app">
                 <AppHeader />
 
-            <div className="app-menu">
-                <MenuItem />
-            </div>
+                <div className="app-menu">
+                    <MenuItem />
+                </div>
 
-            <div className="app-search">
-                <Search />
+                <div className="app-search">
+                    <Search />
+                </div>
+                <StudentsList />
             </div>
-            </div>
+            
         );
     };
 };
