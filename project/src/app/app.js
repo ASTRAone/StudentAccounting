@@ -17,20 +17,20 @@ export default class App extends Component {
             <div className="app">
                 <AppHeader />
 
-            <div className="app-menu">
-                <MenuItem />
-            </div>
+                <div className="app-menu">
                     <MenuItem />
                 </div>
 
-            <div className="app-search">
-                <Search />
-            </div>
+                <div className="app-search">
+                    <Search />
+                </div>
 
-            <div className="app-filter">
-                <Filter />
-                <Tools />
-            </div>
+                <div className="app-filter">
+                    <Filter />
+                    <Tools />
+                </div>
+
+                <StudentsList />
             </div>
         );
     };
