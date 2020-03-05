@@ -1,25 +1,24 @@
 import React from 'react';
 
-import './accept-application.css';
+import './application-successfully-accepted.css';
 
-const AcceptApplication = () => {
+const ApplicationSuccessfullyAccepted = () => {
     return (
         <div className="accept-application">
             <div className="accept-application__i">
                 <i class="fa fa-times"></i>
             </div>
             <h3 className="accept-application__title">
-                Принять заявку
+                Заявка успешно принята
             </h3>
             <p className="accept-application__text">
-                Вы действительно хотите принять заявку?
+                Студенту отправлено уведомление.
             </p>
             <div className="accept-application__btn">
-                <button className="btn accept-application__close">Отмена</button>
-                <button className="btn accept-application__forward">Да</button>
+                <button className="btn accept-application__forward">Ок</button>
             </div>
         </div>
     );
 };
 
-export default AcceptApplication;
+export default ApplicationSuccessfullyAccepted;
