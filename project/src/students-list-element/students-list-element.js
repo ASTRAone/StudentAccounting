@@ -20,7 +20,7 @@ export default class StudentsListElement extends Component {
                 <p className = "name">Иванов Иван Иванович</p>
                 <div className = "contacts">
                     <div className = "contacts__element">
-                        <i class="fa fa-envelope"></i>
+                        <i className="fa fa-envelope"></i>
                         <p className = "contacts__text">ivanov@mail.ru</p>
                     </div>
                     <div className = "contacts__element">

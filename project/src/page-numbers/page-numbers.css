@@ -1,0 +1,22 @@
+.page-numbers{
+    margin: 0 auto;
+    display: table;
+}
+
+.page{
+    border: 1px rgb(187, 187, 187) solid;
+    background-color: white;
+    color:  #007bff;
+}
+
+.page-numbers :hover{
+    border: 1px #007bff solid;
+    background-color: #007bff;
+    color: white;
+}
+
+.page-numbers :onclick{
+    border: 1px #007bff solid;
+    background-color: #007bff;
+    color: white;
+}

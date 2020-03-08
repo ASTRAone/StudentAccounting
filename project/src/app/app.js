@@ -6,6 +6,7 @@ import Search from '../search';
 import Filter from '../filter';
 import Tools from '../tools';
 import StudentsList from '../students-list';
+import PageNumbers from '../page-numbers';
 
 import './app.css';
 
@@ -31,6 +32,7 @@ export default class App extends Component {
                 </div>
 
                 <StudentsList />
+                <PageNumbers />
             </div>
         );
     };
