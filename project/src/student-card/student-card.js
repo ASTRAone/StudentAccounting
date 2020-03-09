@@ -51,7 +51,7 @@ export default class StudentCard extends Component {
                         <img src = { noavatarcurator } className = "profile-pic" />
                         <p className = "curator__action">Посмотреть компетенции студента</p>
                         <p className = "curator__action">Посмотреть информацию о наставнике</p>
-                        <button className = "curator__choose-button">Назначить куратора</button>
+                        <button className = "btn curator__choose-button">Назначить куратора</button>
                     </div>
                 </div>
                 <div className = "rating">
