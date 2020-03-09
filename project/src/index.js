@@ -5,4 +5,7 @@ import App from './app';
 import StudentsAddForm from './student-add-form';
 import StudentCard from './student-card';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Alteration from './alteration';
+import ChangesSaved from './changes-saved';
+
+ReactDOM.render(<ChangesSaved />, document.getElementById('root'));
