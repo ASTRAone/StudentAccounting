@@ -181,13 +181,13 @@
     background-color: #007bff;
     color: white;
     outline: none;
-    border: none;
     border-radius: 10px;
     margin-bottom: 10px;
     line-height: normal;
     font-weight: bold;
     font-size: 20px;
     width: 150px;
+    border: 1px solid gray;
 }
 
 .curator__choose-button :hover{
