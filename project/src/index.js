@@ -5,4 +5,4 @@ import App from './app';
 import StudentsAddForm from './student-add-form';
 import StudentCard from './student-card';
 
-ReactDOM.render(<StudentCard />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
