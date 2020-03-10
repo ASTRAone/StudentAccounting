@@ -8,6 +8,9 @@ import Tools from '../tools';
 import StudentsList from '../students-list';
 import PageNumbers from '../page-numbers';
 
+
+import Report from '../report';
+
 import './app.css';
 
 
@@ -22,17 +25,20 @@ export default class App extends Component {
                     <MenuItem />
                 </div>
 
-                <div className="app-search">
+                <Report />
+
+
+                {/* <div className="app-search">
                     <Search />
                 </div>
 
                 <div className="app-filter">
                     <Filter />
                     <Tools />
-                </div>
+                </div> */}
 
-                <StudentsList />
-                <PageNumbers />
+                {/* <StudentsList />
+                <PageNumbers /> */}
             </div>
         );
     };

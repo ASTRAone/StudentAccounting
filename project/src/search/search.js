@@ -8,7 +8,7 @@ export default class Search extends Component {
         { id: 1, label: "Naples" },
         { id: 2, label: "London" },
         { id: 3, label: "Berlin" },
-        { id: 4,label: "New York" },
+        { id: 4, label: "New York" },
         { id: 5, label: "Frattamaggiore" },
     ];
 
