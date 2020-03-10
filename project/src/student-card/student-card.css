@@ -5,7 +5,7 @@
     background-color: rgb(248, 248, 248);
 }
 
-.card__header{
+.header{
     background-color: white;
     border-bottom: 2px rgb(206, 206, 206) solid;
     display: flex;
@@ -14,13 +14,13 @@
 
 }
 
-.card__label{
+.label{
     font-size: 28px;
     padding: 20px;
     margin: 0;
 }
 
-.card__controls{
+.controls{
     width: 30%;
     display: flex;
     flex-direction: row;
@@ -33,35 +33,35 @@
     cursor: pointer;
 }
 
-.card__controls :hover{
+.controls :hover{
     color: rgb(21, 98, 170);
 }
 
-.card__profile-pic{
+.profile-pic{
     width: 150px;
     height: 150px;
     padding: 10px;
 }
 
-.card__student{
+.student{
     display: flex;
     flex-direction: row;
     border-bottom: 2px rgb(128, 128, 128) solid;
 }
 
-.card__student-info{
+.student-info{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.card__student-name{
+.student-name{
     font-size: 25px;
     margin: 0;
 }
 
-.card__contacts{
+.contacts{
     font-size: 20px;
     display: flex;
     flex-direction: row;
@@ -71,37 +71,37 @@
 
 }
 
-.card__student-contact{
+.student-contact{
     margin: 0;
     margin-left: 20px;
 }
 
-.card__contacts-mobile-icon{
+.contacts__mobile-icon{
     font-size: 30px;
 
 }
 
-.card__info-label{
+.info-label{
     font-size: 20px;
     color: rgb(100, 100, 100);
     text-decoration: underline;
     margin-bottom: 0;
 }
 
-.card__info-text{
+.info-text{
     font-size: 20px;
     margin-left: 20px;
     margin-bottom: 0;
 }
 
-.card__rating{
+.rating{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-.card__main-rating{
+.main-rating{
     margin: 0 auto;
     width: 600px;
     height: 80px;
@@ -116,7 +116,7 @@
     margin-top: 30px;
 }
 
-.card__main-rating-label{
+.main-rating__label{
     font-size: 17px;
     color: rgb(100, 100, 100);
     text-decoration: underline;
@@ -124,7 +124,7 @@
     margin-left: 10px;
 }
 
-.card__stars{
+.stars{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -133,7 +133,7 @@
     
 }
 
-.card__download-doc{
+.download-doc{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -145,17 +145,17 @@
 
 
 
-.card__download-doc__icon{
+.download-doc__icon{
     font-size: 30px;
 }
 
-.card__download-doc :hover{
+.download-doc :hover{
     color: rgb(49, 49, 49);
     text-decoration: underline;
     cursor: pointer;
 }
 
-.card__comment{
+.comment{
     margin: 0 auto;
     width: 600px;
     height: 200px;
@@ -168,7 +168,7 @@
     margin-bottom: 20px;
 }
 
-.card__curator{
+.curator{
     float: right;
     margin: auto;
     display: flex;
@@ -177,7 +177,7 @@
     align-items: center;
 }
 
-.card__curator__choose-button{
+.curator__choose-button{
     background-color: #007bff;
     color: white;
     outline: none;
@@ -190,11 +190,11 @@
     border: 1px solid gray;
 }
 
-.card__curator__choose-button :hover{
+.curator__choose-button :hover{
     background-color: #033870;
 }
 
-.card__curator__action{
+.curator__action{
     text-align: center;
     text-decoration: underline;
     color: #007bff;
@@ -202,7 +202,7 @@
     cursor: pointer;
 }
 
-.card__curator__action :hover{
+.curator__action :hover{
     color: #033870;
     cursor: pointer;
 }

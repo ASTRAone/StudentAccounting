@@ -85,7 +85,7 @@
     
 }
 
-.list__profile-pic{
+.profile-pic{
     width: 100px;
     height: 100px;
     padding: 10px;
@@ -95,14 +95,14 @@
     
 }
 
-.list__name{
+.name{
     font-size: 18px;
     text-align: center;
     width: 90px;
     align-self: flex-end;
 }
 
-.list__info{
+.contacts{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,7 +112,7 @@
     
 }
 
-.list__contacts__element{
+.contacts__element{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -120,11 +120,11 @@
     font-size: 16px;
 }
 
-.list__contact-icon{
+.contact-icon{
     font-size: 20px;
 }
 
-.list__info-element{
+.info-element{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -132,18 +132,18 @@
     font-size: 14px;
 }
 
-.list__info-label{
+.info-label{
     font-size: 14px;
     color: rgb(100, 100, 100);
 
 }
 
-.list__info-text{
+.info__text{
     font-size: 14px;
 
 }
 
-.list__buttons{
+.buttons{
     font-size: 40px;
     display: flex;
     flex-direction: row;
@@ -154,7 +154,7 @@
     margin-left: 30px;
 }
 
-.list__buttons :hover{
+.buttons :hover{
     color: rgb(23, 118, 207);
     cursor: pointer;
 }
