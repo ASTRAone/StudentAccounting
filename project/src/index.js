@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import StudentsAddForm from './student-add-form';
 import StudentCard from './student-card';
+import RatingTable from './rating-table';
 
-import Alteration from './alteration';
-import ChangesSaved from './changes-saved';
-
-ReactDOM.render(<ChangesSaved />, document.getElementById('root'));
+ReactDOM.render(<RatingTable />, document.getElementById('root'));
