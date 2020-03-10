@@ -1,7 +1,13 @@
 .menu-item {
-    width: 670px;
     display: flex;
-    justify-content: space-between;
+}
+
+.container-item {
+    margin-right: 70px;
+}
+
+.container-item:last-child {
+    margin-right: 0;
 }
 
 .item {
@@ -17,5 +23,12 @@
 }
 
 .item-label {
-    
+    background: #ff0808;
+    border-radius: 20px;
+    width: auto;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    font-size: 15px;
 }

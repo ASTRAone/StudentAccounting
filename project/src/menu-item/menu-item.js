@@ -9,7 +9,8 @@ export default class MenuApp extends Component {
         { id:2, label: 'Одобренные', name: 'одобренные' },
         { id:3, label: 'Отклоненные', name: 'отклоненные' },
         { id:4, label: 'На практике', name: 'практика' },
-        { id:5, label: 'Архив', name: 'архив' }
+        { id:5, label: 'Архив', name: 'архив' },
+        { id:6, label: 'Отчет', name: 'отчет' }
     ];
 
     render() {
@@ -19,13 +20,14 @@ export default class MenuApp extends Component {
             const { id, label, name } = item;
 
             return (
-                <span key={ id }>
+                <span key={ id } className="container-item">
                     <button 
                         type="button"
                         className="item">
 
                         { label }
-                    </button>
+                    </button> 
+
                     <label className="item-label"></label>
                 </span>
             )

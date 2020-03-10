@@ -180,13 +180,14 @@
 .card__curator__choose-button{
     background-color: #007bff;
     color: white;
-    font-size: 17px;
     outline: none;
-    border: none;
     border-radius: 10px;
-    width: 130px;
-    height: 50px;
     margin-bottom: 10px;
+    line-height: normal;
+    font-weight: bold;
+    font-size: 20px;
+    width: 150px;
+    border: 1px solid gray;
 }
 
 .card__curator__choose-button :hover{
@@ -198,6 +199,7 @@
     text-decoration: underline;
     color: #007bff;
     width: 170px;
+    cursor: pointer;
 }
 
 .card__curator__action :hover{
