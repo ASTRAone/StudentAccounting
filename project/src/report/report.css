@@ -21,10 +21,8 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .report-our {
-    padding-left: 20px;
     padding-top: 25px;
     display: flex;
-    padding-right: 150px;
     justify-content: center;
 }
 
@@ -123,4 +121,30 @@ input::-webkit-calendar-picker-indicator {
 .container-date__export {
     background: #b3b5ff;
     border: 2px solid #a2a5fb;
+}
+
+.compose-report {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.compose-report__item {
+    display: flex;
+    width: fit-content;
+}
+
+.compose-report__item:last-child {
+    border-bottom: 1px solid;
+}
+
+.compose-report__offer {
+    width: 120px;
+    text-align: center;
+    border-right: 1px solid;
+    border-top: 1px solid;
+}
+
+.compose-report_num {
+    width: 50px;
+    border-left: 1px solid;
 }
