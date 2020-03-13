@@ -5,16 +5,27 @@ import noavatar from "../img/noavatar.png";
 
 export default class StudentsListElement extends Component {
 
+    constructor() {
+        super();
+
+        // this.state = {
+        //     data: this.props
+        // }
+    }
+
     render(){
+
+        const { id, date, SecondName } = this.props;
+
         return(
-            <li className = "list-element">
+            <div className="list-element">
                 <div className = "list-element-identificator">
                     <p className = "list-element-identificator__label">№</p>
-                    <p className = "list-element-identificator__number">1</p>
+                    <p className = "list-element-identificator__number">{ id }</p>
                 </div>
                 <div className = "list-element-date">
                     <p className = "list-element-date__label">Дата заявки</p>
-                    <p className = "list-element-date__value">28.01.2020</p>
+                    <p className = "list-element-date__value">{ date }</p>
                 </div>
                 <img src = { noavatar } className = "list__profile-pic" />
                 <p className = "list__name">Иванов Иван Иванович</p>
@@ -52,7 +63,7 @@ export default class StudentsListElement extends Component {
                     <i className ="fa fa-check-circle"></i>
                     <i className ="fa fa-ban"></i>
                 </div>
-            </li>
+            </div>
         );
     };
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {createBrowserHistory} from 'history';
 import AppHeader from '../app-header';
 import MenuItem from '../menu-item';
 import Search from '../search';
@@ -9,10 +9,20 @@ import StudentsList from '../students-list';
 import PageNumbers from '../page-numbers';
 
 
+
 import Report from '../report';
+
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useHistory
+  } from "react-router-dom";
 
 import './app.css';
 
+export const history = createBrowserHistory();
 
 export default class App extends Component {
 
@@ -25,20 +35,28 @@ export default class App extends Component {
                     <MenuItem />
                 </div>
 
-                <Report />
-
-
-                {/* <div className="app-search">
+                <div className="app-search">
                     <Search />
                 </div>
 
                 <div className="app-filter">
                     <Filter />
                     <Tools />
-                </div> */}
+                </div>
+        
+                <Router history={history}>
+        
+                    <Switch>
+                        <Route path="/menu">
+                            <Report />
+                        </Route>
 
-                {/* <StudentsList />
-                <PageNumbers /> */}
+                    </Switch>
+
+                </Router>
+
+                <StudentsList />
+                <PageNumbers />
             </div>
         );
     };
