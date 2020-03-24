@@ -7,10 +7,6 @@ export default class StudentsListElement extends Component {
 
     constructor() {
         super();
-
-        // this.state = {
-        //     data: this.props
-        // }
     }
 
     render(){

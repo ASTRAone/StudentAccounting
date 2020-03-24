@@ -23,12 +23,10 @@ export default class StudentsList extends Component {
 
         const items = this.item.map((item)=> {
 
-            const { id } = item;
-            const { ...rest } = item;
+            const { id, ...rest } = item;
 
             return (      
                 <li className="list-element-block" key={ id }>
-                    {/* Этот элемент должен быть не зависимым */}
                     <StudentsListElement { ...rest }/>
                 </li>
             );
@@ -37,7 +35,6 @@ export default class StudentsList extends Component {
         return (
             <ul className="list">
                 { items }
-
             </ul>
         );
     };

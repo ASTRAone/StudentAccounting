@@ -7,9 +7,6 @@ import Filter from '../filter';
 import Tools from '../tools';
 import StudentsList from '../students-list';
 import PageNumbers from '../page-numbers';
-
-
-
 import Report from '../report';
 
 import {
