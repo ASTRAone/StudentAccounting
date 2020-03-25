@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {createBrowserHistory} from 'history';
 import AppHeader from '../app-header';
 import MenuItem from '../menu-item';
-import Search from '../search';
-import Filter from '../filter';
-import Tools from '../tools';
-import StudentsList from '../students-list';
-import PageNumbers from '../page-numbers';
-import Report from '../report';
+
+import ApplicationsPage from '../../page/applicationsPage';
+import ApprovedPage from '../../page/approvedPage';
+import RejectPage from '../../page/rejectPage';
+import PractikPage from '../../page/practikPage';
+import AchivePage from '../../page/achivePage';
+import ReportPage from '../../page/reportPage';
 
 import {
     BrowserRouter as Router,
@@ -27,34 +28,17 @@ export default class App extends Component {
         return (
             <div className="app">
                 <AppHeader />
-
                 <div className="app-menu">
-                    <MenuItem />
+                    <MenuItem history={this.props.history} />
                 </div>
-
-                <div className="app-search">
-                    <Search />
-                </div>
-
-                <div className="app-filter">
-                    <Filter />
-                    <Tools />
-                </div>
-        
-                <Router history={history}>
-        
-                    <Switch>
-                        <Route path="/menu">
-                            <Report />
-                        </Route>
-
-                    </Switch>
-
-                </Router>
-
-                <StudentsList />
-                <PageNumbers />
+                <Route path="/applications" render={props => <ApplicationsPage {...props} />} />
+                <Route path="/approved" render={props => <ApprovedPage {...props} />} />    
+                <Route path="/reject" render={props => <RejectPage {...props} />} />    
+                <Route path="/practik" render={props => <PractikPage {...props} />} /> 
+                <Route path="/achive" render={props => <AchivePage {...props} />} />
+                <Route path="/report" render={props => <ReportPage {...props} />} />        
             </div>
         );
     };
 };
+

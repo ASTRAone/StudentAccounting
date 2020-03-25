@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
 import './students-list.css';
 
 import StudentsListElement from '../students-list-element';
 
-export default class StudentsList extends Component {
+import {getStudentsListRequest} from '../../_actions/applications';
+
+class StudentsList extends Component {
 
     componentDidMount () {
         // обращение к серверу
         
         // данные которые пришли необходимо записать в стейт
+        getStudentsListRequest()
     }
 
     item = [
@@ -21,9 +26,12 @@ export default class StudentsList extends Component {
 
     render() {
 
+        console.log(this.props.studentsList);
+
         const items = this.item.map((item)=> {
 
-            const { id, ...rest } = item;
+            const { id } = item;
+            const { ...rest } = item;
 
             return (      
                 <li className="list-element-block" key={ id }>
@@ -39,3 +47,18 @@ export default class StudentsList extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        // Разобраться с этой функцией  .studentsList
+        studentsList: state.applications
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getStudentsListRequest
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(StudentsList);

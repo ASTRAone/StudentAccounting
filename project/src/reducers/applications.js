@@ -1,0 +1,20 @@
+import { handleActions } from 'redux-actions';
+import {successGetStudentsList} from "../_actions/applications";
+
+const initialState = {
+    studentsList: ''
+};
+
+Object.freeze(initialState);
+
+export default handleActions(
+    {
+        [successGetStudentsList().type]: (state, action) => {
+            return {
+                studentsList: action.payload
+            }
+        },      
+    },
+    initialState
+)
+
