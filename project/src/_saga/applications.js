@@ -1,11 +1,14 @@
 import { takeLatest, put, call, delay } from "redux-saga/effects";
+import {getStudentsListRequest, successGetStudentsList} from "../_actions/applications";
+import {item} from "../_stab";
 
 function* getStudentsList(api, action) {
     try {
         console.warn('[saga ===> getStudentsList ===> ]');
         //yield put(changeLoading(true));
         //const apiRes = yield call(api.routes.getInitialStages, action.payload);
-        yield put(successGetStudentsList('successGetStudentsList'));
+        const stabStudentList = item
+        yield put(successGetStudentsList(stabStudentList));
         //yield put(changeLoading(false));
     }
     catch (e) {

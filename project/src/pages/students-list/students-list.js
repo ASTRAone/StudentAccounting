@@ -10,30 +10,40 @@ import {getStudentsListRequest} from '../../_actions/applications';
 
 class StudentsList extends Component {
 
-    componentDidMount () {
-        // обращение к серверу
-        
-        // данные которые пришли необходимо записать в стейт
-        getStudentsListRequest()
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataList: this.props.studentsList
+        }
     }
 
-    item = [
-        { id: 1, date: '11.02.2019', SecondName: 'Иванов', FirstName: 'Иван', Patronymic: 'Иванович', College: 'КГУ', Faculty: 'ИАСТ', Speciality: 'Разработчик',  PractiesBegining: '12.04.2019', PractiesEnding: '12.09.2019', Phone: '8 (999) 245-45-65', Email: 'ivanov@mail.com' },
-        { id: 2, date: '11.02.2019', SecondName: 'Чижов', FirstName: 'Владимир', Patronymic: 'Иванович', College: 'Политех', Faculty: 'Программирование', Speciality: 'Тестировщик', PractiesBegining: '12.04.2019', PractiesEnding: '12.09.2019', Phone: '8 (999) 245-45-65', Email: 'ivanov@mail.com' },
-        { id: 3, date: '11.02.2019', SecondName: 'Скворцов', FirstName: 'Николай', Patronymic: 'Иванович', College: 'КГУ', Faculty: 'ФАСТ', Speciality: 'Разработчик', PractiesBegining: '12.04.2019', PractiesEnding: '12.09.2019', Phone: '8 (999) 245-45-65', Email: 'ivanov@mail.com' },
-        { id: 4, date: '11.02.2019', SecondName: 'Сидоров', FirstName: 'Иван', Patronymic: 'Иванович', College: 'КГУ', Faculty: 'ИАСТ', Speciality: 'Разработчик', PractiesBegining: '12.04.2019', PractiesEnding: '12.09.2019', Phone: '8 (999) 245-45-65', Email: 'ivanov@mail.com' }
-    ];
+    componentDidMount () {
+        // обращение к серверу
+
+        // данные которые пришли необходимо записать в стейт
+        this.props.getStudentsListRequest();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.state.dataList !== this.props.studentsList) {
+            this.setState({
+                dataList: this.props.studentsList
+            })
+        }
+    }
+
+
 
     render() {
 
         console.log(this.props.studentsList);
 
-        const items = this.item.map((item)=> {
+        const items = this.state.dataList.map((item)=> {
 
             const { id } = item;
             const { ...rest } = item;
 
-            return (      
+            return (
                 <li className="list-element-block" key={ id }>
                     <StudentsListElement { ...rest }/>
                 </li>
@@ -50,15 +60,14 @@ class StudentsList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // Разобраться с этой функцией  .studentsList
-        studentsList: state.applications
+        studentsList: state.applications.studentsList
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch => {
     return {
         getStudentsListRequest
     }
-}
+});
 
 export default connect(mapStateToProps, mapDispatchToProps())(StudentsList);

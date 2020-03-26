@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {createBrowserHistory} from 'history';
 import AppHeader from '../app-header';
 import MenuItem from '../menu-item';
@@ -16,7 +16,7 @@ import {
     Route,
     Link,
     useHistory
-  } from "react-router-dom";
+} from "react-router-dom";
 
 import './app.css';
 
@@ -27,16 +27,18 @@ export default class App extends Component {
     render() {
         return (
             <div className="app">
-                <AppHeader />
+                <AppHeader/>
                 <div className="app-menu">
-                    <MenuItem history={this.props.history} />
+                    <MenuItem history={this.props.history}/>
                 </div>
-                <Route path="/applications" render={props => <ApplicationsPage {...props} />} />
-                <Route path="/approved" render={props => <ApprovedPage {...props} />} />    
-                <Route path="/reject" render={props => <RejectPage {...props} />} />    
-                <Route path="/practik" render={props => <PractikPage {...props} />} /> 
-                <Route path="/achive" render={props => <AchivePage {...props} />} />
-                <Route path="/report" render={props => <ReportPage {...props} />} />        
+                <Switch>
+                    <Route path="/applications" render={props => <ApplicationsPage {...props} />}/>
+                    <Route path="/approved" render={props => <ApprovedPage {...props} />}/>
+                    <Route path="/reject" render={props => <RejectPage {...props} />}/>
+                    <Route path="/practik" render={props => <PractikPage {...props} />}/>
+                    <Route path="/achive" render={props => <AchivePage {...props} />}/>
+                    <Route path="/report" render={props => <ReportPage {...props} />}/>
+                </Switch>
             </div>
         );
     };

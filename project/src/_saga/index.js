@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
-import { applications } from './applications';
+import applications from './applications';
 
-export default function* rootSaga(arguments) {
-    yield all([applications(arguments)])
-} 
+export default function* rootSaga(extraArguments) {
+    yield all([applications(extraArguments)])
+}

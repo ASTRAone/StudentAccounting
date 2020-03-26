@@ -1,13 +1,13 @@
-export function getStudentsListRequest(playload) {
+export function getStudentsListRequest(payload) {
     return {
-        type: 'GET_STUDENTST_LIST_REQUEST',
-        playload
+        type: 'GET_STUDENTS_LIST_REQUEST',
+        payload
     };
 }
 
-export function successGetStudentsList(playload) {
+export function successGetStudentsList(payload) {
     return {
-        type: 'GET_STUDENTST_LIST_REQUEST',
-        playload
+        type: 'GET_STUDENTS_LIST_SUCCESS',
+        payload
     };
 }
