@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 
 import './students-list.css';
@@ -19,7 +18,7 @@ class StudentsList extends Component {
 
     componentDidMount () {
         // обращение к серверу
-
+        
         // данные которые пришли необходимо записать в стейт
         this.props.getStudentsListRequest();
     }
@@ -32,11 +31,9 @@ class StudentsList extends Component {
         }
     }
 
-
-
     render() {
 
-        console.log(this.props.studentsList);
+        // console.log(this.props.studentsList);
 
         const items = this.state.dataList.map((item)=> {
 
@@ -64,10 +61,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         getStudentsListRequest
     }
-});
+};
 
 export default connect(mapStateToProps, mapDispatchToProps())(StudentsList);

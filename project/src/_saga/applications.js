@@ -7,7 +7,7 @@ function* getStudentsList(api, action) {
         console.warn('[saga ===> getStudentsList ===> ]');
         //yield put(changeLoading(true));
         //const apiRes = yield call(api.routes.getInitialStages, action.payload);
-        const stabStudentList = item
+        const stabStudentList = item;
         yield put(successGetStudentsList(stabStudentList));
         //yield put(changeLoading(false));
     }
@@ -19,6 +19,7 @@ function* getStudentsList(api, action) {
         // yield put(clearError(e));
     }
 }
+
 
 
 
