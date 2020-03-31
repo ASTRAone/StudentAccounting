@@ -6,23 +6,27 @@ import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
 
-const ApprovedPage = () => {
+export default class ApprovedPage extends React.Component{
+    
+    
 
-    return (
-        <div>
-            <div className="app-search">
-                <Search />
-            </div>
-            <div className="app-filter">
-                    <Filter />
-                    <Tools />
+    render(){
+        return (
+            <div>
+                <div className="app-search">
+                    <Search />
                 </div>
-                {/* Заменить  StudentsList*/}
-            <StudentsList />
-            <PageNumbers />
-        </div>
-        
-    );
+                <div className="app-filter">
+                        <Filter />
+                        <Tools />
+                    </div>
+                    {/* Заменить  StudentsList*/}
+                <StudentsList />
+                <PageNumbers />
+            </div>
+            
+        );
+    }
+    
 };
 
-export default ApprovedPage;

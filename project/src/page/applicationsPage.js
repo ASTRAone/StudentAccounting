@@ -6,22 +6,26 @@ import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
 
-const ApplicationsPage = () => {
+export default class ApplicationsPage extends React.Component  {
 
-    return (
-        <div>
-            <div className="app-search">
-                <Search />
-            </div>
-            <div className="app-filter">
+    
+    render(){
+        
+        return (
+            <div>
+                <div className="app-search">
+                    <Search />
+                </div>
+                <div className="app-filter">
                     <Filter />
                     <Tools />
                 </div>
-            <StudentsList />
-            <PageNumbers />
-        </div>
-        
-    );
+                <StudentsList />
+                <PageNumbers />
+            </div>
+            
+        );
+    };
+    
 };
 
-export default ApplicationsPage;

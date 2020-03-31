@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './students-list-element.css';
 import noavatar from "../img/noavatar.png";
 
-export default class StudentsListElement extends Component {
+export default class StudentsListElementArchive extends Component {
 
     constructor() {
         super();
@@ -56,8 +56,7 @@ export default class StudentsListElement extends Component {
                     </div>
                 </div>
                 <div className = "list__buttons">
-                    <i className ="fa fa-check-circle"></i>
-                    <i className ="fa fa-ban"></i>
+                  
                 </div>
             </div>
         );

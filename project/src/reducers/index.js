@@ -5,7 +5,8 @@ import applications from './applications';
 
 const reducers = {applications};
 
-export default (history) => combineReducers({...reducers});
+export default (history) => combineReducers({...reducers
+});
 const history = getHistory();
 
 
