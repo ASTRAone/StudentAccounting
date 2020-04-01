@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import './page-numbers.css';
 
 export default class PageNumbers extends Component{
+
+
+    // почитать и сделать 
+
     render(){
         return(
             <div className = "btn-group page-numbers">
@@ -16,10 +20,7 @@ export default class PageNumbers extends Component{
                 <button className = "btn btn-secondary page">7</button>
                 <button className = "btn btn-secondary page">8</button>
                 <button className = "btn btn-secondary page">след</button>
-
-
             </div>
         )
-    };
-    
+    };   
 }

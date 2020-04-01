@@ -5,14 +5,38 @@ import PageNumbers from '../pages/page-numbers';
 import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
+import {connect} from 'react-redux';
 
-export default class ApplicationsPage extends React.Component  {
+import {getStudentsListRequest} from '../_actions/applications';
 
+class ApplicationsPage extends React.Component  {
+
+    constructor(props) {
+        super(props);
+
+        this.state= {
+            studentsListRequest: this.props.studentsList.filter((item) => item.request) || []
+        }
+    }
+
+    componentDidMount () {
+        this.props.getStudentsListRequest();
+    }
     
-    render(){
-        
+    componentDidUpdate(prevProps, prevState) {
+
+        const studentListRequestNew = this.props.studentsList.filter((item) => item.request) || [];
+
+        if (prevProps.studentsList !== this.props.studentsList) {
+            this.setState({
+                studentsListRequest: studentListRequestNew
+            });
+        }
+    }
+    
+    render() {  
         return (
-            <div>
+            <React.Fragment>
                 <div className="app-search">
                     <Search />
                 </div>
@@ -20,12 +44,25 @@ export default class ApplicationsPage extends React.Component  {
                     <Filter />
                     <Tools />
                 </div>
-                <StudentsList />
+                <StudentsList studentsList={this.state.studentsListRequest} 
+                              buttons={[{icon: "fa-check-circle"}, {icon: "fa-ban"}]}/>
                 <PageNumbers />
-            </div>
-            
+            </React.Fragment>    
         );
     };
     
 };
 
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getStudentsListRequest
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(ApplicationsPage);

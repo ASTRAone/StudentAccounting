@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import {connect} from 'react-redux';
+import {getStudentsListRequest} from '../_actions/applications';
 
 import StudentsList from '../pages/students-list';
 import PageNumbers from '../pages/page-numbers';
@@ -6,9 +9,29 @@ import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
 
-export default class ApprovedPage extends React.Component{
-    
-    
+class ApprovedPage extends Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            studentsListApproved: this.props.studentsList.filter((item) => item.approved) || []
+        }
+    }    
+
+    componentDidMount () {
+        this.props.getStudentsListRequest();
+    }
+
+    componentDidUpdate (prevProps, prevState) {
+
+        const studentsListApprovedNew = this.props.studentsList.filter((item) => item.approved) || [];
+
+        if (prevProps.studentsList !== this.props.studentsList) {
+            this.setState({
+                studentsListApproved: studentsListApprovedNew
+            });
+        }
+    }
 
     render(){
         return (
@@ -20,13 +43,24 @@ export default class ApprovedPage extends React.Component{
                         <Filter />
                         <Tools />
                     </div>
-                    {/* Заменить  StudentsList*/}
-                <StudentsList />
+                <StudentsList studentsList={this.state.studentsListApproved}
+                              buttons={[{icon: "fa-arrow-left"}, {icon: "fa-check-circle"}]}/>
                 <PageNumbers />
             </div>
-            
         );
     }
-    
 };
 
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getStudentsListRequest
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(ApprovedPage);

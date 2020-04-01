@@ -1,3 +1,4 @@
+// Добавить кураторов
 export const item = [
     { id: 1, 
     date: '11.02.2019', 
@@ -119,6 +120,7 @@ export const item = [
     PractiesEnding: '12.09.2019', 
     Phone: '8 (999) 245-45-65', 
     Email: 'ivanov@mail.com',
+    Curator: 'Андреев А.',
     request: false, 
     approved: false, 
     rejected: false,

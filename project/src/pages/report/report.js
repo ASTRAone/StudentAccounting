@@ -4,16 +4,70 @@ import './report.css';
 
 export default class Report extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dataList: this.props.studentsList
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+
+        const dataListNew = this.props.studentsList;
+
+        if (prevProps.studentsList !== this.props.studentsList) {
+            this.setState({
+                dataList: dataListNew
+            })
+        }
+    }
+
     items = [
         { id: 1, num: 1, stud: 'Иванов Иван Иванович', institut: 'КГУ', special: 'ИВТ', practice: 'backend', curator: 'Смирнов И.' },
-        { id: 2, num: 2, stud: 'Петров Петр Аркадьевич', institut: 'КГУ', special: 'Бизнес - информатика', practice: 'Системный анализ', curator: 'Андреев А.' },
+        { id: 2, num: 2, stud: 'Петров Петр Аркадьевич', institut: 'КПК', special: 'Бизнес - информатика', practice: 'Системный анализ', curator: 'Андреев А.' },
         { id: 3, num: 3, stud: 'Смирнов Алексей Владимирович', institut: 'Костромской энергетический техникум им. Ф. В. Чижова', special: 'ИС', practice: 'Тестирование', curator: 'Яковлева Н.' },
-        { id: 4, num: 4, stud: 'Сидорова Анна Олеговна', institut: 'Костромской энергетический техникум им. Ф. В. Чижова', special: 'ИС', practice: '-', curator: '-' }
+        // { id: 4, num: 4, stud: 'Сидорова Анна Олеговна', institut: 'Костромской энергетический техникум им. Ф. В. Чижова', special: 'ИС', practice: '-', curator: '-' }
     ];
 
-    render() {
+    render() {  
 
-        const items = this.items.map((item) => {
+        // Получение всех институтов
+        const instituts = this.items.map((item, index) => {
+            return (
+                <option key={index}>{item.institut}</option>
+            );
+        });
+
+        // Получение всех студентов
+        const students = this.state.dataList.map((item, index) => {
+            return (
+                <option key={index}>{item.SecondName + " " + item.FirstName + " " + item.Patronymic}</option>
+            );
+        });
+
+        // Получение всех специальностей
+        const specials = this.state.dataList.map((item, index) => {
+            return (
+                <option key={index}>{item.special}</option>
+            );
+        });
+
+        // Получение всех направлений
+        const practics = this.state.dataList.map((item, index) => {
+            return (
+                <option key={index}>{item.practice}</option>
+            );
+        });
+
+        // Получение всех кураторов
+        const curators = this.items.map((item, index) => {
+            return (
+                <option key={index}>{item.curator}</option>
+            );
+        });
+
+        const items = this.state.dataList.map((item) => {
 
             const { id, num, stud, institut, special, practice, curator } = item;
 
@@ -51,42 +105,37 @@ export default class Report extends Component {
                                 <label htmlFor="item-1" className="report-student__label">Студент:</label>
                                 <input id="item-1" type="text" className="report-student__input" list="students"/>
                                 <datalist id="students">
-                                    <option>студент 1</option>
-                                    <option>студент 2</option>
+                                    {students}
                                 </datalist>   
                             </div>
                             <div className="report-student__item">
                                 <label htmlFor="item-1" className="report-student__label">Учебное заведение:</label>
                                 <input id="item-1" type="text" className="report-student__input" list="institution"/>
                                 <datalist id="institution">
-                                    <option>КПК</option>
-                                    <option>Чижова</option>
+                                    {instituts}
                                 </datalist>   
                             </div>
                             <div className="report-student__item">
                                 <label htmlFor="item-1" className="report-student__label">Специальность:</label>
                                 <input id="item-1" type="text" className="report-student__input" list="specialty"/>
                                 <datalist id="specialty">
-                                    <option>программист</option>
-                                    <option>дизайнер</option>
+                                    {specials}
                                 </datalist>   
                             </div>
                         </div>
                         <div className="report-company">
                             <div className="report-student__item">
                                 <label htmlFor="item-1" className="report-student__label">Направление практики:</label>
-                                <input id="item-1" type="text" className="report-student__input" list="specialty"/>
-                                <datalist id="specialty">
-                                    <option>разработчик</option>
-                                    <option>тестеровщик</option>
+                                <input id="item-1" type="text" className="report-student__input" list="practice"/>
+                                <datalist id="practice">
+                                    {practics}
                                 </datalist>   
                             </div>
                             <div className="report-student__item">
                                 <label htmlFor="item-1" className="report-student__label report-student__label_company">Куратор:</label>
-                                <input id="item-1" type="text" className="report-student__input" list="specialty"/>
-                                <datalist id="specialty">
-                                    <option>Иванов И.Ф.</option>
-                                    <option>Беляев А.А.</option>
+                                <input id="item-1" type="text" className="report-student__input" list="curator"/>
+                                <datalist id="curator">
+                                    {curators}
                                 </datalist>   
                             </div>
                         </div>

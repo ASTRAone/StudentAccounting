@@ -11,17 +11,19 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { id, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email } = this.props;
+        const { id, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons } = this.props;
 
         return(
             <div className="list-element">
-                <div className = "list-element-identificator">
-                    <p className = "list-element-identificator__label">№</p>
-                    <p className = "list-element-identificator__number">{ id }</p>
-                </div>
-                <div className = "list-element-date">
-                    <p className = "list-element-date__label">Дата заявки</p>
-                    <p className = "list-element-date__value">{ date }</p>
+                <div className="list-element__our">
+                    <div className = "list-element-identificator">
+                        <p className = "list-element-identificator__label">№</p>
+                        <p className = "list-element-identificator__number">{ id }</p>
+                    </div>
+                    <div className = "list-element-date">
+                        <p className = "list-element-date__label">Дата заявки</p>
+                        <p className = "list-element-date__value">{ date }</p>
+                    </div>
                 </div>
                 <img src = { noavatar } className = "list__profile-pic" />
                 <p className = "list__name">{ SecondName + " " + FirstName + " " + Patronymic }</p>
@@ -56,8 +58,9 @@ export default class StudentsListElement extends Component {
                     </div>
                 </div>
                 <div className = "list__buttons">
-                    <i className ="fa fa-check-circle"></i>
-                    <i className ="fa fa-ban"></i>
+                    {buttons.map((item, index) => {
+                        return <i className ={`fa ${item.icon}`}></i>
+                    })}
                 </div>
             </div>
         );

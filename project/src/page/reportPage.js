@@ -1,21 +1,54 @@
-import React from 'react';
-
-import StudentsList from '../pages/students-list';
-import PageNumbers from '../pages/page-numbers';
-import Search from '../pages/search';
-import Filter from '../pages/filter';
-import Tools from '../pages/tools';
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {getStudentsListRequest} from '../_actions/applications';
 
 import Report from '../pages/report';
 
-const ReportPage = () => {
+class ReportPage extends Component {
 
-    return (
-        <div>
-            <Report />
-        </div>
-        
-    );
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            studentsListReport: this.props.studentsList.filter((item) => item.onPractice) || []
+        }
+    }
+
+    componentDidMount () {
+        this.props.getStudentsListRequest();
+    }
+
+    componentDidUpdate (prevProps, prevState) { 
+
+        const studentsListReportNew = this.props.studentsList.filter((item) => item.onPractice) || [];
+
+        if (prevProps.studentsList !== this.props.studentsList) {
+            this.setState({
+                studentsListReport: studentsListReportNew
+            });
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <Report studentsList={this.state.studentsListReport}/>
+            </div>
+            
+        );
+    }
 };
 
-export default ReportPage;
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getStudentsListRequest
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(ReportPage);

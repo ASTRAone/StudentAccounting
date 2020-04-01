@@ -1,7 +1,5 @@
 * {
     font-family: 'Neucha', cursive;
-    margin: 0 auto;
-    
 }
 
 .list-element{
@@ -15,6 +13,8 @@
     border:  darkgray 1.5px solid;
     margin-bottom: 10px;
     cursor: pointer;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .list-element-block{
@@ -31,15 +31,19 @@
     margin-bottom: 0;
 }
 
+.list-element__our {
+    display: flex;
+    align-items: center;
+}
+
 .list-element-identificator{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     width: 40px;
-    
-    
 }
+
 
 
 .list-element-identificator__number{
