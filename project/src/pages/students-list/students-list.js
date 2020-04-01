@@ -33,8 +33,7 @@ export default class StudentsList extends Component {
     }
 
     render() {
-        console.log(this.props.studentsList);
-
+        
         const items = this.state.dataList.map((item, index)=> {
 
             return (
