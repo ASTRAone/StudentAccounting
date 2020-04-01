@@ -1,3 +1,5 @@
+// Доработать все элементы и логику
+
 import React, { Component } from 'react';
 
 import './report.css';
@@ -8,7 +10,8 @@ export default class Report extends Component {
         super(props);
 
         this.state = {
-            dataList: this.props.studentsList
+            dataList: this.props.studentsList,
+            special: ''
         }
     }
 
@@ -19,8 +22,15 @@ export default class Report extends Component {
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
                 dataList: dataListNew
-            })
+            });
         }
+    }
+
+    // Получение выбранного учеюного заведения
+    onSpecialInput = (e) => {
+        this.setState({
+            special: e.target.value
+        });
     }
 
     items = [
@@ -30,66 +40,92 @@ export default class Report extends Component {
         // { id: 4, num: 4, stud: 'Сидорова Анна Олеговна', institut: 'Костромской энергетический техникум им. Ф. В. Чижова', special: 'ИС', practice: '-', curator: '-' }
     ];
 
+    specials = [
+        {specialInc: 'ИВТ'}, 
+        {specialInc: 'Бизнес - информатика'},
+        {specialInger: 'ИС'},
+        {specialColl: 'Программирование в компьютерных системах'}
+    ];
+
+    curators = [
+        {curator: 'Андреев А.'},
+        {curator: 'Смирнов И.'},
+        {curator: 'Яковлева Н.'}
+    ];
+
     render() {  
 
-        // Получение всех институтов
+        // Получение всех учебных заведений
         const instituts = this.items.map((item, index) => {
             return (
                 <option key={index}>{item.institut}</option>
             );
         });
 
-        // Получение всех студентов
+        // Получение всех студентов-практикантов
         const students = this.state.dataList.map((item, index) => {
             return (
                 <option key={index}>{item.SecondName + " " + item.FirstName + " " + item.Patronymic}</option>
             );
         });
 
-        // Получение всех специальностей
-        const specials = this.state.dataList.map((item, index) => {
-            return (
-                <option key={index}>{item.special}</option>
-            );
+        // Получение всех специальностей в соответвие с выбранным учебным заведением
+        const specials = this.specials.map((item, index) => {
+
+            if (this.state.special === 'КГУ') {
+                return (
+                    <option key={index}>{item.specialInc}</option>   
+                );
+            }
+
+            if (this.state.special === 'КПК') {
+                return (
+                    <option key={index}>{item.specialColl}</option>   
+                );
+            }
+
+            if (this.state.special === 'Костромской энергетический техникум им. Ф. В. Чижова') {
+                return (
+                    <option key={index}>{item.specialInger}</option>   
+                );
+            }
         });
 
         // Получение всех направлений
-        const practics = this.state.dataList.map((item, index) => {
+        const practics = this.items.map((item, index) => {
             return (
                 <option key={index}>{item.practice}</option>
             );
         });
 
         // Получение всех кураторов
-        const curators = this.items.map((item, index) => {
+        const curators = this.curators.map((item, index) => {
             return (
                 <option key={index}>{item.curator}</option>
             );
         });
 
-        const items = this.state.dataList.map((item) => {
-
-            const { id, num, stud, institut, special, practice, curator } = item;
+        const items = this.state.dataList.map((item, index) => {
 
             return (
-                    <div key={ id } className="compose-report__item">
+                    <div key={ index } className="compose-report__item">
                         <div className="compose-report__offer compose-report_num">
-                            { num }
+                            { index + 1 }
                         </div>  
                         <div className="compose-report__offer compose-report_stud">
-                            { stud }
+                            { item.SecondName + " " + item.FirstName + " " + item.Patronymic }
                         </div> 
                         <div className="compose-report__offer compose-report_institut">
-                            { institut }
+                            { item.College }
                         </div> 
                         <div className="compose-report__offer compose-report_special">
-                            { special }
+                            { item.Faculty }
                         </div> 
                         <div className="compose-report__offer compose-report_practice">
-                            { practice }
+                            { item.Speciality }
                         </div> 
                         <div className="compose-report__offer compose-report_curator">
-                            { curator }
+                            { item.Curator }
                         </div> 
                     </div>                 
             );
@@ -110,7 +146,7 @@ export default class Report extends Component {
                             </div>
                             <div className="report-student__item">
                                 <label htmlFor="item-1" className="report-student__label">Учебное заведение:</label>
-                                <input id="item-1" type="text" className="report-student__input" list="institution"/>
+                                <input id="item-1" type="text" className="report-student__input" list="institution" onChange={this.onSpecialInput} value={this.state.special}/>
                                 <datalist id="institution">
                                     {instituts}
                                 </datalist>   
