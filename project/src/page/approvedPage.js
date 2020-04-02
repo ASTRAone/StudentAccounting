@@ -45,7 +45,7 @@ class ApprovedPage extends Component{
                     </div>
                 <StudentsList studentsList={this.state.studentsListApproved}
                               buttons={[{icon: "fa-arrow-left"}, {icon: "fa-check-circle"}]}/>
-                <PageNumbers />
+                <PageNumbers  numbers={this.state.studentsListApproved}/>
             </div>
         );
     }

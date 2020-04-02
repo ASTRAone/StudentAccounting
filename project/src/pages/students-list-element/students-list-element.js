@@ -11,14 +11,14 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { id, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons } = this.props;
+        const { idx, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons } = this.props;
 
         return(
             <div className="list-element">
                 <div className="list-element__our">
                     <div className = "list-element-identificator">
                         <p className = "list-element-identificator__label">№</p>
-                        <p className = "list-element-identificator__number">{ id }</p>
+                        <p className = "list-element-identificator__number">{ idx + 1 }</p>
                     </div>
                     <div className = "list-element-date">
                         <p className = "list-element-date__label">Дата заявки</p>

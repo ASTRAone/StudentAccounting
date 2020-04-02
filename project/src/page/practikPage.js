@@ -45,7 +45,7 @@ class PractikPage extends Component {
                     </div>
                 <StudentsList studentsList={this.state.studentsListOnPractice}
                               buttons={[{icon: "fa-arrow-left"}]}/>
-                <PageNumbers />
+                <PageNumbers  numbers={this.state.studentsListOnPractice}/>
             </div>
         );
     }

@@ -44,7 +44,7 @@ class RejectPage extends Component {
                     </div>
                 <StudentsList studentsList={this.state.studentsListRejected}
                               buttons={[{icon: "fa-check-circle"}]}/>
-                <PageNumbers />
+                <PageNumbers  numbers={this.state.studentsListRejected}/>
             </div>
             
         );

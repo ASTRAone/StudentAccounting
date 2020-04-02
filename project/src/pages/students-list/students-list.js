@@ -38,7 +38,10 @@ export default class StudentsList extends Component {
 
             return (
                 <li className="list-element-block" key={ index }>
-                    <StudentsListElement {  ...item } buttons={this.props.buttons} />
+                    <StudentsListElement 
+                            {  ...item } 
+                            buttons={this.props.buttons} 
+                            idx={index} />
                 </li>
             );
         });

@@ -46,7 +46,7 @@ class ApplicationsPage extends React.Component  {
                 </div>
                 <StudentsList studentsList={this.state.studentsListRequest} 
                               buttons={[{icon: "fa-check-circle"}, {icon: "fa-ban"}]}/>
-                <PageNumbers />
+                <PageNumbers  numbers={this.state.studentsListRequest}/>
             </React.Fragment>    
         );
     };

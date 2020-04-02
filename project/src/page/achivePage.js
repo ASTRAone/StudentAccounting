@@ -34,6 +34,9 @@ class AchivePage extends Component {
     }
 
     render() {
+
+        //console.log("Архив", this.state.studentsListInArchive)
+
         return (
             <div>
                 <div className="app-search">
@@ -45,7 +48,7 @@ class AchivePage extends Component {
                     </div>
                 <StudentsList studentsList={this.state.studentsListInArchive}
                               buttons={[{null: ""}]}/>
-                <PageNumbers />
+                <PageNumbers  numbers={this.state.studentsListInArchive}/>
             </div>
             
         );
