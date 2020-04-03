@@ -35,7 +35,7 @@ class PractikPage extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <div className="app-search">
                     <Search />
                 </div>
@@ -44,9 +44,9 @@ class PractikPage extends Component {
                         <Tools />
                     </div>
                 <StudentsList studentsList={this.state.studentsListOnPractice}
-                              buttons={[{icon: "fa-arrow-left"}]}/>
+                              buttons={[{icon: "fa-arrow-left", label: "В архив"}]}/>
                 <PageNumbers  numbers={this.state.studentsListOnPractice}/>
-            </div>
+            </React.Fragment>
         );
     }
 };

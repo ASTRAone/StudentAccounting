@@ -59,7 +59,12 @@ export default class StudentsListElement extends Component {
                 </div>
                 <div className = "list__buttons">
                     {buttons.map((item, index) => {
-                        return <i className ={`fa ${item.icon}`}></i>
+                        return (
+                            <label className="list__buttons-our" key={index}>
+                                <i className ={`fa ${item.icon}`}></i>
+                                <label className="list__buttons-text">{item.label}</label>
+                            </label>
+                        );           
                     })}
                 </div>
             </div>

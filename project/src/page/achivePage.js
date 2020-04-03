@@ -35,7 +35,7 @@ class AchivePage extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <div className="app-search">
                     <Search />
                 </div>
@@ -46,7 +46,7 @@ class AchivePage extends Component {
                 <StudentsList studentsList={this.state.studentsListInArchive}
                               buttons={[{null: ""}]}/>
                 <PageNumbers  numbers={this.state.studentsListInArchive}/>
-            </div>   
+            </React.Fragment>
         );
     }
 };

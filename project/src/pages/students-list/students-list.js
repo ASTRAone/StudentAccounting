@@ -35,7 +35,6 @@ export default class StudentsList extends Component {
     render() {
         
         const items = this.state.dataList.map((item, index)=> {
-
             return (
                 <li className="list-element-block" key={ item.id }>
                     <StudentsListElement 

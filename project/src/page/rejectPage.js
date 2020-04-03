@@ -34,7 +34,7 @@ class RejectPage extends Component {
 
     render () {
         return (
-            <div>
+            <React.Fragment>
                 <div className="app-search">
                     <Search />
                 </div>
@@ -43,9 +43,9 @@ class RejectPage extends Component {
                         <Tools />
                     </div>
                 <StudentsList studentsList={this.state.studentsListRejected}
-                              buttons={[{icon: "fa-check-circle"}]}/>
+                              buttons={[{icon: "fa-check-circle", label: "На практику"}]}/>
                 <PageNumbers  numbers={this.state.studentsListRejected}/>
-            </div>
+            </React.Fragment>
             
         );
     } 

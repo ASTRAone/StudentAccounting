@@ -44,17 +44,12 @@
     width: 40px;
 }
 
-
-
 .list-element-identificator__number{
     width: 100%;
     padding: 15px;
     font-size: 12px;
     border-right: black 1px solid;
-    margin: 0px;
-    
-    
-    
+    margin: 0px; 
 }
 
 .list-element-identificator__label{
@@ -65,7 +60,6 @@
     border-bottom: black 1px solid;
     border-right: black 1px solid;
     margin: 0px;
-    
 }
 
 .list-element-date{
@@ -74,9 +68,6 @@
     flex-wrap: wrap;
     align-items: center;
     width: 70px;
-    
-   
-    
 }
 
 .list-element-date__label{
@@ -87,9 +78,7 @@
     font-size: 12px;
     border-bottom: black 1px solid;
     border-right: black 1px solid;
-    margin: 0px;
-    
-    
+    margin: 0px; 
 }
 
 .list-element-date__value{
@@ -99,7 +88,6 @@
     font-size: 12px;
     border-right: black 1px solid;
     margin: 0px;
-    
 }
 
 .list__profile-pic{
@@ -108,8 +96,6 @@
     padding: 10px;
     margin-left: 5px;
     margin-right: 5px;
-    
-    
 }
 
 .list__name{
@@ -127,9 +113,7 @@
     margin-top: 10px;
     margin-left: 25px;
     width: auto;
-    
 }
-
 
 .list__contacts__element{
     display: flex;
@@ -138,8 +122,6 @@
     width: 140px;
     font-size: 16px;
 }
-
-
 
 .list__contact-icon{
     font-size: 20px;
@@ -164,16 +146,13 @@
 .list__info-label{
     font-size: 14px;
     color: rgb(100, 100, 100);
-
 }
 
 .list__info-text{
     font-size: 14px;
-
 }
 
 .list__buttons{
-    font-size: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -183,7 +162,23 @@
     margin-left: 30px;
 }
 
-.list__buttons :hover{
+.list__buttons-our {
+    margin-bottom: 0;
+}
+
+.list__buttons-our > i {
+    font-size: 40px;
+    display: block;
+}
+
+.list__buttons-our > i:hover {
     color: rgb(23, 118, 207);
     cursor: pointer;
+}
+
+.list__buttons-text {
+    font-size: 15px;
+    color: black;
+    margin-bottom: 0;
+    line-height: 1.2;
 }

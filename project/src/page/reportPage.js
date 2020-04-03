@@ -31,9 +31,9 @@ class ReportPage extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Report studentsList={this.state.studentsListReport}/>
-            </div>
+            </React.Fragment>
             
         );
     }

@@ -19,13 +19,11 @@ export default class PageNumbers extends Component{
             })
         }
     }
-    // почитать и сделать 
 
     render(){
 
         // счетчик для кнопок
         let number = 1;
-
         let clsBtn = "btn btn-secondary page none";
 
         if (this.state.numbersListStidents.length > 10) {

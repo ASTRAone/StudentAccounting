@@ -35,7 +35,7 @@ class ApprovedPage extends Component{
 
     render(){
         return (
-            <div>
+            <React.Fragment>
                 <div className="app-search">
                     <Search />
                 </div>
@@ -44,9 +44,9 @@ class ApprovedPage extends Component{
                         <Tools />
                     </div>
                 <StudentsList studentsList={this.state.studentsListApproved}
-                              buttons={[{icon: "fa-arrow-left"}, {icon: "fa-check-circle"}]}/>
+                              buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}/>
                 <PageNumbers  numbers={this.state.studentsListApproved}/>
-            </div>
+            </React.Fragment>
         );
     }
 };
