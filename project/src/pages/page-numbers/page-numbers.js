@@ -23,16 +23,21 @@ export default class PageNumbers extends Component{
 
     render(){
 
-        let clsBtn = "btn btn-secondary page";
+        // счетчик для кнопок
+        let number = 1;
 
-        if (this.state.numbersListStidents.length === 1) {
-            clsBtn += " none";
+        let clsBtn = "btn btn-secondary page none";
+
+        if (this.state.numbersListStidents.length > 10) {
+            clsBtn = "btn btn-secondary page";
         }
 
         const buttons = this.state.numbersListStidents.map((item, index) => {
-            return (
-                <button className = {clsBtn}>{index + 1}</button>
-            );
+            if (index % 10 === 0) {     
+                return (
+                    <button className = {clsBtn}>{number++}</button>
+                );
+            }
         });
 
         return(

@@ -37,7 +37,7 @@ export default class StudentsList extends Component {
         const items = this.state.dataList.map((item, index)=> {
 
             return (
-                <li className="list-element-block" key={ index }>
+                <li className="list-element-block" key={ item.id }>
                     <StudentsListElement 
                             {  ...item } 
                             buttons={this.props.buttons} 
