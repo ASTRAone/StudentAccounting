@@ -15,7 +15,9 @@ class ApplicationsPage extends React.Component  {
         super(props);
 
         this.state= {
-            studentsListRequest: this.props.studentsList.filter((item) => item.request) || []
+            studentsListRequest: this.props.studentsList.filter((item) => item.request) || [],
+            
+            visibleDelBtn: false
         }
     }
 
@@ -34,6 +36,10 @@ class ApplicationsPage extends React.Component  {
         }
     }
     
+    visibleDelBtn = () => {
+        this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
+    }
+    
     render() {  
         return (
             <React.Fragment>
@@ -42,10 +48,11 @@ class ApplicationsPage extends React.Component  {
                 </div>
                 <div className="app-filter">
                     <Filter />
-                    <Tools />
+                    <Tools visibleDelBtn={this.visibleDelBtn}/>
                 </div>
                 <StudentsList studentsList={this.state.studentsListRequest} 
-                              buttons={[{icon: "fa-check-circle", label: 'Принять'}, {icon: "fa-ban", label: 'Отклонить'}]}/>
+                              buttons={[{icon: "fa-check-circle", label: 'Принять'}, {icon: "fa-ban", label: 'Отклонить'}]}
+                              visibleDelBtn={this.state.visibleDelBtn}/>
                 <PageNumbers  numbers={this.state.studentsListRequest}/>
             </React.Fragment>    
         );

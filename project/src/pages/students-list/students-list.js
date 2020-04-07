@@ -12,7 +12,8 @@ export default class StudentsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataList: this.props.studentsList
+            dataList: this.props.studentsList,
+
         }
     }
 
@@ -40,7 +41,9 @@ export default class StudentsList extends Component {
                     <StudentsListElement 
                             {  ...item } 
                             buttons={this.props.buttons} 
-                            idx={index} />
+                            idx={index}
+                            visibleDelBtn={this.props.visibleDelBtn}
+                            />
                 </li>
             );
         });

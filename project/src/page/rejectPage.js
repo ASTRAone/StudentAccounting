@@ -14,7 +14,9 @@ class RejectPage extends Component {
         super(props);
 
         this.state = {
-            studentsListRejected: this.props.studentsList.filter((item) => item.rejected) || []
+            studentsListRejected: this.props.studentsList.filter((item) => item.rejected) || [],
+
+            visibleDelBtn: false
         }
     }
 
@@ -32,6 +34,10 @@ class RejectPage extends Component {
         }
     }
 
+    visibleDelBtn = () => {
+        this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
+    }
+
     render () {
         return (
             <React.Fragment>
@@ -40,10 +46,11 @@ class RejectPage extends Component {
                 </div>
                 <div className="app-filter">
                         <Filter />
-                        <Tools />
+                        <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
                 <StudentsList studentsList={this.state.studentsListRejected}
-                              buttons={[{icon: "fa-check-circle", label: "На практику"}]}/>
+                              buttons={[{icon: "fa-check-circle", label: "На практику"}]}
+                              visibleDelBtn={this.state.visibleDelBtn}/>
                 <PageNumbers  numbers={this.state.studentsListRejected}/>
             </React.Fragment>
             

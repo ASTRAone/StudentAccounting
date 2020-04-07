@@ -141,6 +141,7 @@
     justify-content: space-around;
     width: 220px;
     font-size: 14px;
+    align-items: center;
 }
 
 .list__info-label{
@@ -181,4 +182,18 @@
     color: black;
     margin-bottom: 0;
     line-height: 1.2;
+}
+
+.btn-close {
+    margin-left: 15px;
+}
+
+.btn-close.none {
+    display: none;
+}
+
+.btn-close i { 
+    font-size: 50px;
+    color: red;
+    cursor: pointer;
 }

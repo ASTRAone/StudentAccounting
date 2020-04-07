@@ -14,7 +14,9 @@ class ApprovedPage extends Component{
         super(props);
 
         this.state = {
-            studentsListApproved: this.props.studentsList.filter((item) => item.approved) || []
+            studentsListApproved: this.props.studentsList.filter((item) => item.approved) || [],
+
+            visibleDelBtn: false
         }
     }    
 
@@ -33,6 +35,10 @@ class ApprovedPage extends Component{
         }
     }
 
+    visibleDelBtn = () => {
+        this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -41,10 +47,11 @@ class ApprovedPage extends Component{
                 </div>
                 <div className="app-filter">
                         <Filter />
-                        <Tools />
+                        <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
                 <StudentsList studentsList={this.state.studentsListApproved}
-                              buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}/>
+                              buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}
+                              visibleDelBtn={this.state.visibleDelBtn}/>
                 <PageNumbers  numbers={this.state.studentsListApproved}/>
             </React.Fragment>
         );
