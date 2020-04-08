@@ -15,8 +15,8 @@ class RejectPage extends Component {
 
         this.state = {
             studentsListRejected: this.props.studentsList.filter((item) => item.rejected) || [],
-
-            visibleDelBtn: false
+            visibleDelBtn: false,
+            activePage: 1
         }
     }
 
@@ -51,7 +51,10 @@ class RejectPage extends Component {
                 <StudentsList studentsList={this.state.studentsListRejected}
                               buttons={[{icon: "fa-check-circle", label: "На практику"}]}
                               visibleDelBtn={this.state.visibleDelBtn}/>
-                <PageNumbers  numbers={this.state.studentsListRejected}/>
+                <PageNumbers  totalCount={this.state.studentsListRejected}
+                              count={10}
+                              activePage={this.state.activePage}
+                              onChange={(page) => this.setState({activePage: page})}/>
             </React.Fragment>
             
         );

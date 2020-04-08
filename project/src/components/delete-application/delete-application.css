@@ -69,10 +69,14 @@
     box-sizing: border-box;
 }
 
-.btn.accept-application__further {
+.btn.accept-application__further_i {
     background: red;
 }
 
 .btn.accept-application__cancellation {
     background: gray;
+}
+
+.ui.small.basic.modal.transition.visible.active {
+    display: block;
 }

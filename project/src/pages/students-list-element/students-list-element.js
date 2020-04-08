@@ -14,7 +14,7 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { idx, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons, visibleDelBtn } = this.props;
+        const { idx, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons, visibleDelBtn, onShowModalWindowDeleted } = this.props;
 
         let visibleBtnDel = "btn-close none";
 
@@ -79,11 +79,9 @@ export default class StudentsListElement extends Component {
                     </div>
                 </div>
                 <div className={visibleBtnDel}>
-                    <i className="fa fa-minus-circle"></i>
+                    <i className="fa fa-minus-circle" onClick={onShowModalWindowDeleted}></i>
                 </div>
-                {/* <DeleteApplication/> */}
             </React.Fragment>
-            
         );
     };
 };

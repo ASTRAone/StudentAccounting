@@ -16,8 +16,8 @@ class ApplicationsPage extends React.Component  {
 
         this.state= {
             studentsListRequest: this.props.studentsList.filter((item) => item.request) || [],
-            
-            visibleDelBtn: false
+            visibleDelBtn: false,
+            activePage: 1
         }
     }
 
@@ -53,7 +53,10 @@ class ApplicationsPage extends React.Component  {
                 <StudentsList studentsList={this.state.studentsListRequest} 
                               buttons={[{icon: "fa-check-circle", label: 'Принять'}, {icon: "fa-ban", label: 'Отклонить'}]}
                               visibleDelBtn={this.state.visibleDelBtn}/>
-                <PageNumbers  numbers={this.state.studentsListRequest}/>
+                <PageNumbers  totalCount={this.state.studentsListRequest}
+                              count={10}
+                              activePage={this.state.activePage}
+                              onChange={(page) => this.setState({activePage: page})}/>
             </React.Fragment>    
         );
     };
