@@ -46,7 +46,11 @@ export default class PageNumbers extends Component{
         const buttons = this.state.totalCount.map((item, index) => {
             if (index % this.props.count === 0) {     
                 return (
-                    <button className = {clsBtn} onClick={() => this.props.onChange(index + 1)}>{number++}</button>
+                    <button 
+                        className = {clsBtn} 
+                        onClick={() => this.props.onChange(index + 1)}>
+                            {number++}
+                    </button>
                 );
             }
         });

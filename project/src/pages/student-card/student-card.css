@@ -218,9 +218,9 @@
     
     position: relative;
     float: left;
-  }
+}
   
-  #reviewStars-input input {
+#reviewStars-input input {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
     
@@ -230,15 +230,15 @@
     position: absolute;
     top: 0;
     z-index: 0;
-  }
+}
   
-  #reviewStars-input input:checked ~ label {
+#reviewStars-input input:checked ~ label {
     background-position: 0 -40px;
     height: 40px;
     width: 43px;
-  }
+}
   
-  #reviewStars-input label {
+#reviewStars-input label {
     background-position: 0 0;
     height: 40px;
     width: 43px;
@@ -248,10 +248,15 @@
     
     position: relative;
     z-index: 1;
-  }
+}
   
-  #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
     background-position: 0 -40px;
     height: 40px;
     width: 43px;
-  }
+}
+
+.ui.page.modals.dimmer.transition.visible.active.page {
+    border: 0;
+}
+

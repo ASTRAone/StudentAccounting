@@ -15,8 +15,9 @@ class ApprovedPage extends Component{
 
         this.state = {
             studentsListApproved: this.props.studentsList.filter((item) => item.approved) || [],
+            activePage: 1,
             visibleDelBtn: false,
-            activePage: 1
+            studentCard: 'approved-card'
         }
     }    
 
@@ -49,13 +50,16 @@ class ApprovedPage extends Component{
                         <Filter />
                         <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
-                <StudentsList studentsList={this.state.studentsListApproved}
-                              buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}
-                              visibleDelBtn={this.state.visibleDelBtn}/>
-                <PageNumbers  totalCount={this.state.studentsListApproved}
-                              count={10}
-                              activePage={this.state.activePage}
-                              onChange={(page) => this.setState({activePage: page})}/>
+                <StudentsList 
+                        studentsList={this.state.studentsListApproved}
+                        buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}
+                        visibleDelBtn={this.state.visibleDelBtn}
+                        studentCard={this.state.studentCard}/>
+                <PageNumbers  
+                        totalCount={this.state.studentsListApproved}
+                        count={10}
+                        activePage={this.state.activePage}
+                        onChange={(page) => this.setState({activePage: page})}/>
             </React.Fragment>
         );
     }

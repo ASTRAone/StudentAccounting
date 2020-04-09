@@ -15,8 +15,9 @@ class PractikPage extends Component {
 
         this.state = {
             studentsListOnPractice: this.props.studentsList.filter((item) => item.onPractice) || [],
+            activePage: 1,
             visibleDelBtn: false,
-            activePage: 1
+            studentCard: 'practic-card'
         }
     }
 
@@ -49,13 +50,16 @@ class PractikPage extends Component {
                         <Filter />
                         <Tools  visibleDelBtn={this.visibleDelBtn}/>
                     </div>
-                <StudentsList studentsList={this.state.studentsListOnPractice}
-                              buttons={[{icon: "fa-arrow-left", label: "В архив"}]}
-                              visibleDelBtn={this.state.visibleDelBtn}/>
-                <PageNumbers  totalCount={this.state.studentsListOnPractice}
-                              count={10}
-                              activePage={this.state.activePage}
-                              onChange={(page) => this.setState({activePage: page})}/>
+                <StudentsList 
+                        studentsList={this.state.studentsListOnPractice}
+                        buttons={[{icon: "fa-arrow-left", label: "В архив"}]}
+                        visibleDelBtn={this.state.visibleDelBtn}
+                        studentCard={this.state.studentCard}/>
+                <PageNumbers  
+                        totalCount={this.state.studentsListOnPractice}
+                        count={10}
+                        activePage={this.state.activePage}
+                        onChange={(page) => this.setState({activePage: page})}/>
             </React.Fragment>
         );
     }

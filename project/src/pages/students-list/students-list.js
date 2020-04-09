@@ -6,6 +6,7 @@ import './students-list.css';
 import StudentsListElement from '../students-list-element';
 import DeleteApplication from '../../components/delete-application';
 import ApplicationSuccessfullyDeleted from '../../components/application-successfully-deleted';
+import StudentCard from '../student-card';
 
 import {getStudentsListRequest} from '../../_actions/applications';
 
@@ -19,7 +20,8 @@ export default class StudentsList extends Component {
 
             modalDeleteWindow: false,
             idTableStudent: null,
-            modalDeleted: false
+            modalDeleted: false,
+            studentCardModal: false
         }
     }
 
@@ -71,6 +73,13 @@ export default class StudentsList extends Component {
         });
     }
 
+    // Показать карточку студента-практиканта
+    onShowModalStudentCardModal = (id) => {
+        this.setState({
+            studentCardModal: true
+        });
+    }
+
     render() {
         
         const items = this.state.dataList.map((item, index)=> {
@@ -82,22 +91,30 @@ export default class StudentsList extends Component {
                             idx={index}
                             visibleDelBtn={this.props.visibleDelBtn}
                             onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.id)}                            
-                            />
+                            onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item.id)}
+
+                            studentCardModal={this.state.studentCardModal}/>
                 </li>
             );
         });
 
         return (
-            <ul className="list">
-                { items }
-                <DeleteApplication 
-                        modalDeleteWindow={this.state.modalDeleteWindow}
-                        onHideModalWindowDeleted={this.onHideModalWindowDeleted}
-                        onConfirmDeleted={this.onConfirmDeleted}/>
-                <ApplicationSuccessfullyDeleted 
-                        modalDeleted={this.state.modalDeleted}
-                        onHideModalDeleted={this.onHideModalDeleted}/>
-            </ul>
+            <React.Fragment>
+                <ul className="list">
+                    { items }
+                    <DeleteApplication 
+                            modalDeleteWindow={this.state.modalDeleteWindow}
+                            onHideModalWindowDeleted={this.onHideModalWindowDeleted}
+                            onConfirmDeleted={this.onConfirmDeleted}/>
+                    <ApplicationSuccessfullyDeleted 
+                            modalDeleted={this.state.modalDeleted}
+                            onHideModalDeleted={this.onHideModalDeleted}/>   
+                    <StudentCard 
+                            studentCard={this.props.studentCard}
+                            studentCardModal={this.state.studentCardModal}/>    
+                </ul>
+                
+            </React.Fragment>
         );
     };
 };

@@ -14,17 +14,22 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { idx, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons, visibleDelBtn, onShowModalWindowDeleted } = this.props;
+        const { idx, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons, visibleDelBtn, onShowModalWindowDeleted, onShowModalStudentCardModal, studentCardModal } = this.props;
 
         let visibleBtnDel = "btn-close none";
+        let list_element = "list-element";
 
         if (visibleDelBtn) {
             visibleBtnDel = "btn-close";
         }
 
+        // if (studentCardModal) {
+        //     list_element = "list-element none"; 
+        // }
+
         return(
             <React.Fragment>
-                <div className="list-element">
+                <div className={list_element} onClick={onShowModalStudentCardModal}>
                     <div className="list-element__our">
                         <div className = "list-element-identificator">
                             <p className = "list-element-identificator__label">№</p>

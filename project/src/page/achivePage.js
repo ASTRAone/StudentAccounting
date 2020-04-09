@@ -15,8 +15,9 @@ class AchivePage extends Component {
 
         this.state = {
             studentsListInArchive: this.props.studentsList.filter((item) => item.inArchive) || [],
+            activePage: 1,
             visibleDelBtn: false,
-            activePage: 1
+            studentCard: 'archive-card'
         }
     }
 
@@ -49,13 +50,16 @@ class AchivePage extends Component {
                         <Filter />
                         <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
-                <StudentsList studentsList={this.state.studentsListInArchive}
-                              buttons={[{null: ""}]}
-                              visibleDelBtn={this.state.visibleDelBtn}/>
-                <PageNumbers  totalCount={this.state.studentsListInArchive}
-                              count={10}
-                              activePage={this.state.activePage}
-                              onChange={(page) => this.setState({activePage: page})}/>
+                <StudentsList 
+                        studentsList={this.state.studentsListInArchive}
+                        buttons={[{null: ""}]}
+                        visibleDelBtn={this.state.visibleDelBtn}
+                        studentCard={this.state.studentCard}/>
+                <PageNumbers  
+                        totalCount={this.state.studentsListInArchive}
+                        count={10}
+                        activePage={this.state.activePage}
+                        onChange={(page) => this.setState({activePage: page})}/>
             </React.Fragment>
         );
     }

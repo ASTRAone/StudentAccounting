@@ -197,3 +197,7 @@
     color: red;
     cursor: pointer;
 }
+
+.list-element.none {
+    display: none;
+} 
