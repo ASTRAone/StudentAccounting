@@ -1,11 +1,13 @@
 .page-numbers{
     margin: 0 auto;
-    display: table;
+    max-width: 300px;
+    list-style: none;
 }
 
 .page{
     border: 1px rgb(187, 187, 187) solid;
     background-color: white;
+    width: fit-content;
     color:  #007bff;
 }
 

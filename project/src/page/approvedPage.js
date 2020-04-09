@@ -8,6 +8,8 @@ import PageNumbers from '../pages/page-numbers';
 import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
+import Pagination from 'react-js-pagination';
+import '../pages/page-numbers/page-numbers.css';
 
 class ApprovedPage extends Component{
     constructor(props) {
@@ -40,6 +42,11 @@ class ApprovedPage extends Component{
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
     }
 
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -51,15 +58,19 @@ class ApprovedPage extends Component{
                         <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
                 <StudentsList 
-                        studentsList={this.state.studentsListApproved}
+                        studentsList={this.state.studentsListApproved.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentCard={this.state.studentCard}/>
-                <PageNumbers  
-                        totalCount={this.state.studentsListApproved}
-                        count={10}
-                        activePage={this.state.activePage}
-                        onChange={(page) => this.setState({activePage: page})}/>
+                <Pagination
+                    innerClass="pagination page-numbers"
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={this.state.studentsListApproved.length}
+                    pageRangeDisplayed={5}
+                    onChange={this.handlePageChange.bind(this)}/>
             </React.Fragment>
         );
     }

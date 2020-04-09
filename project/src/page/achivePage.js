@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getStudentsListRequest} from '../_actions/applications';
+import Pagination from 'react-js-pagination';
 
 import StudentsList from '../pages/students-list';
 import PageNumbers from '../pages/page-numbers';
 import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
+import '../pages/page-numbers/page-numbers.css';
 
 class AchivePage extends Component {
     
@@ -28,6 +30,8 @@ class AchivePage extends Component {
     componentDidUpdate (prevProps, prevState) {
         
         const studentsListInArchiveNew = this.props.studentsList.filter((item) => item.inArchive) || [];
+        const actPg = this.state.activePage;
+        const studentsListInArchiveOnPage = studentsListInArchiveNew.slice(actPg * 10 -10, actPg * 10);
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
@@ -38,6 +42,11 @@ class AchivePage extends Component {
 
     visibleDelBtn = () => {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
+    }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
     }
      
     render() {
@@ -51,15 +60,19 @@ class AchivePage extends Component {
                         <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
                 <StudentsList 
-                        studentsList={this.state.studentsListInArchive}
+                        studentsList={this.state.studentsListInArchive.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{null: ""}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentCard={this.state.studentCard}/>
-                <PageNumbers  
-                        totalCount={this.state.studentsListInArchive}
-                        count={10}
-                        activePage={this.state.activePage}
-                        onChange={(page) => this.setState({activePage: page})}/>
+                <Pagination
+                    innerClass="pagination page-numbers"
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={this.state.studentsListInArchive.length}
+                    pageRangeDisplayed={5}
+                    onChange={this.handlePageChange.bind(this)}/>
             </React.Fragment>
         );
     }

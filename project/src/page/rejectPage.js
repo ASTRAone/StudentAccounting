@@ -7,6 +7,8 @@ import PageNumbers from '../pages/page-numbers';
 import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';
+import Pagination from 'react-js-pagination';
+import '../pages/page-numbers/page-numbers.css';
 
 class RejectPage extends Component {
 
@@ -39,6 +41,11 @@ class RejectPage extends Component {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
     }
 
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
+    }
+
     render () {
         return (
             <React.Fragment>
@@ -50,15 +57,19 @@ class RejectPage extends Component {
                         <Tools visibleDelBtn={this.visibleDelBtn}/>
                     </div>
                 <StudentsList 
-                        studentsList={this.state.studentsListRejected}
+                        studentsList={this.state.studentsListRejected.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{icon: "fa-check-circle", label: "На практику"}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentCard={this.state.studentCard}/>
-                <PageNumbers  
-                        totalCount={this.state.studentsListRejected}
-                        count={10}
-                        activePage={this.state.activePage}
-                        onChange={(page) => this.setState({activePage: page})}/>
+                <Pagination
+                    innerClass="pagination page-numbers"
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={this.state.studentsListRejected.length}
+                    pageRangeDisplayed={5}
+                    onChange={this.handlePageChange.bind(this)}/>
             </React.Fragment>
             
         );
