@@ -340,3 +340,36 @@
 .fa.fa-times-circle.none {
     display: none;
 }
+
+.ui.input.card__info-text_input > input {
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid cornflowerblue;
+    text-align: center;
+    width: 120px;
+}
+
+.card__info-text.none {
+    display: none;
+}
+
+.ui.input.card__info-text_input.none {
+    display: none;
+}
+
+.label {
+    margin-bottom: 0;
+}
+
+.label.none {
+    display: none;
+}
+
+.our-input.none {
+    display: none!important;
+}
+
+.our-input {
+    display: flex;
+}

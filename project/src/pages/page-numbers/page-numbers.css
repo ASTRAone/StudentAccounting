@@ -2,6 +2,7 @@
     margin: 0 auto;
     max-width: 300px;
     list-style: none;
+    justify-content: center;
 }
 
 .page{

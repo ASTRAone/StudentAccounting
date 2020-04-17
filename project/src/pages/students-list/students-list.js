@@ -21,7 +21,9 @@ export default class StudentsList extends Component {
             modalDeleteWindow: false,
             idTableStudent: null,
             modalDeleted: false,
-            studentCardModal: false
+            studentCardModal: false,
+            studentModalCardData: ''
+
         }
     }
 
@@ -74,9 +76,25 @@ export default class StudentsList extends Component {
     }
 
     // Показать карточку студента-практиканта
-    onShowModalStudentCardModal = (id) => {
+    onShowModalStudentCardModal = (item) => {
         this.setState({
-            studentCardModal: true
+            studentCardModal: true,
+            idTableStudent: item.id,
+            studentModalCardData: item,
+        });
+    }
+
+    // Закрыть карточку студента-практиканта
+    onHideModalStudentCardModal = () => {
+        this.setState({
+            studentCardModal: false
+        });
+    }
+
+    // Показать окно удаление из карточки студента-практиканта
+    onShowModalWindowDeletedInCard = () => {
+        this.setState({
+            modalDeleteWindow: true
         });
     }
 
@@ -91,9 +109,7 @@ export default class StudentsList extends Component {
                             idx={index}
                             visibleDelBtn={this.props.visibleDelBtn}
                             onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.id)}                            
-                            onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item.id)}
-
-                            studentCardModal={this.state.studentCardModal}/>
+                            onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item)}/>
                 </li>
             );
         });
@@ -111,9 +127,11 @@ export default class StudentsList extends Component {
                             onHideModalDeleted={this.onHideModalDeleted}/>   
                     <StudentCard 
                             studentCard={this.props.studentCard}
-                            studentCardModal={this.state.studentCardModal}/>    
+                            studentCardModal={this.state.studentCardModal}
+                            onHideModalStudentCardModal={this.onHideModalStudentCardModal}
+                            studentModalCardData={this.state.studentModalCardData}
+                            onShowModalWindowDeletedInCard={this.onShowModalWindowDeletedInCard}/>    
                 </ul>
-                
             </React.Fragment>
         );
     };

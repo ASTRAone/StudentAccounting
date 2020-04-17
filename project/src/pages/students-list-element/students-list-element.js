@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import './students-list-element.css';
 import noavatar from "../img/noavatar.png";
 
@@ -14,7 +13,12 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { idx, date, SecondName, FirstName, Patronymic, Speciality, College, Faculty, PractiesBegining, PractiesEnding, Phone, Email, buttons, visibleDelBtn, onShowModalWindowDeleted, onShowModalStudentCardModal, studentCardModal } = this.props;
+        const { idx, date, SecondName, 
+                FirstName, Patronymic, Speciality, 
+                College, Faculty, PractiesBegining, 
+                PractiesEnding, Phone, Email, buttons, 
+                visibleDelBtn, onShowModalWindowDeleted, 
+                onShowModalStudentCardModal } = this.props;
 
         let visibleBtnDel = "btn-close none";
         let list_element = "list-element";
@@ -22,11 +26,7 @@ export default class StudentsListElement extends Component {
         if (visibleDelBtn) {
             visibleBtnDel = "btn-close";
         }
-
-        // if (studentCardModal) {
-        //     list_element = "list-element none"; 
-        // }
-
+        
         return(
             <React.Fragment>
                 <div className={list_element} onClick={onShowModalStudentCardModal}>

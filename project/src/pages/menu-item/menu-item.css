@@ -22,6 +22,11 @@
     text-decoration: none;
 }
 
+.item > a:focus {
+    color: black;
+    font-weight: bold;
+}
+
 .item a:hover {
     font-weight: bold;
     color: black;

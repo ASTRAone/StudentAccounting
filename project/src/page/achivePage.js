@@ -65,14 +65,14 @@ class AchivePage extends Component {
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentCard={this.state.studentCard}/>
                 <Pagination
-                    innerClass="pagination page-numbers"
-                    itemClass="page-item"
-                    linkClass="page-link"
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={10}
-                    totalItemsCount={this.state.studentsListInArchive.length}
-                    pageRangeDisplayed={5}
-                    onChange={this.handlePageChange.bind(this)}/>
+                        innerClass="pagination page-numbers"
+                        itemClass="page-item"
+                        linkClass="page-link"
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={10}
+                        totalItemsCount={this.state.studentsListInArchive.length}
+                        pageRangeDisplayed={5}
+                        onChange={this.handlePageChange.bind(this)}/>
             </React.Fragment>
         );
     }

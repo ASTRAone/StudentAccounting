@@ -68,12 +68,19 @@
     align-items: center;
     margin-left: 0;
     justify-content: end;
+}
 
+.card__contacts.edit{
+    margin-bottom: 10px;
 }
 
 .card__student-contact{
     margin: 0;
     margin-left: 20px;
+}
+
+.card__student-contact.none{
+    display: none;
 }
 
 .card__contacts-mobile-icon{
@@ -92,6 +99,10 @@
     font-size: 20px;
     margin-left: 20px;
     margin-bottom: 0;
+}
+
+.card__info-text.none{
+    display: none;
 }
 
 .card__rating{
@@ -140,19 +151,19 @@
     margin-right: 20px;
     margin-top: 20px;
     color: rgb(100, 100, 100);
-
 }
-
-
 
 .card__download-doc__icon{
     font-size: 30px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .card__download-doc :hover{
     color: rgb(49, 49, 49);
     text-decoration: underline;
-    cursor: pointer;
+    border-bottom: 0;
+    /* cursor: pointer; */
 }
 
 .card__comment{
@@ -210,6 +221,7 @@
     width: 100px;
     font-size: 15px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .card__curator__action_student.none{
@@ -233,12 +245,10 @@
 }
   
 #reviewStars-input {
-    
     /*fix floating problems*/
     overflow: hidden;
     *zoom: 1;
     /*end of fix floating problems*/
-    
     position: relative;
     float: left;
 }
@@ -246,10 +256,8 @@
 #reviewStars-input input {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
-    
     width: 43px;
     height: 40px;
-    
     position: absolute;
     top: 0;
     z-index: 0;
@@ -268,7 +276,6 @@
     float: right;
     cursor: pointer;
     margin-right: 10px;
-    
     position: relative;
     z-index: 1;
 }
@@ -315,7 +322,7 @@
     overflow: initial;
 }
 
-.card-our {
+.card-our_practic {
     width: 600px;
     margin: 0 auto;
     justify-content: center;
@@ -323,7 +330,7 @@
     padding-bottom: 20px;
 }
 
-.card-our > button { 
+.card-our_practic > button { 
     width: 100px;
     background: #007bff;
     border: 1px solid gray;
@@ -339,4 +346,30 @@
 
 .fa.fa-times-circle.none {
     display: none;
+}
+
+.card__student_label {
+    margin-left: 20px;
+    margin-bottom: 0;
+    display: flex;
+}
+
+.card__student_label.none {
+    display: none;
+}
+
+
+
+.card__student_input {
+
+}
+
+.ui.input.card__student_input > input {
+    height: 30px;
+    width: 135px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid darkgray;
+    outline: none;
+    font-size: 18px;
 }

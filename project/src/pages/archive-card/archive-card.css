@@ -298,9 +298,9 @@
     transform: translate(-50%, -50%);
 }
 
-.card__controls > i:last-child {
+/* .card__controls > i:last-child {
     margin-left: 20px;
-}
+} */
 
 .card__curator__action.none {
     display: none;
@@ -318,7 +318,7 @@
 .card-our {
     width: 600px;
     margin: 0 auto;
-    justify-content: center;
+    justify-content: flex-end;
     display: flex;
     padding-bottom: 20px;
 }
@@ -331,10 +331,6 @@
     color: white;
     font-size: 17px;
     font-weight: bold;
-}
-
-.card-our__btn:first-child {
-    margin-right: 60px;
 }
 
 .fa.fa-times-circle.none {

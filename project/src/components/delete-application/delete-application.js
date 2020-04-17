@@ -3,9 +3,9 @@ import { Button, Header, Image, Modal, Icon  } from 'semantic-ui-react'
 
 import './delete-application.css';
 
+// Переделать в функцию
+
 export default class DeleteApplication extends Component {
-
-
     render() {
 
         const {modalDeleteWindow, onHideModalWindowDeleted, onConfirmDeleted} = this.props;
@@ -35,6 +35,6 @@ export default class DeleteApplication extends Component {
                         </div>
                     </Modal.Content>
                 </Modal>
-        )
-    }
-}
+        );
+    };
+};
