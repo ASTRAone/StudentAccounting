@@ -4,11 +4,15 @@ import './students-list-element.css';
 import noavatar from "../img/noavatar.png";
 
 import DeleteApplication from '../../components/delete-application';
+import achivePage from '../../page/achivePage';
 
 export default class StudentsListElement extends Component {
 
     constructor() {
         super();
+
+       
+    
     }
 
     render(){
@@ -18,10 +22,11 @@ export default class StudentsListElement extends Component {
                 College, Faculty, PractiesBegining, 
                 PractiesEnding, Phone, Email, buttons, 
                 visibleDelBtn, onShowModalWindowDeleted, 
-                onShowModalStudentCardModal } = this.props;
+                onShowModalStudentCardModal, activePage} = this.props;
 
         let visibleBtnDel = "btn-close none";
         let list_element = "list-element";
+        
 
         if (visibleDelBtn) {
             visibleBtnDel = "btn-close";
@@ -33,7 +38,7 @@ export default class StudentsListElement extends Component {
                     <div className="list-element__our">
                         <div className = "list-element-identificator">
                             <p className = "list-element-identificator__label">№</p>
-                            <p className = "list-element-identificator__number">{ idx + 1 }</p>
+                            <p className = "list-element-identificator__number">{activePage*10-10 + idx + 1}</p>
                         </div>
                         <div className = "list-element-date">
                             <p className = "list-element-date__label">Дата заявки</p>

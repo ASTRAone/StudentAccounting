@@ -8,8 +8,14 @@ import './student-add-form.css';
 export default class StudentAddForm extends Component {
 
     render() {
+        
+        const {studentAddModal, onHideModalWindowAdd} = this.props;
+
         return (
-            <Modal>
+            <Modal 
+                open={studentAddModal} 
+                basic 
+                size='small'>
                 <Modal.Content>
                     <form className="student-add-form">
                         <div className="student-add-form__header">
@@ -49,7 +55,7 @@ export default class StudentAddForm extends Component {
                                         type="text" 
                                         className="from-our__item" 
                                         placeholder="Факультет, специальность*" />
-
+                                        
                                     <h4 className="from-our__title">Направление практики*</h4>
                                     <div className="from-our__checkbox">
                                         <input type="checkbox" id="check1" /> 
@@ -77,23 +83,23 @@ export default class StudentAddForm extends Component {
                                     <div className="from-practic__date">
                                         <div className="from-practic__checkbox">
                                             <label htmlFor="check5">с</label>
-                                            <i class="fa fa-calendar"></i>
+                                            <i className="fa fa-calendar"></i>
                                             <input type="text" id="check5" className="from-practic__item datepicker-here" />                         
                                         </div>
                                         <div className="from-practic__checkbox">
                                             <label htmlFor="check5">по</label>
-                                            <i class="fa fa-calendar"></i>
+                                            <i className="fa fa-calendar"></i>
                                             <input type="text" id="check5" className="from-practic__item datepicker-here" />                         
                                         </div>
                                     </div>
                                     <div className="from-practic__date from-practic__communication">
                                         <h4 className="from-practic__title from-practic__title_bottom">Данные связи*</h4>
                                         <div className="from-practic__checkbox_bottom">
-                                            <i class="fa fa-mobile"></i>
+                                            <i className="fa fa-mobile"></i>
                                             <input type="number" id="check5" className="from-practic__item" />                         
                                         </div>
                                         <div className="from-practic__checkbox_bottom">  
-                                            <i class="from-practic_bottom-i fa fa-envelope"></i>  
+                                            <i className="from-practic_bottom-i fa fa-envelope"></i>  
                                             <input type="email" id="check5" className="from-practic__item" />                         
                                         </div>
                                     </div>
@@ -103,8 +109,8 @@ export default class StudentAddForm extends Component {
                         </div>   
                         <Modal.Actions>
                             <div className="student-container__our-btn"> 
-                                <button className="btn student-container__btn">Отмена</button>
-                                <button className="btn student-container__btn">Добавить</button>
+                                <button className="btn student-container__btn" onClick={onHideModalWindowAdd}>Отмена</button>
+                                <button className="btn student-container__btn" onClick={onHideModalWindowAdd}>Добавить</button>
                             </div>
                         </Modal.Actions>
                     </form>

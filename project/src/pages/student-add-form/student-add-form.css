@@ -12,6 +12,7 @@ input.from-our__item::-webkit-input-placeholder {
     padding-top: 5px;
     width: 800px;
     margin: 0 auto;
+    background-color: white;
 }
 
 .student-add-form__header {

@@ -68,7 +68,7 @@
     align-items: center;
     margin-left: 0;
     justify-content: end;
-
+    margin-bottom: 10px;
 }
 
 .card__student-contact{
@@ -348,6 +348,15 @@
     border: 1px solid cornflowerblue;
     text-align: center;
     width: 120px;
+    font-size: 16px;
+}
+
+.ui.input.card__info-text_input {
+    margin-left: 20px;
+}
+
+.ui.input.card__info-text_input.bt {
+    margin-left: 0;
 }
 
 .card__info-text.none {
@@ -358,7 +367,7 @@
     display: none;
 }
 
-.label {
+.our-input {
     margin-bottom: 0;
 }
 
@@ -372,4 +381,34 @@
 
 .our-input {
     display: flex;
+}
+
+.student-card__our-btn { 
+    cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.student-card__our-btn > button {
+    background: #007bff;
+    margin-right: 60px;
+    width: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    height: 40px;
+}
+
+.student-card__our-btn > button:last-child {
+    margin-right: 0;
+}
+
+.student-card__our-btn.none {
+    display: none;
 }

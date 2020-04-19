@@ -35,16 +35,28 @@ class RejectPage extends Component {
                 studentsListRejected: studentsListRejectedNew
             });
         }
-    }
+    };
 
     visibleDelBtn = () => {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
-    }
+    };
+
+    onShowModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: true
+        });
+    };
+
+    onHideModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: false
+        });
+    };
 
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
-    }
+    };
 
     render () {
         return (
@@ -54,12 +66,17 @@ class RejectPage extends Component {
                 </div>
                 <div className="app-filter">
                         <Filter />
-                        <Tools visibleDelBtn={this.visibleDelBtn}/>
+                        <Tools 
+                            visibleDelBtn={this.visibleDelBtn} 
+                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
                     </div>
                 <StudentsList 
                         studentsList={this.state.studentsListRejected.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{icon: "fa-check-circle", label: "На практику"}]}
                         visibleDelBtn={this.state.visibleDelBtn}
+                        studentAddModal={this.state.studentAddModal}
+                        onHideModalWindowAdd={this.onHideModalWindowAdd}
+                        activePage={this.state.activePage}
                         studentCard={this.state.studentCard}/>
                 <Pagination
                         innerClass="pagination page-numbers"

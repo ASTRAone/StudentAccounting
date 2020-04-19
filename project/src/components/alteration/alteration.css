@@ -59,9 +59,21 @@
 
 .accept-application__further {
     background: #fd0d0d;
-    
+}
+
+.btn.accept-application__further {
+    margin: 0;
+}
+
+.btn.accept-application__further:hover {
+    color: #212529;
 }
 
 .accept-application__cancellation {
     background: #9c9a9a;
 }
+
+.ui.modal.transition.visible.active {
+    display: block;
+}
+

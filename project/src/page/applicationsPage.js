@@ -43,6 +43,18 @@ class ApplicationsPage extends React.Component  {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
     }
 
+    onShowModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: true
+        });
+    }
+
+    onHideModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: false
+        });
+    }
+
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
@@ -56,12 +68,17 @@ class ApplicationsPage extends React.Component  {
                 </div>
                 <div className="app-filter">
                     <Filter />
-                    <Tools visibleDelBtn={this.visibleDelBtn}/>
+                    <Tools 
+                        visibleDelBtn={this.visibleDelBtn} 
+                        onShowModalWindowAdd={this.onShowModalWindowAdd}/>
                 </div>
                 <StudentsList 
                         studentsList={this.state.studentsListRequest.slice(this.state.activePage*10-10,this.state.activePage*10)} 
                         buttons={[{icon: "fa-check-circle", label: 'Принять'}, {icon: "fa-ban", label: 'Отклонить'}]}
                         visibleDelBtn={this.state.visibleDelBtn}
+                        studentAddModal={this.state.studentAddModal}
+                        onHideModalWindowAdd={this.onHideModalWindowAdd}
+                        activePage={this.state.activePage}
                         studentCard={this.state.studentCard}/>
                 <Pagination
                         innerClass="pagination page-numbers"

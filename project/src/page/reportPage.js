@@ -19,7 +19,6 @@ class ReportPage extends Component {
     }
 
     componentDidUpdate (prevProps, prevState) { 
-
         const studentsListReportNew = this.props.studentsList.filter((item) => item.onPractice) || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
@@ -27,16 +26,15 @@ class ReportPage extends Component {
                 studentsListReport: studentsListReportNew
             });
         }
-    }
+    };
 
     render() {
         return (
             <React.Fragment>
                 <Report studentsList={this.state.studentsListReport}/>
             </React.Fragment>
-            
         );
-    }
+    };
 };
 
 const mapStateToProps = (state) => {

@@ -3,13 +3,14 @@ import { Button, Header, Image, Modal, Icon  } from 'semantic-ui-react'
 
 import './alteration.css';
 
-const Alteration = () => {
+const Alteration = ({ visibleAlteration, onCloseAlteration, onSaveChange }) => {
     return (
-        <Modal>
+        <Modal
+            open={visibleAlteration}>
             <Modal.Content>
                 <div className="accept-application">
                     <div className="accept-application__i">
-                        <i className="fa fa-times"></i>
+                        <i className="fa fa-times" onClick={onCloseAlteration}></i>
                     </div>
                     <h3 className="accept-application__title">
                         Внесение изменений
@@ -19,8 +20,8 @@ const Alteration = () => {
                     </p>
                     <Modal.Actions>
                         <div className="accept-application__btn">
-                            <button className="btn accept-application__cancellation">Отмена</button>
-                            <button className="btn accept-application__further">Да</button>
+                            <button className="btn accept-application__cancellation" onClick={onCloseAlteration}>Отмена</button>
+                            <button className="btn accept-application__further" onClick={onSaveChange}>Да</button>
                         </div>
                     </Modal.Actions>
                 </div>

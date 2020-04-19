@@ -19,6 +19,7 @@ class AchivePage extends Component {
             studentsListInArchive: this.props.studentsList.filter((item) => item.inArchive) || [],
             activePage: 1,
             visibleDelBtn: false,
+            studentAddModal: false,
             studentCard: 'archive-card'
         }
     }
@@ -44,6 +45,19 @@ class AchivePage extends Component {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
     }
 
+    onShowModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: true
+        });
+    }
+
+    onHideModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: false
+        });
+    }
+
+
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
@@ -57,12 +71,17 @@ class AchivePage extends Component {
                 </div>
                 <div className="app-filter">
                         <Filter />
-                        <Tools visibleDelBtn={this.visibleDelBtn}/>
+                        <Tools 
+                            visibleDelBtn={this.visibleDelBtn} 
+                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
                     </div>
                 <StudentsList 
                         studentsList={this.state.studentsListInArchive.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{null: ""}]}
                         visibleDelBtn={this.state.visibleDelBtn}
+                        studentAddModal={this.state.studentAddModal}
+                        onHideModalWindowAdd={this.onHideModalWindowAdd}
+                        activePage={this.state.activePage}
                         studentCard={this.state.studentCard}/>
                 <Pagination
                         innerClass="pagination page-numbers"

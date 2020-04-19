@@ -28,7 +28,6 @@ class PractikPage extends Component {
     }
 
     componentDidUpdate (prevProps, prevState) {
-
         const studentsListOnPracticeNew = this.props.studentsList.filter((item) => item.onPractice) || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
@@ -40,12 +39,24 @@ class PractikPage extends Component {
 
     visibleDelBtn = () => {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
-    }
+    };
+
+    onShowModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: true
+        });
+    };
+
+    onHideModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: false
+        });
+    };
 
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
-    }
+    };
 
     render() {
         return (
@@ -55,12 +66,17 @@ class PractikPage extends Component {
                 </div>
                 <div className="app-filter">
                         <Filter />
-                        <Tools  visibleDelBtn={this.visibleDelBtn}/>
+                        <Tools  
+                            visibleDelBtn={this.visibleDelBtn} 
+                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
                     </div>
                 <StudentsList 
                         studentsList={this.state.studentsListOnPractice.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{icon: "fa-arrow-left", label: "В архив"}]}
                         visibleDelBtn={this.state.visibleDelBtn}
+                        studentAddModal={this.state.studentAddModal}
+                        onHideModalWindowAdd={this.onHideModalWindowAdd}
+                        activePage={this.state.activePage}
                         studentCard={this.state.studentCard}/>
                 <Pagination
                         innerClass="pagination page-numbers"

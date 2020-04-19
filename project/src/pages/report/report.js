@@ -16,15 +16,14 @@ export default class Report extends Component {
     }
 
     componentDidUpdate(prevProps) {
-
         const dataListNew = this.props.studentsList;
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
                 dataList: dataListNew
             });
-        }
-    }
+        };
+    };
 
     // Получение выбранного учеюного заведения
     onSpecialInput = (e) => {

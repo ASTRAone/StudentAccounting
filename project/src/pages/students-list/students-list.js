@@ -7,6 +7,7 @@ import StudentsListElement from '../students-list-element';
 import DeleteApplication from '../../components/delete-application';
 import ApplicationSuccessfullyDeleted from '../../components/application-successfully-deleted';
 import StudentCard from '../student-card';
+import StudentAddForm from '../student-add-form'
 
 import {getStudentsListRequest} from '../../_actions/applications';
 
@@ -90,7 +91,7 @@ export default class StudentsList extends Component {
             studentCardModal: false
         });
     }
-
+    
     // Показать окно удаление из карточки студента-практиканта
     onShowModalWindowDeletedInCard = () => {
         this.setState({
@@ -109,7 +110,8 @@ export default class StudentsList extends Component {
                             idx={index}
                             visibleDelBtn={this.props.visibleDelBtn}
                             onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.id)}                            
-                            onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item)}/>
+                            onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item)}
+                            activePage={this.props.activePage}/>
                 </li>
             );
         });
@@ -130,7 +132,10 @@ export default class StudentsList extends Component {
                             studentCardModal={this.state.studentCardModal}
                             onHideModalStudentCardModal={this.onHideModalStudentCardModal}
                             studentModalCardData={this.state.studentModalCardData}
-                            onShowModalWindowDeletedInCard={this.onShowModalWindowDeletedInCard}/>    
+                            onShowModalWindowDeletedInCard={this.onShowModalWindowDeletedInCard}/> 
+                    <StudentAddForm
+                            studentAddModal={this.props.studentAddModal}
+                            onHideModalWindowAdd={this.props.onHideModalWindowAdd}/>                   
                 </ul>
             </React.Fragment>
         );

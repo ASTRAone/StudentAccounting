@@ -28,7 +28,6 @@ class ApprovedPage extends Component{
     }
 
     componentDidUpdate (prevProps, prevState) {
-
         const studentsListApprovedNew = this.props.studentsList.filter((item) => item.approved) || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
@@ -40,6 +39,18 @@ class ApprovedPage extends Component{
 
     visibleDelBtn = () => {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
+    }
+
+    onShowModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: true
+        });
+    }
+
+    onHideModalWindowAdd = () => {
+        this.setState({
+            studentAddModal: false
+        });
     }
 
     handlePageChange(pageNumber) {
@@ -55,12 +66,17 @@ class ApprovedPage extends Component{
                 </div>
                 <div className="app-filter">
                         <Filter />
-                        <Tools visibleDelBtn={this.visibleDelBtn}/>
+                        <Tools 
+                            visibleDelBtn={this.visibleDelBtn} 
+                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
                     </div>
                 <StudentsList 
                         studentsList={this.state.studentsListApproved.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}
                         visibleDelBtn={this.state.visibleDelBtn}
+                        studentAddModal={this.state.studentAddModal}
+                        onHideModalWindowAdd={this.onHideModalWindowAdd}
+                        activePage={this.state.activePage}
                         studentCard={this.state.studentCard}/>
                 <Pagination
                         innerClass="pagination page-numbers"
