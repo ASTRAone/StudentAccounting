@@ -22,8 +22,6 @@ export default class ArchiveCard extends Component {
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
             Speciality: this.props.dataList.studentModalCardData.Speciality,
-
-            visibleEditCard: false
         }
     }
     

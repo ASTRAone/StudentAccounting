@@ -16,15 +16,14 @@ export default class StudentsList extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             dataList: this.props.studentsList,
-
             modalDeleteWindow: false,
             idTableStudent: null,
             modalDeleted: false,
             studentCardModal: false,
             studentModalCardData: ''
-
         }
     }
 
@@ -42,7 +41,7 @@ export default class StudentsList extends Component {
                 dataList: this.props.studentsList
             })
         }
-    }
+    };
 
     // Показать окно удаления 
     onShowModalWindowDeleted = (id) => {
@@ -50,14 +49,14 @@ export default class StudentsList extends Component {
             modalDeleteWindow: true,
             idTableStudent: id
         });
-    }
+    };
 
     // Скрыть окно удаления
     onHideModalWindowDeleted = () => {
         this.setState({
             modalDeleteWindow: false
         });
-    }
+    };
 
     // Подтвердить удаление
     onConfirmDeleted = () => {
@@ -67,14 +66,14 @@ export default class StudentsList extends Component {
             modalDeleteWindow: false,
             modalDeleted: true
         });
-    }
+    };
 
     // Закрыть окно подтверждения
     onHideModalDeleted = () => {
         this.setState({
             modalDeleted: false
         });
-    }
+    };
 
     // Показать карточку студента-практиканта
     onShowModalStudentCardModal = (item) => {
@@ -83,14 +82,14 @@ export default class StudentsList extends Component {
             idTableStudent: item.id,
             studentModalCardData: item,
         });
-    }
+    };
 
     // Закрыть карточку студента-практиканта
     onHideModalStudentCardModal = () => {
         this.setState({
             studentCardModal: false
         });
-    }
+    };
     
     // Показать окно удаление из карточки студента-практиканта
     onShowModalWindowDeletedInCard = () => {
