@@ -39,11 +39,16 @@
     margin: 0 auto;
 }
 
-.accept-application__btn {
+.accept-del__btn {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+.accept-del__btn button {
+    width: 100px;
+    justify-content: center;
 }
 
 .accept-application__forward {

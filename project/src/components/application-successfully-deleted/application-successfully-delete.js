@@ -12,13 +12,13 @@ const ApplicationSuccessfullyDeleted = ({modalDeleted, onHideModalDeleted}) => {
             <Modal.Content>
                 <div className="accept-application">
                     <div className="accept-application__i">
-                        <i className="fa fa-times"></i>
+                        <i className="fa fa-times" onClick={onHideModalDeleted}></i>
                     </div>
                     <h3 className="accept-application__title">
                         Заявка успешно удалена 
                     </h3>
                     <Modal.Actions>
-                        <div className="accept-application__btn">
+                        <div className="accept-del__btn">
                             <button className="btn accept-application__further" onClick={onHideModalDeleted}>Ок</button>
                         </div>
                     </Modal.Actions>

@@ -20,7 +20,7 @@ export default class StudentsList extends Component {
         this.state = {
             dataList: this.props.studentsList,
             modalDeleteWindow: false,
-            idTableStudent: null,
+            idTableStudent: '',
             modalDeleted: false,
             studentCardModal: false,
             studentModalCardData: ''
@@ -71,7 +71,8 @@ export default class StudentsList extends Component {
     // Закрыть окно подтверждения
     onHideModalDeleted = () => {
         this.setState({
-            modalDeleted: false
+            modalDeleted: false,
+            studentCardModal: false
         });
     };
 

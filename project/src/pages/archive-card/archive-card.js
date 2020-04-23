@@ -27,11 +27,8 @@ export default class ArchiveCard extends Component {
     
     render() {
 
-        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentModalCardData } = this.props.dataList
-
-        // const { SecondName, FirstName, Patronymic, Email, Phone, College,
-        //         Faculty, PractiesBegining, PractiesEnding, Speciality } = studentModalCardData;
-        
+        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentModalCardData } = this.props.dataList;
+                
         return ( 
             <div className = "student-card">
                 <div className = "card__header">

@@ -32,7 +32,7 @@ export default class StudentCard extends Component {
             if (studentCard === 'archive-card') {
                 return <ArchiveCard dataList={this.props}/>;
             }
-        }
+        };
  
         return(
             <Modal 

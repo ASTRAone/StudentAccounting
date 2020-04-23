@@ -3,6 +3,7 @@ import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react'
 
 import Alteration from '../../components/alteration';
 import ChangesSaved from '../../components/changes-saved';
+import RatingTable from '../rating-table';
 
 import noavatar from "../img/noavatar.png";
 import noavatarcurator from '../img/noavatar-curator.jpg';
@@ -34,7 +35,8 @@ export default class PracicCard extends Component {
             visibleReadonly: true,
 
             visibleAlteration: false,
-            visibleChangesSaved: false
+            visibleChangesSaved: false,
+            visibleRatingTable: false
         }
     }
 
@@ -43,6 +45,20 @@ export default class PracicCard extends Component {
         this.setState({
             visibleEditCard: true,
             visibleReadonly: false
+        });
+    };
+
+    // Открыть окно оценок компетенций студента
+    onShowRatingTable = () => {
+        this.setState({
+            visibleRatingTable: true
+        });
+    };
+
+    // Закрыть окно оценок компетенций студента
+    onHideRatingTable = () => {
+        this.setState({
+            visibleRatingTable: false
         });
     };
 
@@ -267,7 +283,7 @@ export default class PracicCard extends Component {
                         </div>
                         <div className = "card__curator">
                             <img src = {noavatarcurator} className = "card__profile-pic" />
-                            <p className = "card__curator__action_student">Оценить компетенции студента</p>
+                            <p className = "card__curator__action_student" onClick={this.onShowRatingTable}>Оценить компетенции студента</p>
                             <button disabled={this.state.visibleCuratorBtn} className = "btn card__curator__choose-button">Назначить куратора</button>
                         </div>
                     </div>
@@ -321,6 +337,10 @@ export default class PracicCard extends Component {
                 <ChangesSaved 
                     visibleChangesSaved={this.state.visibleChangesSaved}
                     bringСhanges={this.bringСhanges}/>
+                <RatingTable
+                    dataStudent={this.props.dataList.studentModalCardData}
+                    visibleRatingTable={this.state.visibleRatingTable}
+                    onHideRatingTable={this.onHideRatingTable}/>
             </React.Fragment>
         );
     };

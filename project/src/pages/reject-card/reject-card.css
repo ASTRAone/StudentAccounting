@@ -340,3 +340,25 @@
 .fa.fa-times-circle.none {
     display: none;
 }
+
+.ui.input.card__info-text_input.bt {
+    margin-left: 0;
+}
+
+.student-card__our-btn > button {
+    background: #007bff;
+    margin-right: 60px;
+    width: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    height: 40px;
+}
+
+.student-card__our-btn > button:last-child {
+    margin-right: 0;
+}
+
+.student-card__our-btn.none {
+    display: none;
+}

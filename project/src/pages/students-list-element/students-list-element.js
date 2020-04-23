@@ -10,9 +10,6 @@ export default class StudentsListElement extends Component {
 
     constructor() {
         super();
-
-       
-    
     }
 
     render(){
