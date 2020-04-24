@@ -22,88 +22,100 @@ export default class StudentAddForm extends Component {
             PractiesEnding: "",
             Speciality: ""
         }
+
+        this.firstNameChange = this.firstNameChange.bind(this);
+        this.secondNameChange = this.secondNameChange.bind(this);
+        this.patronymicChange = this.patronymicChange.bind(this);
+        this.emailChange = this.emailChange.bind(this);
+        this.phoneChange = this.phoneChange.bind(this);
+        this.collegeChange = this.collegeChange.bind(this);
+        this.facultyChange = this.facultyChange.bind(this);
+        this.practiceBeginChange = this.practiceBeginChange.bind(this);
+        this.practiceEndChange = this.practiceEndChange.bind(this);
+        this.specialityChange = this.specialityChange.bind(this);
+        
     }
 
-    firstNameChange(e) {
+    firstNameChange(event) {
         this.setState({
-            FirstName: e.target.value
+            FirstName: event.target.value
         }); 
     };
 
-    secondNameChange(e) {
+    secondNameChange(event) {
         this.setState({
-            SecondName: e.target.value
+            SecondName: event.target.value
         }); 
     };
 
-    patronymicChange(e) {
+    patronymicChange(event) {
         this.setState({
-            Patronymic: e.target.value
+            Patronymic: event.target.value
         }); 
     };
 
-    emailChange(e) {
+    emailChange(event) {
         this.setState({
-            Email: e.target.value
+            Email: event.target.value
         }); 
     };
 
-    phoneChange(e) {
+    phoneChange(event) {
         this.setState({
-            Phone: e.target.value
+            Phone: event.target.value
         }); 
     };
 
-    collegeChange(e) {
+    collegeChange(event) {
         this.setState({
-            College: e.target.value
+            College: event.target.value
         }); 
     };
 
-    facultyChange(e) {
+    facultyChange(event) {
         this.setState({
-            Faculty: e.target.value
+            Faculty: event.target.value
         }); 
     };
 
-    practiceBeginChange(e) {
+    practiceBeginChange(event) {
         this.setState({
-            PractiesBegining: e.target.value
+            PractiesBegining: event.target.value
         }); 
     };
 
-    practiceEndChange(e) {
+    practiceEndChange(event) {
         this.setState({
-            PractiesEnding: e.target.value
+            PractiesEnding: event.target.value
         }); 
     };
 
-    specialityChange(e) {
-        if(e.target.id === "check1"){
+    specialityChange(event) {
+        if(event.target.id === "check1"){
             this.setState({
                 Speciality: "Backend"
             });
         }
 
-        if(e.target.id === "check2"){
+        if(event.target.id === "check2"){
             this.setState({
                 Speciality: "Frontend"
             });
         }
 
-        if(e.target.id === "check3"){
+        if(event.target.id === "check3"){
             this.setState({
                 Speciality: "Тестирование"
             });
         }
 
-        if(e.target.id === "check4"){
+        if(event.target.id === "check4"){
             this.setState({
                 Speciality: "Системный анализ"
             });
         }
 
-        if(e.target.id === "check5"){
+        if(event.target.id === "check5"){
             this.setState({
                 Speciality: "Системное администрирование"
             });
@@ -137,28 +149,28 @@ export default class StudentAddForm extends Component {
                                         type="text" 
                                         className="from-our__item" 
                                         value={this.state.SecondName}
-                                        onClick={this.secondNameChange}
+                                        onChange={this.secondNameChange}
                                         placeholder="Фамилия*" />
 
                                     <input 
                                         type="text" 
                                         className="from-our__item" 
                                         value={this.state.FirstName}
-                                        onClick={this.firstNameChange}
+                                        onChange={this.firstNameChange}
                                         placeholder="Имя*"  />
 
                                     <input 
                                         type="text" 
                                         className="from-our__item" 
                                         value={this.state.Patronymic}
-                                        onClick={this.patronymicChange}
+                                        onChange={this.patronymicChange}
                                         placeholder="Отчество"  />
 
                                     <input 
                                         list="institution" 
                                         className="from-our__item"
                                         value={this.state.College}
-                                        onClick={this.collegeChange}
+                                        onChange={this.collegeChange}
                                         placeholder="Учебное заведение*"/>
 
                                     <datalist id="institution">
@@ -171,27 +183,28 @@ export default class StudentAddForm extends Component {
                                         type="text" 
                                         className="from-our__item" 
                                         value={this.state.Faculty}
+                                        onChange={this.facultyChange}
                                         placeholder="Факультет, специальность*" />
                                         
                                     <h4 className="from-our__title">Направление практики*</h4>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check1" /> 
+                                        <input type="checkbox" id="check1" onChange={this.specialityChange}/> 
                                         <label htmlFor="check1">Backend</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check2" /> 
+                                        <input type="checkbox" id="check2" onChange={this.specialityChange}/> 
                                         <label htmlFor="check2">Frontend</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check3" /> 
+                                        <input type="checkbox" id="check3" onChange={this.specialityChange}/> 
                                         <label htmlFor="check3">Тестирование</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check4" /> 
+                                        <input type="checkbox" id="check4" onChange={this.specialityChange}/> 
                                         <label htmlFor="check4">Системный анализ</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check5" /> 
+                                        <input type="checkbox" id="check5" onChange={this.specialityChange}/> 
                                         <label htmlFor="check5">Системное администрирование</label>
                                     </div>
                                 </div>
@@ -204,7 +217,7 @@ export default class StudentAddForm extends Component {
                                             <input type="text" id="check5" 
                                             className="from-practic__item datepicker-here" 
                                             value={this.state.PractiesBegining}
-                                            onClick={this.practiceBeginChange}/>                         
+                                            onChange={this.practiceBeginChange}/>                         
                                         </div>
                                         <div className="from-practic__checkbox">
                                             <label htmlFor="check5">по</label>
@@ -213,7 +226,7 @@ export default class StudentAddForm extends Component {
                                             id="check5" 
                                             className="from-practic__item datepicker-here" 
                                             value={this.state.PractiesEnding}
-                                            onClick={this.practiceEndChange}/>                         
+                                            onChange={this.practiceEndChange}/>                         
                                         </div>
                                     </div>
                                     <div className="from-practic__date from-practic__communication">
@@ -224,7 +237,7 @@ export default class StudentAddForm extends Component {
                                             id="check5" 
                                             className="from-practic__item" 
                                             value={this.state.Phone}
-                                            onClick={this.phoneChange}
+                                            onChange={this.phoneChange}
                                             />                         
                                         </div>
                                         <div className="from-practic__checkbox_bottom">  
@@ -233,7 +246,7 @@ export default class StudentAddForm extends Component {
                                             id="check5" 
                                             className="from-practic__item" 
                                             value={this.state.Email}
-                                            onClick={this.emailChange}/>                         
+                                            onChange={this.emailChange}/>                         
                                         </div>
                                     </div>
                                 </div>
