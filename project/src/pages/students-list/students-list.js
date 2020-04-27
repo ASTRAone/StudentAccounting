@@ -83,6 +83,8 @@ export default class StudentsList extends Component {
             idTableStudent: item.id,
             studentModalCardData: item,
         });
+
+        console.log(item)
     };
 
     // Закрыть карточку студента-практиканта

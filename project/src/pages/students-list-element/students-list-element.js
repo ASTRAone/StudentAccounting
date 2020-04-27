@@ -23,7 +23,6 @@ export default class StudentsListElement extends Component {
 
         let visibleBtnDel = "btn-close none";
         let list_element = "list-element";
-        
 
         if (visibleDelBtn) {
             visibleBtnDel = "btn-close";

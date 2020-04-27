@@ -201,6 +201,7 @@
     text-decoration: underline;
     color: #007bff;
     width: 170px;
+    cursor: pointer;
 }
 
 .card__curator__action_student{
@@ -221,11 +222,17 @@
     text-decoration: underline;
     color: #007bff;
     width: 170px;
+    cursor: pointer; 
 }
 
-.card__curator__action :hover{
+.card__curator__action-curator:hover {
     color: #033870;
-    cursor: pointer;
+    font-weight: bold;
+}
+
+.card__curator__action:hover{
+    color: #033870;
+    font-weight: bold;
 }
 /*sprite with stars*/
 #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
@@ -335,4 +342,8 @@
 
 .fa.fa-times-circle.none {
     display: none;
+}
+
+.rating-table-buttons__button:hover {
+    color: #212529;;
 }

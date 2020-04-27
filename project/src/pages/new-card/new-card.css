@@ -212,6 +212,10 @@
     margin-bottom: 5px;
 }
 
+.card__curator__action_student:hover {
+    color: #212529;;
+}
+
 .card__curator__action_student.none{
     display: none;
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 
+import RatingTable from '../rating-table';
 import Alteration from '../../components/alteration';
 import ChangesSaved from '../../components/changes-saved';
-import RatingTable from '../rating-table';
 
 import noavatar from "../img/noavatar.png";
 import noavatarcurator from '../img/noavatar-curator.jpg';
@@ -26,8 +26,8 @@ export default class PracicCard extends Component {
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
             Speciality: this.props.dataList.studentModalCardData.Speciality,
-
-            comment: '',
+            comment: this.props.dataList.studentModalCardData.comment,
+            ratingTable: this.props.dataList.studentModalCardData.ratingTable,
     
             visibleEditCard: false,
 
@@ -131,6 +131,8 @@ export default class PracicCard extends Component {
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
             Speciality: this.props.dataList.studentModalCardData.Speciality,
+            comment: this.props.dataList.studentModalCardData.comment,
+            ratingTable: this.props.dataList.studentModalCardData.ratingTable,
             visibleEditCard: false,
             visibleReadonly: true
         });
@@ -161,7 +163,7 @@ export default class PracicCard extends Component {
             visibleChangesSaved: true
         });
 
-        console.log(this.state)
+        console.log(this.state);
     };
 
     // Закрыть окно подтверждения изменений
@@ -173,6 +175,15 @@ export default class PracicCard extends Component {
         this.props.dataList.onHideModalStudentCardModal()
     };
 
+    // Сохранение рейтинговой таблицы студентов
+    onSaveTableRatingTable = (item) => {
+        this.setState({
+            ratingTable: {item}
+        });
+
+        console.log(this.state.ratingTable);
+    };
+ 
     render() {
 
         let card__student_label = "card__student_label";
@@ -190,7 +201,7 @@ export default class PracicCard extends Component {
             card__student_label = "card__student_label none"
         }
 
-        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentModalCardData } = this.props.dataList;
+        const { onShowModalWindowDeletedInCard } = this.props.dataList;
        
         return ( 
             <React.Fragment>
@@ -320,7 +331,8 @@ export default class PracicCard extends Component {
                         </div>
                         <textarea 
                             onChange={this.editComment}
-                            readOnly={this.state.visibleReadonly} 
+                            readOnly={this.state.visibleReadonly}
+                            value={this.state.comment} 
                             className = "card__comment" 
                             placeholder = "Комментарий">
                         </textarea>
@@ -337,10 +349,12 @@ export default class PracicCard extends Component {
                 <ChangesSaved 
                     visibleChangesSaved={this.state.visibleChangesSaved}
                     bringСhanges={this.bringСhanges}/>
-                <RatingTable
+                <RatingTable 
+                    ratingTableData={this.state.ratingTable}
                     dataStudent={this.props.dataList.studentModalCardData}
                     visibleRatingTable={this.state.visibleRatingTable}
-                    onHideRatingTable={this.onHideRatingTable}/>
+                    onHideRatingTable={this.onHideRatingTable}
+                    onSaveTableRatingTable={this.onSaveTableRatingTable}/>
             </React.Fragment>
         );
     };

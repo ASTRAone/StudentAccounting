@@ -178,6 +178,7 @@
     margin-top: 30px;
     margin-bottom: 20px;
     resize: none;
+    font-size: 20px;
 }
 
 .card__curator{
@@ -222,6 +223,11 @@
     font-size: 15px;
     margin-bottom: 5px;
     cursor: pointer;
+}
+
+.card__curator__action_student:hover {
+    color: #033870;
+    font-weight: bold;
 }
 
 .card__curator__action_student.none{
