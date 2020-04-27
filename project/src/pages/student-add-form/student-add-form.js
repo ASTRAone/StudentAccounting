@@ -91,6 +91,12 @@ export default class StudentAddForm extends Component {
     };
 
     specialityChange(event) {
+        const ch1 = document.getElementById("check1");
+        const ch2 = document.getElementById("check2");
+        const ch3 = document.getElementById("check3");
+        const ch4 = document.getElementById("check4");
+        const ch5 = document.getElementById("check5");
+
         if(event.target.id === "check1"){
             this.setState({
                 Speciality: "Backend"
@@ -191,6 +197,7 @@ export default class StudentAddForm extends Component {
                                         <input type="checkbox" id="check1" onChange={this.specialityChange}/> 
                                         <label htmlFor="check1">Backend</label>
                                     </div>
+                                    
                                     <div className="from-our__checkbox">
                                         <input type="checkbox" id="check2" onChange={this.specialityChange}/> 
                                         <label htmlFor="check2">Frontend</label>
@@ -212,18 +219,18 @@ export default class StudentAddForm extends Component {
                                     <h4 className="from-practic__title">Предполагаемые сроки практики*</h4>
                                     <div className="from-practic__date">
                                         <div className="from-practic__checkbox">
-                                            <label htmlFor="check5">с</label>
+                                            <label htmlFor="pract-begin">с</label>
                                             <i className="fa fa-calendar"></i>
-                                            <input type="text" id="check5" 
+                                            <input type="text" id="pract-begin" 
                                             className="from-practic__item datepicker-here" 
                                             value={this.state.PractiesBegining}
                                             onChange={this.practiceBeginChange}/>                         
                                         </div>
                                         <div className="from-practic__checkbox">
-                                            <label htmlFor="check5">по</label>
+                                            <label htmlFor="pract-end">по</label>
                                             <i className="fa fa-calendar"></i>
                                             <input type="text" 
-                                            id="check5" 
+                                            id="pract-end" 
                                             className="from-practic__item datepicker-here" 
                                             value={this.state.PractiesEnding}
                                             onChange={this.practiceEndChange}/>                         
@@ -234,7 +241,7 @@ export default class StudentAddForm extends Component {
                                         <div className="from-practic__checkbox_bottom">
                                             <i className="fa fa-mobile"></i>
                                             <input type="number" 
-                                            id="check5" 
+                                            id="phone-input" 
                                             className="from-practic__item" 
                                             value={this.state.Phone}
                                             onChange={this.phoneChange}
@@ -243,7 +250,7 @@ export default class StudentAddForm extends Component {
                                         <div className="from-practic__checkbox_bottom">  
                                             <i className="from-practic_bottom-i fa fa-envelope"></i>  
                                             <input type="email" 
-                                            id="check5" 
+                                            id="email-input" 
                                             className="from-practic__item" 
                                             value={this.state.Email}
                                             onChange={this.emailChange}/>                         

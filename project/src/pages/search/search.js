@@ -5,11 +5,11 @@ import './search.css';
 export default class Search extends Component {
 
     options = [
-        { id: 1, label: "Naples" },
-        { id: 2, label: "London" },
-        { id: 3, label: "Berlin" },
-        { id: 4, label: "New York" },
-        { id: 5, label: "Frattamaggiore" },
+        { id: 1, label: "Backend" },
+        { id: 2, label: "Frontend" },
+        { id: 3, label: "Тестирование" },
+        { id: 4, label: "Системный анализ" },
+        { id: 5, label: "Системное администрирование" },
     ];
 
     render() {

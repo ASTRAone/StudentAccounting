@@ -57,6 +57,28 @@ class AchivePage extends Component {
         });
     }
 
+    searchName(items, name) {
+
+        if (name.length === 0){
+
+            return items;
+        }
+
+        return items.firstName.toLowerCase().indexOf(name.toLowerCase()) > -1;
+
+    }
+
+    searchCollege(items, college) {
+
+        if (college.length === 0){
+
+            return items;
+        }
+
+        return items.label.toLowerCase().indexOf(college.toLowerCase()) > -1;
+        
+    }
+
 
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
