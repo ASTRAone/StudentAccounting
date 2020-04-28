@@ -8,8 +8,10 @@
 .rating-header{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
+    width: 700px;
+    margin: 0 auto;
 }
 
 .rating-header__label{
@@ -22,7 +24,6 @@
 }
 
 .rating-buttons__our{
-    width: 30%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -30,7 +31,7 @@
     float: right;
     font-size: 30px;
     color: #007bff;
-    padding: 20px;
+    margin: 20px;
     cursor: pointer;
 }
 

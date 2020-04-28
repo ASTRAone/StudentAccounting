@@ -184,6 +184,26 @@ export default class RatingTable extends Component{
         });
     };
 
+    // Удаление рейтинговой таблицы студента
+    onDeletedRatingTable = () => {
+        this.setState({
+            educability: '',
+            educability_com: '',
+            quality: '',
+            quality_com: '',
+            responsibility: '',
+            responsibility_com: '',
+            initiative: '',
+            initiative_com: '',
+            conflict: '',
+            conflict_com: '',
+            relationship: '',
+            relationship_com: '',
+            interest: '',
+            interest_com: ''
+        });
+    };
+
     // Редактирование итоговой оценки
     editAverageMark = (e) => {
         this.setState({
@@ -241,7 +261,7 @@ export default class RatingTable extends Component{
                             <i className = "fa fa-print"></i>
                             <i className = "fa fa-edit" onClick={this.editRatingTable}></i>
                             <i className = "fa fa-download"></i>
-                            <i className = "fa fa-trash"></i>
+                            <i className = "fa fa-trash" onClick={this.onDeletedRatingTable}></i>
                         </div>
                     </div>
                     <div className = "rating-table-block">
