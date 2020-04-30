@@ -295,12 +295,12 @@
     display: none;
 }
 
-.ui.small.basic.modal.transition.visible.active {
+/* .ui.small.basic.modal.transition.visible.active {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 
 .card__controls > i:last-child {
     margin-left: 20px;
@@ -415,4 +415,11 @@
 
 .student-card__our-btn.none {
     display: none;
+}
+
+.container-new-card {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 20%;
 }

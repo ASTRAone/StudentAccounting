@@ -121,14 +121,16 @@ export default class ArchiveCard extends Component {
                         <div className = "card__main-rating">
                             <p className = "card__main-rating-label">Отчет по практике</p>
                             <div className = "card__download-doc">
-                                <i className = "fa fa-download card__download-doc__icon"></i>
-                                <p className = "card__download-doc__label">Скачать файл</p>
+                                <label>
+                                    <i className = "fa fa-download card__download-doc__icon"></i>
+                                    <p className = "card__download-doc__label">Скачать файл</p>
+                                </label>
                             </div> 
                         </div>
                         <textarea 
                             className = "card__comment" 
                             placeholder = "Комментарий"
-                            readOnly="true"
+                            readOnly={true}
                             value={this.state.comment}>
                         </textarea>
                     </div>

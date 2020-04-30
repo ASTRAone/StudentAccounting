@@ -92,6 +92,8 @@ export default class StudentsList extends Component {
         this.setState({
             studentCardModal: false
         });
+
+        document.body.style.overflowY = 'scroll';
     };
     
     // Показать окно удаление из карточки студента-практиканта

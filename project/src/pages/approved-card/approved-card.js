@@ -36,23 +36,23 @@ export default class ApprovedCard extends Component {
         }
     }
 
-    // Закрыть карточку студента-практиканта
-    onHideCardStudent = () => {
-        this.setState({
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
-            College: this.props.dataList.studentModalCardData.College,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
-        });
+    // // Закрыть карточку студента-практиканта
+    // onHideCardStudent = () => {
+    //     this.setState({
+    //         SecondName: this.props.dataList.studentModalCardData.SecondName,
+    //         FirstName: this.props.dataList.studentModalCardData.FirstName,
+    //         Patronymic: this.props.dataList.studentModalCardData.Patronymic,
+    //         Email: this.props.dataList.studentModalCardData.Email,
+    //         Phone: this.props.dataList.studentModalCardData.Phone,
+    //         College: this.props.dataList.studentModalCardData.College,
+    //         Faculty: this.props.dataList.studentModalCardData.Faculty,
+    //         PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
+    //         PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
+    //         Speciality: this.props.dataList.studentModalCardData.Speciality,
+    //     });
 
-        this.props.dataList.onHideModalStudentCardModal();
-    };
+    //     this.props.dataList.onHideModalStudentCardModal();
+    // };
 
     // Разрешить редактирование
     visibleEditCardStudent = () => {
@@ -167,6 +167,8 @@ export default class ApprovedCard extends Component {
 
     render() {
 
+        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal } = this.props.dataList;
+
         let our_input = "our-input";
         let card__student_contact = "card__student-contact";
         let student_card__our_btn = "student-card__our-btn";
@@ -182,10 +184,12 @@ export default class ApprovedCard extends Component {
             card__info_text = "card__info-text none";
         }
 
-        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentModalCardData } = this.props.dataList;
-    
+        if (studentCardModal === true) {
+            document.body.style.overflow = 'hidden';
+        }
+
         return (
-            <React.Fragment>
+            <div className="container-approved-card">
                 <div className = "student-card">
                     <div className = "card__header">
                         <p className = "card__label">Карточка студента</p>                   
@@ -194,7 +198,7 @@ export default class ApprovedCard extends Component {
                             <i className = "fa fa-edit" onClick={this.visibleEditCardStudent}></i>
                             <i className = "fa fa-download"></i>
                             <i className = "fa fa-trash" onClick={onShowModalWindowDeletedInCard}></i>
-                            <i className= "fa fa-times-circle" onClick={this.onHideCardStudent}></i>
+                            <i className= "fa fa-times-circle" onClick={onHideModalStudentCardModal}></i>
                         </div>
                     </div>
                     <div className = "card__student">
@@ -290,7 +294,7 @@ export default class ApprovedCard extends Component {
                 <ChangesSaved 
                     visibleChangesSaved={this.state.visibleChangesSaved}
                     bringСhanges={this.bringСhanges}/>
-            </React.Fragment>   
+            </div>  
         );
     };
 };
