@@ -130,6 +130,10 @@
     background-color: rgb(5, 58, 107);
 }
 
-.ui.scrolling.modal.transition.visible.active {
+/* .ui.scrolling.modal.transition.visible.active {
     position: absolute;
+} */
+
+.container-rating-table-card {
+
 }

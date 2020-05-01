@@ -11,7 +11,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .card__label{
@@ -85,7 +84,6 @@
 
 .card__contacts-mobile-icon{
     font-size: 30px;
-
 }
 
 .card__info-label{
@@ -141,7 +139,6 @@
     justify-content: space-around;
     font-size: 20px;
     width: 50%;
-    
 }
 
 .card__download-doc{
@@ -163,7 +160,6 @@
     color: rgb(49, 49, 49);
     text-decoration: underline;
     border-bottom: 0;
-    /* cursor: pointer; */
 }
 
 .card__comment{
@@ -364,12 +360,6 @@
     display: none;
 }
 
-
-
-.card__student_input {
-
-}
-
 .ui.input.card__student_input > input {
     height: 30px;
     width: 135px;
@@ -379,3 +369,13 @@
     outline: none;
     font-size: 18px;
 }
+
+.container-practic-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+}
+

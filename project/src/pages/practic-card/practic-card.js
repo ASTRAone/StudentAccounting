@@ -53,6 +53,8 @@ export default class PracicCard extends Component {
         this.setState({
             visibleRatingTable: true
         });
+
+        
     };
 
     // Закрыть окно оценок компетенций студента
@@ -186,6 +188,8 @@ export default class PracicCard extends Component {
  
     render() {
 
+        const { onShowModalWindowDeletedInCard, studentCardModal } = this.props.dataList;
+
         let card__student_label = "card__student_label";
         let card__student_contact = "card__student-contact";
         let card__info_text = "card__info-text";
@@ -201,161 +205,163 @@ export default class PracicCard extends Component {
             card__student_label = "card__student_label none"
         }
 
-        const { onShowModalWindowDeletedInCard } = this.props.dataList;
-       
+        if (studentCardModal === true) {
+            document.body.style.overflow = 'hidden';
+        }
+
         return ( 
-            <React.Fragment>
-                <div className = "student-card">
-                    <div className = "card__header">
-                        <p className = "card__label">Карточка студента</p>                   
-                        <div className = "card__controls">
-                            <i className = "fa fa-print"></i>
-                            <i className = "fa fa-edit" onClick={this.visibleEditCardStudent}></i>
-                            <i className = "fa fa-download"></i>
-                            <i className = "fa fa-trash" onClick={onShowModalWindowDeletedInCard}></i>
-                        </div>
-                    </div>
-                    <div className = "card__student">
-                        <img src = {noavatar} className = "card__profile-pic" />
-                        <div className = "card__student-info">
-                            <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
-                            <div className = {card__contacts}>
-                                <i className = "fa fa-envelope"></i>
-                                <p className = {card__student_contact}>{this.state.Email}</p>
-                                <label className={card__student_label}>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="email"
-                                        value={this.state.Email}
-                                        onChange={this.editEmail}/>
-                                </label>                
-                            </div>
-                            <div className = {card__contacts}>
-                                <i className="fa fa-mobile card__contacts-mobile-icon"></i>
-                                <p className = {card__student_contact}>{this.state.Phone}</p>
-                                <label className={card__student_label}>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="text"
-                                        value={this.state.Phone}
-                                        onChange={this.editPhone}/>
-                                </label>     
-                            </div>
-                            <div className = {card__contacts}>
-                                <p className = "card__info-label">Учебное заведение:</p>
-                                <p className = {card__info_text}>{this.state.College}</p>
-                                <label className={card__student_label}>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="text"
-                                        value={this.state.College}
-                                        onChange={this.editCollege}/>
-                                </label>   
-                            </div>
-                            <div className = {card__contacts}>
-                                <p className = "card__info-label">Факультет, специальность:</p>
-                                <p className = {card__info_text}>{this.state.Faculty}</p>
-                                <label className={card__student_label}>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="text"
-                                        value={this.state.Faculty}
-                                        onChange={this.editFaculty}/>
-                                </label>   
-                            </div>
-                            <div className = {card__contacts}>
-                                <p className = "card__info-label">Сроки практики:</p>
-                                <p className = {card__info_text}>{this.state.PractiesBegining} - {this.state.PractiesEnding}</p>
-                                <label className={card__student_label}>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="text"
-                                        value={this.state.PractiesBegining}
-                                        onChange={this.editPractiesBegining}/>
-                                    <label>-</label>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="text"
-                                        value={this.state.PractiesEnding}
-                                        onChange={this.editPractiesEnding}/>
-                                </label>   
-                            </div>
-                            <div className = {card__contacts}>
-                                <p className = "card__info-label">Направление деятельности:</p>
-                                <p className = {card__info_text}>{this.state.Speciality}</p>
-                                <label className={card__student_label}>
-                                    <Input 
-                                        className="card__student_input"
-                                        type="text"
-                                        value={this.state.Speciality}
-                                        onChange={this.editSpeciality}/>
-                                </label>
+                <div className="container-practic-card">
+                    <div className = "student-card">
+                        <div className = "card__header">
+                            <p className = "card__label">Карточка студента</p>                   
+                            <div className = "card__controls">
+                                <i className = "fa fa-print"></i>
+                                <i className = "fa fa-edit" onClick={this.visibleEditCardStudent}></i>
+                                <i className = "fa fa-download"></i>
+                                <i className = "fa fa-trash" onClick={onShowModalWindowDeletedInCard}></i>
                             </div>
                         </div>
-                        <div className = "card__curator">
-                            <img src = {noavatarcurator} className = "card__profile-pic" />
-                            <p className = "card__curator__action_student" onClick={this.onShowRatingTable}>Оценить компетенции студента</p>
-                            <button disabled={this.state.visibleCuratorBtn} className = "btn card__curator__choose-button">Назначить куратора</button>
-                        </div>
-                    </div>
-                    <div className = "card__rating  ">
-                        <div className = "card__main-rating">
-                            <p className = "card__main-rating-label">Общая оценка за практику</p>
-                            <div className = "stars">
-                                <div id="reviewStars-input">
-                                    <input id="star-4" type="radio" name="reviewStars"/>
-                                    <label title="отлично" htmlFor="star-4"></label>
-
-                                    <input id="star-3" type="radio" name="reviewStars"/>
-                                    <label title="хорошо" htmlFor="star-3"></label>
-
-                                    <input id="star-2" type="radio" name="reviewStars"/>
-                                    <label title="удовлетворительно" htmlFor="star-2"></label>
-
-                                    <input id="star-1" type="radio" name="reviewStars"/>
-                                    <label title="неудовлетворительно" htmlFor="star-1"></label>
-
-                                    <input id="star-0" type="radio" name="reviewStars"/>
-                                    <label title="плохо" htmlFor="star-0"></label>
+                        <div className = "card__student">
+                            <img src = {noavatar} className = "card__profile-pic" />
+                            <div className = "card__student-info">
+                                <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
+                                <div className = {card__contacts}>
+                                    <i className = "fa fa-envelope"></i>
+                                    <p className = {card__student_contact}>{this.state.Email}</p>
+                                    <label className={card__student_label}>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="email"
+                                            value={this.state.Email}
+                                            onChange={this.editEmail}/>
+                                    </label>                
+                                </div>
+                                <div className = {card__contacts}>
+                                    <i className="fa fa-mobile card__contacts-mobile-icon"></i>
+                                    <p className = {card__student_contact}>{this.state.Phone}</p>
+                                    <label className={card__student_label}>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="text"
+                                            value={this.state.Phone}
+                                            onChange={this.editPhone}/>
+                                    </label>     
+                                </div>
+                                <div className = {card__contacts}>
+                                    <p className = "card__info-label">Учебное заведение:</p>
+                                    <p className = {card__info_text}>{this.state.College}</p>
+                                    <label className={card__student_label}>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="text"
+                                            value={this.state.College}
+                                            onChange={this.editCollege}/>
+                                    </label>   
+                                </div>
+                                <div className = {card__contacts}>
+                                    <p className = "card__info-label">Факультет, специальность:</p>
+                                    <p className = {card__info_text}>{this.state.Faculty}</p>
+                                    <label className={card__student_label}>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="text"
+                                            value={this.state.Faculty}
+                                            onChange={this.editFaculty}/>
+                                    </label>   
+                                </div>
+                                <div className = {card__contacts}>
+                                    <p className = "card__info-label">Сроки практики:</p>
+                                    <p className = {card__info_text}>{this.state.PractiesBegining} - {this.state.PractiesEnding}</p>
+                                    <label className={card__student_label}>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="text"
+                                            value={this.state.PractiesBegining}
+                                            onChange={this.editPractiesBegining}/>
+                                        <label>-</label>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="text"
+                                            value={this.state.PractiesEnding}
+                                            onChange={this.editPractiesEnding}/>
+                                    </label>   
+                                </div>
+                                <div className = {card__contacts}>
+                                    <p className = "card__info-label">Направление деятельности:</p>
+                                    <p className = {card__info_text}>{this.state.Speciality}</p>
+                                    <label className={card__student_label}>
+                                        <Input 
+                                            className="card__student_input"
+                                            type="text"
+                                            value={this.state.Speciality}
+                                            onChange={this.editSpeciality}/>
+                                    </label>
                                 </div>
                             </div>
+                            <div className = "card__curator">
+                                <img src = {noavatarcurator} className = "card__profile-pic" />
+                                <p className = "card__curator__action_student" onClick={this.onShowRatingTable}>Оценить компетенции студента</p>
+                                <button disabled={this.state.visibleCuratorBtn} className = "btn card__curator__choose-button">Назначить куратора</button>
+                            </div>
                         </div>
-                        <div className = "card__main-rating">
-                            <p className = "card__main-rating-label">Отчет по практике</p>
-                            <div className = "card__download-doc">
-                                <label>
-                                    <i className="fa fa-folder card__download-doc__icon"></i>
-                                    <p className = "card__download-doc__label">Прикрепить файл</p>
-                                </label> 
-                            </div> 
+                        <div className = "card__rating  ">
+                            <div className = "card__main-rating">
+                                <p className = "card__main-rating-label">Общая оценка за практику</p>
+                                <div className = "stars">
+                                    <div id="reviewStars-input">
+                                        <input id="star-4" type="radio" name="reviewStars"/>
+                                        <label title="отлично" htmlFor="star-4"></label>
+
+                                        <input id="star-3" type="radio" name="reviewStars"/>
+                                        <label title="хорошо" htmlFor="star-3"></label>
+
+                                        <input id="star-2" type="radio" name="reviewStars"/>
+                                        <label title="удовлетворительно" htmlFor="star-2"></label>
+
+                                        <input id="star-1" type="radio" name="reviewStars"/>
+                                        <label title="неудовлетворительно" htmlFor="star-1"></label>
+
+                                        <input id="star-0" type="radio" name="reviewStars"/>
+                                        <label title="плохо" htmlFor="star-0"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className = "card__main-rating">
+                                <p className = "card__main-rating-label">Отчет по практике</p>
+                                <div className = "card__download-doc">
+                                    <label>
+                                        <i className="fa fa-folder card__download-doc__icon"></i>
+                                        <p className = "card__download-doc__label">Прикрепить файл</p>
+                                    </label> 
+                                </div> 
+                            </div>
+                            <textarea 
+                                onChange={this.editComment}
+                                readOnly={this.state.visibleReadonly}
+                                value={this.state.comment} 
+                                className = "card__comment" 
+                                placeholder = "Комментарий">
+                            </textarea>
                         </div>
-                        <textarea 
-                            onChange={this.editComment}
-                            readOnly={this.state.visibleReadonly}
-                            value={this.state.comment} 
-                            className = "card__comment" 
-                            placeholder = "Комментарий">
-                        </textarea>
+                        <div className="card-our_practic">
+                            <button className="btn card-our__btn" onClick={this.discardСhangeCard}>Отмена</button>
+                            <button className="btn card-our__btn" onClick={this.onCallSave}>Сохранить</button>
+                        </div>
                     </div>
-                    <div className="card-our_practic">
-                        <button className="btn card-our__btn" onClick={this.discardСhangeCard}>Отмена</button>
-                        <button className="btn card-our__btn" onClick={this.onCallSave}>Сохранить</button>
-                    </div>
+                    <Alteration 
+                        visibleAlteration={this.state.visibleAlteration}
+                        onCloseAlteration={this.onCloseAlteration}
+                        onSaveChange={this.onSaveChange}/>
+                    <ChangesSaved 
+                        visibleChangesSaved={this.state.visibleChangesSaved}
+                        bringСhanges={this.bringСhanges}/>
+                    <RatingTable 
+                        ratingTableData={this.state.ratingTable}
+                        dataStudent={this.props.dataList.studentModalCardData}
+                        visibleRatingTable={this.state.visibleRatingTable}
+                        onHideRatingTable={this.onHideRatingTable}
+                        onSaveTableRatingTable={this.onSaveTableRatingTable}/>
                 </div>
-                <Alteration 
-                    visibleAlteration={this.state.visibleAlteration}
-                    onCloseAlteration={this.onCloseAlteration}
-                    onSaveChange={this.onSaveChange}/>
-                <ChangesSaved 
-                    visibleChangesSaved={this.state.visibleChangesSaved}
-                    bringСhanges={this.bringСhanges}/>
-                <RatingTable 
-                    ratingTableData={this.state.ratingTable}
-                    dataStudent={this.props.dataList.studentModalCardData}
-                    visibleRatingTable={this.state.visibleRatingTable}
-                    onHideRatingTable={this.onHideRatingTable}
-                    onSaveTableRatingTable={this.onSaveTableRatingTable}/>
-            </React.Fragment>
         );
     };
 };
