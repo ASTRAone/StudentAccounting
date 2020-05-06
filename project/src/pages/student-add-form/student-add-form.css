@@ -38,7 +38,6 @@ input.from-our__item::-webkit-input-placeholder {
 }
 
 .from-our {
-
     padding-top: 10px;
     padding-left: 30px;
     padding-right: 30px;
@@ -178,5 +177,12 @@ input.from-our__item::-webkit-input-placeholder {
 
 .student-container__btn:nth-child(1) {
     margin-right: 50px;
-    
+}
+
+.content {
+    /* position: fixed;
+    top: 35px;
+    left: 0;
+    right: 0;
+    bottom: 0;   */
 }

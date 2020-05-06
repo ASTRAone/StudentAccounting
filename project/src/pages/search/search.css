@@ -36,3 +36,31 @@ input::-webkit-input-placeholder { color: #cacaca; }
     background: gray;
     border: 0;
 }
+
+.default-placeholder {
+    height: 55px;
+    width: 200px;
+    border: 2px solid #d0caca;
+    outline: none;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    min-width: auto;
+}
+
+.default-placeholder {
+    color: #cacaca;
+}
+
+.text {
+    color: black;
+}
+
+.default-placeholder .text {
+    text-align: center;
+    min-width: auto;
+}
+
+.icon {
+    right: -10px;
+}

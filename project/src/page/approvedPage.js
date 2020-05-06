@@ -25,7 +25,7 @@ class ApprovedPage extends Component{
 
     componentDidMount () {
         this.props.getStudentsListRequest();
-    }
+    };
 
     componentDidUpdate (prevProps, prevState) {
         const studentsListApprovedNew = this.props.studentsList.filter((item) => item.approved) || [];
@@ -35,28 +35,32 @@ class ApprovedPage extends Component{
                 studentsListApproved: studentsListApprovedNew
             });
         }
-    }
+    };
 
     visibleDelBtn = () => {
         this.setState((prevState) => ({ visibleDelBtn: !prevState.visibleDelBtn }));
-    }
+    };
 
     onShowModalWindowAdd = () => {
         this.setState({
             studentAddModal: true
         });
-    }
+
+        document.body.style.overflow = 'hidden';
+    };
 
     onHideModalWindowAdd = () => {
         this.setState({
             studentAddModal: false
         });
-    }
+
+        document.body.style.overflowY = 'scroll';
+    };
 
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
-    }
+    };
 
     render(){
         return (

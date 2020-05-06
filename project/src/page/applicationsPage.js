@@ -47,12 +47,16 @@ class ApplicationsPage extends React.Component  {
         this.setState({
             studentAddModal: true
         });
+
+        document.body.style.overflow = 'hidden';
     }
 
     onHideModalWindowAdd = () => {
         this.setState({
             studentAddModal: false
         });
+
+        document.body.style.overflowY = 'scroll';
     }
 
     handlePageChange(pageNumber) {

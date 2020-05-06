@@ -309,11 +309,11 @@
 .card__curator__action-curator.none {
     display: none;
 }
-
+/* 
 .modal {
     height: auto;
     overflow: initial;
-}
+} */
 
 .card-our {
     width: 600px;

@@ -20,7 +20,7 @@ export default class StudentAddForm extends Component {
             Faculty: "",
             PractiesBegining: "",
             PractiesEnding: "",
-            Speciality: ""
+            Speciality: {}
         }
 
         this.firstNameChange = this.firstNameChange.bind(this);
@@ -91,57 +91,61 @@ export default class StudentAddForm extends Component {
     };
 
     specialityChange(event) {
-        const ch1 = document.getElementById("check1");
-        const ch2 = document.getElementById("check2");
-        const ch3 = document.getElementById("check3");
-        const ch4 = document.getElementById("check4");
-        const ch5 = document.getElementById("check5");
+        // const ch1 = document.getElementById("check1");
+        // const ch2 = document.getElementById("check2");
+        // const ch3 = document.getElementById("check3");
+        // const ch4 = document.getElementById("check4");
+        // const ch5 = document.getElementById("check5");
 
-        if(event.target.id === "check1"){
-            this.setState({
-                Speciality: "Backend"
-            });
-        }
+        // if(event.target.id === "check1"){
+        //     this.setState({
+        //         Speciality: "Backend"
+        //     });
+        // }
 
-        if(event.target.id === "check2"){
-            this.setState({
-                Speciality: "Frontend"
-            });
-        }
+        // if(event.target.id === "check2"){
+        //     this.setState({
+        //         Speciality: "Frontend"
+        //     });
+        // }
 
-        if(event.target.id === "check3"){
-            this.setState({
-                Speciality: "Тестирование"
-            });
-        }
+        // if(event.target.id === "check3"){
+        //     this.setState({
+        //         Speciality: "Тестирование"
+        //     });
+        // }
 
-        if(event.target.id === "check4"){
-            this.setState({
-                Speciality: "Системный анализ"
-            });
-        }
+        // if(event.target.id === "check4"){
+        //     this.setState({
+        //         Speciality: "Системный анализ"
+        //     });
+        // }
 
-        if(event.target.id === "check5"){
-            this.setState({
-                Speciality: "Системное администрирование"
-            });
-        }
-         
+        // if(event.target.id === "check5"){
+        //     this.setState({
+        //         Speciality: "Системное администрирование"
+        //     });
+        // }
+
+        this.setState({
+            Speciality: {[event.target.name]:event.target.value}
+        });         
     };
+
+    // Добавить студента-практиканта
+    addNewStudent = () => {
+        console.log(this.state);
+
+        this.props.onHideModalWindowAdd();
+    }
 
     render() {
         
         const {studentAddModal, onHideModalWindowAdd} = this.props;
 
-       
-
-        
-
         return (
             <Modal 
-                open={studentAddModal} 
-                basic 
-                size='small'>
+                open={studentAddModal}>
                 <Modal.Content>
                     <form className="student-add-form">
                         <div className="student-add-form__header">
@@ -194,24 +198,49 @@ export default class StudentAddForm extends Component {
                                         
                                     <h4 className="from-our__title">Направление практики*</h4>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check1" onChange={this.specialityChange}/> 
+                                        <input 
+                                            type="checkbox" 
+                                            id="check1" 
+                                            onChange={this.specialityChange}
+                                            checked={this.state.Speciality.Backend}
+                                            name="Backend"/> 
                                         <label htmlFor="check1">Backend</label>
                                     </div>
                                     
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check2" onChange={this.specialityChange}/> 
+                                        <input 
+                                            type="checkbox" 
+                                            id="check2" 
+                                            onChange={this.specialityChange}
+                                            checked={this.state.Speciality.Frontend}
+                                            name="Frontend"/> 
                                         <label htmlFor="check2">Frontend</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check3" onChange={this.specialityChange}/> 
+                                        <input 
+                                            type="checkbox" 
+                                            id="check3" 
+                                            onChange={this.specialityChange}
+                                            checked={this.state.Speciality.Testing}
+                                            name="Testing"/> 
                                         <label htmlFor="check3">Тестирование</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check4" onChange={this.specialityChange}/> 
+                                        <input 
+                                            type="checkbox" 
+                                            id="check4" 
+                                            onChange={this.specialityChange}
+                                            checked={this.state.Speciality.System_analysis}
+                                            name="System_analysis"/> 
                                         <label htmlFor="check4">Системный анализ</label>
                                     </div>
                                     <div className="from-our__checkbox">
-                                        <input type="checkbox" id="check5" onChange={this.specialityChange}/> 
+                                        <input 
+                                            type="checkbox" 
+                                            id="check5" 
+                                            onChange={this.specialityChange}
+                                            checked={this.state.Speciality.System_administration}
+                                            name="System_administration"/> 
                                         <label htmlFor="check5">Системное администрирование</label>
                                     </div>
                                 </div>
@@ -263,7 +292,7 @@ export default class StudentAddForm extends Component {
                         <Modal.Actions>
                             <div className="student-container__our-btn"> 
                                 <button className="btn student-container__btn" onClick={onHideModalWindowAdd}>Отмена</button>
-                                <button className="btn student-container__btn" onClick={onHideModalWindowAdd}>Добавить</button>
+                                <button className="btn student-container__btn" onClick={this.addNewStudent}>Добавить</button>
                             </div>
                         </Modal.Actions>
                     </form>

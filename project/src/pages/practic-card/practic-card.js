@@ -53,8 +53,6 @@ export default class PracicCard extends Component {
         this.setState({
             visibleRatingTable: true
         });
-
-        
     };
 
     // Закрыть окно оценок компетенций студента

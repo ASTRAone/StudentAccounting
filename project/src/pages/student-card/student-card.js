@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 
 import NewCard from '../new-card';
 import ApprovedCard from '../approved-card';
@@ -37,10 +37,14 @@ export default class StudentCard extends Component {
         return(
             <Modal 
                 open={studentCardModal}
-                basic
-                size='small'>
-                    <Modal.Content>
+                className="modal-container"
+                centered>
+                    <Modal.Content
+                        scrolling>
                         {updateCarDContent()}
+                        <div>
+                            Text Modal card
+                        </div>
                     </Modal.Content>
             </Modal>
         );

@@ -20,7 +20,9 @@ class AchivePage extends Component {
             activePage: 1,
             visibleDelBtn: false,
             studentAddModal: false,
-            studentCard: 'archive-card'
+            studentCard: 'archive-card',
+
+            searchElements: ''
         }
     }
 
@@ -49,12 +51,16 @@ class AchivePage extends Component {
         this.setState({
             studentAddModal: true
         });
+
+        document.body.style.overflow = 'hidden';
     }
 
     onHideModalWindowAdd = () => {
         this.setState({
             studentAddModal: false
         });
+
+        document.body.style.overflowY = 'scroll';
     }
 
     searchName(items, name) {
@@ -79,11 +85,22 @@ class AchivePage extends Component {
         
     }
 
-
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
     }
+
+    // Сортировка по дате
+
+
+    // Сортировка по имени (доделать)
+    onSortStudentList = () => {
+        let newSortStudentList = this.state.studentsListInArchive.sort((a, b) => a.FirstName < b.FirstName ? 1 : 1);
+
+        this.setState({
+            studentsListInArchive: newSortStudentList
+        });
+    };
      
     render() {
         return (
@@ -92,11 +109,12 @@ class AchivePage extends Component {
                     <Search />
                 </div>
                 <div className="app-filter">
-                        <Filter />
-                        <Tools 
-                            visibleDelBtn={this.visibleDelBtn} 
-                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
-                    </div>
+                    <Filter 
+                        onSortStudentList={this.onSortStudentList}/>
+                    <Tools 
+                        visibleDelBtn={this.visibleDelBtn} 
+                        onShowModalWindowAdd={this.onShowModalWindowAdd}/>
+                </div>
                 <StudentsList 
                         studentsList={this.state.studentsListInArchive.slice(this.state.activePage*10-10,this.state.activePage*10)}
                         buttons={[{null: ""}]}

@@ -33,8 +33,12 @@ export default class RatingTable extends Component{
             // Итоговая оценка
             average_mark: this.props.ratingTableData.average_mark,
 
-            editTablerating: true
+            editTablerating: true,
+
+            date: new Date()
         }
+
+
     }
 
     // Редактирование рейтинговой таблицы студента
@@ -256,7 +260,7 @@ export default class RatingTable extends Component{
                 <div className = "rating-table">
                     <div className = "rating-header">
                         <p className = "rating-header__label">{SecondName + " " + FirstName + " " + Patronymic}</p>                        
-                        <p className = "rating-header__label">{ new Date().getDay() + " " + new Date().getMonth() + " " + new Date().getFullYear() }</p>
+                        <p className = "rating-header__label">{ this.state.date.getDate() + " " + (this.state.date.getMonth() + 1) + " " + this.state.date.getFullYear() }</p>
                         <div className = "rating-buttons">
                             <i className = "fa fa-print"></i>
                             <i className = "fa fa-edit" onClick={this.editRatingTable}></i>
