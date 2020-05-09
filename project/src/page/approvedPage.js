@@ -62,6 +62,26 @@ class ApprovedPage extends Component{
         this.setState({activePage: pageNumber});
     };
 
+    // Сортировка по имени (доделать)
+    onSortNameStudentList = () => {
+        // API
+    };
+
+    // Сортировка по дате (доделать)
+    onSortDataStudentList = () => {
+        // API
+    };
+
+    // Добавить студента в категорию "архив"
+    transferStudentCategoryArchive = (id) => {
+        console.log("Студент переведен в Архив " + id)
+    };
+
+    // Добавить студента в категорию "на практику"
+    transferStudentCategoryPractic = (id) => {
+        console.log("Студент переведен в категорию На практику " + id)
+    };
+
     render(){
         return (
             <React.Fragment>
@@ -69,14 +89,16 @@ class ApprovedPage extends Component{
                     <Search />
                 </div>
                 <div className="app-filter">
-                        <Filter />
-                        <Tools 
-                            visibleDelBtn={this.visibleDelBtn} 
-                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
-                    </div>
+                    <Filter 
+                        onSortStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}/>
+                    <Tools 
+                        visibleDelBtn={this.visibleDelBtn} 
+                        onShowModalWindowAdd={this.onShowModalWindowAdd}/>
+                </div>
                 <StudentsList 
                         studentsList={this.state.studentsListApproved.slice(this.state.activePage*10-10,this.state.activePage*10)}
-                        buttons={[{icon: "fa-arrow-left", label: "В архив"}, {icon: "fa-check-circle", label: "На практику"}]}
+                        buttons={[{icon: "fa-arrow-left", label: "В архив", change_category: this.transferStudentCategoryArchive}, {icon: "fa-check-circle", label: "На практику", change_category: this.transferStudentCategoryPractic}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}

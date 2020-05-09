@@ -63,6 +63,26 @@ class ApplicationsPage extends React.Component  {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
     }
+
+    // Сортировка по имени (доделать)
+    onSortNameStudentList = () => {
+        // API
+    };
+
+    // Сортировка по дате (доделать)
+    onSortDataStudentList = () => {
+        // API
+    };
+
+    // Добавить студента в категорию "одобренные заявки"
+    transferStudentCategoryApproved = (id) => {
+        console.log("Студент переведен в категорию Одобренные " + id)
+    };
+
+    // Добавить студента в категорию "отклоненные заявки"
+    transferStudentCategoryReject = (id) => {
+        console.log("Студент переведен в категорию Отклоненные" + id)
+    };
     
     render() {  
         return (
@@ -71,14 +91,16 @@ class ApplicationsPage extends React.Component  {
                     <Search />
                 </div>
                 <div className="app-filter">
-                    <Filter />
+                    <Filter 
+                        onSortStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}/>
                     <Tools 
                         visibleDelBtn={this.visibleDelBtn} 
                         onShowModalWindowAdd={this.onShowModalWindowAdd}/>
                 </div>
                 <StudentsList 
                         studentsList={this.state.studentsListRequest.slice(this.state.activePage*10-10,this.state.activePage*10)} 
-                        buttons={[{icon: "fa-check-circle", label: 'Принять'}, {icon: "fa-ban", label: 'Отклонить'}]}
+                        buttons={[{icon: "fa-check-circle", label: 'Принять', change_category: this.transferStudentCategoryApproved}, {icon: "fa-ban", label: 'Отклонить', change_category: this.transferStudentCategoryReject}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}

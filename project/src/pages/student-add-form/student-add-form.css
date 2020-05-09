@@ -5,6 +5,11 @@ input.from-our__item::-webkit-input-placeholder {
     font-weight: bold;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 /*                      */
 
 .student-add-form {
@@ -29,6 +34,8 @@ input.from-our__item::-webkit-input-placeholder {
 .student-add-form__title {
     font-size: 25px;
     font-weight: bold;
+    color: black;
+    margin-top: 0;
 }
 
 .student-container {
@@ -54,7 +61,13 @@ input.from-our__item::-webkit-input-placeholder {
     display: block;
     width: 100%;
     margin-bottom: 15px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
     text-align: center;
+    font-size: 16px;
+    border: 1px solid #bbb5b5;
 }
 
 .from-our__item:last-child {
@@ -90,10 +103,13 @@ input.from-our__item::-webkit-input-placeholder {
 
 .from-practic {
     margin-top: 40px;
+    width: 340px;
 }
 
 .from-practic__title {
     font-weight: bold;
+    color: black;
+    font-size: 20px;
 }
 
 .from-practic__date {
@@ -108,6 +124,11 @@ input.from-our__item::-webkit-input-placeholder {
     align-items: center;
     margin-bottom: 10px;
 }
+
+.from-practic__checkbox > i {
+    color: gray;
+}
+
 
 .from-practic__checkbox:last-child {
     margin-bottom: 0;
@@ -125,12 +146,19 @@ input.from-our__item::-webkit-input-placeholder {
 }
 
 .from-practic__item {
-    text-align: center;
+    display: block;
     width: 165px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #bbb5b5;
 }
 
 .from-practic__title_bottom {
-    margin-top: 30px;
+    margin-top: 30px!important;
     margin-left: 30px;
     padding-bottom: 10px;
 }
@@ -157,11 +185,12 @@ input.from-our__item::-webkit-input-placeholder {
     padding-left: 5px;
     font-weight: bold;
     font-size: 18px;
+    color: black;
 }
 
 .student-container__our-btn {
     padding-top: 15px;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     text-align: center;
 }
 
@@ -173,16 +202,43 @@ input.from-our__item::-webkit-input-placeholder {
     width: 100px;
     font-weight: bold;
     border: 1px solid gray;
+    height: 30px;
+    border-radius: 4px;
 }
 
 .student-container__btn:nth-child(1) {
     margin-right: 50px;
 }
 
-.content {
-    /* position: fixed;
-    top: 35px;
-    left: 0;
-    right: 0;
-    bottom: 0;   */
+.from-practic__label {
+    font-size: 16px;
+    color: black;
 }
+
+.from-practic__checkbox_bottom-first > i {
+    margin-left: 4px;
+}
+
+
+
+/* .default-placeholder {
+    width: 165px;
+    height: 30px;
+    border: 1px solid #bbb5b5;
+    outline: none;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    min-width: auto;
+    padding: 0;
+}
+
+.default-placeholder .text {
+    text-align: center;
+    min-width: auto;
+}
+
+.icon {
+    margin-left: 0;
+    left: -6px;
+} */

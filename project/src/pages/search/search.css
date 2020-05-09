@@ -64,3 +64,28 @@ input::-webkit-input-placeholder { color: #cacaca; }
 .icon {
     right: -10px;
 }
+
+.calendar.visible {
+    z-index: 999999;
+    display: block;
+}
+
+.calendar-hooks {
+    background: gray;
+}
+
+.hook {
+    border: 1px solid gray;
+}
+
+.default-placeholder .icon .date-dots .dot {
+    background: gray;
+}
+
+.default-placeholder .icon .calendar-hooks .hook {
+    border: 1px solid gray;
+}
+
+.default-placeholder .icon {
+    border: 1px solid gray;
+}

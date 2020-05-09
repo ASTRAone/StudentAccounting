@@ -101,7 +101,7 @@ export default class StudentsList extends Component {
         this.setState({
             modalDeleteWindow: true
         });
-    }
+    };
 
     render() {
         
@@ -109,6 +109,7 @@ export default class StudentsList extends Component {
             return (
                 <li className="list-element-block" key={ item.id }>
                     <StudentsListElement 
+                            idCard={item.id}
                             {  ...item } 
                             buttons={this.props.buttons} 
                             idx={index}

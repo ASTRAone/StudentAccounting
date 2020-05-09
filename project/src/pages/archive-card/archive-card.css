@@ -322,7 +322,7 @@
     overflow: initial;
 } */
 
-.card-our {
+.card-our-archive {
     width: 600px;
     margin: 0 auto;
     justify-content: flex-end;
@@ -330,7 +330,7 @@
     padding-bottom: 20px;
 }
 
-.card-our > button { 
+.card-our-archive > button { 
     width: 100px;
     background: #007bff;
     border: 1px solid gray;
@@ -349,10 +349,5 @@
 }
 
 .container-archive-card {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
+    margin-top: 270px;
 }

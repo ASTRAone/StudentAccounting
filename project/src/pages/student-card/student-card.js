@@ -37,14 +37,9 @@ export default class StudentCard extends Component {
         return(
             <Modal 
                 open={studentCardModal}
-                className="modal-container"
                 centered>
-                    <Modal.Content
-                        scrolling>
+                    <Modal.Content>
                         {updateCarDContent()}
-                        <div>
-                            Text Modal card
-                        </div>
                     </Modal.Content>
             </Modal>
         );

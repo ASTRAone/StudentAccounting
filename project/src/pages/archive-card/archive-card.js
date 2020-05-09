@@ -138,8 +138,8 @@ export default class ArchiveCard extends Component {
                                 value={this.state.comment}>
                             </textarea>
                         </div>
-                        <div className="card-our">
-                            <button className="btn card-our__btn" onClick={onHideModalStudentCardModal}>Закрыть</button>
+                        <div className="card-our-archive">
+                            <button className="btn card-our-archive__btn" onClick={onHideModalStudentCardModal}>Закрыть</button>
                         </div>
                     </div>     
                     <RatingTableArchive

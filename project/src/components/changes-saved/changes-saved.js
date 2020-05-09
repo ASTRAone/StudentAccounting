@@ -6,7 +6,8 @@ import './changes-saved.css';
 const ChangesSaved = ({ visibleChangesSaved, bringСhanges }) => {
     return (
         <Modal
-            open={visibleChangesSaved}>
+            open={visibleChangesSaved}
+            basic>
             <Modal.Content>
                 <div className="accept-application">
                     <div className="accept-application__i">

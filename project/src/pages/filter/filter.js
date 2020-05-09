@@ -6,19 +6,21 @@ export default class Filter extends Component {
     render() {
 
 
-        const { onSortStudentList } = this.props;
+        const { onSortNameStudentList, onSortDataStudentList } = this.props;
 
         return (
             <div className="filter">
                 <p className="filter-text">Сортировать :</p>
                 <div className="filter-items">
-                    <button className="filter-btn btn btn-primary">
-                        Дата
+                    <button 
+                        className="filter-btn btn btn-primary"
+                        onClick={onSortDataStudentList}>
+                            Дата
                         <span>&#9660;</span>
                     </button>
                     <button 
                         className="filter-btn btn btn-primary"
-                        onClick={onSortStudentList}>
+                        onClick={onSortNameStudentList}>
                             Имя
                         <span>&#9660;</span>
                     </button>

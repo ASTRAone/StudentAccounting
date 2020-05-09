@@ -260,7 +260,7 @@ export default class RatingTable extends Component{
                 <div className = "rating-table">
                     <div className = "rating-header">
                         <p className = "rating-header__label">{SecondName + " " + FirstName + " " + Patronymic}</p>                        
-                        <p className = "rating-header__label">{ this.state.date.getDate() + " " + (this.state.date.getMonth() + 1) + " " + this.state.date.getFullYear() }</p>
+                        <p className = "rating-header__label">{ this.state.date.getDate() + "/" + (this.state.date.getMonth() + 1) + "/" + this.state.date.getFullYear() }</p>
                         <div className = "rating-buttons">
                             <i className = "fa fa-print"></i>
                             <i className = "fa fa-edit" onClick={this.editRatingTable}></i>
@@ -469,8 +469,8 @@ export default class RatingTable extends Component{
                         </div>
                     </div>
                     <div className = "rating-table-buttons">
-                        <button className = "rating-table-buttons__button" onClick={this.discardСhangeRatingTable}>Отменить</button>
-                        <button className = "rating-table-buttons__button" onClick={this.onSaveChange}>Сохранить</button>
+                        <button className = "btn rating-table-buttons__button" onClick={this.discardСhangeRatingTable}>Отменить</button>
+                        <button className = "btn rating-table-buttons__button" onClick={this.onSaveChange}>Сохранить</button>
                     </div>
                 </div>
             </Modal>

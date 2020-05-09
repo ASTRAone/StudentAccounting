@@ -3,6 +3,7 @@
     border: 1px rgb(204, 204, 204) solid;
     width: 800px;
     background: white;
+    padding-top: 300px;
 }
 
 .rating-header{
@@ -57,6 +58,8 @@
     font-size: 15px;
     padding-left: 1%;
     color: rgb(75, 75, 75);
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .rating-table-block__span{
@@ -72,6 +75,7 @@
     font-size: 15px;
     padding-left: 1%;
     color: rgb(75, 75, 75);
+    padding-top: 5px;
 }
 
 .rating-table-block__comment-cell{
@@ -81,6 +85,7 @@
     font-size: 15px;
     padding-left: 1%;
     color: rgb(75, 75, 75);
+    padding-top: 5px;
 }
 
 .rating-table-block__text{
@@ -124,6 +129,8 @@
     outline: none;
     color: white;
     width: 100px;
+    height: 30px;
+    border-radius: 3px;
 }
 
 .rating-table-buttons__button :hover{

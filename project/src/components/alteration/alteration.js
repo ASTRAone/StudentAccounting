@@ -6,7 +6,8 @@ import './alteration.css';
 const Alteration = ({ visibleAlteration, onCloseAlteration, onSaveChange }) => {
     return (
         <Modal
-            open={visibleAlteration}>
+            open={visibleAlteration}
+            basic>
             <Modal.Content>
                 <div className="accept-application">
                     <div className="accept-application__i">

@@ -6,11 +6,11 @@
     padding-left: 15px;
     padding-right: 15px;
     box-sizing: border-box;
-    position: fixed;
-    top: 50%;
+    /* position: fixed;
+    top: 50%; */
     background: white;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
 }
 
 .accept-application__i {
@@ -77,3 +77,6 @@
     display: block;
 }
 
+.scrolling.dimmable > .dimmer {
+    justify-content: center;
+}

@@ -345,27 +345,31 @@
     margin-left: 0;
 }
 
-.student-card__our-btn > button {
+.student-card-reject__our-btn { 
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.student-card-reject__our-btn > button {
     background: #007bff;
     margin-right: 60px;
-    width: 100px;
+    width: 130px;
     font-size: 20px;
     font-weight: bold;
     color: white;
     height: 40px;
+    cursor: pointer;
 }
 
-.student-card__our-btn > button:last-child {
+.student-card-reject__our-btn > button:last-child {
     margin-right: 0;
 }
 
-.student-card__our-btn.none {
+.student-card-reject__our-btn.none {
     display: none;
-}
-
-.container-reject-card {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 20%;
 }

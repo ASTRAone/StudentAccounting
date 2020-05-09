@@ -148,7 +148,7 @@ export default class NewCard extends Component {
         let card__info_text = "card__info-text";
         let label = "label";
         let our_input = "our-input";
-        let student_card__our_btn = "student-card__our-btn"
+        let student_card__our_btn = "student-card-new__our-btn"
 
         let card__student_contact = "card__student-contact";
 
@@ -160,7 +160,7 @@ export default class NewCard extends Component {
         if (this.state.visibleEditCard === false) {
             our_input = "our-input none";
             label = "label none";
-            student_card__our_btn = "student-card__our-btn none"
+            student_card__our_btn = "student-card-new__our-btn none"
         }
 
         if (studentCardModal === true) {

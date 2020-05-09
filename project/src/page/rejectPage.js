@@ -62,6 +62,21 @@ class RejectPage extends Component {
         this.setState({activePage: pageNumber});
     };
 
+    // Сортировка по имени (доделать)
+    onSortNameStudentList = () => {
+        // API
+    };
+
+    // Сортировка по дате (доделать)
+    onSortDataStudentList = () => {
+        // API
+    };
+
+    // Добавить студента в категорию "на практику"
+    transferStudentCategoryPractic = (id) => {
+        console.log("Студент переведен на практику " + id)
+    };
+
     render () {
         return (
             <React.Fragment>
@@ -69,14 +84,16 @@ class RejectPage extends Component {
                     <Search />
                 </div>
                 <div className="app-filter">
-                        <Filter />
-                        <Tools 
-                            visibleDelBtn={this.visibleDelBtn} 
-                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
-                    </div>
+                    <Filter 
+                        onSortStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}/>
+                    <Tools 
+                        visibleDelBtn={this.visibleDelBtn} 
+                        onShowModalWindowAdd={this.onShowModalWindowAdd}/>
+                </div>
                 <StudentsList 
                         studentsList={this.state.studentsListRejected.slice(this.state.activePage*10-10,this.state.activePage*10)}
-                        buttons={[{icon: "fa-check-circle", label: "На практику"}]}
+                        buttons={[{icon: "fa-check-circle", label: "На практику", change_category: this.transferStudentCategoryPractic}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}

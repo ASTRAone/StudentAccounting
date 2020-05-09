@@ -90,16 +90,14 @@ class AchivePage extends Component {
         this.setState({activePage: pageNumber});
     }
 
-    // Сортировка по дате
-
-
     // Сортировка по имени (доделать)
-    onSortStudentList = () => {
-        let newSortStudentList = this.state.studentsListInArchive.sort((a, b) => a.FirstName < b.FirstName ? 1 : 1);
+    onSortNameStudentList = () => {
+        // API
+    };
 
-        this.setState({
-            studentsListInArchive: newSortStudentList
-        });
+    // Сортировка по дате (доделать)
+    onSortDataStudentList = () => {
+        // API
     };
      
     render() {
@@ -110,7 +108,8 @@ class AchivePage extends Component {
                 </div>
                 <div className="app-filter">
                     <Filter 
-                        onSortStudentList={this.onSortStudentList}/>
+                        onSortStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}/>
                     <Tools 
                         visibleDelBtn={this.visibleDelBtn} 
                         onShowModalWindowAdd={this.onShowModalWindowAdd}/>

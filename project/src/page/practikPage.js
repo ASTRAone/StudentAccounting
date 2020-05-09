@@ -62,6 +62,21 @@ class PractikPage extends Component {
         this.setState({activePage: pageNumber});
     };
 
+    // Сортировка по имени (доделать)
+    onSortNameStudentList = () => {
+        // API
+    };
+
+    // Сортировка по дате (доделать)
+    onSortDataStudentList = () => {
+        // API
+    };
+
+    // Добавить студента в категорию "архив"
+    transferStudentCategoryArchive = (id) => {
+        console.log("Студент переведен в Архив " + id)
+    };
+
     render() {
         return (
             <React.Fragment>
@@ -69,14 +84,16 @@ class PractikPage extends Component {
                     <Search />
                 </div>
                 <div className="app-filter">
-                        <Filter />
-                        <Tools  
-                            visibleDelBtn={this.visibleDelBtn} 
-                            onShowModalWindowAdd={this.onShowModalWindowAdd}/>
-                    </div>
+                    <Filter 
+                        onSortStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}/>
+                    <Tools  
+                        visibleDelBtn={this.visibleDelBtn} 
+                        onShowModalWindowAdd={this.onShowModalWindowAdd}/>
+                </div>
                 <StudentsList 
                         studentsList={this.state.studentsListOnPractice.slice(this.state.activePage*10-10,this.state.activePage*10)}
-                        buttons={[{icon: "fa-arrow-left", label: "В архив"}]}
+                        buttons={[{icon: "fa-arrow-left", label: "В архив", change_category: this.transferStudentCategoryArchive}]}
                         visibleDelBtn={this.state.visibleDelBtn}
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}

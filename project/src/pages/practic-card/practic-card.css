@@ -333,7 +333,7 @@
 }
 
 .card-our_practic > button { 
-    width: 100px;
+    width: 110px;
     background: #007bff;
     border: 1px solid gray;
     cursor: pointer;
@@ -371,11 +371,6 @@
 }
 
 .container-practic-card {
-    /* position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll; */
+    margin-top: 270px;
 }
 

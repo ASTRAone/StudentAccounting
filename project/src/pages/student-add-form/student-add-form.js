@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Header, Image, Modal, Icon  } from 'semantic-ui-react'
+
+import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
+import InputMask from 'react-input-mask';
+
 
 import img from '../img/noavatar.png';
 
@@ -80,13 +83,13 @@ export default class StudentAddForm extends Component {
 
     practiceBeginChange(event) {
         this.setState({
-            PractiesBegining: event.target.value
+            PractiesBegining: event
         }); 
     };
 
     practiceEndChange(event) {
         this.setState({
-            PractiesEnding: event.target.value
+            PractiesEnding: event
         }); 
     };
 
@@ -139,9 +142,28 @@ export default class StudentAddForm extends Component {
         this.props.onHideModalWindowAdd();
     }
 
+    // Отмена добавления студента
+    cancelAddStudent = () => {
+        this.setState({
+            SecondName: "",
+            FirstName: "",
+            Patronymic: "",
+            Email: "",
+            Phone: "",
+            College: "",
+            Faculty: "",
+            PractiesBegining: "",
+            PractiesEnding: "",
+            Speciality: {}
+        });
+
+        this.props.onHideModalWindowAdd();
+    };
+
+
     render() {
         
-        const {studentAddModal, onHideModalWindowAdd} = this.props;
+        const {studentAddModal } = this.props;
 
         return (
             <Modal 
@@ -248,41 +270,47 @@ export default class StudentAddForm extends Component {
                                     <h4 className="from-practic__title">Предполагаемые сроки практики*</h4>
                                     <div className="from-practic__date">
                                         <div className="from-practic__checkbox">
-                                            <label htmlFor="pract-begin">с</label>
-                                            <i className="fa fa-calendar"></i>
-                                            <input type="text" id="pract-begin" 
-                                            className="from-practic__item datepicker-here" 
-                                            value={this.state.PractiesBegining}
-                                            onChange={this.practiceBeginChange}/>                         
+                                            <label className="from-practic__label" htmlFor="pract-begin">с</label>
+                                            
+                                            {/* <Datetime  
+                                                id="pract-begin" 
+                                                className="from-practic__item"
+                                                placeholderText="Выбрать..." 
+                                                value={this.state.PractiesBegining}
+                                                onChange={this.practiceBeginChange}/>                          */}
                                         </div>
                                         <div className="from-practic__checkbox">
-                                            <label htmlFor="pract-end">по</label>
-                                            <i className="fa fa-calendar"></i>
-                                            <input type="text" 
-                                            id="pract-end" 
-                                            className="from-practic__item datepicker-here" 
-                                            value={this.state.PractiesEnding}
-                                            onChange={this.practiceEndChange}/>                         
+                                            <label className="from-practic__label" htmlFor="pract-end">по</label>
+                                            
+                                            {/* <Datetime  
+                                                id="pract-end" 
+                                                className="from-practic__item" 
+                                                placeholderText="Выбрать..."
+                                                value={this.state.PractiesEnding}
+                                                onChange={this.practiceEndChange}/>                          */}
                                         </div>
                                     </div>
                                     <div className="from-practic__date from-practic__communication">
                                         <h4 className="from-practic__title from-practic__title_bottom">Данные связи*</h4>
-                                        <div className="from-practic__checkbox_bottom">
+                                        <div className="from-practic__checkbox_bottom from-practic__checkbox_bottom-first">
                                             <i className="fa fa-mobile"></i>
-                                            <input type="number" 
-                                            id="phone-input" 
-                                            className="from-practic__item" 
-                                            value={this.state.Phone}
-                                            onChange={this.phoneChange}
-                                            />                         
+                                            <InputMask 
+                                                type="tel"
+                                                id="phone-input" 
+                                                className="from-practic__item" 
+                                                mask="+7\ (999) 999-99-99" 
+                                                maskChar=" "
+                                                value={this.state.Phone}
+                                                onChange={this.phoneChange}/>                         
                                         </div>
                                         <div className="from-practic__checkbox_bottom">  
                                             <i className="from-practic_bottom-i fa fa-envelope"></i>  
-                                            <input type="email" 
-                                            id="email-input" 
-                                            className="from-practic__item" 
-                                            value={this.state.Email}
-                                            onChange={this.emailChange}/>                         
+                                            <input 
+                                                type="email" 
+                                                id="email-input" 
+                                                className="from-practic__item" 
+                                                value={this.state.Email}
+                                                onChange={this.emailChange}/>                         
                                         </div>
                                     </div>
                                 </div>
@@ -291,7 +319,7 @@ export default class StudentAddForm extends Component {
                         </div>   
                         <Modal.Actions>
                             <div className="student-container__our-btn"> 
-                                <button className="btn student-container__btn" onClick={onHideModalWindowAdd}>Отмена</button>
+                                <button className="btn student-container__btn" onClick={this.cancelAddStudent}>Отмена</button>
                                 <button className="btn student-container__btn" onClick={this.addNewStudent}>Добавить</button>
                             </div>
                         </Modal.Actions>

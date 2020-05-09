@@ -166,12 +166,12 @@ export default class RejectCard extends Component {
 
         let our_input = "our-input";
         let card__student_contact = "card__student-contact";
-        let student_card__our_btn = "student-card__our-btn";
+        let student_card__our_btn = "student-card-reject__our-btn";
         let card__info_text = "card__info-text";
 
         if (this.state.visibleEditCard === false) {
             our_input = "our-input none";
-            student_card__our_btn = "student-card__our-btn none";
+            student_card__our_btn = "student-card-reject__our-btn none";
         }
 
         if (this.state.visibleEditCard === true) {
