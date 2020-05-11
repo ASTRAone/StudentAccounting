@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
-
+import Datetime from 'react-date-picker';
 
 import img from '../img/noavatar.png';
 
@@ -145,6 +145,7 @@ export default class StudentAddForm extends Component {
     // Отмена добавления студента
     cancelAddStudent = () => {
         this.setState({
+            profilePic: "",
             SecondName: "",
             FirstName: "",
             Patronymic: "",
@@ -272,22 +273,22 @@ export default class StudentAddForm extends Component {
                                         <div className="from-practic__checkbox">
                                             <label className="from-practic__label" htmlFor="pract-begin">с</label>
                                             
-                                            {/* <Datetime  
+                                            { <Datetime  
                                                 id="pract-begin" 
                                                 className="from-practic__item"
                                                 placeholderText="Выбрать..." 
                                                 value={this.state.PractiesBegining}
-                                                onChange={this.practiceBeginChange}/>                          */}
+                                                onChange={this.practiceBeginChange}/>                          }
                                         </div>
                                         <div className="from-practic__checkbox">
                                             <label className="from-practic__label" htmlFor="pract-end">по</label>
                                             
-                                            {/* <Datetime  
+                                            {<Datetime  
                                                 id="pract-end" 
                                                 className="from-practic__item" 
                                                 placeholderText="Выбрать..."
                                                 value={this.state.PractiesEnding}
-                                                onChange={this.practiceEndChange}/>                          */}
+                                                onChange={this.practiceEndChange}/>                          }
                                         </div>
                                     </div>
                                     <div className="from-practic__date from-practic__communication">

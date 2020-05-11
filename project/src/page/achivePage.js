@@ -4,7 +4,6 @@ import {getStudentsListRequest} from '../_actions/applications';
 import Pagination from 'react-js-pagination';
 
 import StudentsList from '../pages/students-list';
-import PageNumbers from '../pages/page-numbers';
 import Search from '../pages/search';
 import Filter from '../pages/filter';
 import Tools from '../pages/tools';

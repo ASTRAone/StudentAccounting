@@ -14,7 +14,7 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { idx, date, SecondName, idCard,
+        const { idx, date, profilePic, SecondName, idCard,
                 FirstName, Patronymic, Speciality, 
                 College, Faculty, PractiesBegining, 
                 PractiesEnding, Phone, Email, buttons, 
