@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
+import StarRatings from 'react-star-ratings';
 
 import RatingTableArchive from '../rating-table-archive';
 
@@ -27,6 +28,7 @@ export default class ArchiveCard extends Component {
             Speciality: this.props.dataList.studentModalCardData.Speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
+            starRatings: this.props.dataList.studentModalCardData.starRatings,
 
             visibleRatingTable: false,
         }
@@ -105,20 +107,11 @@ export default class ArchiveCard extends Component {
                                 <p className = "card__main-rating-label">Общая оценка за практику</p>
                                 <div className = "stars">
                                     <div id="reviewStars-input">
-                                        <input id="star-4" type="radio" name="reviewStars"/>
-                                        <label title="отлично" htmlFor="star-4"></label>
-
-                                        <input id="star-3" type="radio" name="reviewStars"/>
-                                        <label title="хорошо" htmlFor="star-3"></label>
-
-                                        <input id="star-2" type="radio" name="reviewStars"/>
-                                        <label title="удовлетворительно" htmlFor="star-2"></label>
-
-                                        <input id="star-1" type="radio" name="reviewStars"/>
-                                        <label title="неудовлетворительно" htmlFor="star-1"></label>
-
-                                        <input id="star-0" type="radio" name="reviewStars"/>
-                                        <label title="плохо" htmlFor="star-0"></label>
+                                    <StarRatings 
+                                            rating={this.state.starRatings}
+                                            starRatedColor="gold"
+                                            numberOfStars={5}
+                                            name='rating'/>
                                     </div>
                                 </div>
                             </div>

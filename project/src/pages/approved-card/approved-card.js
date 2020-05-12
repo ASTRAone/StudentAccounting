@@ -36,24 +36,6 @@ export default class ApprovedCard extends Component {
         }
     }
 
-    // // Закрыть карточку студента-практиканта
-    // onHideCardStudent = () => {
-    //     this.setState({
-    //         SecondName: this.props.dataList.studentModalCardData.SecondName,
-    //         FirstName: this.props.dataList.studentModalCardData.FirstName,
-    //         Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-    //         Email: this.props.dataList.studentModalCardData.Email,
-    //         Phone: this.props.dataList.studentModalCardData.Phone,
-    //         College: this.props.dataList.studentModalCardData.College,
-    //         Faculty: this.props.dataList.studentModalCardData.Faculty,
-    //         PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-    //         PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-    //         Speciality: this.props.dataList.studentModalCardData.Speciality,
-    //     });
-
-    //     this.props.dataList.onHideModalStudentCardModal();
-    // };
-
     // Разрешить редактирование
     visibleEditCardStudent = () => {
         this.setState({
@@ -258,6 +240,7 @@ export default class ApprovedCard extends Component {
                                         className="card__info-text_input"
                                         value={this.state.PractiesBegining}
                                         onChange={this.editDataPractiesBegining}/>
+                                    <label>-</label>
                                     <Input 
                                         type="email"
                                         className="card__info-text_input"

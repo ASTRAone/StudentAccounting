@@ -20,6 +20,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -57,6 +58,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -95,6 +97,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -133,6 +136,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -171,6 +175,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -209,6 +214,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -248,6 +254,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -286,6 +293,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -324,6 +332,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -362,6 +371,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -400,6 +410,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -438,6 +449,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -476,6 +488,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -514,6 +527,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -553,6 +567,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -591,6 +606,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -629,6 +645,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -667,6 +684,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -705,6 +723,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -743,6 +762,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -781,6 +801,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -819,6 +840,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -858,6 +880,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -896,6 +919,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -934,6 +958,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -972,6 +997,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1010,6 +1036,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1048,6 +1075,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1086,6 +1114,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1124,6 +1153,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1163,6 +1193,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1201,6 +1232,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1239,6 +1271,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1276,6 +1309,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1314,6 +1348,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1352,6 +1387,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1390,6 +1426,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1428,6 +1465,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1467,6 +1505,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1505,6 +1544,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1543,6 +1583,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1581,6 +1622,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1619,6 +1661,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1657,6 +1700,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1695,6 +1739,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1733,6 +1778,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1772,6 +1818,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1810,6 +1857,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1848,6 +1896,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1886,6 +1935,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1924,6 +1974,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1962,6 +2013,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2000,6 +2052,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2038,6 +2091,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2077,6 +2131,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2115,6 +2170,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2153,6 +2209,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2191,6 +2248,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2229,6 +2287,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2267,6 +2326,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2305,6 +2365,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2343,6 +2404,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2382,6 +2444,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2420,6 +2483,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2458,6 +2522,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2496,6 +2561,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2534,6 +2600,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2572,6 +2639,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2610,6 +2678,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2648,6 +2717,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2687,6 +2757,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2725,6 +2796,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2763,6 +2835,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2801,6 +2874,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2839,6 +2913,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2877,6 +2952,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2915,6 +2991,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2953,6 +3030,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2992,6 +3070,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3030,6 +3109,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3068,6 +3148,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3106,6 +3187,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3144,6 +3226,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3182,6 +3265,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3220,6 +3304,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3258,6 +3343,7 @@ export const item = [
     onPractice: false,
     inArchive: false,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3297,6 +3383,7 @@ export const item = [
     onPractice: true,
     inArchive: false,
     comment: 'быстро и качественно выполняет задания',
+    starRatings: 0,
     ratingTable: {
         educability: 5,
         educability_comment: 'хорошо',
@@ -3335,6 +3422,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: 'за время практики проявил себя хорошо',
+    starRatings: 0,
     ratingTable: {
         educability: '5',
         educability_comment: '',
@@ -3373,6 +3461,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: 'за время практики проявил себя хорошо',
+    starRatings: 0,
     ratingTable: {
         educability: '4',
         educability_comment: '',
@@ -3411,6 +3500,7 @@ export const item = [
     onPractice: false,
     inArchive: true,
     comment: '',
+    starRatings: 0,
     ratingTable: {
         educability: '5',
         educability_comment: "замечаний нет",

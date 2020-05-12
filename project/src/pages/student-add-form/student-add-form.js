@@ -14,6 +14,7 @@ export default class StudentAddForm extends Component {
         super(props);
 
         this.state = {
+            profilePic: "",
             SecondName: "",
             FirstName: "",
             Patronymic: "",
@@ -139,8 +140,22 @@ export default class StudentAddForm extends Component {
     addNewStudent = () => {
         console.log(this.state);
 
+        this.setState({
+            profilePic: "",
+            SecondName: "",
+            FirstName: "",
+            Patronymic: "",
+            Email: "",
+            Phone: "",
+            College: "",
+            Faculty: "",
+            PractiesBegining: "",
+            PractiesEnding: "",
+            Speciality: {}
+        });
+
         this.props.onHideModalWindowAdd();
-    }
+    };
 
     // Отмена добавления студента
     cancelAddStudent = () => {
@@ -164,7 +179,7 @@ export default class StudentAddForm extends Component {
 
     render() {
         
-        const {studentAddModal } = this.props;
+        const { studentAddModal } = this.props;
 
         return (
             <Modal 

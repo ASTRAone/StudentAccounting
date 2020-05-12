@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
+import StarRatings from 'react-star-ratings';
 
 import RatingTable from '../rating-table';
 import Alteration from '../../components/alteration';
@@ -28,7 +29,8 @@ export default class PracicCard extends Component {
             Speciality: this.props.dataList.studentModalCardData.Speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
-    
+            starRatings: this.props.dataList.studentModalCardData.starRatings,
+
             visibleEditCard: false,
 
             visibleCuratorBtn: true,
@@ -118,6 +120,13 @@ export default class PracicCard extends Component {
         });
     };
 
+    // Изменить рейтинг
+    editRating = (e) => {
+        this.setState({
+            starRatings: e
+        });
+    };
+ 
     // Отмена изменений
     discardСhangeCard = () => {
         this.setState({
@@ -133,6 +142,8 @@ export default class PracicCard extends Component {
             Speciality: this.props.dataList.studentModalCardData.Speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
+            starRatings: this.props.dataList.studentModalCardData.starRatings,
+            
             visibleEditCard: false,
             visibleReadonly: true
         });
@@ -307,20 +318,13 @@ export default class PracicCard extends Component {
                                 <p className = "card__main-rating-label">Общая оценка за практику</p>
                                 <div className = "stars">
                                     <div id="reviewStars-input">
-                                        <input id="star-4" type="radio" name="reviewStars"/>
-                                        <label title="отлично" htmlFor="star-4"></label>
-
-                                        <input id="star-3" type="radio" name="reviewStars"/>
-                                        <label title="хорошо" htmlFor="star-3"></label>
-
-                                        <input id="star-2" type="radio" name="reviewStars"/>
-                                        <label title="удовлетворительно" htmlFor="star-2"></label>
-
-                                        <input id="star-1" type="radio" name="reviewStars"/>
-                                        <label title="неудовлетворительно" htmlFor="star-1"></label>
-
-                                        <input id="star-0" type="radio" name="reviewStars"/>
-                                        <label title="плохо" htmlFor="star-0"></label>
+                                        <StarRatings 
+                                            rating={this.state.starRatings}
+                                            starRatedColor="gold"
+                                            starHoverColor="red"
+                                            changeRating={this.editRating}
+                                            numberOfStars={5}
+                                            name='rating'/>
                                     </div>
                                 </div>
                             </div>
