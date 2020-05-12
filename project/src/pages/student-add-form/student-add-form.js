@@ -271,24 +271,22 @@ export default class StudentAddForm extends Component {
                                     <h4 className="from-practic__title">Предполагаемые сроки практики*</h4>
                                     <div className="from-practic__date">
                                         <div className="from-practic__checkbox">
-                                            <label className="from-practic__label" htmlFor="pract-begin">с</label>
-                                            
-                                            { <Datetime  
+                                            <label className="from-practic__label" htmlFor="pract-begin">с</label>                                
+                                            <Datetime  
                                                 id="pract-begin" 
                                                 className="from-practic__item"
                                                 placeholderText="Выбрать..." 
                                                 value={this.state.PractiesBegining}
-                                                onChange={this.practiceBeginChange}/>                          }
+                                                onChange={this.practiceBeginChange}/>                          
                                         </div>
                                         <div className="from-practic__checkbox">
                                             <label className="from-practic__label" htmlFor="pract-end">по</label>
-                                            
-                                            {<Datetime  
+                                            <Datetime  
                                                 id="pract-end" 
                                                 className="from-practic__item" 
                                                 placeholderText="Выбрать..."
                                                 value={this.state.PractiesEnding}
-                                                onChange={this.practiceEndChange}/>                          }
+                                                onChange={this.practiceEndChange}/>                          
                                         </div>
                                     </div>
                                     <div className="from-practic__date from-practic__communication">
