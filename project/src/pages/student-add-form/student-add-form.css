@@ -129,7 +129,6 @@ input::-webkit-inner-spin-button {
     color: gray;
 }
 
-
 .from-practic__checkbox:last-child {
     margin-bottom: 0;
 }
@@ -155,6 +154,28 @@ input::-webkit-inner-spin-button {
     text-align: center;
     font-size: 16px;
     border: 1px solid #bbb5b5;
+}
+
+.react-date-picker.react-date-picker--closed.react-date-picker--enabled.from-practic__item {
+    background: white;
+    color: black;
+    border: 1px solid #bbb5b5;
+}
+
+.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day {
+    background: white;
+}
+
+.react-date-picker__inputGroup__input.react-date-picker__inputGroup__month {
+    background: white;
+}
+
+.react-date-picker__inputGroup__input.react-date-picker__inputGroup__year {
+    background: white;
+}
+
+.react-date-picker__wrapper {
+    border: none;
 }
 
 .from-practic__title_bottom {
