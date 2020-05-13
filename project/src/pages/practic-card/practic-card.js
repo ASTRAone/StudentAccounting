@@ -321,7 +321,7 @@ export default class PracicCard extends Component {
                                         <StarRatings 
                                             rating={this.state.starRatings}
                                             starRatedColor="gold"
-                                            starHoverColor="red"
+                                            starHoverColor="blue"
                                             changeRating={this.editRating}
                                             numberOfStars={5}
                                             name='rating'/>

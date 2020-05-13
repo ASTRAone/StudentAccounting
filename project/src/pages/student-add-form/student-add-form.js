@@ -36,8 +36,7 @@ export default class StudentAddForm extends Component {
         this.facultyChange = this.facultyChange.bind(this);
         this.practiceBeginChange = this.practiceBeginChange.bind(this);
         this.practiceEndChange = this.practiceEndChange.bind(this);
-        this.specialityChange = this.specialityChange.bind(this);
-        
+        this.specialityChange = this.specialityChange.bind(this);   
     }
 
     firstNameChange(event) {
@@ -155,7 +154,6 @@ export default class StudentAddForm extends Component {
 
         this.props.onHideModalWindowAdd();
     };
-
 
     render() {
 
