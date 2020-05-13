@@ -94,43 +94,23 @@ export default class StudentAddForm extends Component {
         }); 
     };
 
+    // Изменение изображения при создании карточки студента
+    editImg = (e) => {
+
+        const file = e.target.files[0];
+                  const reader = new FileReader();
+
+                  reader.readAsDataURL(file);
+                  reader.onload = () => {
+                    // onChange(name, reader.result, file.name);
+
+                    this.setState({
+                        profilePic: reader.result
+                    });
+                  }
+    };
+
     specialityChange(event) {
-        // const ch1 = document.getElementById("check1");
-        // const ch2 = document.getElementById("check2");
-        // const ch3 = document.getElementById("check3");
-        // const ch4 = document.getElementById("check4");
-        // const ch5 = document.getElementById("check5");
-
-        // if(event.target.id === "check1"){
-        //     this.setState({
-        //         Speciality: "Backend"
-        //     });
-        // }
-
-        // if(event.target.id === "check2"){
-        //     this.setState({
-        //         Speciality: "Frontend"
-        //     });
-        // }
-
-        // if(event.target.id === "check3"){
-        //     this.setState({
-        //         Speciality: "Тестирование"
-        //     });
-        // }
-
-        // if(event.target.id === "check4"){
-        //     this.setState({
-        //         Speciality: "Системный анализ"
-        //     });
-        // }
-
-        // if(event.target.id === "check5"){
-        //     this.setState({
-        //         Speciality: "Системное администрирование"
-        //     });
-        // }
-
         this.setState({
             Speciality: {[event.target.name]:event.target.value}
         });         
@@ -178,6 +158,13 @@ export default class StudentAddForm extends Component {
 
 
     render() {
+
+        let path = '';
+
+        if (this.state.profilePic.length === 0) {
+            path = require("../img/noavatar.png");
+
+        }   else path = this.state.profilePic
         
         const { studentAddModal } = this.props;
 
@@ -187,7 +174,13 @@ export default class StudentAddForm extends Component {
                 <Modal.Content>
                     <form className="student-add-form">
                         <div className="student-add-form__header">
-                            <img src={ img } />
+                            <img 
+                                className="student-add-form__img"
+                                src={path}/>
+                            <input 
+                                type="file"
+                                className="student-input-file"
+                                onChange={this.editImg} />
                             <h3 className="student-add-form__title">Добавление студента</h3>
                         </div>  
                         <div className="student-container">
