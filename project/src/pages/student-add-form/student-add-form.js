@@ -97,16 +97,16 @@ export default class StudentAddForm extends Component {
     editImg = (e) => {
 
         const file = e.target.files[0];
-                  const reader = new FileReader();
+        const reader = new FileReader();
 
-                  reader.readAsDataURL(file);
-                  reader.onload = () => {
-                    // onChange(name, reader.result, file.name);
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+        // onChange(name, reader.result, file.name);
 
-                    this.setState({
-                        profilePic: reader.result
-                    });
-                  }
+            this.setState({
+                profilePic: reader.result
+            });
+        }
     };
 
     specialityChange(event) {
