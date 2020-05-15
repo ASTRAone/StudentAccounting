@@ -16,6 +16,4 @@ export default class StudentsApi {
         const res = await this.getResource(`/`);
         console.log(res);
     }
-
-    
 }

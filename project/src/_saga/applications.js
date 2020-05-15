@@ -2,11 +2,18 @@ import { takeLatest, put, call, delay } from "redux-saga/effects";
 import {getStudentsListRequest, successGetStudentsList} from "../_actions/applications";
 import {item} from "../_stab";
 
+import axios from 'axios';
+
 function* getStudentsList(api, action) {
     try {
         console.warn('[saga ===> getStudentsList ===> ]');
         //yield put(changeLoading(true));
-        //const apiRes = yield call(api.routes.getInitialStages, action.payload);
+
+        // Обращение к БД
+        // const apiRes = yield call(() => axios("http://umorili.herokuapp.com/api/get?site=bash.im&name=bash&num=100")
+        //                                         .then(response => (response.data)), 
+        // action.payload);
+        
         const stabStudentList = item
         yield put(successGetStudentsList(stabStudentList));
         //yield put(changeLoading(false));

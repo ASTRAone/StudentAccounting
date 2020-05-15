@@ -8,8 +8,8 @@ import achivePage from '../../page/achivePage';
 
 export default class StudentsListElement extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     render(){
@@ -27,6 +27,12 @@ export default class StudentsListElement extends Component {
         if (visibleDelBtn) {
             visibleBtnDel = "btn-close";
         }
+
+        console.log(profilePic)
+
+        // let path = require(`${profilePic}`);
+
+        // let path = require(`../ + ${profilePic}`);
         
         return(
             <React.Fragment>
@@ -42,7 +48,7 @@ export default class StudentsListElement extends Component {
                                 <p className = "list-element-date__value">{ date }</p>
                             </div>
                         </div>
-                        <img src = { noavatar } className = "list__profile-pic" />
+                        <img src = "{path}" className = "list__profile-pic" />
                         <p className = "list__name">{ SecondName + " " + FirstName + " " + Patronymic }</p>
                         <div className = "list__info">
                             <div className = "list__contacts__element">
