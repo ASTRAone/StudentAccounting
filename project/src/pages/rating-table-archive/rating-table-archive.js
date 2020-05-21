@@ -45,7 +45,7 @@ export default class RatingTableArchive extends Component {
                 <div className = "rating-table">
                     <div className = "rating-header">
                         <p className = "rating-header__label">{dataStudent.SecondName + " " + dataStudent.FirstName + " " + dataStudent.Patronymic}</p>                        
-                        <p className = "rating-header__label">{ new Date().getDay() + " " + new Date().getMonth() + " " + new Date().getFullYear() }</p>
+                        <p className = "rating-header__label">{ new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear() }</p>
                         <div className = "rating-buttons__our">
                             <i className = "fa fa-print"></i>
                             {/* <i className = "fa fa-edit" onClick={this.editRatingTable}></i> */}

@@ -21,7 +21,10 @@ class AchivePage extends Component {
             studentAddModal: false,
             studentCard: 'archive-card',
 
-            searchElements: ''
+            searchElements: '',
+
+            sortStatusDate: false,
+            sortStatusName: false
         }
     }
 
@@ -62,6 +65,28 @@ class AchivePage extends Component {
         document.body.style.overflowY = 'scroll';
     }
 
+    // Сортировка по имени (доделать)
+    onSortNameStudentList = () => {
+        // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusName: !prevState.sortStatusName
+            }
+        });
+    };
+
+    // Сортировка по дате (доделать)
+    onSortDataStudentList = () => {
+        // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusDate: !prevState.sortStatusDate
+            }
+        });
+    };
+
     searchName(items, name) {
 
         if (name.length === 0){
@@ -92,11 +117,23 @@ class AchivePage extends Component {
     // Сортировка по имени (доделать)
     onSortNameStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusName: !prevState.sortStatusName
+            }
+        });
     };
 
     // Сортировка по дате (доделать)
     onSortDataStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusDate: !prevState.sortStatusDate
+            }
+        });
     };
      
     render() {
@@ -107,8 +144,10 @@ class AchivePage extends Component {
                 </div>
                 <div className="app-filter">
                     <Filter 
-                        onSortStudentList={this.onSortNameStudentList}
-                        onSortDataStudentList={this.onSortDataStudentList}/>
+                        onSortNameStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}
+                        sortStatusDate={this.state.sortStatusDate}
+                        sortStatusName={this.state.sortStatusName}/>
                     <Tools 
                         visibleDelBtn={this.visibleDelBtn} 
                         onShowModalWindowAdd={this.onShowModalWindowAdd}/>

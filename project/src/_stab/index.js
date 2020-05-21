@@ -2,7 +2,7 @@
 
 export const item = [
     { id: 1, 
-    profilePic: '/pages/img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     date: '11.02.2019', 
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
@@ -21,6 +21,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -36,12 +37,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
-    } },
+        average_mark: '',
+        date: ''
+    } 
+},
 
     { id: 2, 
     date: '11.02.2019',
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -59,6 +62,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -74,13 +78,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
- },
+},
     
     { id: 3, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -98,6 +103,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -113,13 +119,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 4, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -137,6 +144,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -152,13 +160,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 5, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -176,6 +185,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -191,13 +201,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     } 
 },
 
     { id: 6, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -215,6 +226,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -230,13 +242,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 7, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -255,6 +268,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -270,13 +284,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 8, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -294,6 +309,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -309,13 +325,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 9, 
     date: '11.02.2019', 
-    profilePic: '../img/osminozhek.png',
+    profilePic: 'osminozhek.png',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -333,6 +350,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -348,13 +366,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 10, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -372,6 +391,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -387,13 +407,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
     
     { id: 11, 
     date: '11.02.2019',
-    profilePic: '../img/Manul.jpg', 
+    profilePic: 'Manul.jpg', 
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -411,6 +432,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -426,13 +448,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 12, 
     date: '11.02.2019',
-    profilePic: '../img/noavatar.png', 
+    profilePic: 'noavatar.png', 
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -450,6 +473,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -465,13 +489,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 13, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -489,6 +514,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -504,13 +530,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 14, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -528,6 +555,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -543,13 +571,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 15, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -568,6 +597,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -583,13 +613,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 16, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -607,6 +638,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -622,13 +654,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 17, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -646,6 +679,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -661,13 +695,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 18, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -685,6 +720,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -700,13 +736,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 19, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -724,6 +761,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -739,13 +777,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 20, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -763,6 +802,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -778,13 +818,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
     
     { id: 21, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -802,6 +843,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -817,13 +859,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 22, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -841,6 +884,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -856,13 +900,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 23, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -881,6 +926,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -896,13 +942,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 24, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -920,6 +967,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -935,13 +983,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
 
     { id: 25, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -959,6 +1008,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -974,13 +1024,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 26, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -998,6 +1049,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1013,13 +1065,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 27, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -1037,6 +1090,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1052,13 +1106,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 28, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1076,6 +1131,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1091,13 +1147,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 29, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1115,6 +1172,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1130,13 +1188,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 30, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1154,6 +1213,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1169,13 +1229,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 31, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1194,6 +1255,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1209,13 +1271,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 32, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1233,6 +1296,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1248,13 +1312,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 33, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1272,6 +1337,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1287,12 +1353,13 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     } },
 
     { id: 333, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -1310,6 +1377,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1325,13 +1393,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 34, 
     date: '11.02.2019',
-    profilePic: '../img/Manul.jpg', 
+    profilePic: 'Manul.jpg', 
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -1349,6 +1418,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1364,13 +1434,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 35, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1388,6 +1459,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1403,13 +1475,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
     
     { id: 36, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1427,6 +1500,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1442,13 +1516,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 37, 
     date: '11.02.2019',
-    profilePic: '../img/noavatar.png', 
+    profilePic: 'noavatar.png', 
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1466,6 +1541,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1481,13 +1557,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 38, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1506,6 +1583,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1521,13 +1599,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 39, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1545,6 +1624,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1560,13 +1640,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 40, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1584,6 +1665,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1599,13 +1681,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 41, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -1623,6 +1706,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1638,13 +1722,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 42, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -1662,6 +1747,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1677,13 +1763,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 43, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1701,6 +1788,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1716,13 +1804,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 44, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1740,6 +1829,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1755,13 +1845,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 45, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1779,6 +1870,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1794,13 +1886,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 46, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1819,6 +1912,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1834,13 +1928,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 47, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1858,6 +1953,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1873,13 +1969,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 48, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -1897,6 +1994,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1912,13 +2010,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 49, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -1936,6 +2035,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1951,13 +2051,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 50, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -1975,6 +2076,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -1990,13 +2092,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 51, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2014,6 +2117,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2029,13 +2133,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 52, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2053,6 +2158,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2068,13 +2174,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 53, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2092,6 +2199,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2107,13 +2215,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 54, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2132,6 +2241,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2147,13 +2257,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 55, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2171,6 +2282,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2186,13 +2298,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 56, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2210,6 +2323,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2225,13 +2339,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 57, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -2249,6 +2364,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2264,13 +2380,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 58, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -2288,6 +2405,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2303,13 +2421,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 59, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2327,6 +2446,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2342,13 +2462,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 60, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2366,6 +2487,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2381,13 +2503,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 61, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2405,6 +2528,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2420,13 +2544,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 62, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2445,6 +2570,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2460,13 +2586,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 63, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2484,6 +2611,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2499,13 +2627,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 64, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2523,6 +2652,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2538,13 +2668,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 65, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -2562,6 +2693,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2577,13 +2709,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 66, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -2601,6 +2734,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2616,13 +2750,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 67, 
     date: '11.02.2019',
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2640,6 +2775,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2655,13 +2791,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     },
 },
     
     { id: 68, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2679,6 +2816,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2694,13 +2832,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 69, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2718,6 +2857,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2733,13 +2873,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 70, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2758,6 +2899,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2773,13 +2915,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 71, 
     date: '11.02.2019', 
-    profilePic: '../img/Pic3.jpg',
+    profilePic: 'Pic3.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2797,6 +2940,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2812,13 +2956,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 72, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2836,6 +2981,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2851,13 +2997,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 73, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -2875,6 +3022,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2890,13 +3038,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 74, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -2914,6 +3063,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2929,13 +3079,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 75, 
     date: '11.02.2019',
-    profilePic: '../img/noavatar.png', 
+    profilePic: 'noavatar.png', 
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2953,6 +3104,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -2968,13 +3120,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
     
     { id: 76, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -2992,6 +3145,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3007,13 +3161,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 77, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3031,6 +3186,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3046,13 +3202,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
 
     { id: 78, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3071,6 +3228,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3086,13 +3244,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 79, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3110,6 +3269,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3125,13 +3285,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 80, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Иванов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3149,6 +3310,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3164,13 +3326,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 81, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Чижов', 
     FirstName: 'Владимир', 
     Patronymic: 'Иванович', 
@@ -3188,6 +3351,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3203,13 +3367,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 82, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Скворцов', 
     FirstName: 'Николай', 
     Patronymic: 'Иванович', 
@@ -3227,6 +3392,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3242,13 +3408,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 83, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3266,6 +3433,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3281,13 +3449,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
     
     { id: 84, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3305,6 +3474,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3320,13 +3490,14 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
  },
 
     { id: 85, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3344,6 +3515,7 @@ export const item = [
     inArchive: false,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '',
         educability_comment: '',
@@ -3359,15 +3531,16 @@ export const item = [
         relationship_comment: '',
         interest: '',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 86, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Савищенко', 
-    FirstName: 'Андрей', 
+    FirstName: 'Сергей', 
     Patronymic: 'Евгеньевич', 
     College: 'КГУ', 
     Faculty: 'ИАСТ', 
@@ -3384,6 +3557,7 @@ export const item = [
     inArchive: false,
     comment: 'быстро и качественно выполняет задания',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: 5,
         educability_comment: 'хорошо',
@@ -3399,13 +3573,14 @@ export const item = [
         relationship_comment: 'хорошо',
         interest: 5,
         interest_comment: 'хорошо',
-        average_mark: ''
+        average_mark: '',
+        date: null
     }
 },
 
     { id: 87, 
     date: '11.02.2019', 
-    profilePic: '../img/noavatar.png',
+    profilePic: 'noavatar.png',
     SecondName: 'Михайлов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3423,6 +3598,7 @@ export const item = [
     inArchive: true,
     comment: 'за время практики проявил себя хорошо',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '5',
         educability_comment: '',
@@ -3438,13 +3614,14 @@ export const item = [
         relationship_comment: '',
         interest: '3',
         interest_comment: 'больше стараться',
-        average_mark: ''
+        average_mark: '',
+        date: null
     }
 },
 
     { id: 88, 
     date: '11.02.2019', 
-    profilePic: '../img/Miku.jpg',
+    profilePic: 'Miku.jpg',
     SecondName: 'Сидоров', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3462,6 +3639,7 @@ export const item = [
     inArchive: true,
     comment: 'за время практики проявил себя хорошо',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '4',
         educability_comment: '',
@@ -3477,13 +3655,14 @@ export const item = [
         relationship_comment: '',
         interest: '5',
         interest_comment: '',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },
 
     { id: 89, 
     date: '11.02.2019', 
-    profilePic: '../img/Manul.jpg',
+    profilePic: 'Manul.jpg',
     SecondName: 'Архипов', 
     FirstName: 'Иван', 
     Patronymic: 'Иванович', 
@@ -3501,6 +3680,7 @@ export const item = [
     inArchive: true,
     comment: '',
     starRatings: 0,
+    Curator: '',
     ratingTable: {
         educability: '5',
         educability_comment: "замечаний нет",
@@ -3516,7 +3696,8 @@ export const item = [
         relationship_comment: 'замечаний нет',
         interest: '5',
         interest_comment: 'полностью участвет в жизни проекта',
-        average_mark: ''
+        average_mark: '',
+        date: ''
     }
 },   
 ];

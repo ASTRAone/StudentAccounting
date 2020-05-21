@@ -3,6 +3,7 @@ import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 import StarRatings from 'react-star-ratings';
 
 import RatingTableArchive from '../rating-table-archive';
+import CuratorCard from '../curator-card';
 
 
 import noavatar from "../img/noavatar.png";
@@ -16,6 +17,7 @@ export default class ArchiveCard extends Component {
         super(props);
 
         this.state = {
+            id: this.props.dataList.studentModalCardData.id,
             SecondName: this.props.dataList.studentModalCardData.SecondName,
             FirstName: this.props.dataList.studentModalCardData.FirstName,
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
@@ -29,8 +31,10 @@ export default class ArchiveCard extends Component {
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
             starRatings: this.props.dataList.studentModalCardData.starRatings,
+            Curator: this.props.dataList.studentModalCardData.Curator,
 
             visibleRatingTable: false,
+            visibleCuratorCard: false
         }
     }
 
@@ -45,6 +49,20 @@ export default class ArchiveCard extends Component {
     onHideRatingTable = () => {
         this.setState({
             visibleRatingTable: false
+        });
+    };
+
+    // Открыть карту куратора
+    onShowCuratorCard = () => {
+        this.setState({
+            visibleCuratorCard: true
+        });
+    };
+
+    // Закрыть карту куратора
+    onHideCuratorCard = () => {
+        this.setState({
+            visibleCuratorCard: false
         });
     };
     
@@ -68,7 +86,7 @@ export default class ArchiveCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {noavatar} className = "card__profile-pic" />
+                            <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = "card__contacts">
@@ -97,9 +115,9 @@ export default class ArchiveCard extends Component {
                                 </div>
                             </div>
                             <div className = "card__curator">
-                                <img src = {noavatarcurator} className = "card__profile-pic" />
+                                <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic" />
                                 <p className = "card__curator__action" onClick={this.onShowRatingTable}>Посмотреть компетенции студента</p>
-                                <p className = "card__curator__action-curator">Посмотреть информацию о наставнике</p>
+                                <p className = "card__curator__action-curator" onClick={this.onShowCuratorCard} >Посмотреть информацию о наставнике</p>
                             </div>
                         </div>
                         <div className = "card__rating  ">
@@ -140,6 +158,10 @@ export default class ArchiveCard extends Component {
                         visibleRatingTable={this.state.visibleRatingTable}
                         onHideRatingTable={this.onHideRatingTable}
                         ratingTableData={this.state.ratingTable}/>
+                    <CuratorCard 
+                        visibleCuratorCard={this.state.visibleCuratorCard}
+                        onHideCuratorCard={this.onHideCuratorCard}
+                        curatorData={this.state.Curator}/>
                 </div>
         );
     };

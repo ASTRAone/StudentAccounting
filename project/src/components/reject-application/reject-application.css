@@ -1,4 +1,4 @@
-.accept-application {
+.accept-application-reject {
     width: 320px;
     border: 2px solid darkgrey;
     padding-top: 10px;
@@ -13,17 +13,17 @@
     transform: translate(-50%, -50%);
 }
 
-.accept-application__i {
+.accept-application__i-reject {
     text-align: right;
     font-size: 25px;
     color: #ff5959;
 }
 
-.accept-application__i > i {
+.accept-application__i-reject > i {
     cursor: pointer;
 }
 
-.accept-application__title {
+.accept-application__title-reject {
     font-size: 28px;
     font-weight: bold;
     color: black;
@@ -31,7 +31,7 @@
     padding-bottom: 15px;
 }
 
-.accept-application__text {
+.accept-application__text-reject {
     font-size: 17px;
     font-weight: bold;
     color: grey;
@@ -39,17 +39,17 @@
     margin: 0 auto;
 }
 
-.accept-application__btn {
+.accept-application__btn-reject {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
 }
 
-.accept-application__btn > button {
+.accept-application__btn-reject > button {
     color: black;
     border: 2px solid #dfe490;
-    background: #f5a49c;
+    background: #fddfdc;
     font-weight: bold;
     padding-bottom: 0px;
     padding: 0;
@@ -57,12 +57,12 @@
     font-size: 19px;
 }
 
-.accept-application__no-places {
+.accept-application__no-places-reject {
     background: #fd0d0d;
     width: 120px;
     color: white;
 }
 
-.accept-application__specialty {
-    width: 150px;
+.accept-application__specialty-reject {
+    width: 160px;
 }

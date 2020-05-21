@@ -5,8 +5,18 @@ import './filter.css';
 export default class Filter extends Component {
     render() {
 
+        const { onSortNameStudentList, onSortDataStudentList, sortStatusDate, sortStatusName } = this.props;
 
-        const { onSortNameStudentList, onSortDataStudentList } = this.props;
+        let arrowDate = <span>&#9660;</span>
+        let arrowName = <span>&#9660;</span>
+
+        if (sortStatusDate === true) {
+            arrowDate = <span>&#9650;</span>
+        }
+
+        if (sortStatusName === true) {
+            arrowName = <span>&#9650;</span>
+        }
 
         return (
             <div className="filter">
@@ -16,13 +26,13 @@ export default class Filter extends Component {
                         className="filter-btn btn btn-primary"
                         onClick={onSortDataStudentList}>
                             Дата
-                        <span>&#9660;</span>
+                        {arrowDate}
                     </button>
                     <button 
                         className="filter-btn btn btn-primary"
                         onClick={onSortNameStudentList}>
                             Имя
-                        <span>&#9660;</span>
+                        {arrowName}
                     </button>
                 </div>
             </div>  

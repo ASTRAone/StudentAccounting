@@ -19,7 +19,9 @@ class PractikPage extends Component {
             studentsListOnPractice: this.props.studentsList.filter((item) => item.onPractice) || [],
             activePage: 1,
             visibleDelBtn: false,
-            studentCard: 'practic-card'
+            studentCard: 'practic-card',
+            sortStatusDate: false,
+            sortStatusName: false
         }
     }
 
@@ -65,11 +67,23 @@ class PractikPage extends Component {
     // Сортировка по имени (доделать)
     onSortNameStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusName: !prevState.sortStatusName
+            }
+        });
     };
 
     // Сортировка по дате (доделать)
     onSortDataStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusDate: !prevState.sortStatusDate
+            }
+        });
     };
 
     // Добавить студента в категорию "архив"
@@ -85,8 +99,10 @@ class PractikPage extends Component {
                 </div>
                 <div className="app-filter">
                     <Filter 
-                        onSortStudentList={this.onSortNameStudentList}
-                        onSortDataStudentList={this.onSortDataStudentList}/>
+                        onSortNameStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}
+                        sortStatusDate={this.state.sortStatusDate}
+                        sortStatusName={this.state.sortStatusName}/>
                     <Tools  
                         visibleDelBtn={this.visibleDelBtn} 
                         onShowModalWindowAdd={this.onShowModalWindowAdd}/>

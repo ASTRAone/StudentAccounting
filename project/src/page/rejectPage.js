@@ -19,7 +19,9 @@ class RejectPage extends Component {
             studentsListRejected: this.props.studentsList.filter((item) => item.rejected) || [],
             activePage: 1,
             visibleDelBtn: false,
-            studentCard: 'reject-card'
+            studentCard: 'reject-card',
+            sortStatusDate: false,
+            sortStatusName: false
         }
     }
 
@@ -65,11 +67,23 @@ class RejectPage extends Component {
     // Сортировка по имени (доделать)
     onSortNameStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusName: !prevState.sortStatusName
+            }
+        });
     };
 
     // Сортировка по дате (доделать)
     onSortDataStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusDate: !prevState.sortStatusDate
+            }
+        });
     };
 
     // Добавить студента в категорию "на практику"
@@ -85,8 +99,10 @@ class RejectPage extends Component {
                 </div>
                 <div className="app-filter">
                     <Filter 
-                        onSortStudentList={this.onSortNameStudentList}
-                        onSortDataStudentList={this.onSortDataStudentList}/>
+                        onSortNameStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}
+                        sortStatusDate={this.state.sortStatusDate}
+                        sortStatusName={this.state.sortStatusName}/>
                     <Tools 
                         visibleDelBtn={this.visibleDelBtn} 
                         onShowModalWindowAdd={this.onShowModalWindowAdd}/>

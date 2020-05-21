@@ -27,9 +27,13 @@ input::-webkit-inner-spin-button {
 
 .student-add-form__img {
     width: 70px;
+    height: 70px;
     margin-left: 30px;
     margin-right: 30px;
     margin-bottom: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .student-add-form__title {
@@ -163,7 +167,7 @@ input::-webkit-inner-spin-button {
     border: 1px solid #bbb5b5;
 }
 
-.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day {
+/* .react-date-picker__inputGroup__input.react-date-picker__inputGroup__day {
     background: white;
 }
 
@@ -173,6 +177,10 @@ input::-webkit-inner-spin-button {
 
 .react-date-picker__inputGroup__input.react-date-picker__inputGroup__year {
     background: white;
+} */
+
+.react-date-picker__inputGroup__input:invalid {
+    background: transparent;
 }
 
 .react-date-picker__wrapper {
@@ -242,10 +250,17 @@ input::-webkit-inner-spin-button {
 }
 
 .student-input-file {
-
+    opacity: 0;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    left: 80px;
+    cursor: pointer;
 }
 
-
+.from-practic__checkbox > input {
+    background: white;
+}
 
 /* .default-placeholder {
     width: 165px;

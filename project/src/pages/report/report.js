@@ -1,6 +1,7 @@
 // Доработать все элементы и логику
-
 import React, { Component } from 'react';
+
+import Datetime from 'react-date-picker';
 
 import './report.css';
 
@@ -10,20 +11,54 @@ export default class Report extends Component {
         super(props);
 
         this.state = {
-            dataList: this.props.studentsList,
-            special: ''
+            dataListOnReport: this.props.studentsList,
+
+            StudentIntials: "",
+            College: "",
+            Special: "",
+            PractiesBegining: "",
+            PractiesEnding: "",
+            PracticeArea: "",
+            Curator: ""
         }
     }
 
     componentDidUpdate(prevProps) {
-        const dataListNew = this.props.studentsList;
+        const dataListOnReportNew = this.props.studentsList.filter((item) => item.onPractice || [] );
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
-                dataList: dataListNew
+                dataListOnReport: dataListOnReportNew
             });
         };
     };
+
+    // Изменение периода с
+    editperiodBefore = (e) => {
+        this.setState({
+            PractiesBegining: e
+        });
+    };
+
+    // Изменение периода по
+    editperiodAfter = (e) => {
+        this.setState({
+            PractiesEnding: e
+        });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Получение выбранного учеюного заведения
     onSpecialInput = (e) => {
@@ -62,7 +97,7 @@ export default class Report extends Component {
         });
 
         // Получение всех студентов-практикантов
-        const students = this.state.dataList.map((item, index) => {
+        const students = this.state.dataListOnReport.map((item, index) => {
             return (
                 <option key={index}>{item.SecondName + " " + item.FirstName + " " + item.Patronymic}</option>
             );
@@ -104,7 +139,7 @@ export default class Report extends Component {
             );
         });
 
-        const items = this.state.dataList.map((item, index) => {
+        const items = this.state.dataListOnReport.map((item, index) => {
 
             return (
                     <div key={ index } className="compose-report__item">
@@ -134,11 +169,18 @@ export default class Report extends Component {
             <div className="container-report">
                 <h3 className="container-report__title">Фильтры</h3>
                 <div className="container-our">
+                    <i class="fa fa-undo"></i>
                     <div className="report-our">
                         <div className="report-student">
                             <div className="report-student__item">
                                 <label htmlFor="item-1" className="report-student__label">Студент:</label>
-                                <input id="item-1" type="text" className="report-student__input" list="students"/>
+                                <input 
+                                    id="item-1" 
+                                    type="text" 
+                                    className="report-student__input" 
+                                    list="students"
+                                    value={this.state.StudentIntials}
+                                    />
                                 <datalist id="students">
                                     {students}
                                 </datalist>   
@@ -178,13 +220,25 @@ export default class Report extends Component {
                     <div className="container-date">
                         <p className="container-date__text">Период: с</p>
                         <div className="container-date__input-our">
-                            <i className="fa fa-calendar"></i>
-                            <input type="text" className="container-date__input datepicker-here" data-position="right top"/>
+                            {/* <i className="fa fa-calendar"></i> */}
+
+                            <Datetime 
+                                type="text" 
+                                className="container-date__input"
+                                value={this.state.PractiesBegining}
+                                onChange={this.editperiodBefore}/>
                         </div>
+
                         <p className="container-date__text container-date__text_bottom">по</p>
                         <div className="container-date__input-our">
-                            <i className="fa fa-calendar"></i>
-                            <input type="text" className="container-date__input container-date__input_bottom datepicker-here" data-position="right top"/>
+                            {/* <i className="fa fa-calendar"></i> */}
+
+                            <Datetime 
+                                type="text" 
+                                className="container-date__input container-date__input_bottom"
+                                value={this.state.PractiesEnding}
+                                onChange={this.editperiodAfter} />
+
                         </div>
                         <button className="btn container-date__btn container-date__form">Сформировать</button>
                         <button className="btn container-date__btn container-date__export">Экспорт в Excel</button>

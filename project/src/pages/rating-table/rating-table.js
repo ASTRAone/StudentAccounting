@@ -32,13 +32,11 @@ export default class RatingTable extends Component{
             interest_com: this.props.ratingTableData.interest_comment,
             // Итоговая оценка
             average_mark: this.props.ratingTableData.average_mark,
+            // Дата изменения компотенций студента
+            date: this.props.ratingTableData.date,
 
-            editTablerating: true,
-
-            date: new Date()
+            editTablerating: true
         }
-
-
     }
 
     // Редактирование рейтинговой таблицы студента
@@ -242,8 +240,10 @@ export default class RatingTable extends Component{
     // Сохранение изменений
     onSaveChange = () => {
         this.setState({
-            editTablerating: true
+            editTablerating: true,
         });
+
+        console.log(this.state)
 
         this.props.onHideRatingTable();
         this.props.onSaveTableRatingTable(this.state);
@@ -254,13 +254,15 @@ export default class RatingTable extends Component{
         const { visibleRatingTable, dataStudent } = this.props;
         const { SecondName, FirstName, Patronymic } = dataStudent; 
 
+        // 
+
         return(
             <Modal
                 open={visibleRatingTable}>    
                 <div className = "rating-table">
                     <div className = "rating-header">
                         <p className = "rating-header__label">{SecondName + " " + FirstName + " " + Patronymic}</p>                        
-                        <p className = "rating-header__label">{ this.state.date.getDate() + "/" + (this.state.date.getMonth() + 1) + "/" + this.state.date.getFullYear() }</p>
+                        {/* <p className = "rating-header__label">{ this.state.date.getDate() + "/" + (this.state.date.getMonth() + 1) + "/" + this.state.date.getFullYear() }</p> */}
                         <div className = "rating-buttons">
                             <i className = "fa fa-print"></i>
                             <i className = "fa fa-edit" onClick={this.editRatingTable}></i>
@@ -452,7 +454,7 @@ export default class RatingTable extends Component{
                         </div>
                         <div className = "rating-table-block__mark-cell">
                             <textarea   
-                                readOnly="true"
+                                readOnly={true}
                                 className = "rating-table-block__textarea-mark"
                                 value={Math.round((Number(this.state.educability) + Number(this.state.quality) + 
                                                   Number(this.state.responsibility) + Number(this.state.initiative) + 

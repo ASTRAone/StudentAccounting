@@ -15,6 +15,7 @@ export default class NewCard extends Component {
         super(props);
 
         this.state = {
+            id: this.props.dataList.studentModalCardData.id,
             SecondName: this.props.dataList.studentModalCardData.SecondName,
             FirstName: this.props.dataList.studentModalCardData.FirstName,
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
@@ -181,7 +182,7 @@ export default class NewCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {noavatar} className = "card__profile-pic" />
+                            <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = "card__contacts">

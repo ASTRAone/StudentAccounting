@@ -82,7 +82,7 @@ input::-webkit-calendar-picker-indicator {
 
 .container-date__input-our {
     position: relative;
-    width: 120px;
+    width: 148px;
     margin-right: 5px;
 }
 
@@ -151,4 +151,8 @@ input::-webkit-calendar-picker-indicator {
 .compose-report_num {
     width: 50px;
     border-left: 1px solid;
+}
+
+.container-date__input-our *> input {
+    background: transparent;
 }

@@ -4,8 +4,6 @@ import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 import Datetime from 'react-date-picker';
 
-import img from '../img/noavatar.png';
-
 import './student-add-form.css';
 
 export default class StudentAddForm extends Component {
@@ -24,7 +22,9 @@ export default class StudentAddForm extends Component {
             Faculty: "",
             PractiesBegining: "",
             PractiesEnding: "",
-            Speciality: {}
+            Speciality: {},
+
+            visibleSaveBtn: true
         }
 
         this.firstNameChange = this.firstNameChange.bind(this);
@@ -162,7 +162,15 @@ export default class StudentAddForm extends Component {
         if (this.state.profilePic.length === 0) {
             path = require("../img/noavatar.png");
 
-        }   else path = this.state.profilePic
+        }   else path = this.state.profilePic;
+
+        if (this.state.SecondName && this.state.FirstName &&
+            this.state.Patronymic && this.state.Email && 
+            this.state.Phone && this.state.College &&
+            this.state.Faculty && this.state.PractiesBegining &&
+            this.state.PractiesEnding && this.state.Speciality) {
+                this.state.visibleSaveBtn = false
+            }   else this.state.visibleSaveBtn = true
         
         const { studentAddModal } = this.props;
 
@@ -325,7 +333,7 @@ export default class StudentAddForm extends Component {
                         <Modal.Actions>
                             <div className="student-container__our-btn"> 
                                 <button className="btn student-container__btn" onClick={this.cancelAddStudent}>Отмена</button>
-                                <button className="btn student-container__btn" onClick={this.addNewStudent}>Добавить</button>
+                                <button disabled={this.state.visibleSaveBtn} className="btn student-container__btn" onClick={this.addNewStudent}>Добавить</button>
                             </div>
                         </Modal.Actions>
                     </form>

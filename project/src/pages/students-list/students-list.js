@@ -11,7 +11,6 @@ import StudentAddForm from '../student-add-form'
 
 import {getStudentsListRequest} from '../../_actions/applications';
 
-
 export default class StudentsList extends Component {
 
     constructor(props) {

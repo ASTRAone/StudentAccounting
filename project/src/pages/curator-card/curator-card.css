@@ -1,0 +1,25 @@
+.fa.fa-sign-out {
+    position: absolute;
+    left: 340px;
+    cursor: pointer;
+    font-size: 40px;
+    color: white;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.fa.fa-sign-out:hover {
+    opacity: 1;
+}
+
+.ui.scrolling.modal.transition.visible.active {
+    width: fit-content;
+}
+
+.ui.modal.transition.visible.active {
+    width: fit-content;
+}
+
+.header {
+    text-align: center;
+}

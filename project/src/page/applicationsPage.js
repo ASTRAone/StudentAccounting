@@ -11,6 +11,11 @@ import {getStudentsListRequest} from '../_actions/applications';
 import Pagination from 'react-js-pagination';
 import '../pages/page-numbers/page-numbers.css';
 
+import AcceptApplication from '../components/accept-application';
+import ApplicationSuccessfullyAccepted from '../components/application-successfully-accepted';
+import RejectApplication from '../components/reject-application';
+import Rejected from '../components/rejected';
+
 class ApplicationsPage extends React.Component  {
 
     constructor(props) {
@@ -20,7 +25,16 @@ class ApplicationsPage extends React.Component  {
             studentsListRequest: this.props.studentsList.filter((item) => item.request) || [],
             activePage: 1,
             visibleDelBtn: false,
-            studentCard: 'new-card'
+            studentCard: 'new-card',
+            visibleAcceptApplication: false,
+            visibleApplicationSuccessfullyAccepted: false,
+            visibleRejectApplication: false, 
+            visibleReject: false,
+            idStudentCard: '',
+
+            sortStatusDate: false,
+            sortStatusName: false
+
         }
     }
 
@@ -67,21 +81,100 @@ class ApplicationsPage extends React.Component  {
     // Сортировка по имени (доделать)
     onSortNameStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusName: !prevState.sortStatusName
+            }
+        });
     };
 
     // Сортировка по дате (доделать)
     onSortDataStudentList = () => {
         // API
+
+        this.setState((prevState) => {
+            return {
+                sortStatusDate: !prevState.sortStatusDate
+            }
+        });
     };
 
-    // Добавить студента в категорию "одобренные заявки"
+    // Открыть окно для перевода в категорию "Одобренные заявки"
     transferStudentCategoryApproved = (id) => {
+        this.setState({
+            idStudentCard: id,
+            visibleAcceptApplication: true
+        });
         console.log("Студент переведен в категорию Одобренные " + id)
     };
 
-    // Добавить студента в категорию "отклоненные заявки"
+    // Закрыть окно для перевода в категорию "Одобренные заявки"
+    onHidetransferStudentCategoryApproved = () => {
+        this.setState({
+            visibleAcceptApplication: false
+        });
+    };
+
+    // Перевести студента в категорию "Одобренные заявки"
+    onTransferStudentInCategoryApproved = () => {
+        console.log(this.state.idStudentCard);
+
+        this.setState({
+            visibleAcceptApplication: false,
+            visibleApplicationSuccessfullyAccepted: true
+        });
+    };
+
+    // Закрыть окно подтверждения перевода студента в категорию "Одобренные заявки"
+    onHideApplicationSuccessfullyAccepted = () => {
+        this.setState({
+            visibleApplicationSuccessfullyAccepted: false
+        });
+    };
+
+    // Открыть окно для перевода в категорию "Отклоненные заявки"
     transferStudentCategoryReject = (id) => {
         console.log("Студент переведен в категорию Отклоненные" + id)
+
+        this.setState({
+            visibleRejectApplication: true,
+            idStudentCard: id
+        });
+    };
+
+    // Закрыть окно для перевода в категорию "Отклоненные заявки"
+    onHidetransferStudentCategoryReject = (id) => {
+        this.setState({
+            visibleRejectApplication: false
+        });
+    };
+
+    // Отказ по причине "Нет мест"
+    onNoPlaces = () => {
+        console.log(this.state.idStudentCard);
+
+        this.setState({
+            visibleRejectApplication: false,
+            visibleReject: true
+        });
+    };
+
+    // Отказ по причине "специальности"
+    onNoSpecialty = () => {
+        console.log(this.state.idStudentCard);
+
+        this.setState({
+            visibleRejectApplication: false,
+            visibleReject: true
+        });
+    };
+
+    // Закрыть окно подтверждения отклонения заявки
+    onHideReject = () => {
+        this.setState({
+            visibleReject: false
+        });
     };
     
     render() {  
@@ -92,8 +185,10 @@ class ApplicationsPage extends React.Component  {
                 </div>
                 <div className="app-filter">
                     <Filter 
-                        onSortStudentList={this.onSortNameStudentList}
-                        onSortDataStudentList={this.onSortDataStudentList}/>
+                        onSortNameStudentList={this.onSortNameStudentList}
+                        onSortDataStudentList={this.onSortDataStudentList}
+                        sortStatusDate={this.state.sortStatusDate}
+                        sortStatusName={this.state.sortStatusName}/>
                     <Tools 
                         visibleDelBtn={this.visibleDelBtn} 
                         onShowModalWindowAdd={this.onShowModalWindowAdd}/>
@@ -115,6 +210,21 @@ class ApplicationsPage extends React.Component  {
                         totalItemsCount={this.state.studentsListRequest.length}
                         pageRangeDisplayed={5}
                         onChange={this.handlePageChange.bind(this)}/>
+                <AcceptApplication 
+                    visibleAcceptApplication={this.state.visibleAcceptApplication}
+                    onHidetransferStudentCategoryApproved={this.onHidetransferStudentCategoryApproved}
+                    onTransferStudentInCategoryApproved={this.onTransferStudentInCategoryApproved}/>
+                <ApplicationSuccessfullyAccepted 
+                    visibleApplicationSuccessfullyAccepted={this.state.visibleApplicationSuccessfullyAccepted}
+                    onHideApplicationSuccessfullyAccepted={this.onHideApplicationSuccessfullyAccepted}/>
+                <RejectApplication 
+                    visibleRejectApplication={this.state.visibleRejectApplication}
+                    onHidetransferStudentCategoryReject={this.onHidetransferStudentCategoryReject}
+                    onNoPlaces={this.onNoPlaces}
+                    onNoSpecialty={this.onNoSpecialty}/>
+                <Rejected 
+                    visibleReject={this.state.visibleReject}
+                    onHideReject={this.onHideReject}/>
             </React.Fragment>    
         );
     };

@@ -3,23 +3,31 @@ import { Button, Header, Image, Modal, Icon  } from 'semantic-ui-react'
 
 import './application-successfully-accepted.css';
 
-const ApplicationSuccessfullyAccepted = () => {
+const ApplicationSuccessfullyAccepted = ({ visibleApplicationSuccessfullyAccepted, onHideApplicationSuccessfullyAccepted }) => {
     return (
-        <Modal>
+        <Modal
+            open={visibleApplicationSuccessfullyAccepted}>
             <Modal.Content>
-                <div className="accept-application">
-                    <div className="accept-application__i">
-                        <i class="fa fa-times"></i>
+                <div className="accept-application-successfull">
+                    <div className="accept-application__i-successfull">
+                        <i 
+                            class="fa fa-times"
+                            onClick={onHideApplicationSuccessfullyAccepted}>
+                        </i>
                     </div>
-                    <h3 className="accept-application__title">
+                    <h3 className="accept-application__title-successfull">
                         Заявка успешно принята
                     </h3>
-                    <p className="accept-application__text">
+                    <p className="accept-application__text-successfull">
                         Студенту отправлено уведомление.
                     </p>
                     <Modal.Actions>
-                        <div className="accept-application__btn">
-                            <button className="btn accept-application__forward">Ок</button>
+                        <div className="accept-application__btn-successfull">
+                            <button 
+                                className="btn accept-application__forward-successfull"
+                                onClick={onHideApplicationSuccessfullyAccepted}>
+                                    Ок
+                            </button>
                         </div>
                     </Modal.Actions>
                 </div>

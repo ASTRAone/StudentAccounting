@@ -4,11 +4,12 @@ import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 import Alteration from '../../components/alteration';
 import ChangesSaved from '../../components/changes-saved';
 
+import AppointCurator from '../appoint-curator';
+
 import noavatar from "../img/noavatar.png";
 import noavatarcurator from '../img/noavatar-curator.jpg';
 
 import './approved-card.css';
-
 
 // Доделать выбор куратора
 
@@ -18,6 +19,7 @@ export default class ApprovedCard extends Component {
         super(props);
 
         this.state = {
+            id: this.props.dataList.studentModalCardData.id,
             SecondName: this.props.dataList.studentModalCardData.SecondName,
             FirstName: this.props.dataList.studentModalCardData.FirstName,
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
@@ -28,11 +30,13 @@ export default class ApprovedCard extends Component {
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
             Speciality: this.props.dataList.studentModalCardData.Speciality,
+            Curator: this.props.dataList.studentModalCardData.Curator,
 
             visibleEditCard: false,
             visibleAlteration: false,
             visibleChangesSaved: false,
-            visibleEditCurator: true
+            visibleEditCurator: true,
+            visibleAppointCuratorCard: false
         }
     }
 
@@ -108,7 +112,8 @@ export default class ApprovedCard extends Component {
             Faculty: this.props.dataList.studentModalCardData.Faculty,
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality
+            Speciality: this.props.dataList.studentModalCardData.Speciality,
+            Curator: this.props.dataList.studentModalCardData.Curator,
         });
     };
 
@@ -128,6 +133,8 @@ export default class ApprovedCard extends Component {
             visibleEditCurator: true
         });
 
+        // Проверка на наличие куратора
+
         console.log(this.state);
     };
 
@@ -145,6 +152,27 @@ export default class ApprovedCard extends Component {
         });
 
         this.props.dataList.onHideModalStudentCardModal();
+    };
+
+    // Показать модальное окно всех кураторов
+    onShowModalAppointCuratorCard = () => {
+        this.setState({
+            visibleAppointCuratorCard: true
+        });
+    };
+
+    // Скрыть модальное окно всех кураторов
+    onHideModalAppointCuratorCard = () => {
+        this.setState({
+            visibleAppointCuratorCard: false
+        });
+    };
+
+    // Добавление куратора
+    addCurator = (item) => {
+        this.setState({
+            Curator: item
+        });
     };
 
     render() {
@@ -184,7 +212,7 @@ export default class ApprovedCard extends Component {
                         </div>
                     </div>
                     <div className = "card__student">
-                        <img src = {noavatar} className = "card__profile-pic" />
+                        <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
                         <div className = "card__student-info">
                             <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                             <div className = "card__contacts">
@@ -261,8 +289,13 @@ export default class ApprovedCard extends Component {
                             </div>
                         </div>
                         <div className = "card__curator">
-                            <img src = {noavatarcurator} className = "card__profile-pic" />
-                            <button disabled={this.state.visibleEditCurator} className = "btn card__curator__choose-button">Назначить куратора</button>
+                            <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic" />
+                            <button 
+                                disabled={this.state.visibleEditCurator} 
+                                className = "btn card__curator__choose-button"
+                                onClick={this.onShowModalAppointCuratorCard}>
+                                    Назначить куратора
+                            </button>
                         </div>
                     </div>
                     <div className={student_card__our_btn}>
@@ -277,6 +310,10 @@ export default class ApprovedCard extends Component {
                 <ChangesSaved 
                     visibleChangesSaved={this.state.visibleChangesSaved}
                     bringСhanges={this.bringСhanges}/>
+                <AppointCurator 
+                    visibleCuratorCard={this.state.visibleAppointCuratorCard}
+                    onHideCuratorCard={this.onHideModalAppointCuratorCard}
+                    addCurator={this.addCurator}/>
             </div>  
         );
     };
