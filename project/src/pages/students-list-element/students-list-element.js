@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import './students-list-element.css';
 import noavatar from "../img/noavatar.png";
 
-import DeleteApplication from '../../components/delete-application';
-import achivePage from '../../page/achivePage';
-
 export default class StudentsListElement extends Component {
 
     constructor(props) {
@@ -16,7 +13,7 @@ export default class StudentsListElement extends Component {
     getReturnLink = () => {
         const {profilePic} = this.props;
         let nameFoo = `${profilePic}`;
-        let path = {noavatar}
+        let path = {noavatar};
 
         if (nameFoo) {
             path = require(`../img/${nameFoo}`);
@@ -32,14 +29,29 @@ export default class StudentsListElement extends Component {
                 College, Faculty, PractiesBegining, 
                 PractiesEnding, Phone, Email, buttons, 
                 visibleDelBtn, onShowModalWindowDeleted, 
-                onShowModalStudentCardModal, activePage } = this.props;
+                onShowModalStudentCardModal, activePage, studentCard, ratingTable } = this.props;
+
+        const { average_mark, conflict, conflict_comment,
+                educability, educability_comment, initiative, 
+                initiative_comment, interest, interest_comment,
+                quality, quality_comment, relationship, 
+                relationship_comment, responsibility, responsibility_comment } = ratingTable;
+        
 
         let visibleBtnDel = "btn-close none";
         let list_element = "list-element";
+        let visibleBtn = "";
 
         if (visibleDelBtn) {
             visibleBtnDel = "btn-close";
         }
+
+        if (!average_mark && !conflict && !conflict_comment && !educability && !educability_comment &&
+            !initiative && !initiative_comment && !interest && !interest_comment &&
+            !quality && !quality_comment && !relationship && !relationship_comment &&
+            !responsibility && !responsibility_comment && studentCard === "practic-card") {
+                visibleBtn = " disabled";
+            }
         
         return(
             <React.Fragment>
@@ -93,7 +105,7 @@ export default class StudentsListElement extends Component {
                             return (
                                 <label className="list__buttons-our" key={index}>
                                     <i 
-                                        className ={`fa ${item.icon}`}
+                                        className ={`fa ${item.icon}${visibleBtn}`}
                                         onClick={() => item.change_category(idCard)}>
                                     </i>
                                     <label className="list__buttons-text">{item.label}</label>

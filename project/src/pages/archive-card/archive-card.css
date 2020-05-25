@@ -351,3 +351,7 @@
 .container-archive-card {
     margin-top: 270px;
 }
+
+.card__profile-pic_curator {
+    border-radius: 0;
+}

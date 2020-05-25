@@ -40,6 +40,19 @@ export default class ApprovedCard extends Component {
         }
     }
 
+    getReturnLink = () => {
+        const profile = this.props.dataList.studentModalCardData.profilePic;
+        let nameFoo = `${profile}`;
+        let path = {noavatar};  
+
+        if (nameFoo) {
+            path = require(`../img/${nameFoo}`);
+        }
+
+        return path;
+    };
+
+
     // Разрешить редактирование
     visibleEditCardStudent = () => {
         this.setState({
@@ -175,6 +188,13 @@ export default class ApprovedCard extends Component {
         });
     };
 
+    // Изменение куратора
+    onResetCurator = () => {
+        this.setState({
+            visibleAppointCuratorCard: true
+        });
+    };
+
     render() {
 
         const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal } = this.props.dataList;
@@ -183,6 +203,9 @@ export default class ApprovedCard extends Component {
         let card__student_contact = "card__student-contact";
         let student_card__our_btn = "student-card-approved__our-btn";
         let card__info_text = "card__info-text";
+        let card__curator__choose_button = "card__curator__choose-button";
+        let card_curator_intials = "card_curator_intials none";
+        let card_reset_curator = "card_reset_curator none";
 
         if (this.state.visibleEditCard === false) {
             our_input = "our-input none";
@@ -196,6 +219,12 @@ export default class ApprovedCard extends Component {
 
         if (studentCardModal === true) {
             document.body.style.overflow = 'hidden';
+        }
+
+        if (this.state.Curator.length !== 0) {
+            card__curator__choose_button = "card__curator__choose_button none";
+            card_curator_intials = "card_curator_intials";
+            card_reset_curator = "card_reset_curator";
         }
 
         return (
@@ -212,7 +241,7 @@ export default class ApprovedCard extends Component {
                         </div>
                     </div>
                     <div className = "card__student">
-                        <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
+                        <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
                         <div className = "card__student-info">
                             <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                             <div className = "card__contacts">
@@ -271,7 +300,7 @@ export default class ApprovedCard extends Component {
                                     <label>-</label>
                                     <Input 
                                         type="email"
-                                        className="card__info-text_input"
+                                        className="card__info-text_input bt"
                                         value={this.state.PractiesEnding}
                                         onChange={this.editDataPractiesEnding}/>
                                 </label>
@@ -289,12 +318,20 @@ export default class ApprovedCard extends Component {
                             </div>
                         </div>
                         <div className = "card__curator">
-                            <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic" />
+                            <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic card__profile-pic_curator" />
                             <button 
                                 disabled={this.state.visibleEditCurator} 
-                                className = "btn card__curator__choose-button"
+                                className = {`btn ${card__curator__choose_button}`}
                                 onClick={this.onShowModalAppointCuratorCard}>
                                     Назначить куратора
+                            </button>
+                            <p className={card_curator_intials}>
+                                {this.state.Curator}
+                            </p>
+                            <button 
+                                className={`btn ${card_reset_curator}`}
+                                onClick={this.onResetCurator}>
+                                    Выбрать другого
                             </button>
                         </div>
                     </div>

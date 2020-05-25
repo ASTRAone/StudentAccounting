@@ -33,6 +33,18 @@ export default class NewCard extends Component {
         }
     }
 
+    getReturnLink = () => {
+        const profile = this.props.dataList.studentModalCardData.profilePic;
+        let nameFoo = `${profile}`;
+        let path = {noavatar};  
+
+        if (nameFoo) {
+            path = require(`../img/${nameFoo}`);
+        }
+
+        return path;
+    };
+
     // Редактирование элементов
     visibleEditCardStudent = () => {
         this.setState({
@@ -168,6 +180,8 @@ export default class NewCard extends Component {
             document.body.style.overflow = 'hidden';
         }
 
+        console.log(`../../img/${this.state.profilePic}`  );
+
         return ( 
                 <div className="container-new-card">
                     <div className = "student-card">
@@ -182,7 +196,7 @@ export default class NewCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
+                            <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = "card__contacts">

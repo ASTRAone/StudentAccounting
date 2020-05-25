@@ -17,15 +17,15 @@ export default class AppointCurator extends Component {
     }
 
     curatorsMass = [
-        {id: 1, initials: "Ф.Ф.Алексеев"},
-        {id: 2, initials: "В.Ф.Белов"},
-        {id: 3, initials: "Ф.С.Гришенко"},
-        {id: 4, initials: "Ф.Ф.Алексеев"},
-        {id: 5, initials: "Ф.И.Алексеев"},
-        {id: 6, initials: "Ш.Ж.Дубинин"},
-        {id: 7, initials: "А.А.Смирнов"},
-        {id: 8, initials: "Ф.Ф.Краснов"},
-        {id: 9, initials: "Д.Ф.Шахунов"},
+        {id: 1, initials: "Ф. Ф. Алексеев"},
+        {id: 2, initials: "В. Ф. Белов"},
+        {id: 3, initials: "Ф. С. Гришенко"},
+        {id: 4, initials: "Ф. Ф. Алексеев"},
+        {id: 5, initials: "Ф. И. Алексеев"},
+        {id: 6, initials: "Ш. Ж. Дубинин"},
+        {id: 7, initials: "А. А. Смирнов"},
+        {id: 8, initials: "Ф. Ф. Краснов"},
+        {id: 9, initials: "Д. Ф. Шахунов"},
     ]
 
     // Изменить выбор куратора
@@ -37,8 +37,17 @@ export default class AppointCurator extends Component {
 
     // Выбрать куратора
     attachCurator = () => {
-        this.props.addCurator(this.state);
+        this.props.addCurator(this.state.initials);
 
+        this.setState({
+            initials: ''
+        });
+
+        this.props.onHideCuratorCard();
+    };
+
+    // Закрыть окно выбора куратора
+    onCloseCardCurators = () => {
         this.setState({
             initials: ''
         });
@@ -72,7 +81,7 @@ export default class AppointCurator extends Component {
                     <div className="card-curator-container">
                         <i 
                             className="fa fa-sign-out"
-                            onClick={onHideCuratorCard}>
+                            onClick={this.onCloseCardCurators}>
                         </i>
                         <div className="ui card">
                             <div className="image">
@@ -82,14 +91,13 @@ export default class AppointCurator extends Component {
                                 <input 
                                     type="text"
                                     className="content__input"
+                                    value={this.state.initials}
                                     list="curators" 
                                     onChange={this.onChangeInput}
                                     placeholder="Выберите куратора"/>
                                 <datalist id="curators">
                                     {curators}
                                 </datalist>
-                                {/* <div class="meta"><span class="date">Joined in 2015</span></div>
-                                <div class="description">Matthew is a musician living in Nashville.</div> */}
                             </div>
                         </div>
                         <button 

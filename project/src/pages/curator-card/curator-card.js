@@ -10,6 +10,12 @@ export default class CuratorCard extends Component {
 
         const { visibleCuratorCard, onHideCuratorCard, curatorData } = this.props;
 
+        let intialsCurator = curatorData;
+
+        if (curatorData.length === 0) {
+            intialsCurator = "Ошибка отображения куратора";
+        }
+
         return (
             <Modal 
                 open={visibleCuratorCard}
@@ -26,9 +32,7 @@ export default class CuratorCard extends Component {
                                 <img alt="Фотография наставника" src={noavatarcurator} />
                             </div>
                             <div className="content">
-                                <div className="header">{curatorData}</div>
-                                {/* <div class="meta"><span class="date">Joined in 2015</span></div>
-                                <div class="description">Matthew is a musician living in Nashville.</div> */}
+                                <div className="header">{intialsCurator}</div>
                             </div>
                         </div>
                     </div>

@@ -115,7 +115,8 @@ export default class StudentsList extends Component {
                             visibleDelBtn={this.props.visibleDelBtn}
                             onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.id)}                            
                             onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item)}
-                            activePage={this.props.activePage}/>
+                            activePage={this.props.activePage}
+                            studentCard={this.props.studentCard}/>
                 </li>
             );
         });

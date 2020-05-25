@@ -38,6 +38,19 @@ export default class ArchiveCard extends Component {
         }
     }
 
+    getReturnLink = () => {
+        const profile = this.props.dataList.studentModalCardData.profilePic;
+        let nameFoo = `${profile}`;
+        let path = {noavatar};  
+
+        if (nameFoo) {
+            path = require(`../img/${nameFoo}`);
+        }
+
+        return path;
+    };
+
+
     // Открыть окно оценок компетенций студента
     onShowRatingTable = () => {
         this.setState({
@@ -86,7 +99,7 @@ export default class ArchiveCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
+                            <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = "card__contacts">
@@ -115,7 +128,7 @@ export default class ArchiveCard extends Component {
                                 </div>
                             </div>
                             <div className = "card__curator">
-                                <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic" />
+                                <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic card__profile-pic_curator" />
                                 <p className = "card__curator__action" onClick={this.onShowRatingTable}>Посмотреть компетенции студента</p>
                                 <p className = "card__curator__action-curator" onClick={this.onShowCuratorCard} >Посмотреть информацию о наставнике</p>
                             </div>

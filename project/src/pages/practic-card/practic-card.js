@@ -5,6 +5,7 @@ import StarRatings from 'react-star-ratings';
 import RatingTable from '../rating-table';
 import Alteration from '../../components/alteration';
 import ChangesSaved from '../../components/changes-saved';
+import AppointCurator from '../appoint-curator';
 
 import noavatar from "../img/noavatar.png";
 import noavatarcurator from '../img/noavatar-curator.jpg';
@@ -40,15 +41,30 @@ export default class PracicCard extends Component {
 
             visibleAlteration: false,
             visibleChangesSaved: false,
+            visibleAppointCuratorCard: false,
             visibleRatingTable: false
         }
     }
+
+    getReturnLink = () => {
+        const profile = this.props.dataList.studentModalCardData.profilePic;
+        let nameFoo = `${profile}`;
+        let path = {noavatar};  
+
+        if (nameFoo) {
+            path = require(`../img/${nameFoo}`);
+        }
+
+        return path;
+    };
+
 
     // Разрешить редактирование
     visibleEditCardStudent = () => {
         this.setState({
             visibleEditCard: true,
-            visibleReadonly: false
+            visibleReadonly: false,
+            visibleCuratorBtn: false
         });
     };
 
@@ -147,7 +163,8 @@ export default class PracicCard extends Component {
             starRatings: this.props.dataList.studentModalCardData.starRatings,
             
             visibleEditCard: false,
-            visibleReadonly: true
+            visibleReadonly: true,
+            visibleCuratorBtn: true,
         });
 
         this.props.dataList.onHideModalStudentCardModal()
@@ -173,7 +190,8 @@ export default class PracicCard extends Component {
             visibleEditCard: false,
             visibleReadonly: true,
             visibleAlteration: false,
-            visibleChangesSaved: true
+            visibleChangesSaved: true,
+            visibleCuratorBtn: true
         });
 
         console.log(this.state);
@@ -196,6 +214,34 @@ export default class PracicCard extends Component {
 
         console.log(this.state.ratingTable);
     };
+
+    // Показать модальное окно всех кураторов
+    onShowModalAppointCuratorCard = () => {
+        this.setState({
+            visibleAppointCuratorCard: true
+        });
+    };
+
+    // Скрыть модальное окно всех кураторов
+    onHideModalAppointCuratorCard = () => {
+        this.setState({
+            visibleAppointCuratorCard: false
+        });
+    };
+
+    // Добавление куратора
+    addCurator = (item) => {
+        this.setState({
+            Curator: item
+        });
+    }
+
+    // Изменение куратора
+    onResetCurator = () => {
+        this.setState({
+            visibleAppointCuratorCard: true
+        });
+    };
  
     render() {
 
@@ -205,6 +251,9 @@ export default class PracicCard extends Component {
         let card__student_contact = "card__student-contact";
         let card__info_text = "card__info-text";
         let card__contacts = "card__contacts";
+        let card__curator__choose_button = "card__curator__choose-button";
+        let card_curator_intials = "card_curator_intials none";
+        let card_reset_curator = "card_reset_curator none";
 
         if (this.state.visibleEditCard === true) {
             card__student_contact = "card__student-contact none";
@@ -218,6 +267,12 @@ export default class PracicCard extends Component {
 
         if (studentCardModal === true) {
             document.body.style.overflow = 'hidden';
+        }
+        
+        if (this.state.Curator.length !== 0) {
+            card__curator__choose_button = "card__curator__choose_button none";
+            card_curator_intials = "card_curator_intials";
+            card_reset_curator = "card_reset_curator";
         }
 
         return ( 
@@ -233,7 +288,7 @@ export default class PracicCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {noavatar} alt="Фотография студента" className = "card__profile-pic" />
+                            <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = {card__contacts}>
@@ -310,9 +365,22 @@ export default class PracicCard extends Component {
                                 </div>
                             </div>
                             <div className = "card__curator">
-                                <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic" />
+                                <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic card__profile-pic_curator" />
                                 <p className = "card__curator__action_student" onClick={this.onShowRatingTable}>Оценить компетенции студента</p>
-                                <button disabled={this.state.visibleCuratorBtn} className = "btn card__curator__choose-button">Назначить куратора</button>
+                                <button 
+                                    disabled={this.state.visibleCuratorBtn} 
+                                    className = {`btn ${card__curator__choose_button}`}
+                                    onClick={this.onShowModalAppointCuratorCard}>
+                                        Назначить куратора
+                                </button>
+                                <p className={card_curator_intials}>
+                                    {this.state.Curator}
+                                </p>
+                                <button 
+                                    className={`btn ${card_reset_curator}`}
+                                    onClick={this.onResetCurator}>
+                                        Выбрать другого
+                                </button>
                             </div>
                         </div>
                         <div className = "card__rating  ">
@@ -365,6 +433,10 @@ export default class PracicCard extends Component {
                         visibleRatingTable={this.state.visibleRatingTable}
                         onHideRatingTable={this.onHideRatingTable}
                         onSaveTableRatingTable={this.onSaveTableRatingTable}/>
+                    <AppointCurator 
+                        visibleCuratorCard={this.state.visibleAppointCuratorCard}
+                        onHideCuratorCard={this.onHideModalAppointCuratorCard}
+                        addCurator={this.addCurator}/>
                 </div>
         );
     };

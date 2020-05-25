@@ -367,10 +367,21 @@
     text-align: center;
     border: 1px solid cornflowerblue;
     outline: none;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .container-practic-card {
     margin-top: 270px;
 }
 
+.card_reset_curator {
+
+}
+
+.card_reset_curator.none {
+    display: none;
+}
+
+.card_curator_intials {
+    margin-bottom: 4px;
+}
