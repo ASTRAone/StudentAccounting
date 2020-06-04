@@ -10,6 +10,7 @@
     "connected-react-router": "^6.8.0",
     "fetch": "^1.1.0",
     "history": "^4.10.1",
+    "qs": "^6.9.4",
     "react": "^16.13.0",
     "react-date-picker": "^8.0.1",
     "react-datepicker": "^2.15.0",

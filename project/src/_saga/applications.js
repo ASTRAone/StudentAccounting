@@ -3,6 +3,12 @@ import {getStudentsListRequest, successGetStudentsList} from "../_actions/applic
 import {item} from "../_stab";
 
 import axios from 'axios';
+import qs from 'qs';
+
+export const postman = axios.create({
+    baseURL: 'https://localhost:44314/api',
+    paramsSerializer: params => qs.stringify(params, {'indices': false})
+});
 
 function* getStudentsList(api, action) {
     try {
@@ -10,9 +16,9 @@ function* getStudentsList(api, action) {
         //yield put(changeLoading(true));
 
         // Обращение к БД
-        // const apiRes = yield call(() => axios("http://umorili.herokuapp.com/api/get?site=bash.im&name=bash&num=100")
-        //                                         .then(response => (response.data)), 
-        // action.payload);
+        const apiRes = yield call(() => postman.get(`/${action.payload}`));
+
+        console.log(action.payload)
         
         const stabStudentList = item
         yield put(successGetStudentsList(stabStudentList));
