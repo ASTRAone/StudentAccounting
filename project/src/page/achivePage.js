@@ -15,7 +15,7 @@ class AchivePage extends Component {
         super(props);
 
         this.state = {
-            studentsListInArchive: this.props.studentsList.filter((item) => item.inArchive) || [],
+            studentsListInArchive: this.props.studentsList || [],
             activePage: 1,
             visibleDelBtn: false,
             studentAddModal: false,
@@ -29,7 +29,7 @@ class AchivePage extends Component {
     }
 
     componentDidMount () {
-        this.props.getStudentsListRequest();
+        this.props.getStudentsListRequest(4);
     }
 
     componentDidUpdate (prevProps, prevState) {

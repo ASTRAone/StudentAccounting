@@ -10,16 +10,16 @@ class ReportPage extends Component {
         super(props);
 
         this.state = {
-            studentsListReport: this.props.studentsList.filter((item) => item.onPractice) || []
+            studentsListReport: this.props.studentsList || []
         }
     }
 
     componentDidMount () {
-        this.props.getStudentsListRequest();
+        this.props.getStudentsListRequest(5);
     }
 
     componentDidUpdate (prevProps, prevState) { 
-        const studentsListReportNew = this.props.studentsList.filter((item) => item.onPractice) || [];
+        const studentsListReportNew = this.props.studentsList || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({

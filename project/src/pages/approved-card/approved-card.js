@@ -19,7 +19,7 @@ export default class ApprovedCard extends Component {
         super(props);
 
         this.state = {
-            id: this.props.dataList.studentModalCardData.id,
+            id: this.props.dataList.studentModalCardData.Id,
             SecondName: this.props.dataList.studentModalCardData.SecondName,
             FirstName: this.props.dataList.studentModalCardData.FirstName,
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
@@ -41,8 +41,8 @@ export default class ApprovedCard extends Component {
     }
 
     getReturnLink = () => {
-        const profile = this.props.dataList.studentModalCardData.profilePic;
-        let nameFoo = `${profile}`;
+        const Photo = this.props.dataList.studentModalCardData.Photo;
+        let nameFoo = `${Photo}`;
         let path = {noavatar};  
 
         if (nameFoo) {

@@ -16,7 +16,7 @@ class ApprovedPage extends Component{
         super(props);
 
         this.state = {
-            studentsListApproved: this.props.studentsList.filter((item) => item.approved) || [],
+            studentsListApproved: this.props.studentsList || [],
             activePage: 1,
             visibleDelBtn: false,
             studentCard: 'approved-card',
@@ -27,11 +27,11 @@ class ApprovedPage extends Component{
     }    
 
     componentDidMount () {
-        this.props.getStudentsListRequest();
+        this.props.getStudentsListRequest(1);
     };
 
     componentDidUpdate (prevProps, prevState) {
-        const studentsListApprovedNew = this.props.studentsList.filter((item) => item.approved) || [];
+        const studentsListApprovedNew = this.props.studentsList || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({

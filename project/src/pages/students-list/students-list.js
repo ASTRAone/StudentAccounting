@@ -106,14 +106,14 @@ export default class StudentsList extends Component {
         
         const items = this.state.dataList.map((item, index)=> {
             return (
-                <li className="list-element-block" key={ item.id }>
+                <li className="list-element-block" key={ item.Id }>
                     <StudentsListElement 
-                            idCard={item.id}
+                            idCard={item.Id}
                             {  ...item } 
                             buttons={this.props.buttons} 
                             idx={index}
                             visibleDelBtn={this.props.visibleDelBtn}
-                            onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.id)}                            
+                            onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.Id)}                            
                             onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item)}
                             activePage={this.props.activePage}
                             studentCard={this.props.studentCard}/>

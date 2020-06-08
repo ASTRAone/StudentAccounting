@@ -16,7 +16,7 @@ class PractikPage extends Component {
         super(props);
 
         this.state = {
-            studentsListOnPractice: this.props.studentsList.filter((item) => item.onPractice) || [],
+            studentsListOnPractice: this.props.studentsList || [],
             activePage: 1,
             visibleDelBtn: false,
             studentCard: 'practic-card',
@@ -26,11 +26,11 @@ class PractikPage extends Component {
     }
 
     componentDidMount () {
-        this.props.getStudentsListRequest();
+        this.props.getStudentsListRequest(3);
     }
 
     componentDidUpdate (prevProps, prevState) {
-        const studentsListOnPracticeNew = this.props.studentsList.filter((item) => item.onPractice) || [];
+        const studentsListOnPracticeNew = this.props.studentsList || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({

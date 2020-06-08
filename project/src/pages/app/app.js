@@ -30,48 +30,66 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            role: 'dd',
+            role: '',
             isAuthorization: false
         }
     }
 
+    componentDidMount() {
+        const role = localStorage.getItem('role');
+        const isAuthorization = localStorage.getItem('isAuthorization');
+        this.setState({ 
+            role: role, 
+            isAuthorization: isAuthorization
+        });
+      };
+
     // Распределение ролей
     onGenerateRole = (role) => {
         switch(role) {
-            case 'v' : return '/approved'
+            case 'curator@gmail.ru' : return '/approved'
+            case 'manager@gmail.ru' : return '/approved'
+            case 'director@gmail.ru' : return '/approved'
 
             default : return '/'
         }
     };
 
-    // Вход
+    // Вход в систему
     onChangeRoles = (value) => {
-        this.setState({
-            role: value,
-            isAuthorization: true
-        });
-
         let path = this.onGenerateRole(value);
-        window.location.assign(`http://localhost:3000${path}`)
+
+        window.location.assign(`http://localhost:3000${path}`);
+        window.localStorage.setItem('role', value)
+        window.localStorage.setItem('isAuthorization', true)
+    };
+
+    // Выход из системы
+    onCloeseRole = () => {
+        window.localStorage.clear();
+        window.location.assign(`http://localhost:3000/`);
     }
 
     render() {
         return (
             <div className="app">
-                <AppHeader/>
-                <div className="app-menu">
-                    <MenuItem history={this.props.history}/>
-                </div>
+                {this.state.isAuthorization === 'true' ? 
+                    <div>
+                        <AppHeader
+                            role={this.state.role}
+                            onCloeseRole={this.onCloeseRole}/>
+                        <div className="app-menu">
+                            <MenuItem history={this.props.history}/>
+                        </div>
+                    </div> : null}
                 <Switch>
-                    <Route path="/applications" render={props => <ApplicationsPage {...props} />}/>
-                    <Route path="/approved" render={props => <ApprovedPage {...props} />}/>
-                    <Route path="/reject" render={props => <RejectPage {...props} />}/>
-                    <Route path="/practik" render={props => <PractikPage {...props} />}/>
-                    <Route path="/achive" render={props => <AchivePage {...props} />}/>
-                    <Route path="/report" render={props => <ReportPage {...props} />}/>
-
+                    <Route path="/applications" render={props => <ApplicationsPage {...props} role={this.state.role} />}/>
+                    <Route path="/approved" render={props => <ApprovedPage {...props} role={this.state.role} /> } />
+                    <Route path="/reject" render={props => <RejectPage {...props} role={this.state.role} />} />
+                    <Route path="/practik" render={props => <PractikPage {...props} role={this.state.role} />}/>
+                    <Route path="/achive" render={props => <AchivePage {...props} role={this.state.role} />}/>
+                    <Route path="/report" render={props => <ReportPage {...props} role={this.state.role} />}/>
                     <Route path="/" render={props => <LoginForm {...props} onChangeRoles={this.onChangeRoles}/>} />
-
                 </Switch>
             </div>
         );

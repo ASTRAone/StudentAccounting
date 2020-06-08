@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 
 import './login-form.css';
 
+// import {
+//     BrowserRouter as Router,
+//     Switch,
+//     Route,
+//     Link,
+//     useHistory
+// } from "react-router-dom";
+
 export default class LoginForm extends Component {
 
     constructor(props) {
@@ -58,39 +66,39 @@ export default class LoginForm extends Component {
         }
 
         return (
-            <div class="limiter">
-                <div class="container-login100">
-                    <div class="wrap-login100 p-t-50 p-b-90">
-                        <form class="login100-form validate-form flex-sb flex-w">
-                            <span class="login100-form-title p-b-51">
+            <div className="limiter">
+                <div className="container-login100">
+                    <div className="wrap-login100 p-t-50 p-b-90">
+                        <form className="login100-form validate-form flex-sb flex-w">
+                            <span className="login100-form-title p-b-51">
                                 Login
                             </span>
 
                             
-                            <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+                            <div className="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
                                 <input 
-                                    class="input100" 
+                                    className="input100" 
                                     type="text" 
                                     name="username" 
                                     placeholder="Username" 
                                     onChange={this.onChangeLogin}
                                     value={this.state.login}/>
-                                <span class="focus-input100"></span>
+                                <span className="focus-input100"></span>
                             </div>
                             
                             
-                            <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+                            <div className="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
                                 <input 
-                                    class="input100" 
+                                    className="input100" 
                                     type="password" 
                                     name="pass" 
                                     placeholder="Password" 
                                     onChange={this.onChangePass}
                                     value={this.state.pass}/>
-                                <span class="focus-input100"></span>
+                                <span className="focus-input100"></span>
                             </div>
                             
-                            <div class="flex-sb-m w-full p-t-3 p-b-24">
+                            <div className="flex-sb-m w-full p-t-3 p-b-24">
                                 {/* <div class="contact100-form-checkbox">
                                     <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
                                     <label class="label-checkbox100" for="ckb1">
@@ -105,11 +113,12 @@ export default class LoginForm extends Component {
                                 </div> */}
                             </div>
 
-                            <div class="container-login100-form-btn m-t-17">
+                            <div className="container-login100-form-btn m-t-17">
                                 <button 
-                                    class="login100-form-btn"
-                                    onClick={this.singInSistem}>
-                                        Войти
+                                    className="login100-form-btn"
+                                    onClick={this.singInSistem}> 
+                                        Войти   
+                                        {/* <Link to="/applications"></Link> */}
                                 </button>
                                 <p className={`container__prompt${visiblePrompt}`}>
                                     Заполните все поля!

@@ -22,7 +22,7 @@ class ApplicationsPage extends React.Component  {
         super(props);
 
         this.state= {
-            studentsListRequest: this.props.studentsList.filter((item) => item.request) || [],
+            studentsListRequest: this.props.studentsList || [],
             activePage: 1,
             visibleDelBtn: false,
             studentCard: 'new-card',
@@ -39,12 +39,12 @@ class ApplicationsPage extends React.Component  {
     }
 
     componentDidMount () {
-        this.props.getStudentsListRequest();
+        this.props.getStudentsListRequest(0);
     }
     
     componentDidUpdate(prevProps, prevState) {
 
-        const studentListRequestNew = this.props.studentsList.filter((item) => item.request) || [];
+        const studentListRequestNew = this.props.studentsList || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({

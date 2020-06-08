@@ -11,8 +11,8 @@ export default class StudentsListElement extends Component {
     }
 
     getReturnLink = () => {
-        const {profilePic} = this.props;
-        let nameFoo = `${profilePic}`;
+        const {Photo} = this.props;
+        let nameFoo = `${Photo}`;
         let path = {noavatar};
 
         if (nameFoo) {
@@ -24,9 +24,9 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { idx, date, SecondName, idCard,
-                FirstName, Patronymic, Speciality, 
-                College, Faculty, PractiesBegining, 
+        const { idx, FilingDate, SecondName, idCard,
+                FirstName, Patronymic, PracticArea, 
+                College, Speciality, PractiesBegining, 
                 PractiesEnding, Phone, Email, buttons, 
                 visibleDelBtn, onShowModalWindowDeleted, 
                 onShowModalStudentCardModal, activePage, studentCard, ratingTable } = this.props;
@@ -64,7 +64,7 @@ export default class StudentsListElement extends Component {
                             </div>
                             <div className = "list-element-date">
                                 <p className = "list-element-date__label">Дата заявки</p>
-                                <p className = "list-element-date__value">{ date }</p>
+                                <p className = "list-element-date__value">{ FilingDate }</p>
                             </div>
                         </div>
                         <img src = {this.getReturnLink()} alt="Фотография студента" className = "list__profile-pic" />
@@ -86,7 +86,7 @@ export default class StudentsListElement extends Component {
                             </div>
                             <div className = "list__info-element_institution">
                                 <p className = "list__info-label">Факультет, специальность:</p>
-                                <p className = "list__info-text">{ Faculty }</p>
+                                <p className = "list__info-text">{ Speciality }</p>
                             </div>
                         </div>
                         <div className = "list__info">
@@ -96,7 +96,7 @@ export default class StudentsListElement extends Component {
                             </div>
                             <div className = "list__info-element">
                                 <p className = "list__info-label">Желаемое направление деятельности:</p>
-                                <p className = "list__info-text">{ Speciality }</p>
+                                <p className = "list__info-text">{ PracticArea }</p>
                             </div>
                         </div>
                     </div>

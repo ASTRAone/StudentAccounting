@@ -16,7 +16,7 @@ class RejectPage extends Component {
         super(props);
 
         this.state = {
-            studentsListRejected: this.props.studentsList.filter((item) => item.rejected) || [],
+            studentsListRejected: this.props.studentsList || [],
             activePage: 1,
             visibleDelBtn: false,
             studentCard: 'reject-card',
@@ -26,11 +26,11 @@ class RejectPage extends Component {
     }
 
     componentDidMount () {
-        this.props.getStudentsListRequest();
+        this.props.getStudentsListRequest(2);
     }
 
     componentDidUpdate (prevProps, prevState) {
-        const studentsListRejectedNew = this.props.studentsList.filter((item) => item.rejected) || [];
+        const studentsListRejectedNew = this.props.studentsList || [];
 
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({

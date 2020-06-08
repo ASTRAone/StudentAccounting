@@ -2,7 +2,9 @@ import { handleActions } from 'redux-actions';
 import {successGetStudentsList} from "../_actions/applications";
 
 const initialState = {
-    studentsList: []
+    studentsList: [],
+    
+    // sortStudentList: []
 };
 
 Object.freeze(initialState);

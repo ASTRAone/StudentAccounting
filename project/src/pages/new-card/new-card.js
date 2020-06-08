@@ -15,7 +15,7 @@ export default class NewCard extends Component {
         super(props);
 
         this.state = {
-            id: this.props.dataList.studentModalCardData.id,
+            Id: this.props.dataList.studentModalCardData.Id,
             SecondName: this.props.dataList.studentModalCardData.SecondName,
             FirstName: this.props.dataList.studentModalCardData.FirstName,
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
@@ -61,10 +61,10 @@ export default class NewCard extends Component {
             Email: this.props.dataList.studentModalCardData.Email,
             Phone: this.props.dataList.studentModalCardData.Phone,
             College: this.props.dataList.studentModalCardData.College,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
+            Speciality: this.props.dataList.studentModalCardData.Speciality,
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
+            // Speciality: this.props.dataList.studentModalCardData.Speciality,
 
             visibleEditCard: false
         });
@@ -101,7 +101,7 @@ export default class NewCard extends Component {
     // Редактирование специальности
     editFaculty = (e) => {
         this.setState({
-            Faculty: e.target.value
+            Speciality: e.target.value
         });
     };
 
@@ -234,12 +234,12 @@ export default class NewCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Факультет, специальность:</p>
-                                    <p className = {card__info_text}>{this.state.Faculty}</p>
+                                    <p className = {card__info_text}>{this.state.Speciality}</p>
                                     <label className={our_input}>
                                         <Input 
                                             className="card__info-text_input"
                                             type="text" 
-                                            value={this.state.Faculty}
+                                            value={this.state.Speciality}
                                             onChange={this.editFaculty}/>
                                     </label>
                                 </div>
