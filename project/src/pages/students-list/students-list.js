@@ -9,9 +9,11 @@ import ApplicationSuccessfullyDeleted from '../../components/application-success
 import StudentCard from '../student-card';
 import StudentAddForm from '../student-add-form'
 
+import {deleteStudent} from '../../_actions/applications';
+
 import {getStudentsListRequest} from '../../_actions/applications';
 
-export default class StudentsList extends Component {
+class StudentsList extends Component {
 
     constructor(props) {
         super(props);
@@ -31,7 +33,7 @@ export default class StudentsList extends Component {
 
         // данные которые пришли необходимо записать в стейт
 
-        //this.props.getStudentsListRequest();
+       this.props.deleteStudent();
     }
 
     componentDidUpdate(prevProps) {
@@ -60,6 +62,9 @@ export default class StudentsList extends Component {
     // Подтвердить удаление
     onConfirmDeleted = () => {
         console.log(this.state.idTableStudent)
+
+        // Удаление через апи
+        this.props.deleteStudent(this.state.idTableStudent)
 
         this.setState({
             modalDeleteWindow: false,
@@ -147,3 +152,16 @@ export default class StudentsList extends Component {
     };
 };
 
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        deleteStudent
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(StudentsList);

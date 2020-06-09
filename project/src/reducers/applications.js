@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import {successGetStudentsList} from "../_actions/applications";
+import {successGetStudentsList, sendPostNewStudent, successDeleteStudent} from "../_actions/applications";
 
 const initialState = {
     studentsList: [],

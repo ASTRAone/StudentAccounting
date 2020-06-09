@@ -1,6 +1,6 @@
 ﻿import { takeLatest, put, call, delay } from "redux-saga/effects";
 import {getStudentsListRequest, successGetStudentsList, postCreateNewStudent, sendPostNewStudent,
-        postFindStudent, successFindStudent} from "../_actions/applications";
+        postFindStudent, successFindStudent, deleteStudent, successDeleteStudent} from "../_actions/applications";
 import {item} from "../_stab";
 
 import axios from 'axios';
@@ -59,6 +59,30 @@ function* createNewStudent(api, action) {
     }
 }
 
+// Удаление студента
+function* deleteStudentCard(api, action) {
+    try {
+        console.warn('[saga ===> deleteStudentCard ===> ]');
+        //yield put(changeLoading(true));
+
+        
+        const apiRes = yield call(() => postman.get(`/DeleteStudent=${action.payload}`));
+
+        // console.log(action.payload)
+        
+        // const stabStudentList = item
+        yield put(successDeleteStudent(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
 
 // Поиск студента
 
@@ -66,7 +90,8 @@ function* createNewStudent(api, action) {
 
 function* headerSaga(ea) {
   yield takeLatest(getStudentsListRequest().type, getStudentsList, ea);
-
+  // Удаление студента
+  yield takeLatest(deleteStudent().type, deleteStudentCard, ea);
   // Добавление студента
   yield takeLatest(postCreateNewStudent().type, createNewStudent, ea);
 }
