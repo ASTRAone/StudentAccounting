@@ -47,9 +47,9 @@ export default class App extends Component {
     // Распределение ролей
     onGenerateRole = (role) => {
         switch(role) {
-            case 'curator@gmail.ru' : return '/approved'
-            case 'manager@gmail.ru' : return '/approved'
-            case 'director@gmail.ru' : return '/approved'
+            case 'curator@gmail.ru' : return '/applications'
+            case 'manager@gmail.ru' : return '/applications'
+            case 'director@gmail.ru' : return '/applications'
 
             default : return '/'
         }
