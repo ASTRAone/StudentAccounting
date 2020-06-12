@@ -33,7 +33,7 @@ class StudentsList extends Component {
 
         // данные которые пришли необходимо записать в стейт
 
-       this.props.deleteStudent();
+    //    this.props.deleteStudent(5);
     }
 
     componentDidUpdate(prevProps) {
@@ -111,14 +111,14 @@ class StudentsList extends Component {
         
         const items = this.state.dataList.map((item, index)=> {
             return (
-                <li className="list-element-block" key={ item.Id }>
+                <li className="list-element-block" key={ index }>
                     <StudentsListElement 
                             idCard={item.Id}
                             {  ...item } 
                             buttons={this.props.buttons} 
                             idx={index}
                             visibleDelBtn={this.props.visibleDelBtn}
-                            onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.Id)}                            
+                            onShowModalWindowDeleted={() => this.onShowModalWindowDeleted(item.id)}                            
                             onShowModalStudentCardModal={() => this.onShowModalStudentCardModal(item)}
                             activePage={this.props.activePage}
                             studentCard={this.props.studentCard}/>

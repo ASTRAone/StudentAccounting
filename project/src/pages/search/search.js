@@ -4,7 +4,10 @@ import RangePicker from "react-range-picker"
 
 import './search.css';
 
-export default class Search extends Component {
+import {connect} from 'react-redux';
+import {postFindStudent} from '../../_actions/applications'
+
+class Search extends Component {
 
     constructor(props){
         super(props);
@@ -14,7 +17,8 @@ export default class Search extends Component {
             initials: '',
             direction: '',
             startDate: '',
-            endDate: ''
+            endDate: '',
+            ourDate: {}
         }
     }
 
@@ -55,9 +59,38 @@ export default class Search extends Component {
         });
     };
 
+    // Сброс поиска
+    cancelSearch = () => {
+        this.setState({
+            colledge: '',
+            initials: '',
+            direction: '',
+            startDate: null,
+            endDate: null,
+            ourDate: {}
+        });
+
+        this.props.orderSearchStudents();
+    };
+
     // Начать поиск
     onSearchStudents = () => {
-        console.log(this.state);
+
+        let initials = this.state.initials.split(" ");
+
+        const searchParams = {
+            Institution: this.state.colledge,
+            PractiesBegining: this.state.startDate,
+            PractiesEnding: this.state.endDate,
+            FirstName: initials[0] ? initials[0].toString() : "",
+            SecondName: initials[1] ? initials[1].toString() : "",
+            Patronymic: initials[2] ? initials[2].toString() : "",
+            Direction: this.state.direction
+        }
+        this.props.searchStudents(this.props.postFindStudent(searchParams));
+
+        // let params = this.props.postFindStudent(searchParams);
+        // this.props.searchStudents(params)
     };
 
     render() {
@@ -70,13 +103,21 @@ export default class Search extends Component {
             );
         });
 
-        let bnt_disabled = false;
+        let bnt_disabled = true;
+        let reset = " opacity";
 
-        if (this.state.colledge.length === 0 && this.state.initials.length === 0 && 
-            this.state.direction.length === 0 && this.state.startDate.length === 0 &&
-            this.state.endDate.length === 0) {
+        if (!this.state.colledge && !this.state.initials && 
+            !this.state.direction && !this.state.startDate &&
+            !this.state.endDate) {
                 bnt_disabled = true
             } else bnt_disabled = false;
+
+
+        if (this.state.colledge.length || this.state.initials || 
+            this.state.direction || this.state.startDate ||
+            this.state.endDate) {
+                reset = "";
+            }
 
         return (
             <div className="search-menu">
@@ -89,7 +130,9 @@ export default class Search extends Component {
 
                 <RangePicker
                     placeholderText="Дата практики"
-                    onDateSelected={this.onChangeData}/>
+                    onDateSelected={this.onChangeData}
+                    // value={[this.state.startDate, this.state.endDate]}
+                    />
                     
                 <input 
                     type="text" 
@@ -116,7 +159,25 @@ export default class Search extends Component {
                     onClick={this.onSearchStudents}>
                         Найти
                 </button>
+                <i 
+                    className={`fa fa-undo${reset}`}
+                    onClick={this.cancelSearch}>
+                </i>
             </div>
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        postFindStudent
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(Search);

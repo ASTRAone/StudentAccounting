@@ -56,3 +56,63 @@ export function successFindStudent(payload) {
         payload
     };
 };
+
+// Обновление информаии о студенте
+export function updateInfoStudent(payload) {
+    return {
+        type: 'UPDATE_INFO_STUDENT',
+        payload
+    };
+};
+
+export function successUpdateInfoStudent(payload) {
+    return {
+        type: 'UPDATE_INFO_STUDENT_SUCCESS',
+        payload
+    };
+};
+
+// Создание практики
+// export function updateInfoStudent(payload) {
+//     return {
+//         type: 'UPDATE_INFO_STUDENT',
+//         payload
+//     };
+// };
+
+// export function successUpdateInfoStudent(payload) {
+//     return {
+//         type: 'UPDATE_INFO_STUDENT_SUCCESS',
+//         payload
+//     };
+// };
+
+// Вход в систему
+export function postLogin(payload) {
+    return {
+        type: 'POST_LOGIN',
+        payload
+    };
+};
+
+export function successPostLogin(payload) {
+    return {
+        type: 'POST_LOGIN_SUCCESS',
+        payload
+    };
+};
+
+// Добавление куратора
+export function addCurator(payload) {
+    return {
+        type: 'ADD_CURATOR',
+        payload
+    };
+};
+
+export function successAddCurator(payload) {
+    return {
+        type: 'ADD_CURATOR_SUCCESS',
+        payload
+    };
+};

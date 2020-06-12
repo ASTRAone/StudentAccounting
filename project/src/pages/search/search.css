@@ -89,3 +89,14 @@ input::-webkit-input-placeholder { color: #cacaca; }
 .default-placeholder .icon {
     border: 1px solid gray;
 }
+
+.search-menu > i {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search-menu > .fa.fa-undo.opacity {
+    opacity: 0;
+}

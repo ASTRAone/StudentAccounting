@@ -176,12 +176,32 @@ class ApplicationsPage extends React.Component  {
             visibleReject: false
         });
     };
+
+    // Поиск студентов-практикантов
+    searchStudents = (listSearch) => {
+        this.setState(({studentsListInArchive}) => {
+            return {
+                studentsListInArchive: listSearch || []
+            };
+        });
+    };
+
+    // Очистка поиска
+    orderSearchStudents = () => {
+        this.setState(({studentsListInArchive}) => {
+            return {
+                studentsListInArchive: this.props.studentsList || []
+            };
+        });
+    };
     
     render() {  
         return (
             <React.Fragment>
                 <div className="app-search">
-                    <Search />
+                    <Search 
+                        searchStudents={this.searchStudents}
+                        orderSearchStudents={this.orderSearchStudents}/>
                 </div>
                 <div className="app-filter">
                     <Filter 

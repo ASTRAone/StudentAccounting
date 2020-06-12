@@ -87,28 +87,6 @@ class AchivePage extends Component {
         });
     };
 
-    searchName(items, name) {
-
-        if (name.length === 0){
-
-            return items;
-        }
-
-        return items.firstName.toLowerCase().indexOf(name.toLowerCase()) > -1;
-
-    }
-
-    searchCollege(items, college) {
-
-        if (college.length === 0){
-
-            return items;
-        }
-
-        return items.label.toLowerCase().indexOf(college.toLowerCase()) > -1;
-        
-    }
-
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
@@ -135,12 +113,22 @@ class AchivePage extends Component {
             }
         });
     };
+
+    // Поиск студентов-практикантов
+    searchStudents = (listSearch) => {
+        this.setState(({studentsListInArchive}) => {
+            return {
+                studentsListInArchive: listSearch
+            };
+        });
+    };
      
     render() {
         return (
             <React.Fragment>
                 <div className="app-search">
-                    <Search />
+                    <Search 
+                        searchStudents={this.searchStudents}/>
                 </div>
                 <div className="app-filter">
                     <Filter 

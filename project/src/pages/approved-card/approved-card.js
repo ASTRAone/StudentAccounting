@@ -19,18 +19,18 @@ export default class ApprovedCard extends Component {
         super(props);
 
         this.state = {
-            id: this.props.dataList.studentModalCardData.Id,
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
-            College: this.props.dataList.studentModalCardData.College,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
-            Curator: this.props.dataList.studentModalCardData.Curator,
+            id: this.props.dataList.studentModalCardData.id,
+            SecondName: this.props.dataList.studentModalCardData.secondName,
+            FirstName: this.props.dataList.studentModalCardData.firstName,
+            Patronymic: this.props.dataList.studentModalCardData.patronymic,
+            Email: this.props.dataList.studentModalCardData.email,
+            Phone: this.props.dataList.studentModalCardData.phone,
+            College: this.props.dataList.studentModalCardData.college,
+            Faculty: this.props.dataList.studentModalCardData.faculty,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            Speciality: this.props.dataList.studentModalCardData.speciality,
+            Curator: this.props.dataList.studentModalCardData.curator,
 
             visibleEditCard: false,
             visibleAlteration: false,
@@ -41,7 +41,7 @@ export default class ApprovedCard extends Component {
     }
 
     getReturnLink = () => {
-        const Photo = this.props.dataList.studentModalCardData.Photo;
+        const Photo = this.props.dataList.studentModalCardData.photo;
         let nameFoo = `${Photo}`;
         let path = {noavatar};  
 

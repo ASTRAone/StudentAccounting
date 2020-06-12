@@ -11,8 +11,8 @@ export default class StudentsListElement extends Component {
     }
 
     getReturnLink = () => {
-        const {Photo} = this.props;
-        let nameFoo = `${Photo}`;
+        const {photo} = this.props;
+        let nameFoo = `${photo}`;
         let path = {noavatar};
 
         if (nameFoo) {
@@ -24,18 +24,18 @@ export default class StudentsListElement extends Component {
 
     render(){
 
-        const { idx, FilingDate, SecondName, idCard,
-                FirstName, Patronymic, PracticArea, 
-                College, Speciality, PractiesBegining, 
-                PractiesEnding, Phone, Email, buttons, 
+        const { id, idx, filingDate, secondName, idCard,
+                firstName, patronymic, practicArea, 
+                institutionId, speciality, practiesBegining, 
+                practiesEnding, phone, email, buttons, 
                 visibleDelBtn, onShowModalWindowDeleted, 
                 onShowModalStudentCardModal, activePage, studentCard, ratingTable } = this.props;
 
-        const { average_mark, conflict, conflict_comment,
-                educability, educability_comment, initiative, 
-                initiative_comment, interest, interest_comment,
-                quality, quality_comment, relationship, 
-                relationship_comment, responsibility, responsibility_comment } = ratingTable;
+        // const { average_mark, conflict, conflict_comment,
+        //         educability, educability_comment, initiative, 
+        //         initiative_comment, interest, interest_comment,
+        //         quality, quality_comment, relationship, 
+        //         relationship_comment, responsibility, responsibility_comment } = ratingTable;
         
 
         let visibleBtnDel = "btn-close none";
@@ -46,12 +46,12 @@ export default class StudentsListElement extends Component {
             visibleBtnDel = "btn-close";
         }
 
-        if (!average_mark && !conflict && !conflict_comment && !educability && !educability_comment &&
-            !initiative && !initiative_comment && !interest && !interest_comment &&
-            !quality && !quality_comment && !relationship && !relationship_comment &&
-            !responsibility && !responsibility_comment && studentCard === "practic-card") {
-                visibleBtn = " disabled";
-            }
+        // if (!average_mark && !conflict && !conflict_comment && !educability && !educability_comment &&
+        //     !initiative && !initiative_comment && !interest && !interest_comment &&
+        //     !quality && !quality_comment && !relationship && !relationship_comment &&
+        //     !responsibility && !responsibility_comment && studentCard === "practic-card") {
+        //         visibleBtn = " disabled";
+        //     }
         
         return(
             <React.Fragment>
@@ -64,39 +64,39 @@ export default class StudentsListElement extends Component {
                             </div>
                             <div className = "list-element-date">
                                 <p className = "list-element-date__label">Дата заявки</p>
-                                <p className = "list-element-date__value">{ FilingDate }</p>
+                                <p className = "list-element-date__value">{ filingDate }</p>
                             </div>
                         </div>
                         <img src = {this.getReturnLink()} alt="Фотография студента" className = "list__profile-pic" />
-                        <p className = "list__name">{ SecondName + " " + FirstName + " " + Patronymic }</p>
+                        <p className = "list__name">{ secondName + " " + firstName + " " + patronymic }</p>
                         <div className = "list__info">
                             <div className = "list__contacts__element">
                                 <i className="fa fa-envelope"></i>
-                                <p className = "list__contacts__text">{ Email }</p>
+                                <p className = "list__contacts__text">{ email }</p>
                             </div>
                             <div className = "list__contacts__element">
                                 <i className ="fa fa-mobile list__contact-icon"></i>
-                                <p className = "list__contacts__text">{ Phone }</p>
+                                <p className = "list__contacts__text">{ phone }</p>
                             </div>
                         </div>
                         <div className = "list__info">
                             <div className = "list__info-element_institution">
                                 <p className = "list__info-label">Учебное заведение:</p>
-                                <p className = "list__info-text">{ College }</p>
+                                <p className = "list__info-text">{ institutionId }</p>
                             </div>
                             <div className = "list__info-element_institution">
                                 <p className = "list__info-label">Факультет, специальность:</p>
-                                <p className = "list__info-text">{ Speciality }</p>
+                                <p className = "list__info-text">{ speciality }</p>
                             </div>
                         </div>
                         <div className = "list__info">
                             <div className = "list__info-element">
                                 <p className = "list__info-label">Предполагаемые сроки практики:</p>
-                                <p className = "list__info-text">{ PractiesBegining + " - " + PractiesEnding }</p>
+                                <p className = "list__info-text">{ practiesBegining + " - " + practiesEnding }</p>
                             </div>
                             <div className = "list__info-element">
                                 <p className = "list__info-label">Желаемое направление деятельности:</p>
-                                <p className = "list__info-text">{ PracticArea }</p>
+                                <p className = "list__info-text">{ practicArea }</p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ export default class StudentsListElement extends Component {
                                 <label className="list__buttons-our" key={index}>
                                     <i 
                                         className ={`fa ${item.icon}${visibleBtn}`}
-                                        onClick={() => item.change_category(idCard)}>
+                                        onClick={() => item.change_category(id)}>
                                     </i>
                                     <label className="list__buttons-text">{item.label}</label>
                                 </label>

@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 
 import './login-form.css';
 
-// import {
-//     BrowserRouter as Router,
-//     Switch,
-//     Route,
-//     Link,
-//     useHistory
-// } from "react-router-dom";
+import {connect} from 'react-redux';
+import {postLogin} from '../../_actions/applications';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
 
     constructor(props) {
         super(props);
@@ -132,3 +127,17 @@ export default class LoginForm extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        postLogin
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(LoginForm);

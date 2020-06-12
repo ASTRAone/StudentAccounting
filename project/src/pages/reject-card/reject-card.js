@@ -17,16 +17,16 @@ export default class RejectCard extends Component {
 
         this.state = {
             id: this.props.dataList.studentModalCardData.id,
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
-            College: this.props.dataList.studentModalCardData.College,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
+            SecondName: this.props.dataList.studentModalCardData.secondName,
+            FirstName: this.props.dataList.studentModalCardData.firstName,
+            Patronymic: this.props.dataList.studentModalCardData.patronymic,
+            Email: this.props.dataList.studentModalCardData.email,
+            Phone: this.props.dataList.studentModalCardData.phone,
+            College: this.props.dataList.studentModalCardData.college,
+            Faculty: this.props.dataList.studentModalCardData.faculty,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            Speciality: this.props.dataList.studentModalCardData.speciality,
 
             visibleEditCard: false,
             visibleAlteration: false,
@@ -35,7 +35,7 @@ export default class RejectCard extends Component {
     }
 
     getReturnLink = () => {
-        const profile = this.props.dataList.studentModalCardData.profilePic;
+        const profile = this.props.dataList.studentModalCardData.photo;
         let nameFoo = `${profile}`;
         let path = {noavatar};  
 

@@ -3,10 +3,14 @@ import React, { Component } from 'react';
 import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 import Datetime from 'react-date-picker';
+import {connect} from 'react-redux';
+
 
 import './student-add-form.css';
 
-export default class StudentAddForm extends Component {
+import {postCreateNewStudent} from '../../_actions/applications'
+
+class StudentAddForm extends Component {
 
     constructor(props) {
         super(props);
@@ -23,6 +27,8 @@ export default class StudentAddForm extends Component {
             PractiesBegining: "",
             PractiesEnding: "",
             Speciality: {},
+            CollegeID: "",
+            SpecialityName: "",
 
             visibleSaveBtn: true
         }
@@ -70,8 +76,18 @@ export default class StudentAddForm extends Component {
     };
 
     collegeChange(event) {
+
+        let id;
+
+        switch(event.target.value) {
+            case "КГУ": id = 1; break;
+            case "Чижова": id = 2; break;
+            case "Политех": id = 3; break;
+        }
+
         this.setState({
-            College: event.target.value
+            College: event.target.value,
+            CollegeID: id
         }); 
     };
 
@@ -110,14 +126,43 @@ export default class StudentAddForm extends Component {
     };
 
     specialityChange(event) {
+
+        let specialityName = '';
+
+        switch(event.target.name) {
+            case "Backend" : specialityName = "Backend"; break;
+            case "Frontend" : specialityName = "Frontend"; break;
+            case "Testing" : specialityName = "Тестирование"; break;
+            case "System_analysis" : specialityName = "Системный анализ"; break;
+            case "System_administration" : specialityName = "Системное администрирование"; break;
+        }
+
         this.setState({
-            Speciality: {[event.target.name]:event.target.value}
+            Speciality: {[event.target.name]:event.target.value},
+            SpecialityName: specialityName
         });         
     };
 
     // Добавить студента-практиканта
     addNewStudent = () => {
         console.log(this.state);
+
+        const params = {
+            SecondName: this.state.SecondName,
+            FirstName: this.state.FirstName,
+            Patronymic: this.state.Patronymic,
+            institutionId: this.state.CollegeID,
+            Speciality: this.state.SpecialityName,
+            PracticArea: this.state.Faculty,
+            PractiesBegining: this.state.PractiesBegining,
+            PractiesEnding: this.state.PractiesEnding,
+            Phone: this.state.Phone,
+            Email: this.state.Email,
+            photo: this.state.profilePic
+        }
+
+        // Добавление нового студента через апи
+        this.props.postCreateNewStudent(params);
 
         this.setState({
             profilePic: "",
@@ -149,7 +194,8 @@ export default class StudentAddForm extends Component {
             Faculty: "",
             PractiesBegining: "",
             PractiesEnding: "",
-            Speciality: {}
+            Speciality: {},
+            SpecialityName: ""
         });
 
         this.props.onHideModalWindowAdd();
@@ -217,6 +263,7 @@ export default class StudentAddForm extends Component {
                                         list="institution" 
                                         className="from-our__item"
                                         value={this.state.College}
+                                        
                                         onChange={this.collegeChange}
                                         placeholder="Учебное заведение*"/>
 
@@ -342,3 +389,17 @@ export default class StudentAddForm extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        postCreateNewStudent
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(StudentAddForm);
