@@ -2,7 +2,10 @@
 import {getStudentsListRequest, successGetStudentsList, postCreateNewStudent, sendPostNewStudent,
         postFindStudent, successFindStudent, deleteStudent, successDeleteStudent,
         updateInfoStudent, successUpdateInfoStudent, postLogin, successPostLogin,
-        addCurator, successAddCurator} from "../_actions/applications";
+        addCurator, successAddCurator , exportToExcel, successExportToExcel, practicToExcel,
+        successPracticToExcel, addStudentPracticComment,
+        successAddStudentPracticComment, studentCardReport, successStudentCardReport, updatePractic,
+        successUpdatePractic} from "../_actions/applications";
 import {item} from "../_stab";
 
 import axios from 'axios';
@@ -131,6 +134,127 @@ function* updateInfo(api, action) {
     }
 }
 
+// Экспорт в Excel
+function* exportReportToExcel(api, action) {
+    try {
+        console.warn('[saga ===> exportReportToExcel ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.post("/Practic/ExportToExcel", action.payload));
+
+        // const stabStudentList = item
+        yield put(successExportToExcel(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+// Экспортировать практику в Excel
+function* exportPracticToExcel(api, action) {
+    try {
+        console.warn('[saga ===> exportPracticToExcel ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.post("/Reports/PracticToExcel", action.payload));
+
+        // const stabStudentList = item
+        yield put(successPracticToExcel(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+// Добавить комментарий к практике
+function* addPracticComment(api, action) {
+    try {
+        console.warn('[saga ===> addPracticComment ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.post("/AddStudentPracicComment", action.payload));
+
+        // const stabStudentList = item
+        yield put(successAddStudentPracticComment(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+// Отчет по карточке
+function* makeStudentCardReport(api, action) {
+    try {
+        console.warn('[saga ===> makeStudentCardReport ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.post("/StudentCardReport", action.payload));
+
+        // const stabStudentList = item
+        yield put(successStudentCardReport(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+// Обновить практику
+function* updateStudentPractic(api, action) {
+    try {
+        console.warn('[saga ===> updateStudentPractic ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.post("/Practic/UpdatePractic", action.payload));
+
+        // const stabStudentList = item
+        yield put(successUpdatePractic(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+
 // Вход в систему
 function* getLoggingSistem(api, action) {
     try {
@@ -193,7 +317,17 @@ function* headerSaga(ea) {
   // Вход в систему
   yield takeLatest(postLogin().type, getLoggingSistem, ea);   
   // Добавление куратора
-  yield takeLatest(addCurator().type, addCuratorPractic, ea);   
+  yield takeLatest(addCurator().type, addCuratorPractic, ea); 
+  // Экспорт в Excel
+  yield takeLatest(exportToExcel().type, exportReportToExcel, ea);
+  // Экспортировать практику в Excel
+  yield takeLatest(practicToExcel().type, exportPracticToExcel, ea);
+  // Добавить комментарий к практике
+  yield takeLatest(addStudentPracticComment().type, addPracticComment, ea);
+  // Отчет по карточке
+  yield takeLatest(studentCardReport().type, makeStudentCardReport, ea);
+  // Обновить практику
+  yield takeLatest(updatePractic().type, updateStudentPractic, ea); 
 }
 
 export default headerSaga;
