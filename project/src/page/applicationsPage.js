@@ -179,18 +179,18 @@ class ApplicationsPage extends React.Component  {
 
     // Поиск студентов-практикантов
     searchStudents = (listSearch) => {
-        this.setState(({studentsListInArchive}) => {
+        this.setState(({studentsListRequest}) => {
             return {
-                studentsListInArchive: listSearch || []
+                studentsListRequest: listSearch || []
             };
         });
     };
 
     // Очистка поиска
     orderSearchStudents = () => {
-        this.setState(({studentsListInArchive}) => {
+        this.setState(({studentsListRequest}) => {
             return {
-                studentsListInArchive: this.props.studentsList || []
+                studentsListRequest: this.props.studentsList || []
             };
         });
     };

@@ -158,7 +158,7 @@ class StudentAddForm extends Component {
             PractiesEnding: this.state.PractiesEnding,
             Phone: this.state.Phone,
             Email: this.state.Email,
-            photo: this.state.profilePic
+            Photo: this.state.profilePic
         }
 
         // Добавление нового студента через апи
