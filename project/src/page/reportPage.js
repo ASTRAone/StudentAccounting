@@ -15,15 +15,13 @@ class ReportPage extends Component {
     }
 
     componentDidMount () {
-        this.props.getStudentsListRequest(5);
+        this.props.getStudentsListRequest(3);
     }
 
     componentDidUpdate (prevProps, prevState) { 
-        const studentsListReportNew = this.props.studentsList || [];
-
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
-                studentsListReport: studentsListReportNew
+                studentsListReport: this.props.studentsList
             });
         }
     };

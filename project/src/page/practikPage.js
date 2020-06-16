@@ -91,11 +91,32 @@ class PractikPage extends Component {
         console.log("Студент переведен в Архив " + id)
     };
 
+    // Поиск студентов-практикантов
+    // searchStudents = (listSearch) => {
+    //     this.setState(({studentsListOnPractice}) => {
+    //         return {
+    //             studentsListOnPractice: listSearch || []
+    //         };
+    //     });
+    // };
+
+    // Очистка поиска
+    orderSearchStudents = () => {
+        // this.setState(({studentsListInArchive}) => {
+        //     return {
+        //         studentsListInArchive: this.props.studentsList || []
+        //     };
+        // });
+        this.props.getStudentsListRequest(3);
+    };
+
     render() {
         return (
             <React.Fragment>
                 <div className="app-search">
-                    <Search />
+                    <Search 
+                        orderSearchStudents={this.orderSearchStudents}
+                        statusStudent={3}/>
                 </div>
                 <div className="app-filter">
                     <Filter 

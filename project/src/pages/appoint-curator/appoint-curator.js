@@ -3,44 +3,84 @@ import { Button, Header, Image, Modal, Icon, Input, Item  } from 'semantic-ui-re
 
 import noavatarcurator from '../img/noavatar-curator.jpg';
 
+import {connect} from 'react-redux';
+import {addCurator, getListCurators} from '../../_actions/applications';
+
 import './appoint-curator.css';
 
-export default class AppointCurator extends Component {
+class AppointCurator extends Component {
 
 
     constructor(props){
         super(props);
 
         this.state = {
-            initials: ''
+            initials: '',
+            curatorID: '',
+            curatorsList: this.props.curatorsList || []
         }
     }
 
-    curatorsMass = [
-        {id: 1, initials: "Ф. Ф. Алексеев"},
-        {id: 2, initials: "В. Ф. Белов"},
-        {id: 3, initials: "Ф. С. Гришенко"},
-        {id: 4, initials: "Ф. Ф. Алексеев"},
-        {id: 5, initials: "Ф. И. Алексеев"},
-        {id: 6, initials: "Ш. Ж. Дубинин"},
-        {id: 7, initials: "А. А. Смирнов"},
-        {id: 8, initials: "Ф. Ф. Краснов"},
-        {id: 9, initials: "Д. Ф. Шахунов"},
-    ]
+    componentDidMount () {
+        this.props.getListCurators();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.curatorsList !== this.props.curatorsList) {
+            this.setState({
+                curatorsList: this.props.curatorsList
+            });
+        }
+    }
+
+    // curatorsMass = [
+    //     {id: 1, initials: "Ф. Ф. Алексеев"},
+    //     {id: 2, initials: "В. Ф. Белов"},
+    //     {id: 3, initials: "Ф. С. Гришенко"},
+    //     {id: 4, initials: "Ф. Ф. Алексеев"},
+    //     {id: 5, initials: "Ф. И. Алексеев"},
+    //     {id: 6, initials: "Ш. Ж. Дубинин"},
+    //     {id: 7, initials: "А. А. Смирнов"},
+    //     {id: 8, initials: "Ф. Ф. Краснов"},
+    //     {id: 9, initials: "Д. Ф. Шахунов"},
+    // ]
 
     // Изменить выбор куратора
     onChangeInput = (e) => {
+        
+        let idCurator;
+        
+        this.state.curatorsList.forEach(element => {
+
+            let initials = element.secondName + " " + element.firstName + " " + element.patronymic;
+
+            if (initials === e.target.value) {
+                idCurator = element.id
+            }
+        });
+
+        console.log(idCurator);
+
         this.setState({
-            initials: e.target.value
+            initials: e.target.value,
+            curatorID: idCurator
         });
     };
 
     // Выбрать куратора
     attachCurator = () => {
-        this.props.addCurator(this.state.initials);
+        this.props.addCuratorStud(this.state.curatorID);
+
+        const params = {
+            studentId: this.props.idStudent,
+            mentorId: this.state.curatorID
+        }
+
+        this.props.addCurator(params)
 
         this.setState({
-            initials: ''
+            initials: '',
+            curatorID: ''
         });
 
         this.props.onHideCuratorCard();
@@ -49,7 +89,8 @@ export default class AppointCurator extends Component {
     // Закрыть окно выбора куратора
     onCloseCardCurators = () => {
         this.setState({
-            initials: ''
+            initials: '',
+            curatorID: ''
         });
 
         this.props.onHideCuratorCard();
@@ -58,9 +99,9 @@ export default class AppointCurator extends Component {
     render() {
 
         // Получение всех кураторов
-        const curators = this.curatorsMass.map((item, index) => {
+        const curators = this.props.curatorsList.map((item, index) => {
             return (
-                <option key={index}>{item.initials}</option>
+                <option key={index}>{item.secondName + " " + item.firstName + " " + item.patronymic}</option>
             );
         });
 
@@ -112,3 +153,19 @@ export default class AppointCurator extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        studentsList: state.applications.studentsList,
+        curatorsList: state.applications.curatorsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        addCurator,
+        getListCurators
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(AppointCurator);

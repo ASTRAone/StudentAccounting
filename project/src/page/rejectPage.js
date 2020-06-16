@@ -91,11 +91,32 @@ class RejectPage extends Component {
         console.log("Студент переведен на практику " + id)
     };
 
+    // Поиск студентов-практикантов
+    // searchStudents = (listSearch) => {
+    //     this.setState(({studentsListRejected}) => {
+    //         return {
+    //             studentsListRejected: listSearch || []
+    //         };
+    //     });
+    // };
+
+    // Очистка поиска
+    orderSearchStudents = () => {
+        // this.setState(({studentsListInArchive}) => {
+        //     return {
+        //         studentsListInArchive: this.props.studentsList || []
+        //     };
+        // });
+        this.props.getStudentsListRequest(2);
+    };
+
     render () {
         return (
             <React.Fragment>
                 <div className="app-search">
-                    <Search />
+                    <Search 
+                        orderSearchStudents={this.orderSearchStudents}
+                        statusStudent={2}/>
                 </div>
                 <div className="app-filter">
                     <Filter 

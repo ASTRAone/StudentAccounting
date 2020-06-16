@@ -5,13 +5,15 @@ import StarRatings from 'react-star-ratings';
 import RatingTableArchive from '../rating-table-archive';
 import CuratorCard from '../curator-card';
 
-
 import noavatar from "../img/noavatar.png";
 import noavatarcurator from '../img/noavatar-curator.jpg';
 
 import './archive-card.css';
 
-export default class ArchiveCard extends Component {
+import {connect} from 'react-redux';
+import {getListCurators} from '../../_actions/applications';
+
+class ArchiveCard extends Component {
 
     constructor(props) {
         super(props);
@@ -31,25 +33,51 @@ export default class ArchiveCard extends Component {
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
             starRatings: this.props.dataList.studentModalCardData.starRatings,
-            Curator: this.props.dataList.studentModalCardData.curator,
+            CuratorId: this.props.dataList.studentModalCardData.mentorId,
+            curatorsList: this.props.curatorsList || [],
 
             visibleRatingTable: false,
             visibleCuratorCard: false
         }
     }
 
-    getReturnLink = () => {
-        const profile = this.props.dataList.studentModalCardData.photo;
-        let nameFoo = `${profile}`;
-        let path = {noavatar};  
-
-        if (nameFoo) {
-            path = require(`../img/${nameFoo}`);
+    componentDidMount () {
+        this.props.getListCurators();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.curatorsList !== this.props.curatorsList) {
+            this.setState({
+                curatorsList: this.props.curatorsList
+            });
         }
+    }
 
-        return path;
+    // Получение инициалов куратора
+    getReturnNameCurators = () => {
+        let nameCurator = "";
+
+        this.state.curatorsList.forEach(element => {
+            if (element.id === this.state.CuratorId) {
+                nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
+            }
+        });
+
+        return nameCurator;
     };
 
+    // Обработка изображений
+    getReturnImage = () => {
+        const {photo} = this.props.dataList;
+        photo = `data:image/png;base64,${photo}`;
+        let photoFoo = {noavatar};
+
+        if (photo) {
+            photoFoo = photo
+        }
+
+        return photoFoo;
+    };
 
     // Открыть окно оценок компетенций студента
     onShowRatingTable = () => {
@@ -99,7 +127,7 @@ export default class ArchiveCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
+                            <img src = {this.getReturnImage()} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = "card__contacts">
@@ -129,6 +157,7 @@ export default class ArchiveCard extends Component {
                             </div>
                             <div className = "card__curator">
                                 <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic card__profile-pic_curator" />
+                                <p className="name-curator-in-archive">{this.getReturnNameCurators()}</p>
                                 <p className = "card__curator__action" onClick={this.onShowRatingTable}>Посмотреть компетенции студента</p>
                                 <p className = "card__curator__action-curator" onClick={this.onShowCuratorCard} >Посмотреть информацию о наставнике</p>
                             </div>
@@ -179,3 +208,17 @@ export default class ArchiveCard extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        curatorsList: state.applications.curatorsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getListCurators
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(ArchiveCard);

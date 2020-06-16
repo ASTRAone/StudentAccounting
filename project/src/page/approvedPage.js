@@ -97,11 +97,32 @@ class ApprovedPage extends Component{
         console.log("Студент переведен в категорию На практику " + id)
     };
 
+    // Поиск студентов-практикантов
+    // searchStudents = (listSearch) => {
+    //     this.setState(({studentsListApproved}) => {
+    //         return {
+    //             studentsListApproved: listSearch || []
+    //         };
+    //     });
+    // };
+
+    // Очистка поиска
+    orderSearchStudents = () => {
+        // this.setState(({studentsListInArchive}) => {
+        //     return {
+        //         studentsListInArchive: this.props.studentsList || []
+        //     };
+        // });
+        this.props.getStudentsListRequest(1);
+    };
+
     render(){
         return (
             <React.Fragment>
                 <div className="app-search">
-                    <Search />
+                    <Search 
+                        orderSearchStudents={this.orderSearchStudents}
+                        statusStudent={1}/>
                 </div>
                 <div className="app-filter">
                     <Filter 

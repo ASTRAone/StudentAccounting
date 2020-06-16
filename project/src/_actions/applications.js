@@ -13,10 +13,11 @@ export function successGetStudentsList(payload) {
 };
 
 // Добавление нового студента
-export function postCreateNewStudent(payload) {
+export function postCreateNewStudent(payload, meta) {
     return {
         type: 'POST_CREATE_NEW_STUDENT',
-        payload
+        payload, 
+        meta
     };
 };
 
@@ -28,10 +29,11 @@ export function sendPostNewStudent(payload) {
 };
 
 // Удаление студента
-export function deleteStudent(payload) {
+export function deleteStudent(payload, meta) {
     return {
         type: 'DELETE_STUDENT',
-        payload
+        payload, 
+        meta
     };
 };
 
@@ -43,10 +45,11 @@ export function successDeleteStudent(payload) {
 };
 
 // Поиск студента
-export function postFindStudent(payload) {
+export function postFindStudent(payload, meta) {
     return {
         type: 'POST_FIND_STUDENT',
-        payload
+        payload, 
+        meta
     };
 };
 
@@ -73,7 +76,6 @@ export function successUpdateInfoStudent(payload) {
 };
 
 //Экспорт в Excel
-
 export function exportToExcel(payload) {
     return {
         type: 'EXPORT_TO_EXCEL',
@@ -89,7 +91,6 @@ export function successExportToExcel(payload) {
 };
 
 //Экспортировать практику в Excel
-
 export function practicToExcel(payload) {
     return {
         type: 'PRACTIC_TO_EXCEL',
@@ -105,7 +106,6 @@ export function successPracticToExcel(payload) {
 };
 
 //Добавить комментарий к практике
-
 export function addStudentPracticComment(payload) {
     return {
         type: 'ADD_STUDENT_PRACTIC_COMMENT',
@@ -121,7 +121,6 @@ export function successAddStudentPracticComment(payload) {
 };
 
 //Это вроде отчет чи шо
-
 export function studentCardReport(payload) {
     return {
         type: 'STUDENT_CARD_REPORT',
@@ -137,7 +136,6 @@ export function successStudentCardReport(payload) {
 };
 
 //Обновить практику
-
 export function updatePractic(payload) {
     return {
         type: 'UPDATE_PRACTIC',
@@ -169,10 +167,11 @@ export function successUpdatePractic(payload) {
 // };
 
 // Вход в систему
-export function postLogin(payload) {
+export function postLogin(payload, meta) {
     return {
         type: 'POST_LOGIN',
-        payload
+        payload,
+        meta
     };
 };
 
@@ -194,6 +193,37 @@ export function addCurator(payload) {
 export function successAddCurator(payload) {
     return {
         type: 'ADD_CURATOR_SUCCESS',
+        payload
+    };
+};
+
+// Получение кураторов
+export function getListCurators(payload, meta) {
+    return {
+        type: 'GET_LIST_CURATORS',
+        payload,
+        meta
+    };
+};
+
+export function successGetListCurators(payload) {
+    return {
+        type: 'GET_LIST_CURATORS_SUCCESS',
+        payload
+    };
+};
+
+// Получение институтов
+export function getListInstitutes(payload) {
+    return {
+        type: 'GET_LIST_INSTITUTES',
+        payload
+    };
+};
+
+export function successListInstitutes(payload) {
+    return {
+        type: 'GET_LIST_INSTITUTES_SUCCESS',
         payload
     };
 };

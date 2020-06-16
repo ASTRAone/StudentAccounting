@@ -12,7 +12,10 @@ import noavatarcurator from '../img/noavatar-curator.jpg';
 
 import './practic-card.css';
 
-export default class PracicCard extends Component {
+import {connect} from 'react-redux';
+import {getListCurators} from '../../_actions/applications';
+
+class PracicCard extends Component {
     
     constructor(props) {
         super(props)
@@ -32,7 +35,9 @@ export default class PracicCard extends Component {
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
             starRatings: this.props.dataList.studentModalCardData.starRatings,
-            Curator: this.props.dataList.studentModalCardData.curator,
+            CuratorId: this.props.dataList.studentModalCardData.mentorId,
+
+            curatorsList: this.props.curatorsList || [],
 
             visibleEditCard: false,
 
@@ -46,18 +51,43 @@ export default class PracicCard extends Component {
         }
     }
 
-    getReturnLink = () => {
-        const profile = this.props.dataList.studentModalCardData.photo;
-        let nameFoo = `${profile}`;
-        let path = {noavatar};  
-
-        if (nameFoo) {
-            path = require(`../img/${nameFoo}`);
+    componentDidMount () {
+        this.props.getListCurators();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.curatorsList !== this.props.curatorsList) {
+            this.setState({
+                curatorsList: this.props.curatorsList
+            });
         }
+    }
 
-        return path;
+    // Получение инициалов куратора
+    getReturnNameCurators = () => {
+        let nameCurator = "";
+
+        this.state.curatorsList.forEach(element => {
+            if (element.id === this.state.CuratorId) {
+                nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
+            }
+        });
+
+        return nameCurator;
     };
 
+    // Обработка изображений
+    getReturnImage = () => {
+        const {photo} = this.props.dataList;
+        photo = `data:image/png;base64,${photo}`;
+        let photoFoo = {noavatar};
+
+        if (photo) {
+            photoFoo = photo
+        }
+
+        return photoFoo;
+    };
 
     // Разрешить редактирование
     visibleEditCardStudent = () => {
@@ -230,13 +260,13 @@ export default class PracicCard extends Component {
     };
 
     // Добавление куратора
-    addCurator = (item) => {
+    addCuratorStud = (id) => {
         this.setState({
-            Curator: item
+            Curator: id
         });
     }
 
-    // Изменение куратора
+    // Изменение куратора (подумать над этим)
     onResetCurator = () => {
         this.setState({
             visibleAppointCuratorCard: true
@@ -245,7 +275,7 @@ export default class PracicCard extends Component {
  
     render() {
 
-        const { onShowModalWindowDeletedInCard, studentCardModal } = this.props.dataList;
+        const { onShowModalWindowDeletedInCard, studentCardModal, photo } = this.props.dataList;
 
         let card__student_label = "card__student_label";
         let card__student_contact = "card__student-contact";
@@ -269,7 +299,7 @@ export default class PracicCard extends Component {
             document.body.style.overflow = 'hidden';
         }
         
-        if (this.state.Curator.length !== 0) {
+        if (this.state.CuratorId.length !== 0) {
             card__curator__choose_button = "card__curator__choose_button none";
             card_curator_intials = "card_curator_intials";
             card_reset_curator = "card_reset_curator";
@@ -288,7 +318,7 @@ export default class PracicCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
+                            <img src = {this.getReturnImage()} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = {card__contacts}>
@@ -374,7 +404,7 @@ export default class PracicCard extends Component {
                                         Назначить куратора
                                 </button>
                                 <p className={card_curator_intials}>
-                                    {this.state.Curator}
+                                    {this.getReturnNameCurators()}
                                 </p>
                                 <button 
                                     className={`btn ${card_reset_curator}`}
@@ -436,8 +466,22 @@ export default class PracicCard extends Component {
                     <AppointCurator 
                         visibleCuratorCard={this.state.visibleAppointCuratorCard}
                         onHideCuratorCard={this.onHideModalAppointCuratorCard}
-                        addCurator={this.addCurator}/>
+                        addCuratorStud={this.addCuratorStud}/>
                 </div>
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        curatorsList: state.applications.curatorsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getListCurators
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(PracicCard);

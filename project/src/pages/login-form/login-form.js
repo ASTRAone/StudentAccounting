@@ -13,7 +13,8 @@ class LoginForm extends Component {
         this.state = {
             login: '',
             pass: '',
-            isPrompt: false
+            isPrompt: false,
+            remember: false
         }
     }
 
@@ -31,13 +32,31 @@ class LoginForm extends Component {
         });
     };
 
+    // Запомнить пользователя
+    onChangeRememberUser = (e) => {
+        this.setState((prevState) => {
+            return {
+                remember: !prevState.remember
+            }
+        });
+    };
+
     // Войти в систему
     singInSistem = (e) => {
         e.preventDefault();
 
-        if (this.state.login.length !== 0 && this.state.pass.length !== 0) {
-            console.log(this.state);
+        const params = {
+            Email: this.state.login,
+            Password: this.state.pass,
+            RememberMe: this.state.remember
+        }
 
+        // Отправление данных api
+        this.setState({
+            isPrompt: true
+        });
+            
+        this.props.postLogin(params, () => {
             this.props.onChangeRoles(this.state.login)
 
             this.setState({
@@ -45,12 +64,8 @@ class LoginForm extends Component {
                 pass: '',
                 isPrompt: false
             });
-
-        } else {
-            this.setState({
-                isPrompt: true
-            });
-        }
+        }) 
+            
     };
 
     render() {
@@ -69,7 +84,6 @@ class LoginForm extends Component {
                                 Login
                             </span>
 
-                            
                             <div className="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
                                 <input 
                                     className="input100" 
@@ -80,7 +94,6 @@ class LoginForm extends Component {
                                     value={this.state.login}/>
                                 <span className="focus-input100"></span>
                             </div>
-                            
                             
                             <div className="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
                                 <input 
@@ -94,12 +107,18 @@ class LoginForm extends Component {
                             </div>
                             
                             <div className="flex-sb-m w-full p-t-3 p-b-24">
-                                {/* <div class="contact100-form-checkbox">
-                                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
-                                    <label class="label-checkbox100" for="ckb1">
+                                <div className="contact100-form-checkbox">
+                                    <input 
+                                        className="input-checkbox100" 
+                                        id="ckb1" type="checkbox" 
+                                        name="remember-me" 
+                                        checked={this.state.remember}
+                                        onChange={this.onChangeRememberUser}
+                                        />
+                                    <label className="label-checkbox100" htmlFor="ckb1">
                                         Remember me
                                     </label>
-                                </div> */}
+                                </div>
 
                                 {/* <div>
                                     <a href="#" class="txt1">
@@ -119,7 +138,6 @@ class LoginForm extends Component {
                                     Заполните все поля!
                                 </p>
                             </div>
-
                         </form>
                     </div>
                 </div>

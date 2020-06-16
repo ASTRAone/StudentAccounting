@@ -33,14 +33,9 @@ class AchivePage extends Component {
     }
 
     componentDidUpdate (prevProps, prevState) {
-        
-        const studentsListInArchiveNew = this.props.studentsList.filter((item) => item.inArchive) || [];
-        const actPg = this.state.activePage;
-        const studentsListInArchiveOnPage = studentsListInArchiveNew.slice(actPg * 10 -10, actPg * 10);
-
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
-                studentsListInArchive: studentsListInArchiveNew
+                studentsListInArchive: this.props.studentsList
             });
         }
     }
@@ -113,14 +108,15 @@ class AchivePage extends Component {
             }
         });
     };
-
-    // Поиск студентов-практикантов
-    searchStudents = (listSearch) => {
-        this.setState(({studentsListInArchive}) => {
-            return {
-                studentsListInArchive: listSearch
-            };
-        });
+    
+    // Очистка поиска
+    orderSearchStudents = () => {
+        // this.setState(({studentsListInArchive}) => {
+        //     return {
+        //         studentsListInArchive: this.props.studentsList || []
+        //     };
+        // });
+        this.props.getStudentsListRequest(4);
     };
      
     render() {
@@ -128,7 +124,8 @@ class AchivePage extends Component {
             <React.Fragment>
                 <div className="app-search">
                     <Search 
-                        searchStudents={this.searchStudents}/>
+                        orderSearchStudents={this.orderSearchStudents}
+                        statusStudent={4}/>
                 </div>
                 <div className="app-filter">
                     <Filter 

@@ -47,9 +47,9 @@ export default class App extends Component {
     // Распределение ролей
     onGenerateRole = (role) => {
         switch(role) {
-            case 'curator@gmail.ru' : return '/applications'
-            case 'manager@gmail.ru' : return '/applications'
-            case 'director@gmail.ru' : return '/applications'
+            case role : return '/applications'
+            case role : return '/applications'
+            case role : return '/applications'
 
             default : return '/'
         }
@@ -59,7 +59,7 @@ export default class App extends Component {
     onChangeRoles = (value) => {
         let path = this.onGenerateRole(value);
 
-        window.location.assign(`http://localhost:3000${path}`);
+        window.location.assign(`http://localhost:3000/applications`);
         window.localStorage.setItem('role', value)
         window.localStorage.setItem('isAuthorization', true)
     };

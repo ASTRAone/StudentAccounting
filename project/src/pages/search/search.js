@@ -65,8 +65,8 @@ class Search extends Component {
             colledge: '',
             initials: '',
             direction: '',
-            startDate: null,
-            endDate: null,
+            startDate: '',
+            endDate: '',
             ourDate: {}
         });
 
@@ -79,6 +79,7 @@ class Search extends Component {
         let initials = this.state.initials.split(" ");
 
         const searchParams = {
+            status: this.props.statusStudent,
             Institution: this.state.colledge,
             PractiesBegining: this.state.startDate,
             PractiesEnding: this.state.endDate,
@@ -87,7 +88,9 @@ class Search extends Component {
             Patronymic: initials[2] ? initials[2].toString() : "",
             Direction: this.state.direction
         }
-        this.props.searchStudents(this.props.postFindStudent(searchParams));
+        this.props.postFindStudent(searchParams, (value) => {
+            // this.props.searchStudents(value);
+        });
 
         // let params = this.props.postFindStudent(searchParams);
         // this.props.searchStudents(params)
@@ -131,7 +134,7 @@ class Search extends Component {
                 <RangePicker
                     placeholderText="Дата практики"
                     onDateSelected={this.onChangeData}
-                    // value={[this.state.startDate, this.state.endDate]}
+                    value={[this.state.startDate, this.state.endDate]}
                     />
                     
                 <input 

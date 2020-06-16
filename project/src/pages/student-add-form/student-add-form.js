@@ -5,10 +5,10 @@ import InputMask from 'react-input-mask';
 import Datetime from 'react-date-picker';
 import {connect} from 'react-redux';
 
-
 import './student-add-form.css';
 
-import {postCreateNewStudent} from '../../_actions/applications'
+import {postCreateNewStudent, getListInstitutes} from '../../_actions/applications';
+
 
 class StudentAddForm extends Component {
 
@@ -16,6 +16,7 @@ class StudentAddForm extends Component {
         super(props);
 
         this.state = {
+            institutionsList: this.props.institutesList || [],
             profilePic: "",
             SecondName: "",
             FirstName: "",
@@ -43,6 +44,18 @@ class StudentAddForm extends Component {
         this.practiceBeginChange = this.practiceBeginChange.bind(this);
         this.practiceEndChange = this.practiceEndChange.bind(this);
         this.specialityChange = this.specialityChange.bind(this);   
+    }
+
+    componentDidMount () {
+        this.props.getListInstitutes();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
+        }
     }
 
     firstNameChange(event) {
@@ -77,17 +90,19 @@ class StudentAddForm extends Component {
 
     collegeChange(event) {
 
-        let id;
+        let idInstitution;
 
-        switch(event.target.value) {
-            case "КГУ": id = 1; break;
-            case "Чижова": id = 2; break;
-            case "Политех": id = 3; break;
-        }
+        this.state.institutionsList.forEach(element => {
+            if (element.name === event.target.value) {
+                idInstitution = element.id
+            }
+        });
+
+        console.log(idInstitution)
 
         this.setState({
             College: event.target.value,
-            CollegeID: id
+            CollegeID: idInstitution
         }); 
     };
 
@@ -151,7 +166,7 @@ class StudentAddForm extends Component {
             SecondName: this.state.SecondName,
             FirstName: this.state.FirstName,
             Patronymic: this.state.Patronymic,
-            institutionId: this.state.CollegeID,
+            InstitutionId: this.state.CollegeID,
             Speciality: this.state.SpecialityName,
             PracticArea: this.state.Faculty,
             PractiesBegining: this.state.PractiesBegining,
@@ -161,7 +176,7 @@ class StudentAddForm extends Component {
             Photo: this.state.profilePic
         }
 
-        // Добавление нового студента через апи
+        // Добавление нового студента через api
         this.props.postCreateNewStudent(params);
 
         this.setState({
@@ -202,6 +217,12 @@ class StudentAddForm extends Component {
     };
 
     render() {
+
+        const options = this.state.institutionsList.map((item, index) => {
+            return (
+                <option key={index}>{item.name}</option>
+            );
+        });
 
         let path = '';
 
@@ -263,14 +284,11 @@ class StudentAddForm extends Component {
                                         list="institution" 
                                         className="from-our__item"
                                         value={this.state.College}
-                                        
                                         onChange={this.collegeChange}
                                         placeholder="Учебное заведение*"/>
 
                                     <datalist id="institution">
-                                        <option>КГУ</option>
-                                        <option>Политех</option>
-                                        <option>Чижова</option>
+                                        {options}
                                     </datalist>   
 
                                     <input 
@@ -392,13 +410,15 @@ class StudentAddForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        studentsList: state.applications.studentsList
+        studentsList: state.applications.studentsList,
+        institutionsList: state.applications.institutesList
     }
 };
 
 const mapDispatchToProps = (dispatch => {
     return {
-        postCreateNewStudent
+        postCreateNewStudent,
+        getListInstitutes
     }
 });
 

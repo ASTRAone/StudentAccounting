@@ -9,7 +9,10 @@ import noavatarcurator from '../img/noavatar-curator.jpg';
 
 import './new-card.css';
 
-export default class NewCard extends Component {
+import {connect} from 'react-redux';
+import {getListInstitutes} from '../../_actions/applications';
+
+class NewCard extends Component {
 
     constructor(props) {
         super(props);
@@ -21,11 +24,13 @@ export default class NewCard extends Component {
             Patronymic: this.props.dataList.studentModalCardData.patronymic,
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
-            College: this.props.dataList.studentModalCardData.college,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
             PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
             Speciality: this.props.dataList.studentModalCardData.speciality,
+            
+            institutionsList: this.props.institutesList || [],
 
             visibleEditCard: false,
             visibleAlteration: false,
@@ -33,16 +38,42 @@ export default class NewCard extends Component {
         }
     }
 
-    getReturnLink = () => {
-        const profile = this.props.dataList.studentModalCardData.photo;
-        let nameFoo = `${profile}`;
-        let path = {noavatar};  
+    componentDidMount () {
+        this.props.getListInstitutes();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
+        }
+    }
 
-        if (nameFoo) {
-            path = require(`../img/${nameFoo}`);
+    // Обработка изображений
+    getReturnImage = () => {
+        const {photo} = this.props.dataList;
+        photo = `data:image/png;base64,${photo}`;
+        let photoFoo = {noavatar};
+
+        if (photo) {
+            photoFoo = photo
         }
 
-        return path;
+        return photoFoo;
+    };
+
+    // Обработка названия учебного заведения
+    getReturnNameColledge = () => {
+        const nameColledge = "";
+
+        this.state.institutionsList.forEach(element => {
+            if (element.id === this.state.CollegeId) {
+                nameColledge = element.name;
+            }
+        });
+
+        return nameColledge;
     };
 
     // Редактирование элементов
@@ -55,15 +86,15 @@ export default class NewCard extends Component {
     // Отмена редактирования
     closeEdit = () => {
         this.setState({
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
-            College: this.props.dataList.studentModalCardData.College,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
+            SecondName: this.props.dataList.studentModalCardData.secondName,
+            FirstName: this.props.dataList.studentModalCardData.firstName,
+            Patronymic: this.props.dataList.studentModalCardData.patronymic,
+            Email: this.props.dataList.studentModalCardData.email,
+            Phone: this.props.dataList.studentModalCardData.phone,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
+            Speciality: this.props.dataList.studentModalCardData.speciality,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
             // Speciality: this.props.dataList.studentModalCardData.Speciality,
 
             visibleEditCard: false
@@ -93,8 +124,17 @@ export default class NewCard extends Component {
 
     // Редактирование учебного заведения
     editCollege = (e) => {
+        let id;
+
+        this.state.institutionsList.forEach(element => {
+            if (element.name.toLowerCase() === e.target.value.toLowerCase()) {
+                id = element.id
+            }
+        });
+
         this.setState({
-            College: e.target.value
+            // College: e.target.value,
+            CollegeId: id
         });
     };
 
@@ -156,7 +196,7 @@ export default class NewCard extends Component {
 
     render() {
 
-        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal } = this.props.dataList
+        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal, photo } = this.props.dataList
 
         let card__info_text = "card__info-text";
         let label = "label";
@@ -180,7 +220,7 @@ export default class NewCard extends Component {
             document.body.style.overflow = 'hidden';
         }
 
-        console.log(`../../img/${this.state.profilePic}`  );
+        // console.log(`../../img/${this.state.profilePic}`  );
 
         return ( 
                 <div className="container-new-card">
@@ -196,7 +236,7 @@ export default class NewCard extends Component {
                             </div>
                         </div>
                         <div className = "card__student">
-                            <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
+                            <img src = {this.getReturnImage()} alt="Фотография студента" className = "card__profile-pic" />
                             <div className = "card__student-info">
                                 <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                                 <div className = "card__contacts">
@@ -223,12 +263,12 @@ export default class NewCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Учебное заведение:</p>
-                                    <p className = {card__info_text}>{this.state.College}</p>
+                                    <p className = {card__info_text}>{this.getReturnNameColledge()}</p>
                                     <label className={our_input}>
                                         <Input 
                                             className="card__info-text_input"
                                             type="text" 
-                                            value={this.state.College}
+                                            value={this.getReturnNameColledge()}
                                             onChange={this.editCollege}/>
                                     </label>
                                 </div>
@@ -289,3 +329,17 @@ export default class NewCard extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        institutionsList: state.applications.curatorsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getListInstitutes
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(NewCard);

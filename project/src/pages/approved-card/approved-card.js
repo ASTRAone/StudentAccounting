@@ -11,9 +11,10 @@ import noavatarcurator from '../img/noavatar-curator.jpg';
 
 import './approved-card.css';
 
-// Доделать выбор куратора
+import {connect} from 'react-redux';
+import {getListCurators, getListInstitutes} from '../../_actions/applications';
 
-export default class ApprovedCard extends Component {
+class ApprovedCard extends Component {
 
     constructor(props) {
         super(props);
@@ -25,12 +26,15 @@ export default class ApprovedCard extends Component {
             Patronymic: this.props.dataList.studentModalCardData.patronymic,
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
-            College: this.props.dataList.studentModalCardData.college,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
             PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
             Speciality: this.props.dataList.studentModalCardData.speciality,
-            Curator: this.props.dataList.studentModalCardData.curator,
+            CuratorId: this.props.dataList.studentModalCardData.mentorId,
+
+            curatorsList: this.props.curatorsList || [],
+            institutionsList: this.props.institutesList || [],
 
             visibleEditCard: false,
             visibleAlteration: false,
@@ -40,18 +44,62 @@ export default class ApprovedCard extends Component {
         }
     }
 
-    getReturnLink = () => {
-        const Photo = this.props.dataList.studentModalCardData.photo;
-        let nameFoo = `${Photo}`;
-        let path = {noavatar};  
-
-        if (nameFoo) {
-            path = require(`../img/${nameFoo}`);
+    componentDidMount () {
+        this.props.getListCurators();
+        this.props.getListInstitutes();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.curatorsList !== this.props.curatorsList) {
+            this.setState({
+                curatorsList: this.props.curatorsList
+            });
         }
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
+        }
+    }
 
-        return path;
+    // Получение инициалов куратора
+    getReturnNameCurators = () => {
+        let nameCurator = "";
+
+        this.state.curatorsList.forEach(element => {
+            if (element.id === this.state.CuratorId) {
+                nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
+            }
+        });
+
+        return nameCurator;
     };
 
+    // Обработка изображений
+    getReturnImage = () => {
+        const {photo} = this.props.dataList;
+        photo = `data:image/png;base64,${photo}`;
+        let photoFoo = {noavatar};
+
+        if (photo) {
+            photoFoo = photo
+        }
+
+        return photoFoo;
+    };
+    
+    // Обработка названия учебного заведения
+    getReturnNameColledge = () => {
+        const nameColledge = "";
+
+        this.state.institutionsList.forEach(element => {
+            if (element.id === this.state.CollegeId) {
+                nameColledge = element.name;
+            }
+        });
+
+        return nameColledge;
+    };
 
     // Разрешить редактирование
     visibleEditCardStudent = () => {
@@ -84,8 +132,17 @@ export default class ApprovedCard extends Component {
 
     // Редактирование учебного заведения
     editCollege = (e) => {
+        let id;
+
+        this.state.institutionsList.forEach(element => {
+            if (element.name.toLowerCase() === e.target.value.toLowerCase()) {
+                id = element.id
+            }
+        });
+
         this.setState({
-            College: e.target.value
+            // College: e.target.value,
+            CollegeId: id
         });
     };
 
@@ -121,7 +178,7 @@ export default class ApprovedCard extends Component {
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
             Email: this.props.dataList.studentModalCardData.Email,
             Phone: this.props.dataList.studentModalCardData.Phone,
-            College: this.props.dataList.studentModalCardData.College,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.Faculty,
             PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
@@ -182,13 +239,13 @@ export default class ApprovedCard extends Component {
     };
 
     // Добавление куратора
-    addCurator = (item) => {
+    addCuratorStud = (id) => {
         this.setState({
-            Curator: item
+            CuratorId: id
         });
     };
 
-    // Изменение куратора
+    // Изменение куратора (подумать над этим)
     onResetCurator = () => {
         this.setState({
             visibleAppointCuratorCard: true
@@ -197,7 +254,7 @@ export default class ApprovedCard extends Component {
 
     render() {
 
-        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal } = this.props.dataList;
+        const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal, photo } = this.props.dataList;
 
         let our_input = "our-input";
         let card__student_contact = "card__student-contact";
@@ -221,7 +278,7 @@ export default class ApprovedCard extends Component {
             document.body.style.overflow = 'hidden';
         }
 
-        if (this.state.Curator.length !== 0) {
+        if (this.state.CuratorId.length !== 0) {
             card__curator__choose_button = "card__curator__choose_button none";
             card_curator_intials = "card_curator_intials";
             card_reset_curator = "card_reset_curator";
@@ -241,7 +298,7 @@ export default class ApprovedCard extends Component {
                         </div>
                     </div>
                     <div className = "card__student">
-                        <img src = {this.getReturnLink()} alt="Фотография студента" className = "card__profile-pic" />
+                        <img src = {this.getReturnImage()} alt="Фотография студента" className = "card__profile-pic" />
                         <div className = "card__student-info">
                             <p className = "card__student-name">{this.state.SecondName + " " + this.state.FirstName + " " + this.state.Patronymic}</p>
                             <div className = "card__contacts">
@@ -268,12 +325,12 @@ export default class ApprovedCard extends Component {
                             </div>
                             <div className = "card__contacts">
                                 <p className = "card__info-label">Учебное заведение:</p>
-                                <p className = {card__info_text}>{this.state.College}</p>
+                                <p className = {card__info_text}>{this.getReturnNameColledge()}</p>
                                 <label className={our_input}>
                                     <Input 
                                         type="email"
                                         className="card__info-text_input"
-                                        value={this.state.College}
+                                        value={this.getReturnNameColledge()}
                                         onChange={this.editCollege}/>
                                 </label>
                             </div>
@@ -326,7 +383,11 @@ export default class ApprovedCard extends Component {
                                     Назначить куратора
                             </button>
                             <p className={card_curator_intials}>
-                                {this.state.Curator}
+
+
+                                {/* {this.state.Curator} */}
+
+                                {this.getReturnNameCurators()}
                             </p>
                             <button 
                                 className={`btn ${card_reset_curator}`}
@@ -350,8 +411,25 @@ export default class ApprovedCard extends Component {
                 <AppointCurator 
                     visibleCuratorCard={this.state.visibleAppointCuratorCard}
                     onHideCuratorCard={this.onHideModalAppointCuratorCard}
-                    addCurator={this.addCurator}/>
+                    addCuratorStud={this.addCuratorStud}
+                    idStudent={this.state.id}/>
             </div>  
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        curatorsList: state.applications.curatorsList,
+        institutesList: state.applications.institutesList,
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getListCurators,
+        getListInstitutes
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(ApprovedCard);

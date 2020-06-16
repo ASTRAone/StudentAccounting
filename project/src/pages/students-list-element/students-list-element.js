@@ -3,29 +3,61 @@ import React, { Component } from 'react';
 import './students-list-element.css';
 import noavatar from "../img/noavatar.png";
 
-export default class StudentsListElement extends Component {
+import {connect} from 'react-redux';
+import {getListInstitutes} from '../../_actions/applications';
+
+class StudentsListElement extends Component {
 
     constructor(props) {
         super(props);
         
+        this.state = {
+            institutionsList: this.props.institutesList || [],
+        }
     }
 
-    getReturnLink = () => {
-        const {photo} = this.props;
-        let nameFoo = `${photo}`;
-        let path = {noavatar};
+    componentDidMount () {
+        this.props.getListInstitutes();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
+        }
+    }
 
-        if (nameFoo) {
-            path = require(`../img/${nameFoo}`);
+    // Обработка изображений
+    getReturnImage = () => {
+        const {photo} = this.props.dataList;
+        photo = `data:image/png;base64,${photo}`;
+        let photoFoo = {noavatar};
+
+        if (photo) {
+            photoFoo = photo
         }
 
-        return path;
+        return photoFoo;
+    };
+
+    // Обработка названия учебного заведения
+    getReturnNameColledge = () => {
+        const nameColledge = "";
+
+        this.state.institutionsList.forEach(element => {
+            if (element.id === this.props.institutionId) {
+                nameColledge = element.name;
+            }
+        });
+
+        return nameColledge;
     };
 
     render(){
 
         const { id, idx, filingDate, secondName, idCard,
-                firstName, patronymic, practicArea, 
+                firstName, patronymic, practicArea, photo,
                 institutionId, speciality, practiesBegining, 
                 practiesEnding, phone, email, buttons, 
                 visibleDelBtn, onShowModalWindowDeleted, 
@@ -64,10 +96,10 @@ export default class StudentsListElement extends Component {
                             </div>
                             <div className = "list-element-date">
                                 <p className = "list-element-date__label">Дата заявки</p>
-                                <p className = "list-element-date__value">{ filingDate }</p>
+                                <p className = "list-element-date__value">{ filingDate.getDate() + "." + (filingDate.getMonth() + 1) + "." + filingDate.getFullYear()}</p>
                             </div>
                         </div>
-                        <img src = {this.getReturnLink()} alt="Фотография студента" className = "list__profile-pic" />
+                        <img src = {this.getReturnImage()} alt="Фотография студента" className = "list__profile-pic" />
                         <p className = "list__name">{ secondName + " " + firstName + " " + patronymic }</p>
                         <div className = "list__info">
                             <div className = "list__contacts__element">
@@ -82,7 +114,7 @@ export default class StudentsListElement extends Component {
                         <div className = "list__info">
                             <div className = "list__info-element_institution">
                                 <p className = "list__info-label">Учебное заведение:</p>
-                                <p className = "list__info-text">{ institutionId }</p>
+                                <p className = "list__info-text">{ this.getReturnNameColledge() }</p>
                             </div>
                             <div className = "list__info-element_institution">
                                 <p className = "list__info-label">Факультет, специальность:</p>
@@ -121,3 +153,17 @@ export default class StudentsListElement extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        institutionsList: state.applications.curatorsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getListInstitutes
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(StudentsListElement);

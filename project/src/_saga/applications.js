@@ -5,14 +5,14 @@ import {getStudentsListRequest, successGetStudentsList, postCreateNewStudent, se
         addCurator, successAddCurator , exportToExcel, successExportToExcel, practicToExcel,
         successPracticToExcel, addStudentPracticComment,
         successAddStudentPracticComment, studentCardReport, successStudentCardReport, updatePractic,
-        successUpdatePractic} from "../_actions/applications";
+        successUpdatePractic, getListInstitutes, successListInstitutes, getListCurators, successGetListCurators} from "../_actions/applications";
 import {item} from "../_stab";
 
 import axios from 'axios';
 import qs from 'qs';
 
 export const postman = axios.create({
-    baseURL: 'https://localhost:44314/api/Student',
+    baseURL: 'https://localhost:44314/api',
     paramsSerializer: params => qs.stringify(params, {'indices': false})
 });
 
@@ -21,9 +21,8 @@ function* getStudentsList(api, action) {
     try {
         console.warn('[saga ===> getStudentsList ===> ]');
         //yield put(changeLoading(true));
-
         
-        const apiRes = yield call(() => postman.get(`/GetStudentsByStatus?status=${action.payload}`));
+        const apiRes = yield call(() => postman.get(`/Student/GetStudentsByStatus?status=${action.payload}`));
         
         // const stabStudentList = item
         yield put(successGetStudentsList(apiRes.data));
@@ -46,10 +45,11 @@ function* createNewStudent(api, action) {
 
         console.log(action.payload)
 
-        const apiRes = yield call(() => postman.post("/CreateNewStudent", action.payload));
+        const apiRes = yield call(() => postman.post("/Student/CreateNewStudent", action.payload));
 
         // const stabStudentList = item
         yield put(sendPostNewStudent(apiRes));
+        action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -70,10 +70,11 @@ function* deleteStudentCard(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.delete(`/DeleteStudent?id=${action.payload}`));
+        const apiRes = yield call(() => postman.delete(`/Student/DeleteStudent?id=${action.payload}`));
 
         // const stabStudentList = item
         yield put(successDeleteStudent(apiRes));
+        action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -95,10 +96,11 @@ function* findStudents(api, action) {
         console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.post("/FindStudents", action.payload));
+        const apiRes = yield call(() => postman.post("/Student/FindStudents", action.payload));
       
         // const stabStudentList = item
         yield put(successFindStudent(apiRes));
+        action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -119,7 +121,7 @@ function* updateInfo(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.put("/FindStudents", action.payload));
+        const apiRes = yield call(() => postman.put("/Student/FindStudents", action.payload));
 
         // const stabStudentList = item
         yield put(successUpdateInfoStudent(apiRes));
@@ -191,7 +193,7 @@ function* addPracticComment(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.post("/AddStudentPracicComment", action.payload));
+        const apiRes = yield call(() => postman.post("/Student/AddStudentPracicComment", action.payload));
 
         // const stabStudentList = item
         yield put(successAddStudentPracticComment(apiRes));
@@ -215,7 +217,7 @@ function* makeStudentCardReport(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.post("/StudentCardReport", action.payload));
+        const apiRes = yield call(() => postman.post("/Student/StudentCardReport", action.payload));
 
         // const stabStudentList = item
         yield put(successStudentCardReport(apiRes));
@@ -263,11 +265,12 @@ function* getLoggingSistem(api, action) {
 
         // console.log(action)
         // console.log(api)
-
+        
         const apiRes = yield call(() => postman.post("/Account/LogIn", action.payload));
-
+        
         // const stabStudentList = item
         yield put(successPostLogin(apiRes));
+        action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -288,7 +291,7 @@ function* addCuratorPractic(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.post("/AddStudentMentor", action.payload));
+        const apiRes = yield call(() => postman.put("/Student/AddStudentMentor", action.payload));
 
         // const stabStudentList = item
         yield put(successAddCurator(apiRes));
@@ -302,6 +305,56 @@ function* addCuratorPractic(api, action) {
         // yield put(clearError(e));
     }
 }
+
+// Получение институтов из БД
+function* getListInstitutions(api, action) {
+    try {
+        console.warn('[saga ===> getListInstitutions ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.get("/Institution/GetInstitutes"));
+
+        // const stabStudentList = item
+        yield put(successListInstitutes(apiRes));
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+// Получение кураторов из БД
+function* getCuratorsList(api, action) {
+    try {
+        console.warn('[saga ===> getCuratorsList ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.get("/Student/GetMentors"));
+
+        // const stabStudentList = item
+        yield put(successGetListCurators(apiRes));
+        // action.meta && action.meta();
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
 
 
 function* headerSaga(ea) {
@@ -328,6 +381,10 @@ function* headerSaga(ea) {
   yield takeLatest(studentCardReport().type, makeStudentCardReport, ea);
   // Обновить практику
   yield takeLatest(updatePractic().type, updateStudentPractic, ea); 
+  // Получение институтов из БД
+  yield takeLatest(getListInstitutes().type, getListInstitutions, ea); 
+  // Получение кураторов из БД
+  yield takeLatest(getListCurators().type, getCuratorsList, ea); 
 }
 
 export default headerSaga;

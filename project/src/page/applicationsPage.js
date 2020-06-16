@@ -178,21 +178,22 @@ class ApplicationsPage extends React.Component  {
     };
 
     // Поиск студентов-практикантов
-    searchStudents = (listSearch) => {
-        this.setState(({studentsListRequest}) => {
-            return {
-                studentsListRequest: listSearch || []
-            };
-        });
-    };
+    // searchStudents = (listSearch) => {
+    //     this.setState(({studentsListRequest}) => {
+    //         return {
+    //             studentsListRequest: listSearch || []
+    //         };
+    //     });
+    // };
 
     // Очистка поиска
     orderSearchStudents = () => {
-        this.setState(({studentsListRequest}) => {
-            return {
-                studentsListRequest: this.props.studentsList || []
-            };
-        });
+        // this.setState(({studentsListInArchive}) => {
+        //     return {
+        //         studentsListInArchive: this.props.studentsList || []
+        //     };
+        // });
+        this.props.getStudentsListRequest(0);
     };
     
     render() {  
@@ -200,8 +201,8 @@ class ApplicationsPage extends React.Component  {
             <React.Fragment>
                 <div className="app-search">
                     <Search 
-                        searchStudents={this.searchStudents}
-                        orderSearchStudents={this.orderSearchStudents}/>
+                        orderSearchStudents={this.orderSearchStudents}
+                        statusStudent={0}/>
                 </div>
                 <div className="app-filter">
                     <Filter 
