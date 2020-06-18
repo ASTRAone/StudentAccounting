@@ -5,16 +5,59 @@ import noavatarcurator from '../img/noavatar-curator.jpg';
 
 import './curator-card.css';
 
-export default class CuratorCard extends Component {
+import {connect} from 'react-redux';
+import {getListCurators} from '../../_actions/applications';
+
+class CuratorCard extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            curatorsList: this.props.curatorsList || []
+        }
+    }
+
+    componentDidMount () {
+        this.props.getListCurators();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.curatorsList !== this.props.curatorsList) {
+            this.setState({
+                curatorsList: this.props.curatorsList
+            });
+        }
+    }
+
+    // Получение инициалов куратора
+    getReturnNameCurators = () => {
+        let nameCurator = "";
+
+        if (this.state.curatorsList.length) {
+            this.state.curatorsList.forEach(element => {
+                if (element.id === this.props.CuratorId) {
+                    nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
+                } else {
+                    nameCurator = "Имя не определено"
+                }
+            });
+        }
+        
+        return nameCurator;
+    };
+
     render() {
 
-        const { visibleCuratorCard, onHideCuratorCard, curatorData } = this.props;
+        const { visibleCuratorCard, onHideCuratorCard } = this.props;
 
-        let intialsCurator = curatorData;
+        
 
-        if (curatorData.length === 0) {
-            intialsCurator = "Ошибка отображения куратора";
-        }
+        // let intialsCurator = curatorData;
+
+        // if (curatorData.length === 0) {
+        //     intialsCurator = "Ошибка отображения куратора";
+        // }
 
         return (
             <Modal 
@@ -32,7 +75,7 @@ export default class CuratorCard extends Component {
                                 <img alt="Фотография наставника" src={noavatarcurator} />
                             </div>
                             <div className="content">
-                                <div className="header">{intialsCurator}</div>
+                                <div className="header">{this.getReturnNameCurators()}</div>
                             </div>
                         </div>
                     </div>
@@ -41,3 +84,17 @@ export default class CuratorCard extends Component {
         );
     };
 };
+
+const mapStateToProps = (state) => {
+    return {
+        curatorsList: state.applications.curatorsList
+    }
+};
+
+const mapDispatchToProps = (dispatch => {
+    return {
+        getListCurators
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(CuratorCard);

@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { Button, Header, Image, Modal, Icon, Input  } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 import Datetime from 'react-date-picker';
-import {connect} from 'react-redux';
 
 import './student-add-form.css';
 
+import {connect} from 'react-redux';
 import {postCreateNewStudent, getListInstitutes} from '../../_actions/applications';
 
 
@@ -218,18 +218,22 @@ class StudentAddForm extends Component {
 
     render() {
 
-        const options = this.state.institutionsList.map((item, index) => {
-            return (
-                <option key={index}>{item.name}</option>
-            );
-        });
+        let options;
 
+        if (this.state.institutesList.length) {
+            options = this.state.institutionsList.map((item, index) => {
+                return (
+                    <option key={index}>{item.name}</option>
+                );
+            });
+        }
+        
         let path = '';
 
         if (this.state.profilePic.length === 0) {
             path = require("../img/noavatar.png");
 
-        }   else path = this.state.profilePic;
+        } else path = this.state.profilePic;
 
         if (this.state.SecondName && this.state.FirstName &&
             this.state.Patronymic && this.state.Email && 
@@ -411,7 +415,7 @@ class StudentAddForm extends Component {
 const mapStateToProps = (state) => {
     return {
         studentsList: state.applications.studentsList,
-        institutionsList: state.applications.institutesList
+        institutesList: state.applications.institutesList
     }
 };
 

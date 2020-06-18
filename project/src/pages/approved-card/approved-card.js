@@ -66,11 +66,13 @@ class ApprovedCard extends Component {
     getReturnNameCurators = () => {
         let nameCurator = "";
 
-        this.state.curatorsList.forEach(element => {
-            if (element.id === this.state.CuratorId) {
-                nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
-            }
-        });
+        if (this.state.curatorsList.length) {
+            this.state.curatorsList.forEach(element => {
+                if (element.id === this.state.CuratorId) {
+                    nameCurator = element.secondName + " " + element.firstName[0].toUpperCase() + ". " + element.patronymic[0].toUpperCase();
+                }
+            });
+        }
 
         return nameCurator;
     };
@@ -78,11 +80,11 @@ class ApprovedCard extends Component {
     // Обработка изображений
     getReturnImage = () => {
         const {photo} = this.props.dataList;
-        photo = `data:image/png;base64,${photo}`;
+        photo = `${photo}`;
         let photoFoo = {noavatar};
 
         if (photo) {
-            photoFoo = photo
+            photoFoo = `data:image/png;base64,${photo}`
         }
 
         return photoFoo;
@@ -92,11 +94,15 @@ class ApprovedCard extends Component {
     getReturnNameColledge = () => {
         const nameColledge = "";
 
-        this.state.institutionsList.forEach(element => {
-            if (element.id === this.state.CollegeId) {
-                nameColledge = element.name;
-            }
-        });
+        if (this.state.institutionsList.length) {
+            this.state.institutionsList.forEach(element => {
+                if (element.id === this.state.CollegeId) {
+                    nameColledge = element.name;
+                } else {
+                    nameColledge = "Название не определено"
+                }
+            });
+        }
 
         return nameColledge;
     };
@@ -253,6 +259,8 @@ class ApprovedCard extends Component {
     };
 
     render() {
+
+        console.log(this.state.institutionId)
 
         const { onShowModalWindowDeletedInCard, onHideModalStudentCardModal, studentCardModal, photo } = this.props.dataList;
 

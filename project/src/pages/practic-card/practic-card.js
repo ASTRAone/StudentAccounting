@@ -13,7 +13,7 @@ import noavatarcurator from '../img/noavatar-curator.jpg';
 import './practic-card.css';
 
 import {connect} from 'react-redux';
-import {getListCurators} from '../../_actions/applications';
+import {getListCurators, getListInstitutes} from '../../_actions/applications';
 
 class PracicCard extends Component {
     
@@ -27,7 +27,7 @@ class PracicCard extends Component {
             Patronymic: this.props.dataList.studentModalCardData.patronymic,
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
-            College: this.props.dataList.studentModalCardData.college,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
             PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
@@ -38,6 +38,7 @@ class PracicCard extends Component {
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
 
             curatorsList: this.props.curatorsList || [],
+            institutionsList: this.props.institutesList || [],
 
             visibleEditCard: false,
 
@@ -53,6 +54,7 @@ class PracicCard extends Component {
 
     componentDidMount () {
         this.props.getListCurators();
+        this.props.getListInstitutes();
     }
     
     componentDidUpdate(prevProps, prevState) {
@@ -61,17 +63,24 @@ class PracicCard extends Component {
                 curatorsList: this.props.curatorsList
             });
         }
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
+        }
     }
 
     // Получение инициалов куратора
     getReturnNameCurators = () => {
         let nameCurator = "";
 
-        this.state.curatorsList.forEach(element => {
-            if (element.id === this.state.CuratorId) {
-                nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
-            }
-        });
+        if (this.state.curatorsList.length) {
+            this.state.curatorsList.forEach(element => {
+                if (element.id === this.state.CuratorId) {
+                    nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
+                }
+            });
+        }
 
         return nameCurator;
     };
@@ -79,14 +88,31 @@ class PracicCard extends Component {
     // Обработка изображений
     getReturnImage = () => {
         const {photo} = this.props.dataList;
-        photo = `data:image/png;base64,${photo}`;
+        photo = `${photo}`;
         let photoFoo = {noavatar};
 
         if (photo) {
-            photoFoo = photo
+            photoFoo = `data:image/png;base64,${photo}`
         }
 
         return photoFoo;
+    };
+
+    // Обработка названия учебного заведения
+    getReturnNameColledge = () => {
+        const nameColledge = "";
+
+        if (this.state.institutionsList.length) {
+            this.state.institutionsList.forEach(element => {
+                if (element.id === this.state.CollegeId) {
+                    nameColledge = element.name;
+                } else {
+                    nameColledge = "Название не определено"
+                }
+            });
+        }
+
+        return nameColledge;
     };
 
     // Разрешить редактирование
@@ -128,8 +154,18 @@ class PracicCard extends Component {
 
     // Изменить учебное заведение
     editCollege = (e) => {
+
+        let id;
+
+        this.state.institutionsList.forEach(element => {
+            if (element.name.toLowerCase() === e.target.value.toLowerCase()) {
+                id = element.id
+            }
+        });
+
         this.setState({
-            College: e.target.value
+            // College: e.target.value,
+            CollegeId: id
         });
     };
 
@@ -345,12 +381,12 @@ class PracicCard extends Component {
                                 </div>
                                 <div className = {card__contacts}>
                                     <p className = "card__info-label">Учебное заведение:</p>
-                                    <p className = {card__info_text}>{this.state.College}</p>
+                                    <p className = {card__info_text}>{this.getReturnNameColledge()}</p>
                                     <label className={card__student_label}>
                                         <Input 
                                             className="card__student_input"
                                             type="text"
-                                            value={this.state.College}
+                                            value={this.getReturnNameColledge()}
                                             onChange={this.editCollege}/>
                                     </label>   
                                 </div>
@@ -474,13 +510,15 @@ class PracicCard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        curatorsList: state.applications.curatorsList
+        curatorsList: state.applications.curatorsList,
+        institutionsList: state.applications.institutesList
     }
 };
 
 const mapDispatchToProps = (dispatch => {
     return {
-        getListCurators
+        getListCurators,
+        getListInstitutes
     }
 });
 

@@ -339,7 +339,7 @@ function* getCuratorsList(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.get("/Student/GetMentors"));
+        const apiRes = yield call(() => postman.get("/GetMentors"));
 
         // const stabStudentList = item
         yield put(successGetListCurators(apiRes));

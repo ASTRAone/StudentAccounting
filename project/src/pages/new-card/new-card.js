@@ -53,11 +53,11 @@ class NewCard extends Component {
     // Обработка изображений
     getReturnImage = () => {
         const {photo} = this.props.dataList;
-        photo = `data:image/png;base64,${photo}`;
+        photo = `${photo}`;
         let photoFoo = {noavatar};
 
         if (photo) {
-            photoFoo = photo
+            photoFoo = `data:image/png;base64,${photo}`
         }
 
         return photoFoo;
@@ -67,11 +67,15 @@ class NewCard extends Component {
     getReturnNameColledge = () => {
         const nameColledge = "";
 
-        this.state.institutionsList.forEach(element => {
-            if (element.id === this.state.CollegeId) {
-                nameColledge = element.name;
-            }
-        });
+        if (this.state.institutionsList.length) {
+            this.state.institutionsList.forEach(element => {
+                if (element.id === this.state.CollegeId) {
+                    nameColledge = element.name;
+                } else {
+                    nameColledge = "Название не определено"
+                }
+            });
+        }
 
         return nameColledge;
     };
@@ -332,7 +336,7 @@ class NewCard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        institutionsList: state.applications.curatorsList
+        institutionsList: state.applications.institutesList
     }
 };
 

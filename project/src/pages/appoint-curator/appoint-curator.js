@@ -10,7 +10,6 @@ import './appoint-curator.css';
 
 class AppointCurator extends Component {
 
-
     constructor(props){
         super(props);
 
@@ -99,12 +98,17 @@ class AppointCurator extends Component {
     render() {
 
         // Получение всех кураторов
-        const curators = this.props.curatorsList.map((item, index) => {
-            return (
-                <option key={index}>{item.secondName + " " + item.firstName + " " + item.patronymic}</option>
-            );
-        });
 
+        let curators;
+
+        if (this.props.curatorsList.length) {
+            curators = this.props.curatorsList.map((item, index) => {
+                return (
+                    <option key={index}>{item.secondName + " " + item.firstName + " " + item.patronymic}</option>
+                );
+            });
+        }
+        
         let visibleBtn = true;  
 
         if (this.state.initials) {

@@ -26,16 +26,18 @@ class StudentsListElement extends Component {
                 institutionsList: this.props.institutesList
             });
         }
+
+        console.log(this.props.institutesList)
     }
 
     // Обработка изображений
     getReturnImage = () => {
-        const {photo} = this.props.dataList;
-        photo = `data:image/png;base64,${photo}`;
+        let photo = this.props.photo;
+        photo = `${photo}`;
         let photoFoo = {noavatar};
 
         if (photo) {
-            photoFoo = photo
+            photoFoo = `data:image/png;base64,${photo}`
         }
 
         return photoFoo;
@@ -45,11 +47,13 @@ class StudentsListElement extends Component {
     getReturnNameColledge = () => {
         const nameColledge = "";
 
-        this.state.institutionsList.forEach(element => {
-            if (element.id === this.props.institutionId) {
-                nameColledge = element.name;
-            }
-        });
+        if (this.state.institutionsList.length) {
+            this.state.institutionsList.forEach(element => {
+                if (element.id === this.props.institutionId) {
+                    nameColledge = element.name;
+                }
+            });
+        }
 
         return nameColledge;
     };
@@ -62,6 +66,9 @@ class StudentsListElement extends Component {
                 practiesEnding, phone, email, buttons, 
                 visibleDelBtn, onShowModalWindowDeleted, 
                 onShowModalStudentCardModal, activePage, studentCard, ratingTable } = this.props;
+
+        let date = filingDate.split(".");
+
 
         // const { average_mark, conflict, conflict_comment,
         //         educability, educability_comment, initiative, 
@@ -96,7 +103,7 @@ class StudentsListElement extends Component {
                             </div>
                             <div className = "list-element-date">
                                 <p className = "list-element-date__label">Дата заявки</p>
-                                <p className = "list-element-date__value">{ filingDate.getDate() + "." + (filingDate.getMonth() + 1) + "." + filingDate.getFullYear()}</p>
+                                <p className = "list-element-date__value">{ date[0] + "." + date[1] + "." + date[2]}</p>
                             </div>
                         </div>
                         <img src = {this.getReturnImage()} alt="Фотография студента" className = "list__profile-pic" />
@@ -156,7 +163,7 @@ class StudentsListElement extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        institutionsList: state.applications.curatorsList
+        institutesList: state.applications.institutesList
     }
 };
 

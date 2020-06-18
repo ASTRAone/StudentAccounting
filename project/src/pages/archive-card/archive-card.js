@@ -25,7 +25,7 @@ class ArchiveCard extends Component {
             Patronymic: this.props.dataList.studentModalCardData.patronymic,
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
-            College: this.props.dataList.studentModalCardData.college,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
             PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
             PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
@@ -34,7 +34,9 @@ class ArchiveCard extends Component {
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
             starRatings: this.props.dataList.studentModalCardData.starRatings,
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
+            
             curatorsList: this.props.curatorsList || [],
+            institutionsList: this.props.institutesList || [],
 
             visibleRatingTable: false,
             visibleCuratorCard: false
@@ -43,6 +45,7 @@ class ArchiveCard extends Component {
 
     componentDidMount () {
         this.props.getListCurators();
+        this.props.getListInstitutes();
     }
     
     componentDidUpdate(prevProps, prevState) {
@@ -51,32 +54,58 @@ class ArchiveCard extends Component {
                 curatorsList: this.props.curatorsList
             });
         }
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
+        }
     }
 
     // Получение инициалов куратора
     getReturnNameCurators = () => {
         let nameCurator = "";
 
-        this.state.curatorsList.forEach(element => {
-            if (element.id === this.state.CuratorId) {
-                nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
-            }
-        });
-
+        if (this.state.curatorsList.length) {
+            this.state.curatorsList.forEach(element => {
+                if (element.id === this.state.CuratorId) {
+                    nameCurator = element.secondName + " " + element.firstName + " " + element.patronymic;
+                } else {
+                    nameCurator = "Имя не определено"
+                }
+            });
+        }
+        
         return nameCurator;
     };
 
     // Обработка изображений
     getReturnImage = () => {
         const {photo} = this.props.dataList;
-        photo = `data:image/png;base64,${photo}`;
+        photo = `${photo}`;
         let photoFoo = {noavatar};
 
         if (photo) {
-            photoFoo = photo
+            photoFoo = `data:image/png;base64,${photo}`
         }
 
         return photoFoo;
+    };
+
+    // Обработка названия учебного заведения
+    getReturnNameColledge = () => {
+        const nameColledge = "";
+
+        if (this.state.institutionsList.length) {
+            this.state.institutionsList.forEach(element => {
+                if (element.id === this.state.CollegeId) {
+                    nameColledge = element.name;
+                } else {
+                    nameColledge = "Название не определено"
+                }
+            });
+        }
+
+        return nameColledge;
     };
 
     // Открыть окно оценок компетенций студента
@@ -140,7 +169,7 @@ class ArchiveCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Учебное заведение:</p>
-                                    <p className = "card__info-text">{this.state.College}</p>
+                                    <p className = "card__info-text">{this.getReturnNameColledge()}</p>
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Факультет, специальность:</p>
@@ -203,7 +232,7 @@ class ArchiveCard extends Component {
                     <CuratorCard 
                         visibleCuratorCard={this.state.visibleCuratorCard}
                         onHideCuratorCard={this.onHideCuratorCard}
-                        curatorData={this.state.Curator}/>
+                        CuratorId={this.state.CuratorId}/>
                 </div>
         );
     };

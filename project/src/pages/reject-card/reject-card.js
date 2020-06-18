@@ -53,11 +53,11 @@ class RejectCard extends Component {
     // Обработка изображений
     getReturnImage = () => {
         const {photo} = this.props.dataList;
-        photo = `data:image/png;base64,${photo}`;
+        photo = `${photo}`;
         let photoFoo = {noavatar};
 
         if (photo) {
-            photoFoo = photo
+            photoFoo = `data:image/png;base64,${photo}`
         }
 
         return photoFoo;
@@ -67,15 +67,19 @@ class RejectCard extends Component {
     getReturnNameColledge = () => {
         const nameColledge = "";
 
-        this.state.institutionsList.forEach(element => {
-            if (element.id === this.state.CollegeId) {
-                nameColledge = element.name;
-            }
-        });
+        if (this.state.institutionsList.length) {
+            this.state.institutionsList.forEach(element => {
+                if (element.id === this.state.CollegeId) {
+                    nameColledge = element.name;
+                } else {
+                    nameColledge = "Название не определено"
+                }
+            });
+        }
 
         return nameColledge;
     };
-
+    
     // Закрыть карточку студента-практиканта
     onHideCardStudent = () => {
         this.setState({
@@ -279,7 +283,7 @@ class RejectCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Учебное заведение:</p>
-                                    <p className = {card__info_text}>{this.state.College}</p>
+                                    <p className = {card__info_text}>{this.getReturnNameColledge()}</p>
                                     <label className={our_input}>
                                         <Input 
                                             type="text"
