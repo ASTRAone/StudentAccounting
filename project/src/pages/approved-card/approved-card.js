@@ -28,8 +28,8 @@ class ApprovedCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
 
@@ -39,7 +39,7 @@ class ApprovedCard extends Component {
             visibleEditCard: false,
             visibleAlteration: false,
             visibleChangesSaved: false,
-            visibleEditCurator: true,
+            // visibleEditCurator: true,
             visibleAppointCuratorCard: false
         }
     }
@@ -79,7 +79,7 @@ class ApprovedCard extends Component {
 
     // Обработка изображений
     getReturnImage = () => {
-        const {photo} = this.props.dataList;
+        let photo = this.props.dataList.photo;
         photo = `${photo}`;
         let photoFoo = {noavatar};
 
@@ -92,7 +92,7 @@ class ApprovedCard extends Component {
     
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
-        const nameColledge = "";
+        let nameColledge = "";
 
         if (this.state.institutionsList.length) {
             this.state.institutionsList.forEach(element => {
@@ -111,7 +111,7 @@ class ApprovedCard extends Component {
     visibleEditCardStudent = () => {
         this.setState({
             visibleEditCard: true,
-            visibleEditCurator: false
+            // visibleEditCurator: false
         });
     };
 
@@ -179,17 +179,17 @@ class ApprovedCard extends Component {
             visibleEditCard: false,
             visibleEditCurator: true,
 
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
+            SecondName: this.props.dataList.studentModalCardData.secondName,
+            FirstName: this.props.dataList.studentModalCardData.firstName,
+            Patronymic: this.props.dataList.studentModalCardData.patronymic,
+            Email: this.props.dataList.studentModalCardData.email,
+            Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
-            Curator: this.props.dataList.studentModalCardData.Curator,
+            Faculty: this.props.dataList.studentModalCardData.faculty,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
+            Speciality: this.props.dataList.studentModalCardData.speciality,
+            CuratorId: this.props.dataList.studentModalCardData.mentorId,
         });
     };
 
@@ -208,8 +208,6 @@ class ApprovedCard extends Component {
             visibleChangesSaved: true,
             visibleEditCurator: true
         });
-
-        // Проверка на наличие куратора
 
         console.log(this.state);
     };
@@ -286,7 +284,7 @@ class ApprovedCard extends Component {
             document.body.style.overflow = 'hidden';
         }
 
-        if (this.state.CuratorId.length !== 0) {
+        if (this.state.CuratorId !== null) {
             card__curator__choose_button = "card__curator__choose_button none";
             card_curator_intials = "card_curator_intials";
             card_reset_curator = "card_reset_curator";
@@ -385,7 +383,6 @@ class ApprovedCard extends Component {
                         <div className = "card__curator">
                             <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic card__profile-pic_curator" />
                             <button 
-                                disabled={this.state.visibleEditCurator} 
                                 className = {`btn ${card__curator__choose_button}`}
                                 onClick={this.onShowModalAppointCuratorCard}>
                                     Назначить куратора

@@ -42,21 +42,21 @@ export default handleActions(
             }
         },
         // Чекнуть удаление
-        [successDeleteStudent().type]: (state, action) => {
-            console.log('successDeleteStudent', action);
-            return {
-                ...state,
-                studentsList: action.payload,
-            }
-        },
+        // [successDeleteStudent().type]: (state, action) => {
+        //     console.log('successDeleteStudent', action);
+        //     return {
+        //         ...state,
+        //         studentsList: action.payload,
+        //     }
+        // },
         // Чекнуть добавление
-        [sendPostNewStudent().type]: (state, action) => {
-            console.log('sendPostNewStudent', action);
-            return {
-                ...state,
-                studentsList: action.payload,
-            }
-        },
+        // [sendPostNewStudent().type]: (state, action) => {
+        //     console.log('sendPostNewStudent', action);
+        //     return {
+        //         ...state,
+        //         studentsList: action.payload,
+        //     }
+        // },
     },
 
     initialState

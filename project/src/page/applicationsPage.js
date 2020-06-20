@@ -43,12 +43,9 @@ class ApplicationsPage extends React.Component  {
     }
     
     componentDidUpdate(prevProps, prevState) {
-
-        const studentListRequestNew = this.props.studentsList || [];
-
         if (prevProps.studentsList !== this.props.studentsList) {
             this.setState({
-                studentsListRequest: studentListRequestNew
+                studentsListRequest: this.props.studentsList
             });
         }
     }

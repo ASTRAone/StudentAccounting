@@ -34,7 +34,7 @@ class StudentsListElement extends Component {
     getReturnImage = () => {
         let photo = this.props.photo;
         photo = `${photo}`;
-        let photoFoo = {noavatar};
+        let photoFoo = noavatar;
 
         if (photo) {
             photoFoo = `data:image/png;base64,${photo}`
@@ -45,7 +45,7 @@ class StudentsListElement extends Component {
 
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
-        const nameColledge = "";
+        let nameColledge = "";
 
         if (this.state.institutionsList.length) {
             this.state.institutionsList.forEach(element => {
@@ -67,7 +67,8 @@ class StudentsListElement extends Component {
                 visibleDelBtn, onShowModalWindowDeleted, 
                 onShowModalStudentCardModal, activePage, studentCard, ratingTable } = this.props;
 
-        let date = filingDate.split(".");
+        // Разобраться с датой
+        // let date = filingDate.split("-");
 
 
         // const { average_mark, conflict, conflict_comment,
@@ -103,7 +104,7 @@ class StudentsListElement extends Component {
                             </div>
                             <div className = "list-element-date">
                                 <p className = "list-element-date__label">Дата заявки</p>
-                                <p className = "list-element-date__value">{ date[0] + "." + date[1] + "." + date[2]}</p>
+                                <p className = "list-element-date__value">{filingDate.slice(0, 11)}</p>
                             </div>
                         </div>
                         <img src = {this.getReturnImage()} alt="Фотография студента" className = "list__profile-pic" />

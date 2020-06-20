@@ -26,8 +26,8 @@ class RejectCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
             Speciality: this.props.dataList.studentModalCardData.speciality,
 
             institutionsList: this.props.institutesList || [],
@@ -52,9 +52,9 @@ class RejectCard extends Component {
 
     // Обработка изображений
     getReturnImage = () => {
-        const {photo} = this.props.dataList;
+        let photo = this.props.dataList.photo;
         photo = `${photo}`;
-        let photoFoo = {noavatar};
+        let photoFoo = noavatar;
 
         if (photo) {
             photoFoo = `data:image/png;base64,${photo}`
@@ -65,7 +65,7 @@ class RejectCard extends Component {
 
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
-        const nameColledge = "";
+        let nameColledge = "";
 
         if (this.state.institutionsList.length) {
             this.state.institutionsList.forEach(element => {
@@ -90,8 +90,8 @@ class RejectCard extends Component {
             Phone: this.props.dataList.studentModalCardData.Phone,
             // College: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding.slice(0, 11),
             Speciality: this.props.dataList.studentModalCardData.Speciality,
             CollegeId: this.props.dataList.studentModalCardData.institutionId
         });

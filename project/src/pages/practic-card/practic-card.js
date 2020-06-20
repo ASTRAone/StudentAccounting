@@ -29,8 +29,8 @@ class PracicCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
@@ -42,7 +42,7 @@ class PracicCard extends Component {
 
             visibleEditCard: false,
 
-            visibleCuratorBtn: true,
+            // visibleCuratorBtn: true,
             visibleReadonly: true,
 
             visibleAlteration: false,
@@ -87,9 +87,9 @@ class PracicCard extends Component {
 
     // Обработка изображений
     getReturnImage = () => {
-        const {photo} = this.props.dataList;
+        const photo = this.props.dataList.photo;
         photo = `${photo}`;
-        let photoFoo = {noavatar};
+        let photoFoo = noavatar;
 
         if (photo) {
             photoFoo = `data:image/png;base64,${photo}`
@@ -100,7 +100,7 @@ class PracicCard extends Component {
 
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
-        const nameColledge = "";
+        let nameColledge = "";
 
         if (this.state.institutionsList.length) {
             this.state.institutionsList.forEach(element => {
@@ -120,7 +120,7 @@ class PracicCard extends Component {
         this.setState({
             visibleEditCard: true,
             visibleReadonly: false,
-            visibleCuratorBtn: false
+            //visibleCuratorBtn: false
         });
     };
 
@@ -219,10 +219,10 @@ class PracicCard extends Component {
             Patronymic: this.props.dataList.studentModalCardData.Patronymic,
             Email: this.props.dataList.studentModalCardData.Email,
             Phone: this.props.dataList.studentModalCardData.Phone,
-            College: this.props.dataList.studentModalCardData.College,
+            CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding.slice(0, 11),
             Speciality: this.props.dataList.studentModalCardData.Speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
@@ -230,7 +230,7 @@ class PracicCard extends Component {
             
             visibleEditCard: false,
             visibleReadonly: true,
-            visibleCuratorBtn: true,
+            //visibleCuratorBtn: true,
         });
 
         this.props.dataList.onHideModalStudentCardModal()
@@ -257,7 +257,7 @@ class PracicCard extends Component {
             visibleReadonly: true,
             visibleAlteration: false,
             visibleChangesSaved: true,
-            visibleCuratorBtn: true
+            //visibleCuratorBtn: true
         });
 
         console.log(this.state);
@@ -434,7 +434,6 @@ class PracicCard extends Component {
                                 <img src = {noavatarcurator} alt="Фотография куратора" className = "card__profile-pic card__profile-pic_curator" />
                                 <p className = "card__curator__action_student" onClick={this.onShowRatingTable}>Оценить компетенции студента</p>
                                 <button 
-                                    disabled={this.state.visibleCuratorBtn} 
                                     className = {`btn ${card__curator__choose_button}`}
                                     onClick={this.onShowModalAppointCuratorCard}>
                                         Назначить куратора

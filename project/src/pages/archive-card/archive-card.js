@@ -11,7 +11,7 @@ import noavatarcurator from '../img/noavatar-curator.jpg';
 import './archive-card.css';
 
 import {connect} from 'react-redux';
-import {getListCurators} from '../../_actions/applications';
+import {getListCurators, getListInstitutes} from '../../_actions/applications';
 
 class ArchiveCard extends Component {
 
@@ -27,8 +27,8 @@ class ArchiveCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
@@ -80,9 +80,9 @@ class ArchiveCard extends Component {
 
     // Обработка изображений
     getReturnImage = () => {
-        const {photo} = this.props.dataList;
+        let photo = this.props.dataList.photo;
         photo = `${photo}`;
-        let photoFoo = {noavatar};
+        let photoFoo = noavatar;
 
         if (photo) {
             photoFoo = `data:image/png;base64,${photo}`
@@ -93,7 +93,7 @@ class ArchiveCard extends Component {
 
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
-        const nameColledge = "";
+        let nameColledge = "";
 
         if (this.state.institutionsList.length) {
             this.state.institutionsList.forEach(element => {
@@ -240,13 +240,15 @@ class ArchiveCard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        curatorsList: state.applications.curatorsList
+        curatorsList: state.applications.curatorsList,
+        institutesList: state.applications.institutesList
     }
 };
 
 const mapDispatchToProps = (dispatch => {
     return {
-        getListCurators
+        getListCurators,
+        getListInstitutes
     }
 });
 

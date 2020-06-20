@@ -48,7 +48,7 @@ function* createNewStudent(api, action) {
         const apiRes = yield call(() => postman.post("/Student/CreateNewStudent", action.payload));
 
         // const stabStudentList = item
-        yield put(sendPostNewStudent(apiRes));
+        //yield put(sendPostNewStudent());
         action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
@@ -73,7 +73,7 @@ function* deleteStudentCard(api, action) {
         const apiRes = yield call(() => postman.delete(`/Student/DeleteStudent?id=${action.payload}`));
 
         // const stabStudentList = item
-        yield put(successDeleteStudent(apiRes));
+        //yield put(successDeleteStudent(apiRes.data));
         action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
@@ -99,8 +99,8 @@ function* findStudents(api, action) {
         const apiRes = yield call(() => postman.post("/Student/FindStudents", action.payload));
       
         // const stabStudentList = item
-        yield put(successFindStudent(apiRes));
-        action.meta && action.meta(apiRes);
+        yield put(successFindStudent(apiRes.data));
+        // action.meta && action.meta(apiRes);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -318,7 +318,7 @@ function* getListInstitutions(api, action) {
         const apiRes = yield call(() => postman.get("/Institution/GetInstitutes"));
 
         // const stabStudentList = item
-        yield put(successListInstitutes(apiRes));
+        yield put(successListInstitutes(apiRes.data));
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -342,7 +342,7 @@ function* getCuratorsList(api, action) {
         const apiRes = yield call(() => postman.get("/GetMentors"));
 
         // const stabStudentList = item
-        yield put(successGetListCurators(apiRes));
+        yield put(successGetListCurators(apiRes.data));
         // action.meta && action.meta();
         //yield put(changeLoading(false));
     }
