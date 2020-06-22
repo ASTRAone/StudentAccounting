@@ -70,7 +70,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    width: 70px;
+    width: 100px;
 }
 
 .list-element-date__label{

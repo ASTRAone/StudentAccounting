@@ -47,6 +47,8 @@ class ApplicationsPage extends React.Component  {
             this.setState({
                 studentsListRequest: this.props.studentsList
             });
+
+            console.log(this.state.studentsListRequest.slice(this.state.activePage*10-10,this.state.activePage*10));
         }
     }
     
