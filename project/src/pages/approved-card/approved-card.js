@@ -27,9 +27,9 @@ class ApprovedCard extends Component {
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
-            Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
+            Faculty: this.props.dataList.studentModalCardData.practicArea,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
 
@@ -79,9 +79,9 @@ class ApprovedCard extends Component {
 
     // Обработка изображений
     getReturnImage = () => {
-        let photo = this.props.dataList.photo;
+        let photo = this.props.dataList.studentModalCardData.photo === null ? "" : this.props.dataList.studentModalCardData.photo;
         photo = `${photo}`;
-        let photoFoo = {noavatar};
+        let photoFoo = noavatar;
 
         if (photo) {
             photoFoo = `data:image/png;base64,${photo}`
@@ -89,21 +89,19 @@ class ApprovedCard extends Component {
 
         return photoFoo;
     };
-    
+
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
         let nameColledge = "";
-
-        if (this.state.institutionsList.length) {
-            this.state.institutionsList.forEach(element => {
-                if (element.id === this.state.CollegeId) {
+        
+        if (this.props.institutionsList.length) {
+            this.props.institutionsList.forEach(element => {
+                if (element.id === this.props.dataList.studentModalCardData.institutionId) {
                     nameColledge = element.name;
-                } else {
-                    nameColledge = "Название не определено"
                 }
             });
         }
-
+        
         return nameColledge;
     };
 
@@ -185,9 +183,9 @@ class ApprovedCard extends Component {
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
-            Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
+            Faculty: this.props.dataList.studentModalCardData.practicArea,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
         });
@@ -342,18 +340,18 @@ class ApprovedCard extends Component {
                             </div>
                             <div className = "card__contacts">
                                 <p className = "card__info-label">Факультет, специальность:</p>
-                                <p className = {card__info_text}>{this.state.Faculty}</p>
+                                <p className = {card__info_text}>{this.state.Speciality}</p>
                                 <label className={our_input}>
                                     <Input 
                                         type="email"
                                         className="card__info-text_input"
-                                        value={this.state.Faculty}
-                                        onChange={this.editFaculty}/>
+                                        value={this.state.Speciality}
+                                        onChange={this.editSpeciality}/>
                                 </label>
                             </div>
                             <div className = "card__contacts">
                                 <p className = "card__info-label">Сроки практики:</p>
-                                <p className = {card__info_text}>{this.state.PractiesBegining} - {this.state.PractiesEnding}</p>
+                                <p className = {card__info_text}>{this.state.PractiesBegining.slice(0, 10)} - {this.state.PractiesEnding.slice(0, 10)}</p>
                                 <label className={our_input}>
                                     <Input 
                                         type="email"
@@ -370,13 +368,13 @@ class ApprovedCard extends Component {
                             </div>
                             <div className = "card__contacts">
                                 <p className = "card__info-label">Направление деятельности:</p>
-                                <p className = {card__info_text}>{this.state.Speciality}</p>
+                                <p className = {card__info_text}>{this.state.Faculty}</p>
                                 <label className={our_input}>
                                     <Input 
                                         type="email"
                                         className="card__info-text_input"
-                                        value={this.state.Speciality}
-                                        onChange={this.editSpeciality}/>
+                                        value={this.state.Faculty}
+                                        onChange={this.editFaculty}/>
                                 </label>
                             </div>
                         </div>

@@ -162,38 +162,77 @@ class StudentAddForm extends Component {
     addNewStudent = () => {
         console.log(this.state);
 
-        const params = {
-            SecondName: this.state.SecondName,
-            FirstName: this.state.FirstName,
-            Patronymic: this.state.Patronymic,
-            InstitutionId: this.state.CollegeID,
-            Speciality: this.state.SpecialityName,
-            PracticArea: this.state.Faculty,
-            PractiesBegining: this.state.PractiesBegining,
-            PractiesEnding: this.state.PractiesEnding,
-            Phone: this.state.Phone,
-            Email: this.state.Email,
-            Photo: this.state.profilePic
-        }
+        if (this.state.profilePic) {
+            const params = {
+                SecondName: this.state.SecondName,
+                FirstName: this.state.FirstName,
+                Patronymic: this.state.Patronymic,
+                InstitutionId: this.state.CollegeID,
+                // Speciality: this.state.SpecialityName,
+                // PracticArea: this.state.Faculty,
+                Speciality: this.state.Faculty,
+                PracticArea: this.state.SpecialityName,
+                PractiesBegining: this.state.PractiesBegining,
+                PractiesEnding: this.state.PractiesEnding,
+                Phone: this.state.Phone,
+                Email: this.state.Email,
+                Photo: this.state.profilePic.slice(23)
+            }
 
-        // Добавление нового студента через api
-        this.props.postCreateNewStudent(params);
+            console.log(params);
 
-        this.setState({
-            profilePic: "",
-            SecondName: "",
-            FirstName: "",
-            Patronymic: "",
-            Email: "",
-            Phone: "",
-            College: "",
-            Faculty: "",
-            PractiesBegining: "",
-            PractiesEnding: "",
-            Speciality: {}
-        });
+            // Добавление нового студента через api
+            this.props.postCreateNewStudent(params);
 
-        this.props.onHideModalWindowAdd();
+            this.setState({
+                profilePic: "",
+                SecondName: "",
+                FirstName: "",
+                Patronymic: "",
+                Email: "",
+                Phone: "",
+                College: "",
+                Faculty: "",
+                PractiesBegining: "",
+                PractiesEnding: "",
+                Speciality: {}
+            });
+    
+            this.props.onHideModalWindowAdd();
+        } else {
+            const params = {
+                SecondName: this.state.SecondName,
+                FirstName: this.state.FirstName,
+                Patronymic: this.state.Patronymic,
+                InstitutionId: this.state.CollegeID,
+                Speciality: this.state.Faculty,
+                PracticArea: this.state.SpecialityName,
+                PractiesBegining: this.state.PractiesBegining,
+                PractiesEnding: this.state.PractiesEnding,
+                Phone: this.state.Phone,
+                Email: this.state.Email,
+                // Photo: this.state.profilePic
+            }
+
+            // Добавление нового студента через api
+            this.props.postCreateNewStudent(params);
+
+            this.setState({
+                profilePic: "",
+                SecondName: "",
+                FirstName: "",
+                Patronymic: "",
+                Email: "",
+                Phone: "",
+                College: "",
+                Faculty: "",
+                PractiesBegining: "",
+                PractiesEnding: "",
+                Speciality: {}
+            });
+    
+            this.props.onHideModalWindowAdd();
+        }     
     };
 
     // Отмена добавления студента
@@ -220,7 +259,7 @@ class StudentAddForm extends Component {
 
         let options;
 
-        if (this.state.institutesList.length) {
+        if (this.props.institutesList.length) {
             options = this.state.institutionsList.map((item, index) => {
                 return (
                     <option key={index}>{item.name}</option>

@@ -49,7 +49,7 @@ function* createNewStudent(api, action) {
 
         // const stabStudentList = item
         //yield put(sendPostNewStudent());
-        action.meta && action.meta(apiRes);
+        action.meta && action.meta(apiRes.data);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -74,7 +74,7 @@ function* deleteStudentCard(api, action) {
 
         // const stabStudentList = item
         //yield put(successDeleteStudent(apiRes.data));
-        action.meta && action.meta(apiRes);
+        action.meta && action.meta(apiRes.data);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -85,7 +85,6 @@ function* deleteStudentCard(api, action) {
         // yield put(clearError(e));
     }
 }
-
 
 // Поиск студента
 function* findStudents(api, action) {
@@ -256,7 +255,6 @@ function* updateStudentPractic(api, action) {
     }
 }
 
-
 // Вход в систему
 function* getLoggingSistem(api, action) {
     try {
@@ -269,8 +267,8 @@ function* getLoggingSistem(api, action) {
         const apiRes = yield call(() => postman.post("/Account/LogIn", action.payload));
         
         // const stabStudentList = item
-        yield put(successPostLogin(apiRes));
-        action.meta && action.meta(apiRes);
+        //yield put(successPostLogin(apiRes));
+        action.meta && action.meta(apiRes.data);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -291,10 +289,11 @@ function* addCuratorPractic(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.put("/Student/AddStudentMentor", action.payload));
+        const apiRes = yield call(() => postman.post("/Student/AddStudentMentor", action.payload));
 
         // const stabStudentList = item
-        yield put(successAddCurator(apiRes));
+        // yield put(successAddCurator(apiRes));
+        action.meta && action.meta(apiRes.data);
         //yield put(changeLoading(false));
     }
     catch (e) {
@@ -339,7 +338,7 @@ function* getCuratorsList(api, action) {
         // console.log(action)
         // console.log(api)
 
-        const apiRes = yield call(() => postman.get("/GetMentors"));
+        const apiRes = yield call(() => postman.get("/Student/GetMentors"));
 
         // const stabStudentList = item
         yield put(successGetListCurators(apiRes.data));

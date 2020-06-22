@@ -50,7 +50,6 @@ class AppointCurator extends Component {
         let idCurator;
         
         this.state.curatorsList.forEach(element => {
-
             let initials = element.secondName + " " + element.firstName + " " + element.patronymic;
 
             if (initials === e.target.value) {

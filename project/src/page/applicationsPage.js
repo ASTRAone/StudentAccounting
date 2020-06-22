@@ -174,15 +174,6 @@ class ApplicationsPage extends React.Component  {
         });
     };
 
-    // Поиск студентов-практикантов
-    // searchStudents = (listSearch) => {
-    //     this.setState(({studentsListRequest}) => {
-    //         return {
-    //             studentsListRequest: listSearch || []
-    //         };
-    //     });
-    // };
-
     // Очистка поиска
     orderSearchStudents = () => {
         // this.setState(({studentsListInArchive}) => {

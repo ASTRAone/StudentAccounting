@@ -25,9 +25,9 @@ class RejectCard extends Component {
             Email: this.props.dataList.studentModalCardData.email,
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
-            Faculty: this.props.dataList.studentModalCardData.faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0, 11),
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0, 11),
+            Faculty: this.props.dataList.studentModalCardData.practicArea,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
             Speciality: this.props.dataList.studentModalCardData.speciality,
 
             institutionsList: this.props.institutesList || [],
@@ -52,7 +52,7 @@ class RejectCard extends Component {
 
     // Обработка изображений
     getReturnImage = () => {
-        let photo = this.props.dataList.photo;
+        let photo = this.props.dataList.studentModalCardData.photo === null ? "" : this.props.dataList.studentModalCardData.photo;
         photo = `${photo}`;
         let photoFoo = noavatar;
 
@@ -66,33 +66,31 @@ class RejectCard extends Component {
     // Обработка названия учебного заведения
     getReturnNameColledge = () => {
         let nameColledge = "";
-
-        if (this.state.institutionsList.length) {
-            this.state.institutionsList.forEach(element => {
-                if (element.id === this.state.CollegeId) {
+        
+        if (this.props.institutionsList.length) {
+            this.props.institutionsList.forEach(element => {
+                if (element.id === this.props.dataList.studentModalCardData.institutionId) {
                     nameColledge = element.name;
-                } else {
-                    nameColledge = "Название не определено"
                 }
             });
         }
-
+        
         return nameColledge;
     };
     
     // Закрыть карточку студента-практиканта
     onHideCardStudent = () => {
         this.setState({
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
+            SecondName: this.props.dataList.studentModalCardData.secondName,
+            FirstName: this.props.dataList.studentModalCardData.firstName,
+            Patronymic: this.props.dataList.studentModalCardData.patronymic,
+            Email: this.props.dataList.studentModalCardData.email,
+            Phone: this.props.dataList.studentModalCardData.phone,
             // College: this.props.dataList.studentModalCardData.institutionId,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining.slice(0, 11),
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding.slice(0, 11),
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
+            Faculty: this.props.dataList.studentModalCardData.practicArea,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            Speciality: this.props.dataList.studentModalCardData.speciality,
             CollegeId: this.props.dataList.studentModalCardData.institutionId
         });
 
@@ -170,16 +168,16 @@ class RejectCard extends Component {
         this.setState({
             visibleEditCard: false,
 
-            SecondName: this.props.dataList.studentModalCardData.SecondName,
-            FirstName: this.props.dataList.studentModalCardData.FirstName,
-            Patronymic: this.props.dataList.studentModalCardData.Patronymic,
-            Email: this.props.dataList.studentModalCardData.Email,
-            Phone: this.props.dataList.studentModalCardData.Phone,
+            SecondName: this.props.dataList.studentModalCardData.secondName,
+            FirstName: this.props.dataList.studentModalCardData.firstName,
+            Patronymic: this.props.dataList.studentModalCardData.patronymic,
+            Email: this.props.dataList.studentModalCardData.email,
+            Phone: this.props.dataList.studentModalCardData.phone,
             // College: this.props.dataList.studentModalCardData.College,
-            Faculty: this.props.dataList.studentModalCardData.Faculty,
-            PractiesBegining: this.props.dataList.studentModalCardData.PractiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.PractiesEnding,
-            Speciality: this.props.dataList.studentModalCardData.Speciality,
+            Faculty: this.props.dataList.studentModalCardData.practicArea,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            Speciality: this.props.dataList.studentModalCardData.speciality,
             CollegeId: this.props.dataList.studentModalCardData.institutionId
         });
     };
@@ -294,18 +292,18 @@ class RejectCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Факультет, специальность:</p>
-                                    <p className = {card__info_text}>{this.state.Faculty}</p>
+                                    <p className = {card__info_text}>{this.state.Speciality}</p>
                                     <label className={our_input}>
                                         <Input 
                                             type="text"
                                             className="card__info-text_input"
-                                            value={this.state.Faculty}
-                                            onChange={this.editFaculty}/>
+                                            value={this.state.Speciality}
+                                            onChange={this.editSpeciality}/>
                                     </label>
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Сроки практики:</p>
-                                    <p className = {card__info_text}>{this.state.PractiesBegining} - {this.state.PractiesEnding}</p>
+                                    <p className = {card__info_text}>{this.state.PractiesBegining.slice(0, 10)} - {this.state.PractiesEnding.slice(0, 10)}</p>
                                     <label className={our_input}>
                                         <Input 
                                             type="text"
@@ -322,13 +320,13 @@ class RejectCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Направление деятельности:</p>
-                                    <p className = {card__info_text}>{this.state.Speciality}</p>
+                                    <p className = {card__info_text}>{this.state.Faculty}</p>
                                     <label className={our_input}>
                                         <Input 
                                             type="text"
                                             className="card__info-text_input"
-                                            value={this.state.Speciality}
-                                            onChange={this.editSpeciality}/>
+                                            value={this.state.Faculty}
+                                            onChange={this.editFaculty}/>
                                     </label>
                                 </div>
                             </div>

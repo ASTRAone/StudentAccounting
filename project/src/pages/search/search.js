@@ -16,8 +16,8 @@ class Search extends Component {
             colledge: '',
             initials: '',
             direction: '',
-            startDate: '',
-            endDate: '',
+            startDate: null,
+            endDate: null,
             ourDate: {}
         }
     }
@@ -65,8 +65,8 @@ class Search extends Component {
             colledge: '',
             initials: '',
             direction: '',
-            startDate: '',
-            endDate: '',
+            startDate: null,
+            endDate: null,
             ourDate: {}
         });
 
@@ -131,11 +131,14 @@ class Search extends Component {
                     value={this.state.colledge}
                     onChange={this.onChangeСolledge}/>
 
+                <datalist id="direction">
+                    { options }
+                </datalist>   
+
                 <RangePicker
                     placeholderText="Дата практики"
                     onDateSelected={this.onChangeData}
-                    value={[this.state.startDate, this.state.endDate]}
-                    />
+                    value={[this.state.startDate, this.state.endDate]}/>
                     
                 <input 
                     type="text" 

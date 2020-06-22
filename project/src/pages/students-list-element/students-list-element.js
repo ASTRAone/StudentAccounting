@@ -31,8 +31,23 @@ class StudentsListElement extends Component {
     }
 
     // Обработка изображений
+    // getReturnImage = () => {
+    //     let photo = this.props.photo;
+    //     photo = `${photo}`;
+    //     let photoFoo = noavatar;
+
+    //     console.log(photo)
+
+    //     if (photo) {
+    //         photoFoo = `data:image/png;base64,${photo}`
+    //     }
+
+    //     return photoFoo;
+    // };
+
+    // Обработка изображений
     getReturnImage = () => {
-        let photo = this.props.photo;
+        let photo = this.props.photo === null ? "" : this.props.photo;
         photo = `${photo}`;
         let photoFoo = noavatar;
 
@@ -104,7 +119,7 @@ class StudentsListElement extends Component {
                             </div>
                             <div className = "list-element-date">
                                 <p className = "list-element-date__label">Дата заявки</p>
-                                <p className = "list-element-date__value">{filingDate.slice(0, 11)}</p>
+                                <p className = "list-element-date__value">{filingDate.slice(0, 10)}</p>
                             </div>
                         </div>
                         <img src = {this.getReturnImage()} alt="Фотография студента" className = "list__profile-pic" />
@@ -132,7 +147,7 @@ class StudentsListElement extends Component {
                         <div className = "list__info">
                             <div className = "list__info-element">
                                 <p className = "list__info-label">Предполагаемые сроки практики:</p>
-                                <p className = "list__info-text">{ practiesBegining + " - " + practiesEnding }</p>
+                                <p className = "list__info-text">{ practiesBegining.slice(0, 10) + " - " + practiesEnding.slice(0, 10) }</p>
                             </div>
                             <div className = "list__info-element">
                                 <p className = "list__info-label">Желаемое направление деятельности:</p>

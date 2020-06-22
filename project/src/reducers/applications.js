@@ -41,6 +41,12 @@ export default handleActions(
                 studentsList: action.payload,
             }
         },
+
+    },
+
+    initialState
+)
+
         // Чекнуть удаление
         // [successDeleteStudent().type]: (state, action) => {
         //     console.log('successDeleteStudent', action);
@@ -57,8 +63,3 @@ export default handleActions(
         //         studentsList: action.payload,
         //     }
         // },
-    },
-
-    initialState
-)
-
