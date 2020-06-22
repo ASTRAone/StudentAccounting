@@ -61,7 +61,8 @@ export default class App extends Component {
 
         window.location.assign(`http://localhost:3000/applications`);
         window.localStorage.setItem('role', value)
-        window.localStorage.setItem('isAuthorization', true)
+        window.localStorage.setItem('isAuthorization', true);
+        window.localStorage.setItem('user', document.cookie);
     };
 
     // Выход из системы

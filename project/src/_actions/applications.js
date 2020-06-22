@@ -206,10 +206,11 @@ export function getListCurators(payload, meta) {
     };
 };
 
-export function successGetListCurators(payload) {
+export function successGetListCurators(payload, meta) {
     return {
         type: 'GET_LIST_CURATORS_SUCCESS',
-        payload
+        payload,
+        meta
     };
 };
 
@@ -224,6 +225,37 @@ export function getListInstitutes(payload) {
 export function successListInstitutes(payload) {
     return {
         type: 'GET_LIST_INSTITUTES_SUCCESS',
+        payload
+    };
+};
+
+// Перенаправление студента в какую-либо категорию
+export function postStudentChangeCategory(payload, meta) {
+    return {
+        type: 'POST_STUDENT_CHANGE_CATEGORY',
+        payload,
+        meta
+    };
+};
+
+export function successStudentChangeCategory(payload) {
+    return {
+        type: 'SUCCESS_STUDENT_CHANGE_CATEGORY',
+        payload
+    };
+};
+
+// Выход из системы
+export function signOut(payload) {
+    return {
+        type: 'SING_OUT',
+        payload
+    };
+};
+
+export function successSignOut(payload) {
+    return {
+        type: 'SUCCESS_SING_OUT',
         payload
     };
 };

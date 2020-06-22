@@ -27,8 +27,8 @@ class ArchiveCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
@@ -239,7 +239,7 @@ class ArchiveCard extends Component {
 const mapStateToProps = (state) => {
     return {
         curatorsList: state.applications.curatorsList,
-        institutesList: state.applications.institutesList
+        institutionsList: state.applications.institutesList
     }
 };
 

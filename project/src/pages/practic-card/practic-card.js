@@ -15,6 +15,8 @@ import './practic-card.css';
 import {connect} from 'react-redux';
 import {getListCurators, getListInstitutes} from '../../_actions/applications';
 
+// добавить выпадающий список выбора учебного заведения
+
 class PracicCard extends Component {
     
     constructor(props) {
@@ -29,8 +31,8 @@ class PracicCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
@@ -220,8 +222,8 @@ class PracicCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             comment: this.props.dataList.studentModalCardData.comment,
             ratingTable: this.props.dataList.studentModalCardData.ratingTable,
@@ -388,6 +390,7 @@ class PracicCard extends Component {
                                             type="text"
                                             value={this.getReturnNameColledge()}
                                             onChange={this.editCollege}/>
+                                            {/* Добавить list */}
                                     </label>   
                                 </div>
                                 <div className = {card__contacts}>

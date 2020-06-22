@@ -5,7 +5,9 @@ import RangePicker from "react-range-picker"
 import './search.css';
 
 import {connect} from 'react-redux';
-import {postFindStudent} from '../../_actions/applications'
+import {postFindStudent, getListInstitutes} from '../../_actions/applications'
+
+// добавить выпадающий список выбора учебного заведения
 
 class Search extends Component {
 
@@ -18,7 +20,20 @@ class Search extends Component {
             direction: '',
             startDate: null,
             endDate: null,
-            ourDate: {}
+            ourDate: {},
+            institutionsList: this.props.institutesList || [],
+        }
+    }
+
+    componentDidMount () {
+        this.props.getListInstitutes();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.institutesList !== this.props.institutesList) {
+            this.setState({
+                institutionsList: this.props.institutesList
+            });
         }
     }
 
@@ -106,6 +121,14 @@ class Search extends Component {
             );
         });
 
+            const institutionsOptions = this.props.institutesList.map(({ name }, index) => {
+                return (
+                    <option key={index}>
+                        {name}
+                    </option>
+                );
+            });
+
         let bnt_disabled = true;
         let reset = " opacity";
 
@@ -126,13 +149,15 @@ class Search extends Component {
             <div className="search-menu">
                 <input 
                     type="text" 
+                    name="institutionsOptions" 
+                    list="institutionsOptions" 
                     className="search-item" 
                     placeholder="Ключевое слово (ВУЗ)" 
                     value={this.state.colledge}
                     onChange={this.onChangeСolledge}/>
 
-                <datalist id="direction">
-                    { options }
+                <datalist id="institutionsOptions">
+                    { institutionsOptions }
                 </datalist>   
 
                 <RangePicker
@@ -176,13 +201,15 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        studentsList: state.applications.studentsList
+        //studentsList: state.applications.studentsList,
+        institutionsList: state.applications.institutesList
     }
 };
 
 const mapDispatchToProps = (dispatch => {
     return {
-        postFindStudent
+        postFindStudent,
+        getListInstitutes
     }
 });
 

@@ -51,7 +51,6 @@ class LoginForm extends Component {
             RememberMe: this.state.remember
         }
 
-        // Отправление данных api
         this.setState({
             isPrompt: true
         });
@@ -64,8 +63,7 @@ class LoginForm extends Component {
                 pass: '',
                 isPrompt: false
             });
-        }) 
-            
+        }); 
     };
 
     render() {

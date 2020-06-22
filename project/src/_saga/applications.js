@@ -5,7 +5,8 @@ import {getStudentsListRequest, successGetStudentsList, postCreateNewStudent, se
         addCurator, successAddCurator , exportToExcel, successExportToExcel, practicToExcel,
         successPracticToExcel, addStudentPracticComment,
         successAddStudentPracticComment, studentCardReport, successStudentCardReport, updatePractic,
-        successUpdatePractic, getListInstitutes, successListInstitutes, getListCurators, successGetListCurators} from "../_actions/applications";
+        successUpdatePractic, getListInstitutes, successListInstitutes, getListCurators, successGetListCurators,
+        postStudentChangeCategory, successStudentChangeCategory, signOut, successSignOut} from "../_actions/applications";
 import {item} from "../_stab";
 
 import axios from 'axios';
@@ -354,7 +355,55 @@ function* getCuratorsList(api, action) {
     }
 }
 
+// Изменение категории студента
+function* changeCategory(api, action) {
+    try {
+        console.warn('[saga ===> changeCategory ===> ]');
+        //yield put(changeLoading(true));
 
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.post("/Student/ChangeStudentStatus", action.payload));
+
+        // const stabStudentList = item
+        //yield put(successGetListCurators(apiRes.data));
+        action.meta && action.meta(apiRes.data);
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
+
+// Выход из системы
+function* getOutSistem(api, action) {
+    try {
+        console.warn('[saga ===> getOutSistem ===> ]');
+        //yield put(changeLoading(true));
+
+        // console.log(action)
+        // console.log(api)
+
+        const apiRes = yield call(() => postman.get("/api/Account/LogOut"));
+
+        // const stabStudentList = item
+        //yield put(successGetListCurators(apiRes.data));
+        action.meta && action.meta(apiRes.data);
+        //yield put(changeLoading(false));
+    }
+    catch (e) {
+        // yield put(changeLoading(false));
+        // yield put(setError(e));
+        // console.error('[getStudentsList saga1] error', e.message);
+        // yield delay(3000);
+        // yield put(clearError(e));
+    }
+}
 
 function* headerSaga(ea) {
   yield takeLatest(getStudentsListRequest().type, getStudentsList, ea);
@@ -384,6 +433,10 @@ function* headerSaga(ea) {
   yield takeLatest(getListInstitutes().type, getListInstitutions, ea); 
   // Получение кураторов из БД
   yield takeLatest(getListCurators().type, getCuratorsList, ea); 
+  // Изменение категории студента
+  yield takeLatest(postStudentChangeCategory().type, changeCategory, ea); 
+  // Выход из ситемы
+  yield takeLatest(signOut().type, getOutSistem, ea); 
 }
 
 export default headerSaga;

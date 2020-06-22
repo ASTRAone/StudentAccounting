@@ -14,6 +14,8 @@ import './approved-card.css';
 import {connect} from 'react-redux';
 import {getListCurators, getListInstitutes} from '../../_actions/applications';
 
+// добавить выпадающий список выбора учебного заведения
+
 class ApprovedCard extends Component {
 
     constructor(props) {
@@ -28,8 +30,8 @@ class ApprovedCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
 
@@ -184,8 +186,8 @@ class ApprovedCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CuratorId: this.props.dataList.studentModalCardData.mentorId,
         });
@@ -336,6 +338,7 @@ class ApprovedCard extends Component {
                                         className="card__info-text_input"
                                         value={this.getReturnNameColledge()}
                                         onChange={this.editCollege}/>
+                                        {/* Добавить list */}
                                 </label>
                             </div>
                             <div className = "card__contacts">
@@ -424,7 +427,7 @@ class ApprovedCard extends Component {
 const mapStateToProps = (state) => {
     return {
         curatorsList: state.applications.curatorsList,
-        institutesList: state.applications.institutesList,
+        institutionsList: state.applications.institutesList
     }
 };
 

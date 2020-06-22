@@ -12,6 +12,8 @@ import './reject-card.css';
 import {connect} from 'react-redux';
 import {getListInstitutes} from '../../_actions/applications';
 
+// добавить выпадающий список выбора учебного заведения
+
 class RejectCard extends Component {
 
     constructor(props) {
@@ -26,8 +28,8 @@ class RejectCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
 
             institutionsList: this.props.institutesList || [],
@@ -88,8 +90,8 @@ class RejectCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             // College: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CollegeId: this.props.dataList.studentModalCardData.institutionId
         });
@@ -175,8 +177,8 @@ class RejectCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             // College: this.props.dataList.studentModalCardData.College,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             CollegeId: this.props.dataList.studentModalCardData.institutionId
         });
@@ -288,6 +290,7 @@ class RejectCard extends Component {
                                             className="card__info-text_input"
                                             value={this.getReturnNameColledge()}
                                             onChange={this.editCollege}/>
+                                            {/* Добавить list */}
                                     </label>
                                 </div>
                                 <div className = "card__contacts">

@@ -12,6 +12,10 @@ import './new-card.css';
 import {connect} from 'react-redux';
 import {getListInstitutes} from '../../_actions/applications';
 
+
+
+// добавить выпадающий список выбора учебного заведения
+
 class NewCard extends Component {
 
     constructor(props) {
@@ -26,8 +30,8 @@ class NewCard extends Component {
             Phone: this.props.dataList.studentModalCardData.phone,
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             Speciality: this.props.dataList.studentModalCardData.speciality,
             
             institutionsList: this.props.institutesList || [],
@@ -89,8 +93,8 @@ class NewCard extends Component {
             CollegeId: this.props.dataList.studentModalCardData.institutionId,
             Speciality: this.props.dataList.studentModalCardData.speciality,
             Faculty: this.props.dataList.studentModalCardData.practicArea,
-            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining,
-            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding,
+            PractiesBegining: this.props.dataList.studentModalCardData.practiesBegining.slice(0,10),
+            PractiesEnding: this.props.dataList.studentModalCardData.practiesEnding.slice(0,10),
             // Speciality: this.props.dataList.studentModalCardData.Speciality,
 
             visibleEditCard: false
@@ -269,6 +273,7 @@ class NewCard extends Component {
                                             type="text" 
                                             value={this.getReturnNameColledge()}
                                             onChange={this.editCollege}/>
+                                            {/* Добавить list */}
                                     </label>
                                 </div>
                                 <div className = "card__contacts">
@@ -284,7 +289,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className = "card__contacts">
                                     <p className = "card__info-label">Сроки практики:</p>
-                                    <p className = {card__info_text}>{this.state.PractiesBegining.slice(0,10) - this.state.PractiesEnding.slice(0,10)}</p>
+                                    <p className = {card__info_text}>{this.state.PractiesBegining.slice(0, 10)} - {this.state.PractiesEnding.slice(0, 10)}</p>
                                     <label className={our_input}>
                                         <Input 
                                             className="card__info-text_input"

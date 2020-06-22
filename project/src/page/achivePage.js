@@ -111,12 +111,12 @@ class AchivePage extends Component {
     
     // Очистка поиска
     orderSearchStudents = () => {
-        // this.setState(({studentsListInArchive}) => {
-        //     return {
-        //         studentsListInArchive: this.props.studentsList || []
-        //     };
-        // });
         this.props.getStudentsListRequest(4);
+    };
+
+    // Обновление списка после удаления
+    onReloadStudentList = () => {
+        this.props.getStudentsListRequest(2);
     };
      
     render() {
@@ -144,7 +144,8 @@ class AchivePage extends Component {
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}
                         activePage={this.state.activePage}
-                        studentCard={this.state.studentCard}/>
+                        studentCard={this.state.studentCard}
+                        onReloadStudentList={this.onReloadStudentList}/>
                 <Pagination
                         innerClass="pagination page-numbers"
                         itemClass="page-item"

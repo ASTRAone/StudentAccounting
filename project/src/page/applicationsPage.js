@@ -7,7 +7,7 @@ import Filter from '../pages/filter';
 import Tools from '../pages/tools';
 import {connect} from 'react-redux';
 
-import {getStudentsListRequest} from '../_actions/applications';
+import {getStudentsListRequest, postStudentChangeCategory} from '../_actions/applications';
 import Pagination from 'react-js-pagination';
 import '../pages/page-numbers/page-numbers.css';
 
@@ -40,6 +40,7 @@ class ApplicationsPage extends React.Component  {
 
     componentDidMount () {
         this.props.getStudentsListRequest(0);
+        this.props.postStudentChangeCategory();
     }
     
     componentDidUpdate(prevProps, prevState) {
@@ -47,8 +48,6 @@ class ApplicationsPage extends React.Component  {
             this.setState({
                 studentsListRequest: this.props.studentsList
             });
-
-            console.log(this.state.studentsListRequest.slice(this.state.activePage*10-10,this.state.activePage*10));
         }
     }
     
@@ -105,7 +104,7 @@ class ApplicationsPage extends React.Component  {
             idStudentCard: id,
             visibleAcceptApplication: true
         });
-        console.log("Студент переведен в категорию Одобренные " + id)
+        // console.log("Студент переведен в категорию Одобренные " + id)
     };
 
     // Закрыть окно для перевода в категорию "Одобренные заявки"
@@ -118,6 +117,17 @@ class ApplicationsPage extends React.Component  {
     // Перевести студента в категорию "Одобренные заявки"
     onTransferStudentInCategoryApproved = () => {
         console.log(this.state.idStudentCard);
+
+        const params = {
+            StudentID: this.state.idStudentCard,
+            Status: 1,
+            Message: "Поздравляем, вы успешно переведены в категорию одобренные.",
+            Subject: "Изменение категории."
+        }
+
+        this.props.postStudentChangeCategory(params, () => {
+            this.onReloadStudentList();
+        })
 
         this.setState({
             visibleAcceptApplication: false,
@@ -134,7 +144,7 @@ class ApplicationsPage extends React.Component  {
 
     // Открыть окно для перевода в категорию "Отклоненные заявки"
     transferStudentCategoryReject = (id) => {
-        console.log("Студент переведен в категорию Отклоненные" + id)
+        //console.log("Студент переведен в категорию Отклоненные" + id)
 
         this.setState({
             visibleRejectApplication: true,
@@ -153,6 +163,17 @@ class ApplicationsPage extends React.Component  {
     onNoPlaces = () => {
         console.log(this.state.idStudentCard);
 
+        const params = {
+            StudentID: this.state.idStudentCard,
+            Status: 2,
+            Message: "Нам очень жаль, но все места на практику уже заняты.",
+            Subject: "Изменение категории."
+        }
+
+        this.props.postStudentChangeCategory(params, () => {
+            this.onReloadStudentList();
+        });
+
         this.setState({
             visibleRejectApplication: false,
             visibleReject: true
@@ -162,6 +183,17 @@ class ApplicationsPage extends React.Component  {
     // Отказ по причине "специальности"
     onNoSpecialty = () => {
         console.log(this.state.idStudentCard);
+
+        const params = {
+            StudentID: this.state.idStudentCard,
+            Status: 2,
+            Message: "Нам очень жаль, но все места на эту специальность уже заняты.",
+            Subject: "Изменение категории."
+        }
+
+        this.props.postStudentChangeCategory(params, () => {
+            this.onReloadStudentList();
+        });
 
         this.setState({
             visibleRejectApplication: false,
@@ -178,14 +210,14 @@ class ApplicationsPage extends React.Component  {
 
     // Очистка поиска
     orderSearchStudents = () => {
-        // this.setState(({studentsListInArchive}) => {
-        //     return {
-        //         studentsListInArchive: this.props.studentsList || []
-        //     };
-        // });
         this.props.getStudentsListRequest(0);
     };
-    
+
+    // Обновление списка после удаления
+    onReloadStudentList = () => {
+        this.props.getStudentsListRequest(0);
+    };
+
     render() {  
         return (
             <React.Fragment>
@@ -211,7 +243,8 @@ class ApplicationsPage extends React.Component  {
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}
                         activePage={this.state.activePage}
-                        studentCard={this.state.studentCard}/>
+                        studentCard={this.state.studentCard}
+                        onReloadStudentList={this.onReloadStudentList}/>
                 <Pagination
                         innerClass="pagination page-numbers"
                         itemClass="page-item"
@@ -250,7 +283,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch => {
     return {
-        getStudentsListRequest
+        getStudentsListRequest,
+        postStudentChangeCategory
     }
 });
 

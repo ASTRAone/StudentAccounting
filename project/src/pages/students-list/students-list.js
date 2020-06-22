@@ -64,7 +64,9 @@ class StudentsList extends Component {
         console.log(this.state.idTableStudent)
 
         // Удаление через апи
-        this.props.deleteStudent(this.state.idTableStudent)
+        this.props.deleteStudent(this.state.idTableStudent, () => {
+            this.props.onReloadStudentList();
+        })
 
         this.setState({
             modalDeleteWindow: false,
@@ -87,8 +89,6 @@ class StudentsList extends Component {
             idTableStudent: item.id,
             studentModalCardData: item,
         });
-
-        console.log(item)
     };
 
     // Закрыть карточку студента-практиканта
@@ -145,7 +145,8 @@ class StudentsList extends Component {
                             onShowModalWindowDeletedInCard={this.onShowModalWindowDeletedInCard}/> 
                     <StudentAddForm
                             studentAddModal={this.props.studentAddModal}
-                            onHideModalWindowAdd={this.props.onHideModalWindowAdd}/>                   
+                            onHideModalWindowAdd={this.props.onHideModalWindowAdd}
+                            onReloadStudentList={this.props.onReloadStudentList}/>                   
                 </ul>
             </React.Fragment>
         );

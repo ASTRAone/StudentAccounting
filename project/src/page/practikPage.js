@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getStudentsListRequest} from '../_actions/applications';
+import {getStudentsListRequest, postStudentChangeCategory} from '../_actions/applications';
 
 import StudentsList from '../pages/students-list';
 import PageNumbers from '../pages/page-numbers';
@@ -88,25 +88,27 @@ class PractikPage extends Component {
 
     // Добавить студента в категорию "архив"
     transferStudentCategoryArchive = (id) => {
-        console.log("Студент переведен в Архив " + id)
-    };
+        // console.log("Студент переведен в Архив " + id)
 
-    // Поиск студентов-практикантов
-    // searchStudents = (listSearch) => {
-    //     this.setState(({studentsListOnPractice}) => {
-    //         return {
-    //             studentsListOnPractice: listSearch || []
-    //         };
-    //     });
-    // };
+        const params = {
+            StudentID: id,
+            Status: 4,
+            Message: "Вы прошли практику и были направлены в категорию \"Архив\"",
+            Subject: "Изменение категории."
+        }
+
+        this.props.postStudentChangeCategory(params, () => {
+            this.onReloadStudentList();
+        });
+    };
 
     // Очистка поиска
     orderSearchStudents = () => {
-        // this.setState(({studentsListInArchive}) => {
-        //     return {
-        //         studentsListInArchive: this.props.studentsList || []
-        //     };
-        // });
+        this.props.getStudentsListRequest(3);
+    };
+
+    // Обновление списка после удаления
+    onReloadStudentList = () => {
         this.props.getStudentsListRequest(3);
     };
 
@@ -135,7 +137,8 @@ class PractikPage extends Component {
                         studentAddModal={this.state.studentAddModal}
                         onHideModalWindowAdd={this.onHideModalWindowAdd}
                         activePage={this.state.activePage}
-                        studentCard={this.state.studentCard}/>
+                        studentCard={this.state.studentCard}
+                        onReloadStudentList={this.onReloadStudentList}/>
                 <Pagination
                         innerClass="pagination page-numbers"
                         itemClass="page-item"
@@ -158,7 +161,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch => {
     return {
-        getStudentsListRequest
+        getStudentsListRequest,
+        postStudentChangeCategory
     }
 });
 

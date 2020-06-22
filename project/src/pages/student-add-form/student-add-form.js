@@ -179,10 +179,10 @@ class StudentAddForm extends Component {
                 Photo: this.state.profilePic.slice(23)
             }
 
-            console.log(params);
-
             // Добавление нового студента через api
-            this.props.postCreateNewStudent(params);
+            this.props.postCreateNewStudent(params, () => {
+
+            });
 
             this.setState({
                 profilePic: "",
@@ -215,7 +215,9 @@ class StudentAddForm extends Component {
             }
 
             // Добавление нового студента через api
-            this.props.postCreateNewStudent(params);
+            this.props.postCreateNewStudent(params, () => {
+                this.props.onReloadStudentList();
+            });
 
             this.setState({
                 profilePic: "",

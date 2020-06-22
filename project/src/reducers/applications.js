@@ -33,7 +33,6 @@ export default handleActions(
                 curatorsList: action.payload
             }
         },
-        // Чекнуть поиск
         [successFindStudent().type]: (state, action) => {
             console.log('successFindStudent', action);
             return {
